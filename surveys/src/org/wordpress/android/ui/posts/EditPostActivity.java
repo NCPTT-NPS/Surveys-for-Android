@@ -126,14 +126,19 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
     private WPEditText mContentEditText;
     private ImageButton mAddPictureButton;
-    private Spinner mStatusSpinner, mSiteConditionSpinner;
+    private Spinner mStatusSpinner;
     private EditText mTitleEditText, mPasswordEditText, mTagsEditText;
     private TextView mLocationText, mCategoriesText, mPubDateText;
     private ToggleButton mBoldToggleButton, mEmToggleButton, mBquoteToggleButton;
     private ToggleButton mUnderlineToggleButton, mStrikeToggleButton;
     private Button mPubDateButton, mLinkButton, mMoreButton;
     private RelativeLayout mFormatBar;
-
+    
+    ////added Jorge Rodriguez
+    private Spinner mRBCA_occucy_spinner, mRBCA_coord_loc_spinner;
+    ////// end jorge 
+    
+    
     private Location mCurrentLocation;
     private LocationHelper mLocationHelper;
     private Handler mAutoSaveHandler;
@@ -255,7 +260,6 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         setContentView(R.layout.edit);
         mContentEditText = (WPEditText) findViewById(R.id.postContent);
         mTitleEditText = (EditText) findViewById(R.id.title);
-        mSiteConditionSpinner = (Spinner) findViewById(R.id.siteCondition);
         mPasswordEditText = (EditText) findViewById(R.id.post_password);
         mLocationText = (TextView) findViewById(R.id.locationText);
         mBoldToggleButton = (ToggleButton) findViewById(R.id.bold);
@@ -272,13 +276,26 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mStatusSpinner = (Spinner) findViewById(R.id.status);
         mTagsEditText = (EditText) findViewById(R.id.tags);
         mFormatBar = (RelativeLayout) findViewById(R.id.formatBar);
+        
+        
+        ///added Jorge Rodriguez
+        mRBCA_occucy_spinner = (Spinner) findViewById(R.id.RBCA_occucy);
+        mRBCA_coord_loc_spinner = (Spinner) findViewById(R.id.RBCA_coord_loc_spinner);
+        //end jorge
+        
+        
 
         // Set header labels to upper case
         ((TextView) findViewById(R.id.statusLabel)).setText(getResources().getString(R.string.status).toUpperCase());
         ((TextView) findViewById(R.id.postFormatLabel)).setText(getResources().getString(R.string.post_format).toUpperCase());
         ((TextView) findViewById(R.id.pubDateLabel)).setText(getResources().getString(R.string.publish_date).toUpperCase());
-        ((TextView) findViewById(R.id.SiteConditionLabel)).setText(getResources().getString(R.string.siteCondition).toUpperCase());
-
+        
+        //////////added Jorge Rodriguez
+        ((TextView) findViewById(R.id.RBCA_coord_loc_label)).setText(getResources().getString(R.string.RBCA_coord_loc).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_occucy_label)).setText(getResources().getString(R.string.RBCA_occucy_label).toUpperCase());
+        //
+        
+        
         if (mIsPage) { // remove post specific views
             ((LinearLayout) findViewById(R.id.section2)).setVisibility(View.GONE);
             ((RelativeLayout) findViewById(R.id.section3)).setVisibility(View.GONE);
@@ -336,13 +353,19 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         }
 
         //Jorge Rodriguez/////////////////
-        String[] sitecondition = new String[] { getResources().getString(R.string.siteConditionGood), getResources().getString(R.string.siteConditionFair),
-                getResources().getString(R.string.siteConditionPoor), getResources().getString(R.string.siteConditionDestroyed), 
-                getResources().getString(R.string.siteConditionNotRelocated), getResources().getString(R.string.siteConditionInnundated)};
+        String[] coord_loc = new String[] { getResources().getString(R.string.RBCA_entrance_label), getResources().getString(R.string.RBCA_corner_label),
+                getResources().getString(R.string.RBCA_other_label)};
 
-        ArrayAdapter<String> siteConditioAadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sitecondition);
-        siteConditioAadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSiteConditionSpinner.setAdapter(siteConditioAadapter);
+        ArrayAdapter<String> coord_loc_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, coord_loc);
+        coord_loc_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mRBCA_coord_loc_spinner.setAdapter(coord_loc_adapter);
+        
+        String[] occupancy = new String[] { getResources().getString(R.string.Occupied), getResources().getString(R.string.Vacant),
+                getResources().getString(R.string.Unknown)};
+
+        ArrayAdapter<String> occupancyAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, occupancy);
+        occupancyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mRBCA_occucy_spinner.setAdapter(occupancyAdapter);
         //end jorge rodriguez///////////////////////
         
         
@@ -426,24 +449,34 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPasswordEditText.setText(mPost.getWP_password());
             
             //Toda esta parte la agregre jorge rodriguez
-            if (mPost.getSiteCondition() != null){
-                String siteCondition = mPost.getSiteCondition();
+            if (mPost.getRBCA_coord_loc() != null){
+                String rbca_coord_loc = mPost.getRBCA_coord_loc();
                 
-                if (siteCondition.equals("GOOD")) {
-                    mSiteConditionSpinner.setSelection(0, true);
-                } else if (siteCondition.equals("FAIR")) {
-                    mSiteConditionSpinner.setSelection(1, true);
-                } else if (siteCondition.equals("POOR")) {
-                    mSiteConditionSpinner.setSelection(2, true);
-                } else if (siteCondition.equals("DESTROYED")) {
-                    mSiteConditionSpinner.setSelection(3, true);
-                } else if (siteCondition.equals("NOT RELOCATED")) {
-                    mSiteConditionSpinner.setSelection(4, true);
-                } else if (siteCondition.equals("INNUNDATED")) {
-                    mSiteConditionSpinner.setSelection(5, true);
+                if (rbca_coord_loc.equals("Entrance")) {
+                    mRBCA_coord_loc_spinner.setSelection(0, true);
+                } else if (rbca_coord_loc.equals("Corner")) {
+                    mRBCA_coord_loc_spinner.setSelection(1, true);
+                } else if (rbca_coord_loc.equals("Other")) {
+                    mRBCA_coord_loc_spinner.setSelection(2, true);
+                } 
+            }
+            
+            
+            
+            if (mPost.getRBCA_occucy() !=null){
+                String occupancy1 = mPost.getRBCA_occucy();
+                
+                if (occupancy.equals("Occupied")) {
+                    mRBCA_occucy_spinner.setSelection(0, true);
+                } else if (occupancy1.equals("Vacant")) {
+                    mRBCA_occucy_spinner.setSelection(1, true);
+                } else if (occupancy1.equals("Unknown")) {
+                    mRBCA_occucy_spinner.setSelection(2, true);
                 }
-                
-            }////end jorge rodriguez
+            }
+            
+            
+            ////end jorge rodriguez
             
             
 
@@ -1518,28 +1551,35 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             final String moreTag = "<!--more-->";
             
             //Jorge Rodriguez
-            int selectedsiteCondition = mSiteConditionSpinner.getSelectedItemPosition();
-            String siteCondition = "";
-
-            switch (selectedsiteCondition) {
+            
+            int selected_occucy = mRBCA_occucy_spinner.getSelectedItemPosition();
+            String occupancy = "";
+            switch (selected_occucy) {
             case 0:
-                siteCondition = "GOOD";
+                occupancy = "Occupied";
                 break;
             case 1:
-                siteCondition = "FAIR";
+                occupancy = "Vacant";
                 break;
             case 2:
-                siteCondition = "POOR";
+                occupancy = "Unknown";
                 break;
-            case 3:
-                siteCondition = "DESTROYED";
+            }
+            
+            int selected_coord_loc = mRBCA_coord_loc_spinner.getSelectedItemPosition();
+            String coord_location = "";
+
+            switch (selected_coord_loc) {
+            case 0:
+                coord_location = "Entrance";
                 break;
-            case 4:
-                siteCondition = "NOT RELOCATED";
+            case 1:
+                coord_location = "Corner";
                 break;
-            case 5:
-                siteCondition = "INNUNDATED";
+            case 2:
+                coord_location = "Other";
                 break;
+            
             }////////end jorge Rodriguez
             
             int selectedStatus = mStatusSpinner.getSelectedItemPosition();
@@ -1578,7 +1618,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
             if (mIsNew) {
                 mPost = new Post(mBlogID, title, content, images, pubDateTimestamp, mCategories.toString(), tags, status, password,
-                        latitude, longitude,siteCondition, mIsPage, postFormat, true, false);
+                        latitude, longitude, mIsPage, postFormat, true, false,coord_location, occupancy);
                 mPost.setLocalDraft(true);
 
                 // split up the post content if there's a more tag
@@ -1647,10 +1687,14 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setWP_password(password);
                 mPost.setLatitude(latitude);
                 mPost.setLongitude(longitude);
-                mPost.setSiteCondition(siteCondition);
+                
                 mPost.setWP_post_form(postFormat);
                 if (!mPost.isLocalDraft())
                     mPost.setLocalChange(true);
+                
+                mPost.setRBCA_coord_loc(coord_location);
+                mPost.setRBCA_occucy(occupancy);
+                
                 success = mPost.update();
             }
         }

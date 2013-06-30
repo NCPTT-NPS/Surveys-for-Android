@@ -104,7 +104,7 @@
   <!-- page view -->
   <string name="title">Title</string>
   <string name="content">Tap to add text and media</string>
-  <string name="siteCondition">Site Condition</string>
+  
   <string name="sure_to_cancel_edit_page">Are you sure you want to cancel editing this page?</string>
 
   <!-- posts tab -->
@@ -396,9 +396,20 @@
   <!-- Varias variales de prueba para los elemntos en los layouts 
   hay que moverlos de aqui a sus lugares correctos despues -->
   
-  <string name="siteConditionGood">GOOD</string>
-  <string name="siteConditionFair">FAIR</string>
-  <string name="siteConditionPoor">POOR</string>
+  <string name="RBCA_entrance_label">Entrance</string>
+  <string name="RBCA_corner_label">Corner</string>
+  <string name="RBCA_other_label">Other</string>
+  
+  
+  <string name="RBCA_coord_loc">Coordinate Location</string>
+  
+  <string name="RBCA_occucy_label">Occupancy</string>
+  <string name="Occupied">Occupied</string>
+  <string name="Vacant">Vacant</string>
+  <string name="Unknown">Unknown</string>
+  
+  
+  
   <string name="siteConditionDestroyed">DESTROYED</string>
   <string name="siteConditionNotRelocated">NOT RELOCATED</string>
   <string name="siteConditionInnundated">INNUNDATED</string>

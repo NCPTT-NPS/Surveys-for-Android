@@ -28,7 +28,7 @@ public class Post {
     private String postid;
     private String title;
     private String userid;
-    private String siteCondition;
+    
     private String wp_author_display_name;
     private String wp_author_id;
     private String wp_password;
@@ -40,6 +40,15 @@ public class Post {
     private double longitude;
     private boolean isPage;
     private boolean isLocalChange;
+    
+    //Fields added Jorge Rodriguez
+    private String rbca_coord_loc;
+    private double RBCA_altitude;
+    private double RBCA_accuracy;
+    private String RBCA_occucy;
+    
+    //end of Field added
+    
 
     private String mediaPaths;
     private String quickPostType;
@@ -54,8 +63,8 @@ public class Post {
         List<Object> postVals = WordPress.wpDB.loadPost(blog_id, isPage, post_id);
         
         System.out.println(postVals.size());
-        for (int i=0;i<=29;i++){
-            System.out.println("Linea "+i+": "+postVals.get(i));
+        for (int i=0;i<postVals.size();i++){
+            System.out.println("Linea "+ i +": "+postVals.get(i));
         }
         
         if (postVals != null) {
@@ -93,11 +102,18 @@ public class Post {
             this.mediaPaths = postVals.get(23).toString();
             this.latitude = (Double) postVals.get(24);
             this.longitude = (Double) postVals.get(25);
-            this.siteCondition = postVals.get(26).toString();
-            this.localDraft = (Integer) postVals.get(27) > 0;
-            this.uploaded = (Integer) postVals.get(28) > 0;
-            this.isPage = (Integer) postVals.get(29) > 0;
-            this.isLocalChange = (Integer) postVals.get(30) > 0;
+            this.localDraft = (Integer) postVals.get(26) > 0;
+            this.uploaded = (Integer) postVals.get(27) > 0;
+            this.isPage = (Integer) postVals.get(28) > 0;
+            
+            //
+            this.rbca_coord_loc = (String) postVals.get(29);
+            this.RBCA_occucy = (String) postVals.get(30);
+            //
+            
+            
+            this.isLocalChange = (Integer) postVals.get(31) > 0;
+            
             
         } else {
             this.id = -1;
@@ -105,8 +121,8 @@ public class Post {
     }
 
     public Post(int blog_id, String title, String content, String picturePaths, long date, String categories, String tags, String status,
-            String password, double latitude, double longitude, String siteCondition, boolean isPage, String postFormat,
-            boolean createBlogReference, boolean isLocalChange) {
+            String password, double latitude, double longitude, boolean isPage, String postFormat,
+            boolean createBlogReference, boolean isLocalChange, String rbca_coord_loc, String RBCA_occucy) {
         // create a new post
         if (createBlogReference) {
             try {
@@ -115,7 +131,6 @@ public class Post {
                 e.printStackTrace();
             }
         }
-        System.out.println("This is a new post");
         this.blogID = blog_id;
         this.title = title;
         this.description = content;
@@ -129,8 +144,11 @@ public class Post {
         this.wp_post_format = postFormat;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.siteCondition = siteCondition;
         this.isLocalChange = isLocalChange;
+        
+        //added
+        this.rbca_coord_loc = rbca_coord_loc;
+        this.RBCA_occucy = RBCA_occucy;
     }
 
     public long getId() {
@@ -299,17 +317,6 @@ public class Post {
     public void setUserid(String userid) {
         this.userid = userid;
     }
-    
-    //Added this field to the object for testing.
-    public String getSiteCondition(){
-        return siteCondition;
-    }
-    
-    public void setSiteCondition(String siteCondition){
-        this.siteCondition = siteCondition;
-    }
-    //end of modification to SiteCondition
-  
 
     public String getWP_author_display_name() {
         return wp_author_display_name;
@@ -444,4 +451,30 @@ public class Post {
     public String getQuickPostType() {
         return quickPostType;
     }
+    
+    
+    
+    //Added this field to the object for testing.
+    
+    public String getRBCA_coord_loc(){
+        return rbca_coord_loc;
+    }
+    
+    public void setRBCA_coord_loc(String siteCondition){
+        this.rbca_coord_loc = siteCondition;
+    }
+    
+    
+    public String getRBCA_occucy(){
+        return RBCA_occucy;
+    }
+    public void setRBCA_occucy(String occucy){
+        this.RBCA_occucy = occucy;
+    }
+    
+    
+    
+    
+    
+    //end of modification to SiteCondition
 }

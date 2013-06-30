@@ -31,8 +31,8 @@
     <style name="wordpress_solid_ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@drawable/ab_solid_wordpress</item>
         <item name="background">@drawable/ab_solid_wordpress</item>
-        <item name="android:icon">@drawable/ab_icon_wp</item>
-        <item name="icon">@drawable/ab_icon_wp</item>
+        <item name="android:icon">@drawable/bw_nps</item> <!-- @drawable/ab_icon_wp -->
+        <item name="icon">@drawable/bw_nps</item> <!-- @drawable/ab_icon_wp -->
         <item name="backgroundStacked">@drawable/ab_stacked_solid_wordpress</item>
         
         <item name="backgroundSplit">@drawable/ab_bottom_solid_wordpress</item>

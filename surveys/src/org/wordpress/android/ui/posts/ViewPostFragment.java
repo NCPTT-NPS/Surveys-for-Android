@@ -162,7 +162,8 @@ public class ViewPostFragment extends Fragment {
         tv.setVisibility(View.GONE);
         webView.setVisibility(View.VISIBLE);
         String html = StringHelper.addPTags(post.getDescription()
-                + "\n\n" + post.getMt_text_more() + "\n\n" + "Site Condition: "+post.getSiteCondition());
+                + "\n\n" + post.getMt_text_more() + "\n\n" + "Site Condition: "+post.getRBCA_coord_loc()
+                + "\n\n" + "Occupancy: "+post.getRBCA_occucy());
 
         String htmlText = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"webview.css\" /></head><body><div id=\"container\">"
                 + html + "</div></body></html>";

@@ -36,25 +36,41 @@
         android:layout_height="fill_parent"
         android:layout_marginBottom="50dp"
         android:layout_marginTop="50dp" >
-
-        <FrameLayout
+        
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-
-            <WebView
-                android:id="@+id/viewPostWebView"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" />
-
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+                
             <TextView
-                android:id="@+id/viewPostTextView"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="18dp"
-                android:visibility="gone" />
-        </FrameLayout>
+		        android:id="@+id/viewRBCA_occucy_label"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:background="#FFFFFF"
+		        android:padding="10dp"
+		        android:textSize="18dp"
+		        android:text="@string/RBCA_occucy_label"
+		        />
+                
+	       	<FrameLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content" >
+	            
+	            <WebView
+	                android:id="@+id/viewPostWebView"
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent" />
+	
+	            <TextView
+	                android:id="@+id/viewPostTextView"
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent"
+	                android:background="#FFFFFF"
+	                android:padding="10dp"
+	                android:textSize="18dp"
+	                android:visibility="gone" />
+	        </FrameLayout>
+        </LinearLayout> 
     </ScrollView>
 
     <RelativeLayout

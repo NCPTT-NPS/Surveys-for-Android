@@ -320,34 +320,53 @@ public class PostUploadService extends Service {
                 contentStruct.put("mt_excerpt", post.getMt_excerpt());
 
             contentStruct.put((post.isPage()) ? "page_status" : "post_status", post.getPost_status());
-            Double latitude = 0.0;
-            Double longitude = 0.0;
-            if (!post.isPage()) {
-                latitude = (Double) post.getLatitude();
-                longitude = (Double) post.getLongitude();
+//            Double latitude = 0.0;
+//            Double longitude = 0.0;
+//            if (!post.isPage()) {
+//                latitude = (Double) post.getLatitude();
+//                longitude = (Double) post.getLongitude();
+//
+//                if (latitude > 0) {
+//                    Map<Object, Object> hLatitude = new HashMap<Object, Object>();
+//                    hLatitude.put("key", "geo_latitude");
+//                    hLatitude.put("value", latitude);
+//
+//                    Map<Object, Object> hLongitude = new HashMap<Object, Object>();
+//                    hLongitude.put("key", "geo_longitude");
+//                    hLongitude.put("value", longitude);
+//
+//                    Map<Object, Object> hPublic = new HashMap<Object, Object>();
+//                    hPublic.put("key", "geo_public");
+//                    hPublic.put("value", 1);
+//
+//                    Map<Object, Object> testing = new HashMap<Object, Object>();
+//                    testing.put("key", "siteCondition");
+//                    testing.put("value", post.getSiteCondition());
+//
+//                    Object[] geo = { hLatitude, hLongitude, hPublic, testing };
+//
+//
+//                    contentStruct.put("custom_fields", geo);
+//                }
+//            }
+            
+            Map<Object, Object> testing = new HashMap<Object, Object>();
+            testing.put("key", "siteCondition");
+            testing.put("value", post.getRBCA_coord_loc());
+            
+            
+            Map<Object, Object> occupancy = new HashMap<Object, Object>();
+            occupancy.put("key", "RBCA_occucy");
+            occupancy.put("value", post.getRBCA_occucy());
+            
 
-                if (latitude > 0) {
-                    Map<Object, Object> hLatitude = new HashMap<Object, Object>();
-                    hLatitude.put("key", "geo_latitude");
-                    hLatitude.put("value", latitude);
+            Object[] geo = {  testing, occupancy };
+            
 
-                    Map<Object, Object> hLongitude = new HashMap<Object, Object>();
-                    hLongitude.put("key", "geo_longitude");
-                    hLongitude.put("value", longitude);
-
-                    Map<Object, Object> hPublic = new HashMap<Object, Object>();
-                    hPublic.put("key", "geo_public");
-                    hPublic.put("value", 1);
-                    
-                    Map<Object, Object> testing = new HashMap<Object, Object>();
-                    testing.put("key", "siteCondition");
-                    testing.put("value", post.getSiteCondition());
-
-                    Object[] geo = { hLatitude, hLongitude, hPublic, testing };
-
-                    contentStruct.put("custom_fields", geo);
-                }
-            }
+            contentStruct.put("custom_fields", geo);
+            
+            
+            
 
             // featured image
             if (featuredImageID != -1)
