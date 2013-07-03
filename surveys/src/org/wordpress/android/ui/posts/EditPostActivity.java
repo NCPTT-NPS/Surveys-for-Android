@@ -135,7 +135,17 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private RelativeLayout mFormatBar;
     
     ////added Jorge Rodriguez
-    private Spinner mRBCA_occucy_spinner, mRBCA_coord_loc_spinner;
+    private Spinner mRBCA_occucy_spinner, mRBCA_coord_loc_spinner;//mRBCA_area_spinner;
+    private EditText mRBCA_coord_notes, mRBCA_addr_no, mRBCA_addr_street, mRBCA_coord_loc_other;
+    
+    
+    protected Button mRBCA_area_select;
+    
+    protected CharSequence[] AreaAssessed = { "Exterior", "Interior" };
+    protected ArrayList<CharSequence> selectedChoices = new ArrayList<CharSequence>();
+    protected CharSequence[] Choices;
+    protected Button strdButton;
+    
     ////// end jorge 
     
     
@@ -281,6 +291,15 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ///added Jorge Rodriguez
         mRBCA_occucy_spinner = (Spinner) findViewById(R.id.RBCA_occucy);
         mRBCA_coord_loc_spinner = (Spinner) findViewById(R.id.RBCA_coord_loc_spinner);
+        mRBCA_coord_loc_other = (EditText) findViewById(R.id.RBCA_coord_loc_other);
+        mRBCA_coord_notes = (EditText) findViewById(R.id.RBCA_coord_notes);
+        mRBCA_addr_no = (EditText) findViewById(R.id.RBCA_addr_no);
+        mRBCA_addr_street = (EditText) findViewById(R.id.RBCA_addr_street);
+        mRBCA_area_select = (Button) findViewById(R.id.RBCA_area_select);
+        
+        
+        mRBCA_area_select.setOnClickListener(this);
+        
         //end jorge
         
         
@@ -292,6 +311,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         
         //////////added Jorge Rodriguez
         ((TextView) findViewById(R.id.RBCA_coord_loc_label)).setText(getResources().getString(R.string.RBCA_coord_loc).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_area_label)).setText(getResources().getString(R.string.RBCA_area_label).toUpperCase());
         ((TextView) findViewById(R.id.RBCA_occucy_label)).setText(getResources().getString(R.string.RBCA_occucy_label).toUpperCase());
         //
         
@@ -352,7 +372,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 setContent();
         }
 
-        //Jorge Rodriguez/////////////////
+        //Jorge Rodriguez/////////////////  ARRAY ADAPTERS FOR SPINNERS 
         String[] coord_loc = new String[] { getResources().getString(R.string.RBCA_entrance_label), getResources().getString(R.string.RBCA_corner_label),
                 getResources().getString(R.string.RBCA_other_label)};
 
@@ -461,7 +481,25 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 } 
             }
             
+            if (mPost.getRBCA_coord_loc_other() != null){
+                mRBCA_coord_loc_other.setText(mPost.getRBCA_coord_loc_other());
+            }
             
+            if (mPost.getRBCA_coord_notes() != null){
+                mRBCA_coord_notes.setText(mPost.getRBCA_coord_notes()) ;
+            }
+            
+            if (mPost.getRBCA_addr_no() != null){
+                mRBCA_addr_no.setText(mPost.getRBCA_addr_no()) ;
+            }
+            
+            if (mPost.getRBCA_addr_street() != null){
+                mRBCA_addr_street.setText(mPost.getRBCA_addr_street()) ;
+            }
+            
+            if (mPost.getRBCA_area() != null){
+                mRBCA_area_select.setText(mPost.getRBCA_area()) ;
+            }
             
             if (mPost.getRBCA_occucy() !=null){
                 String occupancy1 = mPost.getRBCA_occucy();
@@ -760,7 +798,11 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setLongitude(0.0);
             }
             mLocationText.setText("");
+        } else if (id == R.id.RBCA_area_select){////ESTO LO AGREGE YO! JORGE
+            showSelectionDialog(mPost.getRBCA_area(),AreaAssessed,mRBCA_area_select);
         }
+            
+            
     }
 
     @Override
@@ -1566,6 +1608,13 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 break;
             }
             
+            String coord_loc_other = mRBCA_coord_loc_other.getText().toString();
+            String coord_notes = mRBCA_coord_notes.getText().toString();
+            String addr_no = mRBCA_addr_no.getText().toString();
+            String addr_street = mRBCA_addr_street.getText().toString();
+            String area = mRBCA_area_select.getText().toString();
+            
+            
             int selected_coord_loc = mRBCA_coord_loc_spinner.getSelectedItemPosition();
             String coord_location = "";
 
@@ -1618,7 +1667,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
             if (mIsNew) {
                 mPost = new Post(mBlogID, title, content, images, pubDateTimestamp, mCategories.toString(), tags, status, password,
-                        latitude, longitude, mIsPage, postFormat, true, false,coord_location, occupancy);
+                        latitude, longitude, mIsPage, postFormat, true, false,coord_location,coord_loc_other,coord_notes, addr_no, addr_street,area,occupancy);
                 mPost.setLocalDraft(true);
 
                 // split up the post content if there's a more tag
@@ -1692,9 +1741,15 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 if (!mPost.isLocalDraft())
                     mPost.setLocalChange(true);
                 
+                ///////JORGE 
                 mPost.setRBCA_coord_loc(coord_location);
+                mPost.setRBCA_coord_loc_other(coord_loc_other);
+                mPost.setRBCA_coord_notes(coord_notes);
+                mPost.setRBCA_addr_no(addr_no);
+                mPost.setRBCA_addr_street(addr_street);
+                mPost.setRBCA_area(area);
                 mPost.setRBCA_occucy(occupancy);
-                
+                ////END JORGE
                 success = mPost.update();
             }
         }
@@ -2156,4 +2211,56 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             }
         }
     }
+    
+    ///added this for multichoice part
+   
+    
+    protected void showSelectionDialog(String postChoices, CharSequence[] choices,Button buttonSelector ) {
+        Choices = choices;
+        strdButton = buttonSelector;
+        boolean[] checkedSelection = new boolean[Choices.length];
+        int count = Choices.length;
+        //selectedAreaAssesed = null;
+        
+        //loads array if post is not new
+        if (!mIsNew ){
+            String[] options = postChoices.split(",");
+            for (int k=0; k < options.length;k++){
+                selectedChoices.add(options[k].trim());
+            }
+        }
+
+        for(int i = 0; i < count; i++)
+            checkedSelection[i] = selectedChoices.contains(Choices[i]);
+
+
+        DialogInterface.OnMultiChoiceClickListener selectionDialogListener = new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                if(isChecked) {selectedChoices.add(Choices[which]);}
+                else {selectedChoices.remove(Choices[which]);}
+                onChangeSelection();
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select all that apply");
+        builder.setMultiChoiceItems(Choices, checkedSelection, selectionDialogListener);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    
+    protected void onChangeSelection() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for(CharSequence area_assessed : selectedChoices){
+            if (stringBuilder.toString().equals(""))
+                stringBuilder.append(area_assessed);
+            else 
+                stringBuilder.append( ", "+ area_assessed );
+        }
+         strdButton.setText(stringBuilder.toString());
+    }
+    ///end added
 }

@@ -350,17 +350,37 @@ public class PostUploadService extends Service {
 //                }
 //            }
             
-            Map<Object, Object> testing = new HashMap<Object, Object>();
-            testing.put("key", "siteCondition");
-            testing.put("value", post.getRBCA_coord_loc());
+            Map<Object, Object> coord_loc = new HashMap<Object, Object>();
+            coord_loc.put("key", "rbca_loctn_coord_loc");
+            coord_loc.put("value", post.getRBCA_coord_loc());
             
+            Map<Object, Object> coord_loc_other = new HashMap<Object, Object>();
+            coord_loc_other.put("key", "rbca_loctn2_coord_loc_oth");
+            coord_loc_other.put("value", post.getRBCA_coord_loc_other());
+            
+            Map<Object, Object> coord_notes = new HashMap<Object, Object>();
+            coord_notes.put("key", "rbca_loctn2_coord_notes");
+            coord_notes.put("value", post.getRBCA_coord_notes());
+            
+            Map<Object, Object> addr_no = new HashMap<Object, Object>();
+            addr_no.put("key", "rbca_loctn2_addr_no");
+            addr_no.put("value", post.getRBCA_addr_no());
+            
+            Map<Object, Object> addr_street = new HashMap<Object, Object>();
+            addr_street.put("key", "rbca_loctn2_addr_street");
+            addr_street.put("value", post.getRBCA_addr_street());
+            
+            Map<Object, Object> area = new HashMap<Object, Object>();
+            area.put("key", "rbca_bldg_area");
+            area.put("value", post.getRBCA_area());
             
             Map<Object, Object> occupancy = new HashMap<Object, Object>();
-            occupancy.put("key", "RBCA_occucy");
+            occupancy.put("key", "rbca_bldg_occucy");
             occupancy.put("value", post.getRBCA_occucy());
             
+           
 
-            Object[] geo = {  testing, occupancy };
+            Object[] geo = { coord_loc, coord_loc_other, coord_notes, addr_no, addr_street, area ,occupancy };
             
 
             contentStruct.put("custom_fields", geo);

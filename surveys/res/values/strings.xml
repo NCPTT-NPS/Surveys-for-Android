@@ -402,6 +402,14 @@
   
   
   <string name="RBCA_coord_loc">Coordinate Location</string>
+  <string name="RBCA_coord_loc_other_label">Please specify "other"</string>
+  <string name="RBCA_coord_notes_label">Coordinate Notes</string>
+  <string name="RBCA_addr_no_label">Address Number</string>
+  <string name="RBCA_addr_street_label">Address Street</string>
+  
+  <string name="RBCA_area_label">Area Assessed</string>
+  <string name="RBCA_area_interior">Interior</string>
+  <string name="RBCA_area_exterior">Exterior</string>
   
   <string name="RBCA_occucy_label">Occupancy</string>
   <string name="Occupied">Occupied</string>

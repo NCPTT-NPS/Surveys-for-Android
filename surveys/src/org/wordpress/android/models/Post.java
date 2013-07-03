@@ -45,7 +45,8 @@ public class Post {
     private String rbca_coord_loc;
     private double RBCA_altitude;
     private double RBCA_accuracy;
-    private String RBCA_occucy;
+    private String rbca_occucy;
+    private String rbca_coord_notes, rbca_addr_no, rbca_addr_street, rbca_area, rbca_coord_loc_oth;
     
     //end of Field added
     
@@ -62,10 +63,10 @@ public class Post {
         // load an existing post
         List<Object> postVals = WordPress.wpDB.loadPost(blog_id, isPage, post_id);
         
-        System.out.println(postVals.size());
-        for (int i=0;i<postVals.size();i++){
-            System.out.println("Linea "+ i +": "+postVals.get(i));
-        }
+//        System.out.println(postVals.size());
+//        for (int i=0;i<postVals.size();i++){
+//            System.out.println("Linea "+ i +": "+postVals.get(i));
+//        }
         
         if (postVals != null) {
             try {
@@ -108,11 +109,17 @@ public class Post {
             
             //
             this.rbca_coord_loc = (String) postVals.get(29);
-            this.RBCA_occucy = (String) postVals.get(30);
+            this.rbca_coord_loc_oth = (String) postVals.get(30);
+            this.rbca_coord_notes = (String) postVals.get(31);
+            this.rbca_addr_no = (String) postVals.get(32);
+            this.rbca_addr_street = (String) postVals.get(33);
+            this.rbca_area = (String) postVals.get(34);
+            this.rbca_occucy = (String) postVals.get(35);
+            
             //
             
             
-            this.isLocalChange = (Integer) postVals.get(31) > 0;
+            this.isLocalChange = (Integer) postVals.get(36) > 0;
             
             
         } else {
@@ -122,7 +129,8 @@ public class Post {
 
     public Post(int blog_id, String title, String content, String picturePaths, long date, String categories, String tags, String status,
             String password, double latitude, double longitude, boolean isPage, String postFormat,
-            boolean createBlogReference, boolean isLocalChange, String rbca_coord_loc, String RBCA_occucy) {
+            boolean createBlogReference, boolean isLocalChange, String rbca_coord_loc,String rbca_coord_loc_other, String rbca_coord_notes,
+            String rbca_addr_no, String rbca_addr_street, String rbca_area, String RBCA_occucy) {
         // create a new post
         if (createBlogReference) {
             try {
@@ -146,9 +154,14 @@ public class Post {
         this.longitude = longitude;
         this.isLocalChange = isLocalChange;
         
-        //added
+        //added Jorge 
         this.rbca_coord_loc = rbca_coord_loc;
-        this.RBCA_occucy = RBCA_occucy;
+        this.rbca_coord_loc_oth = rbca_coord_loc_other;
+        this.rbca_coord_notes = rbca_coord_notes;
+        this.rbca_addr_no = rbca_addr_no;
+        this.rbca_addr_street = rbca_addr_street;
+        this.rbca_area = rbca_area;
+        this.rbca_occucy = RBCA_occucy;
     }
 
     public long getId() {
@@ -464,16 +477,53 @@ public class Post {
         this.rbca_coord_loc = siteCondition;
     }
     
+    public String getRBCA_coord_loc_other(){
+        return rbca_coord_loc_oth;
+    }
+    
+    public void setRBCA_coord_loc_other(String coord_loc_other){
+        this.rbca_coord_loc_oth = coord_loc_other; 
+    }
+    
     
     public String getRBCA_occucy(){
-        return RBCA_occucy;
+        return rbca_occucy;
     }
     public void setRBCA_occucy(String occucy){
-        this.RBCA_occucy = occucy;
+        this.rbca_occucy = occucy;
     }
     
+    public void setRBCA_coord_notes(String coord_notes){
+        this.rbca_coord_notes = coord_notes;
+    }
     
+    public String getRBCA_coord_notes(){
+        return rbca_coord_notes;
+    }
     
+    public void setRBCA_addr_no(String addr_no){
+        this.rbca_addr_no = addr_no;
+    }
+    
+    public String getRBCA_addr_no(){
+        return rbca_addr_no;
+    }
+    
+    public void setRBCA_addr_street(String addr_street){
+        this.rbca_addr_street = addr_street;
+    }
+    
+    public String getRBCA_addr_street(){
+        return rbca_addr_street;
+    }
+    
+    public void setRBCA_area(String area){
+        this.rbca_area = area;
+    }
+    
+    public String getRBCA_area(){
+        return rbca_area;
+    }
     
     
     //end of modification to SiteCondition

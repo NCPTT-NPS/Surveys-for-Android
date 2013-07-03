@@ -110,6 +110,11 @@ public class AddAccountActivity extends Activity implements OnClickListener {
         mSaveButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
         //mSignUpButton.setOnClickListener(this);
+        
+        //borrar esto al final. solamente agregado para testing
+        String url = "https://ncptt.nps.gov/mobile";
+        mUrlEdit.setText(url);
+        mUsernameEdit.setText("jorgerodriguezhn@gmail.com");
     }
 
     @Override
