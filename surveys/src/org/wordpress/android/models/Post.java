@@ -46,7 +46,7 @@ public class Post {
     private double RBCA_altitude;
     private double RBCA_accuracy;
     private String rbca_occucy;
-    private String rbca_coord_notes, rbca_addr_no, rbca_addr_street, rbca_area="", rbca_coord_loc_oth,rbca_coord_corner;
+    private String rbca_coord_notes, rbca_addr_no, rbca_addr_street, rbca_area, rbca_coord_loc_oth,rbca_coord_corner;
     
     //end of Field added
     
@@ -63,10 +63,10 @@ public class Post {
         // load an existing post
         List<Object> postVals = WordPress.wpDB.loadPost(blog_id, isPage, post_id);
         
-//        System.out.println(postVals.size());
-//        for (int i=0;i<postVals.size();i++){
-//            System.out.println("Linea "+ i +": "+postVals.get(i));
-//        }
+        System.out.println(postVals.size());
+        for (int i=0;i<postVals.size();i++){
+            System.out.println("Linea "+ i +": "+postVals.get(i));
+        }
         
         if (postVals != null) {
             try {

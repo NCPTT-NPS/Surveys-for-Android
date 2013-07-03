@@ -403,6 +403,15 @@
   
   <string name="RBCA_coord_loc">Coordinate Location</string>
   <string name="RBCA_coord_loc_other_label">Please specify "other"</string>
+  <string name="RBCA_coord_corner_label">Corner Location</string>
+  <string name="N">N</string>
+  <string name="NE">NE</string>
+  <string name="E">E</string>
+  <string name="SE">SE</string>
+  <string name="S">S</string>
+  <string name="SW">SW</string>
+  <string name="W">W</string>
+  <string name="NW">NW</string>
   <string name="RBCA_coord_notes_label">Coordinate Notes</string>
   <string name="RBCA_addr_no_label">Address Number</string>
   <string name="RBCA_addr_street_label">Address Street</string>

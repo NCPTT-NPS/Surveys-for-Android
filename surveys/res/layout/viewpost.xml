@@ -41,7 +41,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-                
+           
+            <!--  
             <TextView
 		        android:id="@+id/viewRBCA_occucy_label"
 		        android:layout_width="fill_parent"
@@ -50,7 +51,7 @@
 		        android:padding="10dp"
 		        android:textSize="18dp"
 		        android:text="@string/RBCA_occucy_label"
-		        />
+		        />  -->
                 
 	       	<FrameLayout
 	            android:layout_width="fill_parent"

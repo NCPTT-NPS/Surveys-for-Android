@@ -2284,7 +2284,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         strdButton = buttonSelector;
         boolean[] checkedSelection = new boolean[Choices.length];
         int count = Choices.length;
-        //selectedAreaAssesed = null;
+        //selectedChoices.clear();
         
         //loads array if post is not new
         if (!mIsNew ){
@@ -2324,6 +2324,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             else 
                 stringBuilder.append( ", "+ area_assessed );
         }
+        strdButton.setText("");
          strdButton.setText(stringBuilder.toString());
     }
     ///end added

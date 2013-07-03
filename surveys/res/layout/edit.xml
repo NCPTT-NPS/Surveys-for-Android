@@ -52,6 +52,19 @@
                     android:layout_marginTop="4dp"
                     android:hint="@string/RBCA_coord_loc_other_label"
                     android:inputType="textCapSentences|textAutoCorrect" />
+                 
+                  <TextView
+                    android:id="@+id/RBCA_coord_corner_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RBCA_coord_corner_label" />
+                 
+                 <Spinner
+                    android:id="@+id/RBCA_coord_corner_spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:prompt="@string/RBCA_coord_corner_label" />
                 
                 <EditText
                     android:id="@+id/RBCA_coord_notes"
