@@ -165,6 +165,7 @@ public class ViewPostFragment extends Fragment {
                 + "\n\n" + post.getMt_text_more() 
                 + "\n\n" + "Coordinate Location: "+post.getRBCA_coord_loc()
                 + "\n\n" + "Coordinate Location Other: "+post.getRBCA_coord_loc_other()
+                + "\n\n" + "Coordinate Corner: "+post.getRBCA_coord_corner()
                 + "\n\n" + "Coordinate Notes: "+post.getRBCA_coord_notes()
                 + "\n\n" + "Address Number: "+post.getRBCA_addr_no()
                 + "\n\n" + "Address Street: "+post.getRBCA_addr_street()

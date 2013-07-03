@@ -358,6 +358,11 @@ public class PostUploadService extends Service {
             coord_loc_other.put("key", "rbca_loctn2_coord_loc_oth");
             coord_loc_other.put("value", post.getRBCA_coord_loc_other());
             
+            Map<Object, Object> coord_corner = new HashMap<Object, Object>();
+            coord_corner.put("key", "rbca_loctn2_coord_corner");
+            coord_corner.put("value", post.getRBCA_coord_corner());
+            
+            
             Map<Object, Object> coord_notes = new HashMap<Object, Object>();
             coord_notes.put("key", "rbca_loctn2_coord_notes");
             coord_notes.put("value", post.getRBCA_coord_notes());
@@ -380,7 +385,7 @@ public class PostUploadService extends Service {
             
            
 
-            Object[] geo = { coord_loc, coord_loc_other, coord_notes, addr_no, addr_street, area ,occupancy };
+            Object[] geo = { coord_loc, coord_loc_other, coord_corner, coord_notes, addr_no, addr_street, area ,occupancy };
             
 
             contentStruct.put("custom_fields", geo);

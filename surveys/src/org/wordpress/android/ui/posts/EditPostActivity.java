@@ -135,7 +135,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private RelativeLayout mFormatBar;
     
     ////added Jorge Rodriguez
-    private Spinner mRBCA_occucy_spinner, mRBCA_coord_loc_spinner;//mRBCA_area_spinner;
+    private Spinner mRBCA_occucy_spinner, mRBCA_coord_loc_spinner, mRBCA_coord_corner_spinner;
     private EditText mRBCA_coord_notes, mRBCA_addr_no, mRBCA_addr_street, mRBCA_coord_loc_other;
     
     
@@ -292,6 +292,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_occucy_spinner = (Spinner) findViewById(R.id.RBCA_occucy);
         mRBCA_coord_loc_spinner = (Spinner) findViewById(R.id.RBCA_coord_loc_spinner);
         mRBCA_coord_loc_other = (EditText) findViewById(R.id.RBCA_coord_loc_other);
+        mRBCA_coord_corner_spinner = (Spinner) findViewById(R.id.RBCA_coord_corner_spinner);
         mRBCA_coord_notes = (EditText) findViewById(R.id.RBCA_coord_notes);
         mRBCA_addr_no = (EditText) findViewById(R.id.RBCA_addr_no);
         mRBCA_addr_street = (EditText) findViewById(R.id.RBCA_addr_street);
@@ -311,6 +312,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         
         //////////added Jorge Rodriguez
         ((TextView) findViewById(R.id.RBCA_coord_loc_label)).setText(getResources().getString(R.string.RBCA_coord_loc).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_coord_corner_label)).setText(getResources().getString(R.string.RBCA_coord_corner_label).toUpperCase());
         ((TextView) findViewById(R.id.RBCA_area_label)).setText(getResources().getString(R.string.RBCA_area_label).toUpperCase());
         ((TextView) findViewById(R.id.RBCA_occucy_label)).setText(getResources().getString(R.string.RBCA_occucy_label).toUpperCase());
         //
@@ -379,6 +381,16 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ArrayAdapter<String> coord_loc_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, coord_loc);
         coord_loc_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mRBCA_coord_loc_spinner.setAdapter(coord_loc_adapter);
+        
+        String[] coord_corner = new String[] { getResources().getString(R.string.N), getResources().getString(R.string.NE),
+                getResources().getString(R.string.E),getResources().getString(R.string.SE),getResources().getString(R.string.S),
+                getResources().getString(R.string.SW),getResources().getString(R.string.W),getResources().getString(R.string.NW)};
+
+        ArrayAdapter<String> coord_corner_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, coord_corner);
+        coord_corner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mRBCA_coord_corner_spinner.setAdapter(coord_corner_adapter);
+        
+        
         
         String[] occupancy = new String[] { getResources().getString(R.string.Occupied), getResources().getString(R.string.Vacant),
                 getResources().getString(R.string.Unknown)};
@@ -478,6 +490,28 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                     mRBCA_coord_loc_spinner.setSelection(1, true);
                 } else if (rbca_coord_loc.equals("Other")) {
                     mRBCA_coord_loc_spinner.setSelection(2, true);
+                } 
+            }
+            
+            if (mPost.getRBCA_coord_corner() != null){
+                String rbca_coord_corner = mPost.getRBCA_coord_corner();
+                
+                if (rbca_coord_corner.equals("N")) {
+                    mRBCA_coord_corner_spinner.setSelection(0, true);
+                } else if (rbca_coord_corner.equals("NE")) {
+                    mRBCA_coord_corner_spinner.setSelection(1, true);
+                } else if (rbca_coord_corner.equals("E")) {
+                    mRBCA_coord_corner_spinner.setSelection(2, true);
+                } else if (rbca_coord_corner.equals("SE")) {
+                    mRBCA_coord_corner_spinner.setSelection(3, true);
+                } else if (rbca_coord_corner.equals("S")) {
+                    mRBCA_coord_corner_spinner.setSelection(4, true);
+                } else if (rbca_coord_corner.equals("SW")) {
+                    mRBCA_coord_corner_spinner.setSelection(5, true);
+                } else if (rbca_coord_corner.equals("W")) {
+                    mRBCA_coord_corner_spinner.setSelection(6, true);
+                } else if (rbca_coord_corner.equals("NW")) {
+                    mRBCA_coord_corner_spinner.setSelection(7, true);
                 } 
             }
             
@@ -1592,7 +1626,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
             final String moreTag = "<!--more-->";
             
-            //Jorge Rodriguez
+            //////////////////////SURVEYS FOR ANDROID
             
             int selected_occucy = mRBCA_occucy_spinner.getSelectedItemPosition();
             String occupancy = "";
@@ -1607,6 +1641,35 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 occupancy = "Unknown";
                 break;
             }
+            
+            int selected_coord_corner = mRBCA_coord_corner_spinner.getSelectedItemPosition();
+            String coord_corner = "";
+            switch (selected_occucy) {
+            case 0:
+                coord_corner = "N";
+                break;
+            case 1:
+                coord_corner = "NE";
+                break;
+            case 2:
+                coord_corner = "E";
+                break;
+            case 3:
+                coord_corner = "SE";
+                break;
+            case 4:
+                coord_corner = "S";
+                break;
+            case 5:
+                coord_corner = "SW";
+                break;
+            case 6:
+                coord_corner = "W";
+                break;
+            case 7:
+                coord_corner = "NW";
+                break;
+            } 
             
             String coord_loc_other = mRBCA_coord_loc_other.getText().toString();
             String coord_notes = mRBCA_coord_notes.getText().toString();
@@ -1667,7 +1730,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
             if (mIsNew) {
                 mPost = new Post(mBlogID, title, content, images, pubDateTimestamp, mCategories.toString(), tags, status, password,
-                        latitude, longitude, mIsPage, postFormat, true, false,coord_location,coord_loc_other,coord_notes, addr_no, addr_street,area,occupancy);
+                        latitude, longitude, mIsPage, postFormat, true, false,coord_location,coord_loc_other,coord_corner, coord_notes, addr_no, addr_street,area,occupancy);
                 mPost.setLocalDraft(true);
 
                 // split up the post content if there's a more tag
@@ -1744,6 +1807,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 ///////JORGE 
                 mPost.setRBCA_coord_loc(coord_location);
                 mPost.setRBCA_coord_loc_other(coord_loc_other);
+                mPost.setRBCA_coord_corner(coord_corner);
                 mPost.setRBCA_coord_notes(coord_notes);
                 mPost.setRBCA_addr_no(addr_no);
                 mPost.setRBCA_addr_street(addr_street);
