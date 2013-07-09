@@ -112,6 +112,7 @@ public class PostUploadService extends Service {
             stopSelf();
         }
 
+        
         @Override
         protected Boolean doInBackground(Post... posts) {
 
@@ -260,6 +261,7 @@ public class PostUploadService extends Service {
             Map<String, Object> contentStruct = new HashMap<String, Object>();
 
             if (!post.isPage() && post.isLocalDraft()) {
+                System.out.println("Entro aqui a run in background");
                 // add the tagline
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
                 String tagline = "";
@@ -350,46 +352,55 @@ public class PostUploadService extends Service {
 //                }
 //            }
             
-            Map<Object, Object> coord_loc = new HashMap<Object, Object>();
-            coord_loc.put("key", "rbca_loctn_coord_loc");
-            coord_loc.put("value", post.getRBCA_coord_loc());
-            
-            Map<Object, Object> coord_loc_other = new HashMap<Object, Object>();
-            coord_loc_other.put("key", "rbca_loctn2_coord_loc_oth");
-            coord_loc_other.put("value", post.getRBCA_coord_loc_other());
-            
-            Map<Object, Object> coord_corner = new HashMap<Object, Object>();
-            coord_corner.put("key", "rbca_loctn2_coord_corner");
-            coord_corner.put("value", post.getRBCA_coord_corner());
-            
-            
-            Map<Object, Object> coord_notes = new HashMap<Object, Object>();
-            coord_notes.put("key", "rbca_loctn2_coord_notes");
-            coord_notes.put("value", post.getRBCA_coord_notes());
-            
-            Map<Object, Object> addr_no = new HashMap<Object, Object>();
-            addr_no.put("key", "rbca_loctn2_addr_no");
-            addr_no.put("value", post.getRBCA_addr_no());
-            
-            Map<Object, Object> addr_street = new HashMap<Object, Object>();
-            addr_street.put("key", "rbca_loctn2_addr_street");
-            addr_street.put("value", post.getRBCA_addr_street());
-            
-            Map<Object, Object> area = new HashMap<Object, Object>();
-            area.put("key", "rbca_bldg_area");
-            area.put("value", post.getRBCA_area());
-            
-            Map<Object, Object> occupancy = new HashMap<Object, Object>();
-            occupancy.put("key", "rbca_bldg_occucy");
-            occupancy.put("value", post.getRBCA_occucy());
-            
-           
-
-            Object[] geo = { coord_loc, coord_loc_other, coord_corner, coord_notes, addr_no, addr_street, area ,occupancy };
-            
-
-            contentStruct.put("custom_fields", geo);
-            
+            if (!post.isPage()){
+                Map<Object, Object> coord_loc = new HashMap<Object, Object>();
+                coord_loc.put("key", "rbca_loctn_coord_loc");
+                coord_loc.put("value", post.getRBCA_coord_loc());
+                
+                Map<Object, Object> coord_loc_other = new HashMap<Object, Object>();
+                coord_loc_other.put("key", "rbca_loctn2_coord_loc_oth");
+                coord_loc_other.put("value", post.getRBCA_coord_loc_other());
+                
+                Map<Object, Object> coord_corner = new HashMap<Object, Object>();
+                coord_corner.put("key", "rbca_loctn2_coord_corner");
+                coord_corner.put("value", post.getRBCA_coord_corner());
+                
+                
+                Map<Object, Object> coord_notes = new HashMap<Object, Object>();
+                coord_notes.put("key", "rbca_loctn2_coord_notes");
+                coord_notes.put("value", post.getRBCA_coord_notes());
+                
+                Map<Object, Object> addr_no = new HashMap<Object, Object>();
+                addr_no.put("key", "rbca_loctn2_addr_no");
+                addr_no.put("value", post.getRBCA_addr_no());
+                
+                Map<Object, Object> addr_street = new HashMap<Object, Object>();
+                addr_street.put("key", "rbca_loctn2_addr_street");
+                addr_street.put("value", post.getRBCA_addr_street());
+                
+                Map<Object, Object> area = new HashMap<Object, Object>();
+                area.put("key", "rbca_bldg_area");
+                area.put("value", post.getRBCA_area());
+                
+                Map<Object, Object> posting = new HashMap<Object, Object>();
+                posting.put("key", "rbca_bldg_posting");
+                posting.put("value", post.getRBCA_posting());
+                
+                Map<Object, Object> posting_other = new HashMap<Object, Object>();
+                posting_other.put("key", "rbca_bldg_posting_oth");
+                posting_other.put("value", post.getRBCA_posting_other());
+                
+                Map<Object, Object> occupancy = new HashMap<Object, Object>();
+                occupancy.put("key", "rbca_bldg_occucy");
+                occupancy.put("value", post.getRBCA_occucy());
+                
+               
+    
+                Object[] geo = { coord_loc, coord_loc_other, coord_corner, coord_notes, addr_no, addr_street, area, posting, posting_other ,occupancy };
+                
+    
+                contentStruct.put("custom_fields", geo);
+            }
             
             
 

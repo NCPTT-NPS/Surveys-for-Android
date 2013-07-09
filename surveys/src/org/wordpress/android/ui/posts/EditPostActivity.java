@@ -136,12 +136,13 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     
     ////added Jorge Rodriguez
     private Spinner mRBCA_occucy_spinner, mRBCA_coord_loc_spinner, mRBCA_coord_corner_spinner;
-    private EditText mRBCA_coord_notes, mRBCA_addr_no, mRBCA_addr_street, mRBCA_coord_loc_other;
+    private EditText mRBCA_coord_notes, mRBCA_addr_no, mRBCA_addr_street, mRBCA_coord_loc_other, mRBCA_posting_other;
     
     
-    protected Button mRBCA_area_select;
+    protected Button mRBCA_area_select,mRBCA_posting_select;
     
     protected CharSequence[] AreaAssessed = { "Exterior", "Interior" };
+    protected CharSequence[] PostingChoices = {"Inspected", "Restricted Use", "Unsafe", "Further Evaluation","Other"};
     protected ArrayList<CharSequence> selectedChoices = new ArrayList<CharSequence>();
     protected CharSequence[] Choices;
     protected Button strdButton;
@@ -288,7 +289,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mFormatBar = (RelativeLayout) findViewById(R.id.formatBar);
         
         
-        ///added Jorge Rodriguez
+        ////////////////////////added Jorge Rodriguez
         mRBCA_occucy_spinner = (Spinner) findViewById(R.id.RBCA_occucy);
         mRBCA_coord_loc_spinner = (Spinner) findViewById(R.id.RBCA_coord_loc_spinner);
         mRBCA_coord_loc_other = (EditText) findViewById(R.id.RBCA_coord_loc_other);
@@ -297,11 +298,11 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_addr_no = (EditText) findViewById(R.id.RBCA_addr_no);
         mRBCA_addr_street = (EditText) findViewById(R.id.RBCA_addr_street);
         mRBCA_area_select = (Button) findViewById(R.id.RBCA_area_select);
+        mRBCA_posting_select = (Button) findViewById(R.id.RBCA_posting_select);
+        mRBCA_posting_other = (EditText) findViewById(R.id.RBCA_posting_other);
         
         
-        mRBCA_area_select.setOnClickListener(this);
-        
-        //end jorge
+        //////////////////////////end jorge
         
         
 
@@ -310,12 +311,14 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ((TextView) findViewById(R.id.postFormatLabel)).setText(getResources().getString(R.string.post_format).toUpperCase());
         ((TextView) findViewById(R.id.pubDateLabel)).setText(getResources().getString(R.string.publish_date).toUpperCase());
         
-        //////////added Jorge Rodriguez
+        //////////////////added Surverys for Android
         ((TextView) findViewById(R.id.RBCA_coord_loc_label)).setText(getResources().getString(R.string.RBCA_coord_loc).toUpperCase());
         ((TextView) findViewById(R.id.RBCA_coord_corner_label)).setText(getResources().getString(R.string.RBCA_coord_corner_label).toUpperCase());
         ((TextView) findViewById(R.id.RBCA_area_label)).setText(getResources().getString(R.string.RBCA_area_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_posting_label)).setText(getResources().getString(R.string.RBCA_posting_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_posting_other_label)).setText(getResources().getString(R.string.RBCA_other_label).toUpperCase());
         ((TextView) findViewById(R.id.RBCA_occucy_label)).setText(getResources().getString(R.string.RBCA_occucy_label).toUpperCase());
-        //
+        /////////////
         
         
         if (mIsPage) { // remove post specific views
@@ -374,7 +377,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 setContent();
         }
 
-        //Jorge Rodriguez/////////////////  ARRAY ADAPTERS FOR SPINNERS 
+        //Surveys for Android/////////////////  ARRAY ADAPTERS FOR SPINNERS 
         String[] coord_loc = new String[] { getResources().getString(R.string.RBCA_entrance_label), getResources().getString(R.string.RBCA_corner_label),
                 getResources().getString(R.string.RBCA_other_label)};
 
@@ -398,7 +401,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ArrayAdapter<String> occupancyAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, occupancy);
         occupancyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mRBCA_occucy_spinner.setAdapter(occupancyAdapter);
-        //end jorge rodriguez///////////////////////
+        //end Surverys for Android ///////////////////////
         
         
         String[] items = new String[] { getResources().getString(R.string.publish_post), getResources().getString(R.string.draft),
@@ -480,7 +483,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (mPost.getWP_password() != null)
                 mPasswordEditText.setText(mPost.getWP_password());
             
-            //Toda esta parte la agregre jorge rodriguez
+            ///////////////////Surverys for Android
             if (mPost.getRBCA_coord_loc() != null){
                 String rbca_coord_loc = mPost.getRBCA_coord_loc();
                 
@@ -535,6 +538,14 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mRBCA_area_select.setText(mPost.getRBCA_area()) ;
             }
             
+            if (mPost.getRBCA_posting() != null){
+                mRBCA_posting_select.setText(mPost.getRBCA_posting()) ;
+            }
+            
+            if (mPost.getRBCA_posting_other() != null){
+                mRBCA_posting_other.setText(mPost.getRBCA_posting_other()) ;
+            }
+            
             if (mPost.getRBCA_occucy() !=null){
                 String occupancy1 = mPost.getRBCA_occucy();
                 
@@ -548,7 +559,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             }
             
             
-            ////end jorge rodriguez
+            /////////////////////////end SURVEYS FOR ANDROID
             
             
 
@@ -620,6 +631,13 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mStrikeToggleButton.setOnClickListener(this);
         mBquoteToggleButton.setOnClickListener(this);
         mMoreButton.setOnClickListener(this);
+        
+        
+        ////////Surveys for Android 
+        mRBCA_area_select.setOnClickListener(this);
+        mRBCA_posting_select.setOnClickListener(this);
+        
+        /////end surverys for android
     }
 
     @Override
@@ -832,8 +850,10 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setLongitude(0.0);
             }
             mLocationText.setText("");
-        } else if (id == R.id.RBCA_area_select){////ESTO LO AGREGE YO! JORGE
-            showSelectionDialog(mPost.getRBCA_area(),AreaAssessed,mRBCA_area_select);
+        } else if (id == R.id.RBCA_area_select){////ESTO LO AGREGE YO! Surveys for Android
+            showSelectionDialog((String) mRBCA_area_select.getText(),AreaAssessed,mRBCA_area_select);
+        } else if (id == R.id.RBCA_posting_select){
+            showSelectionDialog((String) mRBCA_posting_select.getText(),PostingChoices,mRBCA_posting_select);
         }
             
             
@@ -1574,6 +1594,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         String images = "";
         boolean success = false;
 
+        
+        //validates if content is empty
         if (content.equals("") && !autoSave) {
             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(EditPostActivity.this);
             dialogBuilder.setTitle(getResources().getText(R.string.empty_fields));
@@ -1644,7 +1666,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             int selected_coord_corner = mRBCA_coord_corner_spinner.getSelectedItemPosition();
             String coord_corner = "";
-            switch (selected_occucy) {
+            switch (selected_coord_corner) {
             case 0:
                 coord_corner = "N";
                 break;
@@ -1676,6 +1698,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             String addr_no = mRBCA_addr_no.getText().toString();
             String addr_street = mRBCA_addr_street.getText().toString();
             String area = mRBCA_area_select.getText().toString();
+            String posting = mRBCA_posting_select.getText().toString();
+            String posting_other = mRBCA_posting_other.getText().toString();
             
             
             int selected_coord_loc = mRBCA_coord_loc_spinner.getSelectedItemPosition();
@@ -1692,7 +1716,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 coord_location = "Other";
                 break;
             
-            }////////end jorge Rodriguez
+            }////////end Surveys fo ANDROID
             
             int selectedStatus = mStatusSpinner.getSelectedItemPosition();
             String status = "";
@@ -1730,7 +1754,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
             if (mIsNew) {
                 mPost = new Post(mBlogID, title, content, images, pubDateTimestamp, mCategories.toString(), tags, status, password,
-                        latitude, longitude, mIsPage, postFormat, true, false,coord_location,coord_loc_other,coord_corner, coord_notes, addr_no, addr_street,area,occupancy);
+                        latitude, longitude, mIsPage, postFormat, true, false,coord_location,coord_loc_other,coord_corner, 
+                        coord_notes, addr_no, addr_street,area,posting,posting_other,occupancy);
                 mPost.setLocalDraft(true);
 
                 // split up the post content if there's a more tag
@@ -1812,6 +1837,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setRBCA_addr_no(addr_no);
                 mPost.setRBCA_addr_street(addr_street);
                 mPost.setRBCA_area(area);
+                mPost.setRBCA_posting(posting);
+                mPost.setRBCA_posting_other(posting_other);
                 mPost.setRBCA_occucy(occupancy);
                 ////END JORGE
                 success = mPost.update();
@@ -2276,6 +2303,10 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         }
     }
     
+    
+    
+    
+    
     ///added this for multichoice part
    
     
@@ -2284,11 +2315,12 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         strdButton = buttonSelector;
         boolean[] checkedSelection = new boolean[Choices.length];
         int count = Choices.length;
-        //selectedChoices.clear();
+        selectedChoices.clear();
+        
         
         //loads array if post is not new
         if (!mIsNew ){
-            String[] options = postChoices.split(",");
+            String[] options = postChoices.split(":");
             for (int k=0; k < options.length;k++){
                 selectedChoices.add(options[k].trim());
             }
@@ -2322,10 +2354,10 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (stringBuilder.toString().equals(""))
                 stringBuilder.append(area_assessed);
             else 
-                stringBuilder.append( ", "+ area_assessed );
+                stringBuilder.append( ":"+ area_assessed );
         }
         strdButton.setText("");
-         strdButton.setText(stringBuilder.toString());
+        strdButton.setText(stringBuilder.toString());
     }
     ///end added
 }

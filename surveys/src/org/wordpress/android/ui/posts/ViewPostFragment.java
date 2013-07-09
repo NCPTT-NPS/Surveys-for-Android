@@ -170,6 +170,8 @@ public class ViewPostFragment extends Fragment {
                 + "\n\n" + "Address Number: "+post.getRBCA_addr_no()
                 + "\n\n" + "Address Street: "+post.getRBCA_addr_street()
                 + "\n\n" + "Area Assessed: "+post.getRBCA_area()
+                + "\n\n" + "Posting: "+post.getRBCA_posting()
+                + "\n\n" + "Posting Other: "+post.getRBCA_posting_other()
                 + "\n\n" + "Occupancy: "+post.getRBCA_occucy() );
 
         String htmlText = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"webview.css\" /></head><body><div id=\"container\">"

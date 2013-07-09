@@ -163,7 +163,7 @@
 # view AndroidManifest.xml #generated:155
 -keep class org.wordpress.android.util.PostUploadService { <init>(...); }
 
-# view res/layout/edit.xml #generated:121
+# view res/layout/edit.xml #generated:147
 -keep class org.wordpress.android.util.WPEditText { <init>(...); }
 
 # view res/layout/reader_wpcom_pager.xml #generated:11

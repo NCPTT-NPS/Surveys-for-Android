@@ -50,8 +50,9 @@ public class WordPressDB {
             + "description text default '', link text default '', mt_allow_comments boolean, mt_allow_pings boolean, "
             + "mt_excerpt text default '', mt_keywords text default '', mt_text_more text default '', permaLink text default '', post_status text default '', userid integer default 0, "
             + "wp_author_display_name text default '', wp_author_id text default '', wp_password text default '', wp_post_format text default '', wp_slug text default '', mediaPaths text default '', "
-            + "latitude real, longitude real, localDraft boolean default 0, uploaded boolean default 0, isPage boolean default 0, wp_page_parent_id text, wp_page_parent_title text, RBCA_coord_loc text default '' ,"
-            + "RBCA_coord_loc_other text default '', RBCA_coord_corner text default '', RBCA_coord_notes text default '', RBCA_addr_no text default '', RBCA_addr_street text default '', RBCA_area text default '', RBCA_occucy text default '');";
+            + "latitude real, longitude real, localDraft boolean default 0, uploaded boolean default 0, isPage boolean default 0, wp_page_parent_id text, wp_page_parent_title text, RBCA_coord_loc text default '', "
+            + "RBCA_coord_loc_other text default '', RBCA_coord_corner text default '', RBCA_coord_notes text default '', RBCA_addr_no text default '', RBCA_addr_street text default '', RBCA_area text default '', "
+            + "RBCA_posting text default '', RBCA_posting_other text default '', RBCA_occucy text default '');";
 
     private static final String CREATE_TABLE_COMMENTS = "create table if not exists comments (blogID text, postID text, iCommentID integer, author text, comment text, commentDate text, commentDateFormatted text, status text, url text, email text, postTitle text);";
     private static final String POSTS_TABLE = "posts";
@@ -133,7 +134,8 @@ public class WordPressDB {
 
     private Context context;
 
-    public WordPressDB(Context ctx) {
+    @SuppressLint("NewApi")
+	public WordPressDB(Context ctx) {
         this.context = ctx;
 
         try {
@@ -416,10 +418,14 @@ public class WordPressDB {
                             "categories", "tags", "status", "password",
                             "latitude", "longitude" ,"RBCA_coord_loc","RBCA_coord_loc_other", 
                             "RBCA_coord_corner", "RBCA_coord_notes", "RBCA_addr_no", "RBCA_addr_street",
-                            "RBCA_area","RBCA_occucy"}, null, null, null, null,
+                            "RBCA_area","RBCA_posting","RBCA_posting_other","RBCA_occucy"}, null, null, null, null,
                             "id desc");
                     int numRows = c.getCount();
                     c.moveToFirst();
+                    
+                    for (int k=0;k<c.getCount();k++){
+                        System.out.println("MigrateDrafts_Linea :"+k+" ColumnName :"+c.getColumnName(k)+" DataType :"+c.getType(k));
+                    }
 
                     for (int i = 0; i < numRows; ++i) {
                         if (c.getString(0) != null) {
@@ -430,7 +436,7 @@ public class WordPressDB {
                                     c.getString(8), c.getDouble(9),
                                     c.getDouble(10), false,"", false, false,
                                     c.getString(12), c.getString(13),c.getString(14),
-                                    c.getString(15),c.getString(16),c.getString(17), c.getString(18), c.getString(19));
+                                    c.getString(15),c.getString(16),c.getString(17), c.getString(18), c.getString(19),c.getString(20),c.getString(21));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             savePost(post, c.getInt(0));
@@ -444,7 +450,9 @@ public class WordPressDB {
                     // pages
                     c = db.query("localpagedrafts", new String[] { "blogID",
                             "title", "content", "picturePaths", "date",
-                            "status", "password" ,"RBCA_coord_loc","RBCA_coord_loc_other", "RBCA_coord_corner", "RBCA_coord_notes", "RBCA_addr_no", "RBCA_addr_street","RBCA_area", "RBCA_occucy"}, null, null, null, null,
+                            "status", "password" ,"RBCA_coord_loc","RBCA_coord_loc_other", 
+                            "RBCA_coord_corner", "RBCA_coord_notes", "RBCA_addr_no", 
+                            "RBCA_addr_street","RBCA_area", "RBCA_posting","RBCA_posting_other", "RBCA_occucy"}, null, null, null, null,
                             "id desc");
                     numRows = c.getCount();
                     c.moveToFirst();
@@ -456,7 +464,7 @@ public class WordPressDB {
                                     c.getLong(4), c.getString(5), "", "",
                                     c.getString(6), 0, 0, true, "", false, false,
                                     c.getString(8),c.getString(9),c.getString(10),
-                                    c.getString(11),c.getString(12),c.getString(13),c.getString(14),c.getString(15));
+                                    c.getString(11),c.getString(12),c.getString(13),c.getString(14),c.getString(15),c.getString(16),c.getString(17));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             post.setPage(true);
@@ -1127,8 +1135,15 @@ public class WordPressDB {
                                 if (customField.get("key").equals("rbca_loctn2_addr_street"))
                                     values.put("RBCA_addr_street",(String) customField.get("value"));
                                 
-                                if (customField.get("key").equals("rbca_bldg_area"))
+                                if (customField.get("key").equals("rbca_bldg_area")){
                                     values.put("RBCA_area",(String) customField.get("value"));
+                                    System.out.println("valor que recibo"+customField.get("value"));
+                                }
+                                if (customField.get("key").equals("rbca_bldg_posting"))
+                                    values.put("RBCA_posting",(String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg_posting_oth"))
+                                    values.put("RBCA_posting_other",(String) customField.get("value"));
                                 
                                 if (customField.get("key").equals("rbca_bldg_occucy"))
                                     values.put("RBCA_occucy",(String) customField.get("value"));
@@ -1236,10 +1251,13 @@ public class WordPressDB {
             values.put("RBCA_addr_no", post.getRBCA_addr_no());
             values.put("RBCA_addr_street", post.getRBCA_addr_street());
             values.put("RBCA_area", post.getRBCA_area());
+            values.put("RBCA_posting", post.getRBCA_posting());
+            values.put("RBCA_posting_other", post.getRBCA_posting_other());
             values.put("RBCA_occucy", post.getRBCA_occucy());
             ///end added Jorge Rodriguez
 
             returnValue = db.insert(POSTS_TABLE, null, values);
+            System.out.println(returnValue);
 
         }
         return (returnValue);
@@ -1279,7 +1297,7 @@ public class WordPressDB {
             
             values.put("isLocalChange", post.isLocalChange());
             
-            ///added Jorge rodriguez
+            ////////////////////////added Surveys for Android
             values.put("RBCA_coord_loc", post.getRBCA_coord_loc());
             values.put("RBCA_coord_loc_other", post.getRBCA_coord_loc_other());
             values.put("RBCA_coord_corner", post.getRBCA_coord_corner());
@@ -1287,6 +1305,9 @@ public class WordPressDB {
             values.put("RBCA_addr_no", post.getRBCA_addr_no());
             values.put("RBCA_addr_street", post.getRBCA_addr_street());
             values.put("RBCA_area",post.getRBCA_area());
+            System.out.println("Update Post: area: "+post.getRBCA_posting());
+            values.put("RBCA_posting", post.getRBCA_posting());
+            values.put("RBCA_posting_other", post.getRBCA_posting_other());
             values.put("RBCA_occucy", post.getRBCA_occucy());
             
             
@@ -1368,12 +1389,12 @@ public class WordPressDB {
 
         if (c.getCount() > 0) {
             c.moveToFirst();
-            System.out.println("Numero de Columnas" + c.getColumnCount());
-            String[] columnlist = c.getColumnNames();
-            
-            for (int i= 0;i<c.getColumnCount();i++){
-                System.out.println(i +": "+ columnlist[i] +" -> "+ c.getString(i));
-            }
+//            System.out.println("Numero de Columnas :" + c.getColumnCount());
+//            String[] columnlist = c.getColumnNames();
+//            
+//            for (int i= 0;i<c.getColumnCount();i++){
+//                System.out.println(i +": "+ columnlist[i] +" -> "+ c.getString(i));
+//            }
             
             if (c.getString(0) != null) {
                 values = new Vector<Object>();
@@ -1413,8 +1434,11 @@ public class WordPressDB {
                 values.add(c.getString(35));  //RBCA_addr_no
                 values.add(c.getString(36));  //RBCA_addr_street
                 values.add(c.getString(37));  //RBCA_area
-                values.add(c.getString(38));  //RBCA_occucy
-                values.add(c.getInt(39));     //isLocalChange
+                values.add(c.getString(38));  //RBCA_posting
+                values.add(c.getString(39));  //RBCA_posting_other
+                values.add(c.getString(40));  //RBCA_occucy
+                values.add(c.getInt(41));     //isLocalChange
+                
                 
             }
         }

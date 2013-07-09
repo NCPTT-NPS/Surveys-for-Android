@@ -46,7 +46,7 @@ public class Post {
     private double RBCA_altitude;
     private double RBCA_accuracy;
     private String rbca_occucy;
-    private String rbca_coord_notes, rbca_addr_no, rbca_addr_street, rbca_area, rbca_coord_loc_oth,rbca_coord_corner;
+    private String rbca_coord_notes, rbca_addr_no, rbca_addr_street, rbca_area, rbca_posting, rbca_posting_oth, rbca_coord_loc_oth,rbca_coord_corner;
     
     //end of Field added
     
@@ -63,10 +63,10 @@ public class Post {
         // load an existing post
         List<Object> postVals = WordPress.wpDB.loadPost(blog_id, isPage, post_id);
         
-        System.out.println(postVals.size());
-        for (int i=0;i<postVals.size();i++){
-            System.out.println("Linea "+ i +": "+postVals.get(i));
-        }
+//        System.out.println("Post.java LoadPost. #elemtns :" +postVals.size());
+//        for (int i=0;i<postVals.size();i++){
+//            System.out.println("Linea "+ i +": "+postVals.get(i));
+//        }
         
         if (postVals != null) {
             try {
@@ -108,19 +108,21 @@ public class Post {
             this.isPage = (Integer) postVals.get(28) > 0;
             
             //
-            this.rbca_coord_loc = (String) postVals.get(29);
-            this.rbca_coord_loc_oth = (String) postVals.get(30);
-            this.rbca_coord_corner = (String) postVals.get(31);
-            this.rbca_coord_notes = (String) postVals.get(32);
-            this.rbca_addr_no = (String) postVals.get(33);
-            this.rbca_addr_street = (String) postVals.get(34);
-            this.rbca_area = (String) postVals.get(35);
-            this.rbca_occucy = (String) postVals.get(36);
+            this.rbca_coord_loc = postVals.get(29).toString();
+            this.rbca_coord_loc_oth = postVals.get(30).toString();
+            this.rbca_coord_corner = postVals.get(31).toString();
+            this.rbca_coord_notes = postVals.get(32).toString();
+            this.rbca_addr_no = postVals.get(33).toString();
+            this.rbca_addr_street = postVals.get(34).toString();
+            this.rbca_area = postVals.get(35).toString();
+            this.rbca_posting = postVals.get(36).toString();
+            this.rbca_posting_oth = postVals.get(37).toString();
+            this.rbca_occucy = postVals.get(38).toString();
             
             //
             
             
-            this.isLocalChange = (Integer) postVals.get(37) > 0;
+            this.isLocalChange = (Integer) postVals.get(39) > 0;
             
             
         } else {
@@ -131,7 +133,7 @@ public class Post {
     public Post(int blog_id, String title, String content, String picturePaths, long date, String categories, String tags, String status,
             String password, double latitude, double longitude, boolean isPage, String postFormat,
             boolean createBlogReference, boolean isLocalChange, String rbca_coord_loc,String rbca_coord_loc_other, String rbca_coord_corner, String rbca_coord_notes,
-            String rbca_addr_no, String rbca_addr_street, String rbca_area, String RBCA_occucy) {
+            String rbca_addr_no, String rbca_addr_street, String rbca_area, String rbca_posting, String rbca_posting_other, String rbca_occucy) {
         // create a new post
         if (createBlogReference) {
             try {
@@ -163,7 +165,9 @@ public class Post {
         this.rbca_addr_no = rbca_addr_no;
         this.rbca_addr_street = rbca_addr_street;
         this.rbca_area = rbca_area;
-        this.rbca_occucy = RBCA_occucy;
+        this.rbca_posting = rbca_posting;
+        this.rbca_posting_oth = rbca_posting_other;
+        this.rbca_occucy = rbca_occucy;
     }
 
     public long getId() {
@@ -469,14 +473,14 @@ public class Post {
     
     
     
-    //Added this field to the object for testing.
+    ///////////////////////surveys for android
     
     public String getRBCA_coord_loc(){
         return rbca_coord_loc;
     }
     
-    public void setRBCA_coord_loc(String siteCondition){
-        this.rbca_coord_loc = siteCondition;
+    public void setRBCA_coord_loc(String coord_loc){
+        this.rbca_coord_loc = coord_loc;
     }
     
     public String getRBCA_coord_loc_other(){
@@ -503,14 +507,14 @@ public class Post {
         this.rbca_occucy = occucy;
     }
     
-    public void setRBCA_coord_notes(String coord_notes){
-        this.rbca_coord_notes = coord_notes;
-    }
-    
     public String getRBCA_coord_notes(){
         return rbca_coord_notes;
     }
     
+    public void setRBCA_coord_notes(String coord_notes){
+        this.rbca_coord_notes = coord_notes;
+    }
+     
     public void setRBCA_addr_no(String addr_no){
         this.rbca_addr_no = addr_no;
     }
@@ -533,6 +537,22 @@ public class Post {
     
     public String getRBCA_area(){
         return rbca_area;
+    }
+    
+    public void setRBCA_posting(String posting){
+        this.rbca_posting = posting;
+    }
+    
+    public String getRBCA_posting(){
+        return rbca_posting;
+    }
+    
+    public void setRBCA_posting_other(String posting_other){
+        this.rbca_posting_oth = posting_other;
+    }
+    
+    public String getRBCA_posting_other(){
+        return rbca_posting_oth;
     }
     
     
