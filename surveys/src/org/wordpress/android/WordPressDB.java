@@ -52,7 +52,7 @@ public class WordPressDB {
             + "wp_author_display_name text default '', wp_author_id text default '', wp_password text default '', wp_post_format text default '', wp_slug text default '', mediaPaths text default '', "
             + "latitude real, longitude real, localDraft boolean default 0, uploaded boolean default 0, isPage boolean default 0, wp_page_parent_id text, wp_page_parent_title text, RBCA_coord_loc text default '', "
             + "RBCA_coord_loc_other text default '', RBCA_coord_corner text default '', RBCA_coord_notes text default '', RBCA_addr_no text default '', RBCA_addr_street text default '', RBCA_area text default '', "
-            + "RBCA_posting text default '', RBCA_posting_other text default '', RBCA_occucy text default '');";
+            + "RBCA_posting text default '', RBCA_posting_other text default '', RBCA_occucy text default '', RBCA_occucy_available integer default 0);";
 
     private static final String CREATE_TABLE_COMMENTS = "create table if not exists comments (blogID text, postID text, iCommentID integer, author text, comment text, commentDate text, commentDateFormatted text, status text, url text, email text, postTitle text);";
     private static final String POSTS_TABLE = "posts";
@@ -418,7 +418,7 @@ public class WordPressDB {
                             "categories", "tags", "status", "password",
                             "latitude", "longitude" ,"RBCA_coord_loc","RBCA_coord_loc_other", 
                             "RBCA_coord_corner", "RBCA_coord_notes", "RBCA_addr_no", "RBCA_addr_street",
-                            "RBCA_area","RBCA_posting","RBCA_posting_other","RBCA_occucy"}, null, null, null, null,
+                            "RBCA_area","RBCA_posting","RBCA_posting_other","RBCA_occucy","RBCA_occucy_available"}, null, null, null, null,
                             "id desc");
                     int numRows = c.getCount();
                     c.moveToFirst();
@@ -436,7 +436,7 @@ public class WordPressDB {
                                     c.getString(8), c.getDouble(9),
                                     c.getDouble(10), false,"", false, false,
                                     c.getString(12), c.getString(13),c.getString(14),
-                                    c.getString(15),c.getString(16),c.getString(17), c.getString(18), c.getString(19),c.getString(20),c.getString(21));
+                                    c.getString(15),c.getString(16),c.getString(17), c.getString(18), c.getString(19),c.getString(20),c.getString(21),c.getInt(22));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             savePost(post, c.getInt(0));
@@ -452,7 +452,7 @@ public class WordPressDB {
                             "title", "content", "picturePaths", "date",
                             "status", "password" ,"RBCA_coord_loc","RBCA_coord_loc_other", 
                             "RBCA_coord_corner", "RBCA_coord_notes", "RBCA_addr_no", 
-                            "RBCA_addr_street","RBCA_area", "RBCA_posting","RBCA_posting_other", "RBCA_occucy"}, null, null, null, null,
+                            "RBCA_addr_street","RBCA_area", "RBCA_posting","RBCA_posting_other", "RBCA_occucy", "RBCA_occucy_available"}, null, null, null, null,
                             "id desc");
                     numRows = c.getCount();
                     c.moveToFirst();
@@ -464,7 +464,7 @@ public class WordPressDB {
                                     c.getLong(4), c.getString(5), "", "",
                                     c.getString(6), 0, 0, true, "", false, false,
                                     c.getString(8),c.getString(9),c.getString(10),
-                                    c.getString(11),c.getString(12),c.getString(13),c.getString(14),c.getString(15),c.getString(16),c.getString(17));
+                                    c.getString(11),c.getString(12),c.getString(13),c.getString(14),c.getString(15),c.getString(16),c.getString(17),c.getInt(18));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             post.setPage(true);
@@ -1148,6 +1148,9 @@ public class WordPressDB {
                                 if (customField.get("key").equals("rbca_bldg_occucy"))
                                     values.put("RBCA_occucy",(String) customField.get("value"));
                                 
+                                if (customField.get("key").equals("rbca_bldg_occu_avail"))
+                                    values.put("RBCA_occucy_available", customField.get("value").toString());
+                                
                             }
                         }
                     }
@@ -1254,6 +1257,7 @@ public class WordPressDB {
             values.put("RBCA_posting", post.getRBCA_posting());
             values.put("RBCA_posting_other", post.getRBCA_posting_other());
             values.put("RBCA_occucy", post.getRBCA_occucy());
+            values.put("RBCA_occucy_available", post.getRBCA_occucy_available());
             ///end added Jorge Rodriguez
 
             returnValue = db.insert(POSTS_TABLE, null, values);
@@ -1309,6 +1313,7 @@ public class WordPressDB {
             values.put("RBCA_posting", post.getRBCA_posting());
             values.put("RBCA_posting_other", post.getRBCA_posting_other());
             values.put("RBCA_occucy", post.getRBCA_occucy());
+            values.put("RBCA_occucy_available", post.getRBCA_occucy_available());
             
             
             int pageInt = 0;
@@ -1437,7 +1442,8 @@ public class WordPressDB {
                 values.add(c.getString(38));  //RBCA_posting
                 values.add(c.getString(39));  //RBCA_posting_other
                 values.add(c.getString(40));  //RBCA_occucy
-                values.add(c.getInt(41));     //isLocalChange
+                values.add(c.getInt(41));     //RBCA_occucy_available
+                values.add(c.getInt(42));     //isLocalChange
                 
                 
             }

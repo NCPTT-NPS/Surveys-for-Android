@@ -135,6 +135,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private RelativeLayout mFormatBar;
     
     ////added Jorge Rodriguez
+    private ToggleButton mRBCA_occucy_available;
     private Spinner mRBCA_occucy_spinner, mRBCA_coord_loc_spinner, mRBCA_coord_corner_spinner;
     private EditText mRBCA_coord_notes, mRBCA_addr_no, mRBCA_addr_street, mRBCA_coord_loc_other, mRBCA_posting_other;
     
@@ -289,8 +290,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mFormatBar = (RelativeLayout) findViewById(R.id.formatBar);
         
         
-        ////////////////////////added Jorge Rodriguez
-        mRBCA_occucy_spinner = (Spinner) findViewById(R.id.RBCA_occucy);
+        ////////////////////////added Surveys for Android
+       
         mRBCA_coord_loc_spinner = (Spinner) findViewById(R.id.RBCA_coord_loc_spinner);
         mRBCA_coord_loc_other = (EditText) findViewById(R.id.RBCA_coord_loc_other);
         mRBCA_coord_corner_spinner = (Spinner) findViewById(R.id.RBCA_coord_corner_spinner);
@@ -300,9 +301,12 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_area_select = (Button) findViewById(R.id.RBCA_area_select);
         mRBCA_posting_select = (Button) findViewById(R.id.RBCA_posting_select);
         mRBCA_posting_other = (EditText) findViewById(R.id.RBCA_posting_other);
+        mRBCA_occucy_spinner = (Spinner) findViewById(R.id.RBCA_occucy);
+        mRBCA_occucy_available = (ToggleButton) findViewById(R.id.RBCA_occucy_available);
+        mRBCA_occucy_available.setText("No");
         
         
-        //////////////////////////end jorge
+        //////////////////////////end Surverys for Android
         
         
 
@@ -318,6 +322,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ((TextView) findViewById(R.id.RBCA_posting_label)).setText(getResources().getString(R.string.RBCA_posting_label).toUpperCase());
         ((TextView) findViewById(R.id.RBCA_posting_other_label)).setText(getResources().getString(R.string.RBCA_other_label).toUpperCase());
         ((TextView) findViewById(R.id.RBCA_occucy_label)).setText(getResources().getString(R.string.RBCA_occucy_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_occucy_available_label)).setText(getResources().getString(R.string.RBCA_occucy_available_label).toUpperCase());
         /////////////
         
         
@@ -559,6 +564,13 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             }
             
             
+            int occucyAvailable = mPost.getRBCA_occucy_available();
+            if (occucyAvailable == 1)
+                mRBCA_occucy_available.setTextOn(getString(R.string.yes));
+            if (occucyAvailable == 0)
+                mRBCA_occucy_available.setTextOff(getString(R.string.no));
+            
+            
             /////////////////////////end SURVEYS FOR ANDROID
             
             
@@ -636,6 +648,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ////////Surveys for Android 
         mRBCA_area_select.setOnClickListener(this);
         mRBCA_posting_select.setOnClickListener(this);
+        mRBCA_occucy_available.setOnClickListener(this);
         
         /////end surverys for android
     }
@@ -854,6 +867,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             showSelectionDialog((String) mRBCA_area_select.getText(),AreaAssessed,mRBCA_area_select);
         } else if (id == R.id.RBCA_posting_select){
             showSelectionDialog((String) mRBCA_posting_select.getText(),PostingChoices,mRBCA_posting_select);
+        } else if (id == R.id.RBCA_occucy_available){
+            onChangeToggleButton();
         }
             
             
@@ -1715,8 +1730,16 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             case 2:
                 coord_location = "Other";
                 break;
+            }
             
-            }////////end Surveys fo ANDROID
+            String occucyAvailableSelection = mRBCA_occucy_available.getText().toString(); 
+            int occucy_available = 0;
+            
+            if (occucyAvailableSelection.equals("Yes"))
+                    occucy_available = 1;
+            
+            
+            ////////end Surveys fo ANDROID
             
             int selectedStatus = mStatusSpinner.getSelectedItemPosition();
             String status = "";
@@ -1755,7 +1778,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (mIsNew) {
                 mPost = new Post(mBlogID, title, content, images, pubDateTimestamp, mCategories.toString(), tags, status, password,
                         latitude, longitude, mIsPage, postFormat, true, false,coord_location,coord_loc_other,coord_corner, 
-                        coord_notes, addr_no, addr_street,area,posting,posting_other,occupancy);
+                        coord_notes, addr_no, addr_street,area,posting,posting_other,occupancy,occucy_available);
                 mPost.setLocalDraft(true);
 
                 // split up the post content if there's a more tag
@@ -1840,6 +1863,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setRBCA_posting(posting);
                 mPost.setRBCA_posting_other(posting_other);
                 mPost.setRBCA_occucy(occupancy);
+                mPost.setRBCA_occucy_available(occucy_available);
                 ////END JORGE
                 success = mPost.update();
             }
@@ -2359,5 +2383,17 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         strdButton.setText("");
         strdButton.setText(stringBuilder.toString());
     }
+    
+    protected void onChangeToggleButton(){
+        if (!mRBCA_occucy_available.isChecked()){
+            mRBCA_occucy_available.setChecked(false);
+            mRBCA_occucy_available.setTextOff(getString(R.string.no));
+        } else {
+            mRBCA_occucy_available.setChecked(true);
+            mRBCA_occucy_available.setTextOn(getString(R.string.yes));
+        }
+    }
     ///end added
+    
+    
 }

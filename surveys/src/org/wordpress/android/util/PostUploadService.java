@@ -394,10 +394,11 @@ public class PostUploadService extends Service {
                 occupancy.put("key", "rbca_bldg_occucy");
                 occupancy.put("value", post.getRBCA_occucy());
                 
-               
+                Map<Object, Object> occupancy_available = new HashMap<Object, Object>();
+                occupancy_available.put("key", "rbca_bldg_occu_avail");
+                occupancy_available.put("value", post.getRBCA_occucy_available());
     
-                Object[] geo = { coord_loc, coord_loc_other, coord_corner, coord_notes, addr_no, addr_street, area, posting, posting_other ,occupancy };
-                
+                Object[] geo = { coord_loc, coord_loc_other, coord_corner, coord_notes, addr_no, addr_street, area, posting, posting_other ,occupancy, occupancy_available};
     
                 contentStruct.put("custom_fields", geo);
             }

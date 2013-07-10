@@ -429,6 +429,7 @@
   
   
   <string name="RBCA_occucy_label">Occupancy</string>
+  <string name="RBCA_occucy_available_label">Is occupant information available?</string>
   <string name="Occupied">Occupied</string>
   <string name="Vacant">Vacant</string>
   <string name="Unknown">Unknown</string>
