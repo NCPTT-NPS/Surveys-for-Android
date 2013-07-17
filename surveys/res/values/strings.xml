@@ -393,8 +393,7 @@
   <!--  Image Descriptions for Accessibility -->
   <string name="content_description_add_media">Add media</string>
   
-  <!-- Varias variales de prueba para los elemntos en los layouts 
-  hay que moverlos de aqui a sus lugares correctos despues -->
+  <!-- RBCA Survey -->
   
   <string name="RBCA_entrance_label">Entrance</string>
   <string name="RBCA_corner_label">Corner</string>
@@ -442,19 +441,86 @@
   <string name="RBCA_occu_phone_label">Occupant Phone</string>
   <string name="RBCA_occu_notes_label">Occupant Notes</string>
   <string name="RBCA_hist_desig_label">Historic Designation</string>
-  
-  
-  
- 
+  <string name="RBCA_hist_dist_label">Is property located in historic district?</string>
+  <string name="RBCA_hist_dist_name_label">Historic District Name</string>
+  <string name="RBCA_hist_appear_label">Potentially Eligible</string>
+  <string name="RBCA_hist_age_label">Building Age</string>
+  <string name="RBCA_hist_age_lt50_label">&lt; 50 yrs.</string>
+  <string name="RBCA_hist_age_betfifty100_label">50 &#8211; 100 yrs.</string>
+  <string name="RBCA_hist_age_gt100_label">&gt; 100 yrs.</string>
+  <string name="RBCA_hist_age_meta">Age Is</string>
+  <string name="estimated">Estimated</string>
+  <string name="verified">Verified</string>
+  <string name="reported">Reported</string>
   <string name="Occupied">Occupied</string>
   <string name="Vacant">Vacant</string>
   <string name="Unknown">Unknown</string>
+  <string name="crawl">Crawl</string>
+  <string name="woodFrame">Wood Frame</string>
+  <string name="basement">Basement</string>
+  <string name="metalFrame">Metal Framet</string>
+  <string name="masonry">Masonry</string>
+  <string name="manufactured">Manufactured</string>
+  <string name="RBCA_typeDamage_a_label">None &#8211; no visible damage (0%)</string>
+  <string name="RBCA_typeDamage_b_label">Superficial &#8211; some damage, still functional (25%)</string>
+  <string name="RBCA_typeDamage_c_label">Substantial &#8211; significant damage, function impaired (75%)</string>
+  <string name="RBCA_typeDamage_d_label">Catastrophic &#8211; complete failure (75%)</string>
+  <string name="slab">Slab</string>
+  <string name="stemChain">Stem/Chain wall</string>
+  <string name="raisedPierPost">Raised Pier/Post</string>
+ 
+  
+     
+  
+  
+  <string name="RBCA_hist_yr_built_label">Actual Year Built</string>
+  <string name="RBCA_dmg_gen_date_label">Damage Date</string>
+  <string name="RBCA_dmg_gen_source_label">Damage Source</string>
+  <string name="RBCA_dmg_gen_dmg_total_label">Overall Degree of Damage</string>
+  <string name="RBCA_dmg_gen_desc_label">Damage Description</string>
+  <string name="RBCA_dmg_flood_water_label">Nature of water</string>
+  <string name="RBCA_dmg_flood_entry_label">Space where water entered</string>
+  <string name="RBCA_dmg_flood_depth_label">Depth of water from grade (feet)</string>
+  <string name="RBCA_dmg_flood_sed_label">Sediment on site</string>
+  <string name="RBCA_dmg_flood_notes_label">Flood Notes</string>
+  <string name="RBCA_dmg_struct_type_label">Type of Construction</string>
+  <string name="RBCA_dmg_struct_dmg_label">Structure Damage</string>
+  <string name="RBCA_dmg_struct_notes_label">Structure damage notes</string>
+  <string name="RBCA_dmg_found_type_label">Foundation Type</string>
+  <string name="RBCA_dmg_found_dmg_label">Foundation Damage</string>
+  <string name="RBCA_dmg_found_notes_label">Foundation Notes</string>
+  <string name="RBCA_dmg_extwall_mat_label">Exterior Wall Materials</string>
+  <string name="RBCA_dmg_extwall_dmg_label">Exterior Wall Damage</string>
+  <string name="RBCA_dmg_extwall_notes_label">Exterior Wall Notes</string>
+  <string name="RBCA_dmg_extfeat_type_label">Exterior Features Type</string>
+  <string name="RBCA_dmg_extfeat_dmg_label">Exterior Features Damage</string>
+  <string name="RBCA_dmg_extfeat_notes_label">Exterior Features Notes</string>
+  <string name="RBCA_dmg_win_win_type_label">Window Type</string>
+  <string name="RBCA_dmg_win_win_mat_label">Window Sash Material</string>
+  <string name="RBCA_dmg_win_dmg_label">Window Damage</string>
+  <string name="RBCA_dmg_win_notes_label">Window Notes</string>
+  <string name="RBCA_dmg_roof_type_label">Roof Type</string>
+  <string name="RBCA_dmg_roof_mat_label">Roofing Material</string>
+  <string name="RBCA_dmg_roof_dmg_label">Roof Damage</string>
+  <string name="RBCA_dmg_roof_notes_label">Roof Notes</string>
+  <string name="RBCA_dmg_int_cond_label">Interior Condition</string>
+  <string name="RBCA_dmg_int_collect_extant_label">Collections Present</string>
+  <string name="RBCA_dmg_int_collect_type_label">Collection Type</string>
+  <string name="RBCA_dmg_int_notes_label">Interior Notes</string>
+  <string name="RBCA_dmg_landveg_feat_label">Landscape Features</string>
+  <string name="RBCA_dmg_landveg_dmg_label">Landscape Damage</string>
+  <string name="RBCA_dmg_landveg_notes_label">Landscape Notes</string>
+  <string name="RBCA_dmg_landblt_feat_label">Landscape (Built) Features</string>
+  <string name="RBCA_dmg_landblt_dmg_label">Landscape (Built) Damage</string>
+  <string name="RBCA_dmg_landblt_notes_label">Landscape (Built) Notes</string>
   
   
   
-  <string name="siteConditionDestroyed">DESTROYED</string>
-  <string name="siteConditionNotRelocated">NOT RELOCATED</string>
-  <string name="siteConditionInnundated">INNUNDATED</string>
+  
+  
+  
+  
+  
   
 
 </resources>
