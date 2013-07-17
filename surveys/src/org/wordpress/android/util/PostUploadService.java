@@ -397,8 +397,70 @@ public class PostUploadService extends Service {
                 Map<Object, Object> occupancy_available = new HashMap<Object, Object>();
                 occupancy_available.put("key", "rbca_bldg_occu_avail");
                 occupancy_available.put("value", post.getRBCA_occucy_available());
+                
+                Map<Object, Object> stories = new HashMap<Object, Object>();
+                stories.put("key", "rbca_bldg_stories");
+                stories.put("value", post.getRBCA_num_stories());
+                
+                Map<Object, Object> width = new HashMap<Object, Object>();
+                width.put("key", "rbca_bldg_width");
+                width.put("value", post.getRBCA_width());
+                
+                Map<Object, Object> length = new HashMap<Object, Object>();
+                length.put("key", "rbca_bldg_length");
+                length.put("value", post.getRBCA_length());
+                
+                Map<Object, Object> uses = new HashMap<Object, Object>();
+                uses.put("key", "rbca_bldg_use");
+                uses.put("value", post.getRBCA_uses());
+                
+                Map<Object, Object> uses_other = new HashMap<Object, Object>();
+                uses_other.put("key", "rbca_bldg_use_oth");
+                uses_other.put("value", post.getRBCA_uses_other());
+                
+                Map<Object, Object> outbldg = new HashMap<Object, Object>();
+                outbldg.put("key", "rbca_bldg_outbldg");
+                outbldg.put("value", post.getRBCA_outbldg());
+                
+                Map<Object, Object> outbldg_notes = new HashMap<Object, Object>();
+                outbldg_notes.put("key", "rbca_bldg_outbldg_notes");
+                outbldg_notes.put("value", post.getRBCA_outbldg_notes());
+                
+                Map<Object, Object> units_res = new HashMap<Object, Object>();
+                units_res.put("key", "rbca_bldg2_units_res");
+                units_res.put("value", post.getRBCA_units_res());
+                
+                Map<Object, Object> units_comm = new HashMap<Object, Object>();
+                units_comm.put("key", "rbca_bldg2_units_comm");
+                units_comm.put("value", post.getRBCA_units_comm());
+                
+                Map<Object, Object> occu_name = new HashMap<Object, Object>();
+                occu_name.put("key", "rbca_bldg2_occu_name");
+                occu_name.put("value", post.getRBCA_occu_name());
+                
+                Map<Object, Object> occu_phone = new HashMap<Object, Object>();
+                occu_phone.put("key", "rbca_bldg2_occu_phone");
+                occu_phone.put("value", post.getRBCA_occu_phone());
+                
+                Map<Object, Object> occu_notes = new HashMap<Object, Object>();
+                occu_notes.put("key", "rbca_bldg2_notes");
+                occu_notes.put("value", post.getRBCA_occu_notes());
+                
+                Map<Object, Object> hist_desig = new HashMap<Object, Object>();
+                hist_desig.put("key", "rbca_hist_desig");
+                hist_desig.put("value", post.getRBCA_hist_desig());
+                
+                Map<Object, Object> hist_desig_other = new HashMap<Object, Object>();
+                hist_desig_other.put("key", "rbca_hist_desig_oth");
+                hist_desig_other.put("value", post.getRBCA_hist_desig_other());
+                
+                
     
-                Object[] geo = { coord_loc, coord_loc_other, coord_corner, coord_notes, addr_no, addr_street, area, posting, posting_other ,occupancy, occupancy_available};
+                Object[] geo = { coord_loc, coord_loc_other, coord_corner, coord_notes,
+                                addr_no, addr_street, area, posting, posting_other ,occupancy,
+                                occupancy_available, stories,width,length,uses,uses_other,outbldg,
+                                outbldg_notes, units_res, units_comm, occu_name, occu_phone, 
+                                occu_notes, hist_desig, hist_desig_other};
     
                 contentStruct.put("custom_fields", geo);
             }

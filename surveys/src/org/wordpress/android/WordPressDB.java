@@ -52,7 +52,31 @@ public class WordPressDB {
             + "wp_author_display_name text default '', wp_author_id text default '', wp_password text default '', wp_post_format text default '', wp_slug text default '', mediaPaths text default '', "
             + "latitude real, longitude real, localDraft boolean default 0, uploaded boolean default 0, isPage boolean default 0, wp_page_parent_id text, wp_page_parent_title text, RBCA_coord_loc text default '', "
             + "RBCA_coord_loc_other text default '', RBCA_coord_corner text default '', RBCA_coord_notes text default '', RBCA_addr_no text default '', RBCA_addr_street text default '', RBCA_area text default '', "
-            + "RBCA_posting text default '', RBCA_posting_other text default '', RBCA_occucy text default '', RBCA_occucy_available integer default 0);";
+            + "RBCA_posting text default '', RBCA_posting_other text default '', RBCA_occucy text default '', RBCA_occucy_available integer default 0, "
+            + "RBCA_stories real, RBCA_width real, RBCA_length real, RBCA_use text defaul '', RBCA_use_other text default '',"
+            + "RBCA_outbldg integer default 0, RBCA_outbldg_notes text default '', RBCA_units_res integer default 0, RBCA_units_comm integer default 0, RBCA_occu_name text default '', "
+            + "RBCA_occu_phone integer default 0, RBCA_occu_notes text default '', RBCA_hist_desig text default '', RBCA_hist_desig_other text default '' ," 
+            + "rbca_hist_appear integer default 0, rbca_hist_age integer default 0, rbca_hist_age_meta text default '', "
+            + "rbca_hist_yr_built integer default 0, rbca_dmg_gen_date integer default 0, rbca_dmg_gen_source text default '', " 
+            + "rbca_dmg_gen_source_oth text default '', rbca_dmg_gen_dmg_total integer default 0, rbca_dmg_gen_desc text default '', "
+            + "rbca_dmg_flood_water text default '', rbca_dmg_flood_water_oth text default '', rbca_dmg_flood_entry text default '', "
+            + "rbca_dmg_flood_entry_oth text default '', rbca_dmg_flood_depth real, rbca_dmg_flood_sed text default '', "
+            + "rbca_dmg_flood_sed_oth text default '', rbca_dmg_flood_notes text default '', rbca_dmg_struct_type text default '', "
+            + "rbca_dmg_struct_type_oth text default '', rbca_dmg_struct_dmg integer default 0, rbca_dmg_struct_notes text default '', "
+            + "rbca_dmg_found_type text default '', rbca_dmg_found_type_oth text default '', rbca_dmg_found_dmg integer default 0, "
+            + "rbca_dmg_found_notes text default '', rbca_dmg_extwall_mat text default '', rbca_dmg_extwall_mat_oth text default '', "
+            + "rbca_dmg_extwall_dmg integer default 0, rbca_dmg_extwall_notes text default '', rbca_dmg_extfeat_type text default '', "
+            + "rbca_dmg_extfeat_type_oth text default '', rbca_dmg_extfeat_dmg integer default 0, rbca_dmg_extfeat_notes text default '', "
+            + "rbca_dmg_win_win_type text default '', rbca_dmg_win_win_type_oth text default '', rbca_dmg_win_win_mat text default '', "
+            + "rbca_dmg_win_win_mat_oth text default '', rbca_dmg_win_dmg integer default 0, rbca_dmg_win_notes text default '', "
+            + "rbca_dmg_roof_type text default '', rbca_dmg_roof_type_oth text default '', rbca_dmg_roof_mat text default '', "
+            + "rbca_dmg_roof_mat_oth text default '', rbca_dmg_roof_dmg integer default 0, rbca_dmg_roof_notes text default '', "
+            + "rbca_dmg_int_cond text default '', rbca_dmg_int_collect_extant integer default 0, rbca_dmg_int_collect_type text default '', "
+            + "rbca_dmg_int_collect_type_oth text default '', rbca_dmg_int_notes text default '', rbca_dmg_landveg_feat text default '', "
+            + "rbca_dmg_landveg_feat_oth text default '', rbca_dmg_landveg_dmg integer default 0, rbca_dmg_landveg_notes text default '', "
+            + "rbca_dmg_landblt_feat text default '', rbca_dmg_landblt_feat_oth text default '', rbca_dmg_landblt_dmg integer default 0, "
+            + "rbca_dmg_landblt_notes text default '');"; 
+            		
 
     private static final String CREATE_TABLE_COMMENTS = "create table if not exists comments (blogID text, postID text, iCommentID integer, author text, comment text, commentDate text, commentDateFormatted text, status text, url text, email text, postTitle text);";
     private static final String POSTS_TABLE = "posts";
@@ -418,7 +442,9 @@ public class WordPressDB {
                             "categories", "tags", "status", "password",
                             "latitude", "longitude" ,"RBCA_coord_loc","RBCA_coord_loc_other", 
                             "RBCA_coord_corner", "RBCA_coord_notes", "RBCA_addr_no", "RBCA_addr_street",
-                            "RBCA_area","RBCA_posting","RBCA_posting_other","RBCA_occucy","RBCA_occucy_available"}, null, null, null, null,
+                            "RBCA_area","RBCA_posting","RBCA_posting_other","RBCA_occucy","RBCA_occucy_available", "RBCA_stories", 
+                            "RBCA_width","RBCA_length","RBCA_use","RBCA_use_other","RBCA_outbldg", "RBCA_outbldg_notes", "RBCA_units_res", 
+                            "RBCA_units_comm", "RBCA_occu_name", "RBCA_occu_phone", "RBCA_occu_notes", "RBCA_hist_desig","RBCA_hist_desig_other"}, null, null, null, null,
                             "id desc");
                     int numRows = c.getCount();
                     c.moveToFirst();
@@ -430,13 +456,15 @@ public class WordPressDB {
                     for (int i = 0; i < numRows; ++i) {
                         if (c.getString(0) != null) {
                             Post post = new Post(c.getInt(0), c.getString(1),
-                                    c.getString(2), c.getString(3),
-                                    c.getLong(4), c.getString(5),
-                                    c.getString(6), c.getString(7),
-                                    c.getString(8), c.getDouble(9),
+                                    c.getString(2), c.getString(3),c.getLong(4), c.getString(5),
+                                    c.getString(6), c.getString(7),c.getString(8), c.getDouble(9),
                                     c.getDouble(10), false,"", false, false,
                                     c.getString(12), c.getString(13),c.getString(14),
-                                    c.getString(15),c.getString(16),c.getString(17), c.getString(18), c.getString(19),c.getString(20),c.getString(21),c.getInt(22));
+                                    c.getString(15),c.getString(16),c.getString(17), c.getString(18),
+                                    c.getString(19),c.getString(20),c.getString(21),c.getInt(22),c.getDouble(23),
+                                    c.getDouble(24),c.getDouble(25),c.getString(26),c.getString(27),c.getInt(28),
+                                    c.getString(29),c.getInt(30),c.getInt(31),c.getString(32),c.getInt(33),
+                                    c.getString(34),c.getString(35),c.getString(36));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             savePost(post, c.getInt(0));
@@ -452,7 +480,10 @@ public class WordPressDB {
                             "title", "content", "picturePaths", "date",
                             "status", "password" ,"RBCA_coord_loc","RBCA_coord_loc_other", 
                             "RBCA_coord_corner", "RBCA_coord_notes", "RBCA_addr_no", 
-                            "RBCA_addr_street","RBCA_area", "RBCA_posting","RBCA_posting_other", "RBCA_occucy", "RBCA_occucy_available"}, null, null, null, null,
+                            "RBCA_addr_street","RBCA_area", "RBCA_posting","RBCA_posting_other", "RBCA_occucy",
+                            "RBCA_occucy_available","RBCA_stories", "RBCA_width","RBCA_length","RBCA_use",
+                            "RBCA_use_other","RBCA_outbldg", "RBCA_outbldg_notes", "RBCA_units_res", 
+                            "RBCA_units_comm", "RBCA_occu_name", "RBCA_occu_phone", "RBCA_occu_notes", "RBCA_hist_desig", "RBCA_hist_desig_other"}, null, null, null, null,
                             "id desc");
                     numRows = c.getCount();
                     c.moveToFirst();
@@ -464,7 +495,11 @@ public class WordPressDB {
                                     c.getLong(4), c.getString(5), "", "",
                                     c.getString(6), 0, 0, true, "", false, false,
                                     c.getString(8),c.getString(9),c.getString(10),
-                                    c.getString(11),c.getString(12),c.getString(13),c.getString(14),c.getString(15),c.getString(16),c.getString(17),c.getInt(18));
+                                    c.getString(11),c.getString(12),c.getString(13),c.getString(14),
+                                    c.getString(15),c.getString(16),c.getString(17),c.getInt(18),
+                                    c.getDouble(19),c.getDouble(20),c.getDouble(21),c.getString(22), 
+                                    c.getString(23),c.getInt(24),c.getString(25),c.getInt(36),c.getInt(37),
+                                    c.getString(38),c.getInt(39),c.getString(40),c.getString(41), c.getString(42));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             post.setPage(true);
@@ -1149,8 +1184,49 @@ public class WordPressDB {
                                     values.put("RBCA_occucy",(String) customField.get("value"));
                                 
                                 if (customField.get("key").equals("rbca_bldg_occu_avail"))
-                                    values.put("RBCA_occucy_available", customField.get("value").toString());
+                                    values.put("RBCA_occucy_available", (String) customField.get("value"));
                                 
+                                if (customField.get("key").equals("rbca_bldg_stories"))
+                                    values.put("RBCA_stories", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg_width"))
+                                    values.put("RBCA_width", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg_length"))
+                                    values.put("RBCA_length", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg_use"))
+                                    values.put("RBCA_use", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg_use_oth"))
+                                    values.put("RBCA_use_other", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg_outbldg"))
+                                    values.put("RBCA_outbldg", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg_outbldg_notes"))
+                                    values.put("RBCA_outbldg_notes", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg2_units_res"))
+                                    values.put("RBCA_units_res", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg2_units_comm"))
+                                    values.put("RBCA_units_comm", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg2_occu_name"))
+                                    values.put("RBCA_occu_name", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg2_occu_phone"))
+                                    values.put("RBCA_occu_phone", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg2_notes"))
+                                    values.put("RBCA_occu_notes", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_hist_desig"))
+                                    values.put("RBCA_hist_desig", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_hist_desig_oth"))
+                                    values.put("RBCA_hist_desig_other", (String) customField.get("value"));
                             }
                         }
                     }
@@ -1258,11 +1334,23 @@ public class WordPressDB {
             values.put("RBCA_posting_other", post.getRBCA_posting_other());
             values.put("RBCA_occucy", post.getRBCA_occucy());
             values.put("RBCA_occucy_available", post.getRBCA_occucy_available());
+            values.put("RBCA_stories", post.getRBCA_num_stories());
+            values.put("RBCA_width", post.getRBCA_width());
+            values.put("RBCA_length", post.getRBCA_length());
+            values.put("RBCA_use", post.getRBCA_uses());
+            values.put("RBCA_use_other", post.getRBCA_uses_other());
+            values.put("RBCA_outbldg", post.getRBCA_outbldg());
+            values.put("RBCA_outbldg_notes", post.getRBCA_outbldg_notes());
+            values.put("RBCA_units_res", post.getRBCA_units_res());
+            values.put("RBCA_units_comm", post.getRBCA_units_comm());
+            values.put("RBCA_occu_name", post.getRBCA_occu_name());
+            values.put("RBCA_occu_phone" , post.getRBCA_occu_phone());
+            values.put("RBCA_occu_notes", post.getRBCA_occu_notes());
+            values.put("RBCA_hist_desig", post.getRBCA_hist_desig());
+            values.put("RBCA_hist_desig_other", post.getRBCA_hist_desig_other());
             ///end added Jorge Rodriguez
 
             returnValue = db.insert(POSTS_TABLE, null, values);
-            System.out.println(returnValue);
-
         }
         return (returnValue);
     }
@@ -1309,12 +1397,24 @@ public class WordPressDB {
             values.put("RBCA_addr_no", post.getRBCA_addr_no());
             values.put("RBCA_addr_street", post.getRBCA_addr_street());
             values.put("RBCA_area",post.getRBCA_area());
-            System.out.println("Update Post: area: "+post.getRBCA_posting());
             values.put("RBCA_posting", post.getRBCA_posting());
             values.put("RBCA_posting_other", post.getRBCA_posting_other());
             values.put("RBCA_occucy", post.getRBCA_occucy());
             values.put("RBCA_occucy_available", post.getRBCA_occucy_available());
-            
+            values.put("RBCA_stories", post.getRBCA_num_stories());
+            values.put("RBCA_width", post.getRBCA_width());
+            values.put("RBCA_length", post.getRBCA_length());
+            values.put("RBCA_use", post.getRBCA_uses());
+            values.put("RBCA_use_other", post.getRBCA_uses_other());
+            values.put("RBCA_outbldg", post.getRBCA_outbldg());
+            values.put("RBCA_outbldg_notes", post.getRBCA_outbldg_notes());
+            values.put("RBCA_units_res", post.getRBCA_units_res());
+            values.put("RBCA_units_comm", post.getRBCA_units_comm());
+            values.put("RBCA_occu_name", post.getRBCA_occu_name());
+            values.put("RBCA_occu_phone" , post.getRBCA_occu_phone());
+            values.put("RBCA_occu_notes", post.getRBCA_occu_notes());
+            values.put("RBCA_hist_desig", post.getRBCA_hist_desig());
+            values.put("RBCA_hist_desig_other", post.getRBCA_hist_desig_other());
             
             int pageInt = 0;
             if (post.isPage())
@@ -1394,12 +1494,12 @@ public class WordPressDB {
 
         if (c.getCount() > 0) {
             c.moveToFirst();
-//            System.out.println("Numero de Columnas :" + c.getColumnCount());
-//            String[] columnlist = c.getColumnNames();
-//            
-//            for (int i= 0;i<c.getColumnCount();i++){
-//                System.out.println(i +": "+ columnlist[i] +" -> "+ c.getString(i));
-//            }
+            System.out.println("Numero de Columnas :" + c.getColumnCount());
+            String[] columnlist = c.getColumnNames();
+            
+            for (int i= 0;i<c.getColumnCount();i++){
+                System.out.println(i +": "+ columnlist[i] +" -> "+ c.getString(i));
+            }
             
             if (c.getString(0) != null) {
                 values = new Vector<Object>();
@@ -1443,7 +1543,21 @@ public class WordPressDB {
                 values.add(c.getString(39));  //RBCA_posting_other
                 values.add(c.getString(40));  //RBCA_occucy
                 values.add(c.getInt(41));     //RBCA_occucy_available
-                values.add(c.getInt(42));     //isLocalChange
+                values.add(c.getDouble(42));  //RBCA_stories
+                values.add(c.getDouble(43));  //RBCA_width
+                values.add(c.getDouble(44));  //RBCA_length
+                values.add(c.getString(45));  //RBCA_uses
+                values.add(c.getString(46));  //RBCA_uses_other
+                values.add(c.getInt(47));     //RBCA_outbldg
+                values.add(c.getString(48));  //RBCA_outbldg_notes
+                values.add(c.getInt(49));     //RBCA_units_res
+                values.add(c.getInt(50));     //RBCA_units_comm 
+                values.add(c.getString(51));  //RBCA_occu_name
+                values.add(c.getInt(52));     //RBCA_occu_phone
+                values.add(c.getString(53));  //RBCA_occu_notes
+                values.add(c.getString(54));  //RBCA_hist_desig
+                values.add(c.getString(55));  //RBCA_hist_desig_other
+                values.add(c.getInt(56));     //isLocalChange
                 
                 
             }

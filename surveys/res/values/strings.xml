@@ -430,6 +430,22 @@
   
   <string name="RBCA_occucy_label">Occupancy</string>
   <string name="RBCA_occucy_available_label">Is occupant information available?</string>
+  <string name="RBCA_stories_label"># of stories above</string>
+  <string name="RBCA_width_label">Approximate Width</string>
+  <string name="RBCA_length_label">Approximate Width</string>
+  <string name="RBCA_uses_label">Use(s)</string>
+  <string name="RBCA_outbldg_label">Outbuildings and Other Structures (detached)</string>
+  <string name="RBCA_outbldg_notes_label">Outbuilding Notes</string>
+  <string name="RBCA_units_res_label"># of Residential Units</string>
+  <string name="RBCA_units_comm_label"># of Commercial Units</string>
+  <string name="RBCA_occu_name_label">Occupant Name</string>
+  <string name="RBCA_occu_phone_label">Occupant Phone</string>
+  <string name="RBCA_occu_notes_label">Occupant Notes</string>
+  <string name="RBCA_hist_desig_label">Historic Designation</string>
+  
+  
+  
+ 
   <string name="Occupied">Occupied</string>
   <string name="Vacant">Vacant</string>
   <string name="Unknown">Unknown</string>

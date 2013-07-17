@@ -42,12 +42,11 @@ public class Post {
     private boolean isLocalChange;
     
     //Fields added Jorge Rodriguez
-    private String rbca_coord_loc;
-    private double RBCA_altitude;
-    private double RBCA_accuracy;
-    private String rbca_occucy;
-    private String rbca_coord_notes, rbca_addr_no, rbca_addr_street, rbca_area, rbca_posting, rbca_posting_oth, rbca_coord_loc_oth,rbca_coord_corner;
-    private int rbca_occucy_available;
+    private String rbca_coord_loc,rbca_uses,rbca_uses_other, rbca_outbldg_notes,rbca_occu_name,rbca_occu_notes;
+    private double RBCA_altitude, RBCA_accuracy, rbca_num_stories, rbca_width, rbca_length;
+    private String rbca_coord_notes, rbca_addr_no, rbca_addr_street, rbca_area, rbca_posting;
+    private String rbca_posting_oth, rbca_coord_loc_oth,rbca_coord_corner,rbca_occucy, rbca_hist_desig, rbca_hist_desig_other;
+    private int rbca_occucy_available, rbca_outbldg,rbca_units_res, rbca_units_comm, rbca_occu_phone;
     
     //end of Field added
     
@@ -120,11 +119,22 @@ public class Post {
             this.rbca_posting_oth = postVals.get(37).toString();
             this.rbca_occucy = postVals.get(38).toString();
             this.rbca_occucy_available = (Integer) postVals.get(39);
-            
+            this.rbca_num_stories = (Double) postVals.get(40);
+            this.rbca_width = (Double) postVals.get(41);
+            this.rbca_length = (Double) postVals.get(42);
+            this.rbca_uses = postVals.get(43).toString();
+            this.rbca_uses_other = postVals.get(44).toString();
+            this.rbca_outbldg = (Integer) postVals.get(45);
+            this.rbca_outbldg_notes = postVals.get(46).toString();
+            this.rbca_units_res = (Integer) postVals.get(47);
+            this.rbca_units_comm = (Integer) postVals.get(48);
+            this.rbca_occu_name = postVals.get(49).toString();
+            this.rbca_occu_phone = (Integer) postVals.get(50);
+            this.rbca_occu_notes = postVals.get(51).toString();
+            this.rbca_hist_desig = postVals.get(52).toString();
+            this.rbca_hist_desig_other = postVals.get(53).toString();
             //
-            
-            
-            this.isLocalChange = (Integer) postVals.get(40) > 0;
+            this.isLocalChange = (Integer) postVals.get(54) > 0;
             
             
         } else {
@@ -133,9 +143,11 @@ public class Post {
     }
 
     public Post(int blog_id, String title, String content, String picturePaths, long date, String categories, String tags, String status,
-            String password, double latitude, double longitude, boolean isPage, String postFormat,
-            boolean createBlogReference, boolean isLocalChange, String rbca_coord_loc,String rbca_coord_loc_other, String rbca_coord_corner, String rbca_coord_notes,
-            String rbca_addr_no, String rbca_addr_street, String rbca_area, String rbca_posting, String rbca_posting_other, String rbca_occucy, int rbca_occucy_available) {
+            String password, double latitude, double longitude, boolean isPage, String postFormat, boolean createBlogReference, boolean isLocalChange, 
+            String rbca_coord_loc,String rbca_coord_loc_other, String rbca_coord_corner, String rbca_coord_notes, String rbca_addr_no, String rbca_addr_street,
+            String rbca_area, String rbca_posting, String rbca_posting_other, String rbca_occucy, int rbca_occucy_available,
+            double rbca_stories,double width, double length, String uses, String uses_other, int rbca_outbldg, String outbldg_notes, 
+            int units_res, int units_comm, String occu_name, int occu_phone, String occu_notes, String hist_desig, String hist_desig_other) {
         // create a new post
         if (createBlogReference) {
             try {
@@ -171,6 +183,20 @@ public class Post {
         this.rbca_posting_oth = rbca_posting_other;
         this.rbca_occucy = rbca_occucy;
         this.rbca_occucy_available = rbca_occucy_available;
+        this.rbca_num_stories = rbca_stories;
+        this.rbca_width = width;
+        this.rbca_length = length; 
+        this.rbca_uses = uses;
+        this.rbca_uses_other = uses_other;
+        this.rbca_outbldg = rbca_outbldg;
+        this.rbca_outbldg_notes = outbldg_notes;
+        this.rbca_units_res = units_res;
+        this.rbca_units_comm = units_comm;
+        this.rbca_occu_name = occu_name;
+        this.rbca_occu_phone = occu_phone;
+        this.rbca_occu_notes = occu_notes;
+        this.rbca_hist_desig = hist_desig;
+        this.rbca_hist_desig_other = hist_desig_other;
     }
 
     public long getId() {
@@ -566,6 +592,106 @@ public class Post {
         this.rbca_occucy_available = occucyAvailable;
     }
     
+    public double getRBCA_num_stories(){
+        return rbca_num_stories;
+    }
+    
+    public void setRBCA_num_stories(double stories){
+        this.rbca_num_stories = stories;
+    }
+    
+    public double getRBCA_width(){
+        return rbca_width;
+    }
+    
+    public void setRBCA_width(double width){
+        this.rbca_width = width;
+    }
+    
+    public double getRBCA_length(){
+        return rbca_length;
+    }
+    
+    public void setRBCA_length(double length){
+        this.rbca_length = length;
+    }
+    
+    public String getRBCA_uses(){
+        return rbca_uses;
+    }
+    public void setRBCA_uses(String uses){
+        this.rbca_uses = uses;
+    }
+    
+    public String getRBCA_uses_other(){
+        return rbca_uses_other;
+    }
+    public void setRBCA_uses_other(String uses_other){
+        this.rbca_uses_other = uses_other;
+    }
+    
+    public int getRBCA_outbldg() {
+        return rbca_outbldg;
+    }
+    public void setRBCA_outbldg(int outbldg) {
+        this.rbca_outbldg = outbldg;
+    }
+    
+    public String getRBCA_outbldg_notes(){
+        return rbca_outbldg_notes;
+    }
+    public void setRBCA_outbldg_notes(String outbldg_notes){
+        this.rbca_outbldg_notes = outbldg_notes;
+    }
+    
+    public int getRBCA_units_res() {
+        return rbca_units_res;
+    }
+    public void setRBCA_units_res(int units_res) {
+        this.rbca_units_res = units_res;
+    }
+    
+    public int getRBCA_units_comm() {
+        return rbca_units_comm;
+    }
+    public void setRBCA_units_comm(int units_comm) {
+        this.rbca_units_comm = units_comm;
+    }
+    
+    public String getRBCA_occu_name(){
+        return rbca_occu_name;
+    }
+    public void setRBCA_occu_name(String occu_name){
+        this.rbca_occu_name = occu_name;
+    }
+    
+    public int getRBCA_occu_phone() {
+        return rbca_occu_phone;
+    }
+    public void setRBCA_occu_phone(int occu_phone) {
+        this.rbca_occu_phone = occu_phone;
+    }
+    
+    public String getRBCA_occu_notes(){
+        return rbca_occu_notes;
+    }
+    public void setRBCA_occu_notes(String occu_notes){
+        this.rbca_occu_notes = occu_notes;
+    }
+    
+    public String getRBCA_hist_desig(){
+        return rbca_hist_desig;
+    }
+    public void setRBCA_hist_desig(String hist_desig){
+        this.rbca_hist_desig = hist_desig;
+    }
+    
+    public String getRBCA_hist_desig_other(){
+        return rbca_hist_desig;
+    }
+    public void setRBCA_hist_desig_other(String hist_desig_other){
+        this.rbca_hist_desig_other = hist_desig_other;
+    }
     
     //end of modification to SiteCondition
 }

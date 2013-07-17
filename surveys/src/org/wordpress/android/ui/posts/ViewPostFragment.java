@@ -173,7 +173,21 @@ public class ViewPostFragment extends Fragment {
                 + "\n\n" + "Posting: "+post.getRBCA_posting()
                 + "\n\n" + "Posting Other: "+post.getRBCA_posting_other()
                 + "\n\n" + "Occupancy: "+post.getRBCA_occucy() 
-                + "\n\n" + "Occupancy Available: "+post.getRBCA_occucy_available() );
+                + "\n\n" + "Occupancy Available: "+post.getRBCA_occucy_available()
+                + "\n\n" + "# of Stories: "+post.getRBCA_num_stories() 
+                + "\n\n" + "Width: "+post.getRBCA_width()
+                + "\n\n" + "Length: "+post.getRBCA_length()
+                + "\n\n" + "Use(s): "+post.getRBCA_uses()
+                + "\n\n" + "Uses_other: "+post.getRBCA_uses_other()
+                + "\n\n" + "Outbuildings: "+post.getRBCA_outbldg()
+                + "\n\n" + "Outbuildings notes: "+post.getRBCA_outbldg_notes()
+                + "\n\n" + "# Residential Units: "+post.getRBCA_units_res()
+                + "\n\n" + "# Commercial Units: "+post.getRBCA_units_comm()
+                + "\n\n" + "Occupant Name: "+post.getRBCA_occu_name()
+                + "\n\n" + "Occupant Phone: "+post.getRBCA_occu_phone()
+                + "\n\n" + "Occupant Notes: "+post.getRBCA_occu_notes()
+                + "\n\n" + "Historic Designation: "+post.getRBCA_hist_desig()
+                + "\n\n" + "Hist Designation Other: "+post.getRBCA_hist_desig_other());
         
 
         String htmlText = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"webview.css\" /></head><body><div id=\"container\">"
