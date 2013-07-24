@@ -136,13 +136,13 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private RelativeLayout mFormatBar;
     
     ////added Jorge Rodriguez
-    private ToggleButton mRBCA_occucy_available, mRBCA_outbldg;
-    private Spinner mRBCA_occucy_spinner, mRBCA_coord_loc_spinner, mRBCA_coord_corner_spinner;
-    private EditText mRBCA_coord_notes, mRBCA_addr_no, mRBCA_addr_street, mRBCA_coord_loc_other, mRBCA_posting_other;
-    private EditText mRBCA_stories, mRBCA_width, mRBCA_length, mRBCA_uses_other,mRBCA_outbldg_notes, mRBCA_units_res,mRBCA_units_comm;
-    private EditText mRBCA_occu_name, mRBCA_occu_phone, mRBCA_occu_notes,mRBCA_hist_desig_other;
+    private ToggleButton mRBCA_bldg_occucy_avail, mRBCA_bldg_outbldg;
+    private Spinner mRBCA_bldg_occucy_spinner, mRBCA_coord_loc_spinner, mRBCA_coord_corner_spinner;
+    private EditText mRBCA_coord_notes, mRBCA_addr_no, mRBCA_addr_street, mRBCA_coord_loc_oth, mRBCA_bldg_posting_oth;
+    private EditText mRBCA_bldg_stories, mRBCA_bldg_width, mRBCA_bldg_length, mRBCA_bldg_use_oth,mRBCA_bldg_outbldg_notes, mRBCA_bldg_units_res,mRBCA_bldg_units_comm;
+    private EditText mRBCA_bldg_occu_name, mRBCA_bldg_occu_phone, mRBCA_bldg_notes,mRBCA_hist_desig_oth;
     
-    protected Button mRBCA_area_select,mRBCA_posting_select,mRBCA_uses_select, mRBCA_hist_desig_select ;
+    protected Button mRBCA_bldg_area_select,mRBCA_bldg_posting_select,mRBCA_bldg_use_select, mRBCA_hist_desig_select ;
     
     protected CharSequence[] AreaAssessed = { "Exterior", "Interior" };
     protected CharSequence[] PostingChoices = {"Inspected", "Restricted Use", "Unsafe", "Further Evaluation","Other"};
@@ -300,33 +300,33 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ////////////////////////added Surveys for Android
        
         mRBCA_coord_loc_spinner = (Spinner) findViewById(R.id.RBCA_coord_loc_spinner);
-        mRBCA_coord_loc_other = (EditText) findViewById(R.id.RBCA_coord_loc_other);
+        mRBCA_coord_loc_oth = (EditText) findViewById(R.id.RBCA_coord_loc_oth);
         mRBCA_coord_corner_spinner = (Spinner) findViewById(R.id.RBCA_coord_corner_spinner);
         mRBCA_coord_notes = (EditText) findViewById(R.id.RBCA_coord_notes);
         mRBCA_addr_no = (EditText) findViewById(R.id.RBCA_addr_no);
         mRBCA_addr_street = (EditText) findViewById(R.id.RBCA_addr_street);
-        mRBCA_area_select = (Button) findViewById(R.id.RBCA_area_select);
-        mRBCA_posting_select = (Button) findViewById(R.id.RBCA_posting_select);
-        mRBCA_posting_other = (EditText) findViewById(R.id.RBCA_posting_other);
-        mRBCA_occucy_spinner = (Spinner) findViewById(R.id.RBCA_occucy);
-        mRBCA_occucy_available = (ToggleButton) findViewById(R.id.RBCA_occucy_available);
-        mRBCA_occucy_available.setText("No");
-        mRBCA_stories = (EditText) findViewById(R.id.RBCA_num_stories);
-        mRBCA_width = (EditText) findViewById(R.id.RBCA_width);
-        mRBCA_length = (EditText) findViewById(R.id.RBCA_length);
-        mRBCA_uses_select = (Button) findViewById(R.id.RBCA_uses_select);
-        mRBCA_uses_other = (EditText) findViewById(R.id.RBCA_uses_other);
-        mRBCA_outbldg = (ToggleButton) findViewById(R.id.RBCA_outbldg);
-        mRBCA_outbldg_notes = (EditText) findViewById(R.id.RBCA_outbldg_notes);
-        mRBCA_units_res = (EditText) findViewById(R.id.RBCA_units_res);
-        mRBCA_units_comm = (EditText) findViewById(R.id.RBCA_units_comm);
-        mRBCA_occu_name = (EditText) findViewById(R.id.RBCA_occu_name);
-        mRBCA_occu_phone = (EditText) findViewById(R.id.RBCA_occu_phone);
-        mRBCA_occu_notes = (EditText) findViewById(R.id.RBCA_occu_notes);
+        mRBCA_bldg_area_select = (Button) findViewById(R.id.RBCA_bldg_area_select);
+        mRBCA_bldg_posting_select = (Button) findViewById(R.id.RBCA_bldg_posting_select);
+        mRBCA_bldg_posting_oth = (EditText) findViewById(R.id.RBCA_bldg_posting_oth);
+        mRBCA_bldg_occucy_spinner = (Spinner) findViewById(R.id.RBCA_bldg_occucy);
+        mRBCA_bldg_occucy_avail = (ToggleButton) findViewById(R.id.RBCA_bldg_occucy_available);
+        mRBCA_bldg_occucy_avail.setText("No");
+        mRBCA_bldg_stories = (EditText) findViewById(R.id.RBCA_bldg_stories);
+        mRBCA_bldg_width = (EditText) findViewById(R.id.RBCA_bldg_width);
+        mRBCA_bldg_length = (EditText) findViewById(R.id.RBCA_bldg_length);
+        mRBCA_bldg_use_select = (Button) findViewById(R.id.RBCA_bldg_use_select);
+        mRBCA_bldg_use_oth = (EditText) findViewById(R.id.RBCA_bldg_use_oth);
+        mRBCA_bldg_outbldg = (ToggleButton) findViewById(R.id.RBCA_bldg_outbldg);
+        mRBCA_bldg_outbldg_notes = (EditText) findViewById(R.id.RBCA_bldg_outbldg_notes);
+        mRBCA_bldg_units_res = (EditText) findViewById(R.id.RBCA_bldg_units_res);
+        mRBCA_bldg_units_comm = (EditText) findViewById(R.id.RBCA_bldg_units_comm);
+        mRBCA_bldg_occu_name = (EditText) findViewById(R.id.RBCA_bldg_occu_name);
+        mRBCA_bldg_occu_phone = (EditText) findViewById(R.id.RBCA_bldg_occu_phone);
+        mRBCA_bldg_notes = (EditText) findViewById(R.id.RBCA_bldg_notes);
         mRBCA_hist_desig_select = (Button) findViewById(R.id.RBCA_hist_desig_select);
-        mRBCA_hist_desig_other = (EditText) findViewById(R.id.RBCA_hist_desig_other);
+        mRBCA_hist_desig_oth = (EditText) findViewById(R.id.RBCA_hist_desig_oth);
         
-        mRBCA_units_res.setInputType(InputType.TYPE_CLASS_NUMBER);
+        mRBCA_bldg_units_res.setInputType(InputType.TYPE_CLASS_NUMBER);
        
         //////////////////////////end Surverys for Android
         
@@ -340,25 +340,25 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         //////////////////added Surverys for Android
         ((TextView) findViewById(R.id.RBCA_coord_loc_label)).setText(getResources().getString(R.string.RBCA_coord_loc).toUpperCase());
         ((TextView) findViewById(R.id.RBCA_coord_corner_label)).setText(getResources().getString(R.string.RBCA_coord_corner_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_area_label)).setText(getResources().getString(R.string.RBCA_area_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_posting_label)).setText(getResources().getString(R.string.RBCA_posting_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_posting_other_label)).setText(getResources().getString(R.string.RBCA_other_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_occucy_label)).setText(getResources().getString(R.string.RBCA_occucy_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_occucy_available_label)).setText(getResources().getString(R.string.RBCA_occucy_available_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_stories_label)).setText(getResources().getString(R.string.RBCA_stories_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_width_label)).setText(getResources().getString(R.string.RBCA_width_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_length_label)).setText(getResources().getString(R.string.RBCA_length_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_uses_label)).setText(getResources().getString(R.string.RBCA_uses_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_uses_other_label)).setText(getResources().getString(R.string.RBCA_other_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_outbldg_label)).setText(getResources().getString(R.string.RBCA_outbldg_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_outbldg_notes_label)).setText(getResources().getString(R.string.RBCA_outbldg_notes_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_units_res_label)).setText(getResources().getString(R.string.RBCA_units_res_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_units_comm_label)).setText(getResources().getString(R.string.RBCA_units_comm_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_occu_name_label)).setText(getResources().getString(R.string.RBCA_occu_name_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_occu_phone_label)).setText(getResources().getString(R.string.RBCA_occu_phone_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_occu_notes_label)).setText(getResources().getString(R.string.RBCA_occu_notes_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_area_label)).setText(getResources().getString(R.string.RBCA_bldg_area_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_posting_label)).setText(getResources().getString(R.string.RBCA_bldg_posting_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_posting_oth_label)).setText(getResources().getString(R.string.RBCA_other_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_occucy_label)).setText(getResources().getString(R.string.RBCA_bldg_occucy_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_occucy_available_label)).setText(getResources().getString(R.string.RBCA_bldg_occucy_available_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_stories_label)).setText(getResources().getString(R.string.RBCA_bldg_stories_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_width_label)).setText(getResources().getString(R.string.RBCA_bldg_width_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_length_label)).setText(getResources().getString(R.string.RBCA_bldg_length_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_use_label)).setText(getResources().getString(R.string.RBCA_bldg_use_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_use_oth_label)).setText(getResources().getString(R.string.RBCA_other_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_outbldg_label)).setText(getResources().getString(R.string.RBCA_bldg_outbldg_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_outbldg_notes_label)).setText(getResources().getString(R.string.RBCA_bldg_outbldg_notes_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_units_res_label)).setText(getResources().getString(R.string.RBCA_bldg_units_res_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_units_comm_label)).setText(getResources().getString(R.string.RBCA_bldg_units_comm_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_occu_name_label)).setText(getResources().getString(R.string.RBCA_bldg_occu_name_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_occu_phone_label)).setText(getResources().getString(R.string.RBCA_bldg_occu_phone_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_bldg_notes_label)).setText(getResources().getString(R.string.RBCA_bldg_notes_label).toUpperCase());
         ((TextView) findViewById(R.id.RBCA_hist_desig_label)).setText(getResources().getString(R.string.RBCA_hist_desig_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_hist_desig_other_label)).setText(getResources().getString(R.string.RBCA_other_label).toUpperCase());
+        ((TextView) findViewById(R.id.RBCA_hist_desig_oth_label)).setText(getResources().getString(R.string.RBCA_other_label).toUpperCase());
         
         
         
@@ -444,7 +444,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
         ArrayAdapter<String> occupancyAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, occupancy);
         occupancyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mRBCA_occucy_spinner.setAdapter(occupancyAdapter);
+        mRBCA_bldg_occucy_spinner.setAdapter(occupancyAdapter);
         
         
         
@@ -566,8 +566,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 } 
             }
             
-            if (mPost.getRBCA_coord_loc_other() != null){
-                mRBCA_coord_loc_other.setText(mPost.getRBCA_coord_loc_other());
+            if (mPost.getRBCA_coord_loc_oth() != null){
+                mRBCA_coord_loc_oth.setText(mPost.getRBCA_coord_loc_oth());
             }
             
             if (mPost.getRBCA_coord_notes() != null){
@@ -582,94 +582,94 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mRBCA_addr_street.setText(mPost.getRBCA_addr_street()) ;
             }
             
-            if (mPost.getRBCA_area() != null){
-                mRBCA_area_select.setText(mPost.getRBCA_area()) ;
+            if (mPost.getRBCA_bldg_area() != null){
+                mRBCA_bldg_area_select.setText(mPost.getRBCA_bldg_area()) ;
             }
             
-            if (mPost.getRBCA_posting() != null){
-                mRBCA_posting_select.setText(mPost.getRBCA_posting()) ;
+            if (mPost.getRBCA_bldg_posting() != null){
+                mRBCA_bldg_posting_select.setText(mPost.getRBCA_bldg_posting()) ;
             }
             
-            if (mPost.getRBCA_posting_other() != null){
-                mRBCA_posting_other.setText(mPost.getRBCA_posting_other()) ;
+            if (mPost.getRBCA_bldg_posting_oth() != null){
+                mRBCA_bldg_posting_oth.setText(mPost.getRBCA_bldg_posting_oth()) ;
             }
             
-            if (mPost.getRBCA_occucy() !=null){
-                String occupancy1 = mPost.getRBCA_occucy();
+            if (mPost.getRBCA_bldg_occucy() !=null){
+                String occupancy1 = mPost.getRBCA_bldg_occucy();
                 
                 if (occupancy.equals("Occupied")) {
-                    mRBCA_occucy_spinner.setSelection(0, true);
+                    mRBCA_bldg_occucy_spinner.setSelection(0, true);
                 } else if (occupancy1.equals("Vacant")) {
-                    mRBCA_occucy_spinner.setSelection(1, true);
+                    mRBCA_bldg_occucy_spinner.setSelection(1, true);
                 } else if (occupancy1.equals("Unknown")) {
-                    mRBCA_occucy_spinner.setSelection(2, true);
+                    mRBCA_bldg_occucy_spinner.setSelection(2, true);
                 }
             }
             
             
-            int occucyAvailable = mPost.getRBCA_occucy_available();
+            int occucyAvailable = mPost.getRBCA_bldg_occucy_avail();
             if (occucyAvailable == 1)
-                mRBCA_occucy_available.setTextOn(getString(R.string.yes));
+                mRBCA_bldg_occucy_avail.setTextOn(getString(R.string.yes));
             if (occucyAvailable == 0)
-                mRBCA_occucy_available.setTextOff(getString(R.string.no));
+                mRBCA_bldg_occucy_avail.setTextOff(getString(R.string.no));
             
-            if (mPost.getRBCA_num_stories() != 0.0){
+            if (mPost.getRBCA_bldg_stories() != 0.0){
                 
-                mRBCA_stories.setText(Double.toString(mPost.getRBCA_num_stories())) ;
+                mRBCA_bldg_stories.setText(Double.toString(mPost.getRBCA_bldg_stories())) ;
             }
             
-            if (mPost.getRBCA_width() != 0.0){
-                mRBCA_width.setText(Double.toString(mPost.getRBCA_width())) ;
+            if (mPost.getRBCA_bldg_width() != 0.0){
+                mRBCA_bldg_width.setText(Double.toString(mPost.getRBCA_bldg_width())) ;
             }
             
-            if (mPost.getRBCA_length() != 0.0){
-                mRBCA_length.setText(Double.toString(mPost.getRBCA_length())) ;
+            if (mPost.getRBCA_bldg_length() != 0.0){
+                mRBCA_bldg_length.setText(Double.toString(mPost.getRBCA_bldg_length())) ;
             }
             
-            if (mPost.getRBCA_uses() != null){
-                mRBCA_uses_select.setText(mPost.getRBCA_uses()) ;
+            if (mPost.getRBCA_bldg_use() != null){
+                mRBCA_bldg_use_select.setText(mPost.getRBCA_bldg_use()) ;
             }
             
-            if (mPost.getRBCA_uses_other() != null){
-                mRBCA_uses_other.setText(mPost.getRBCA_uses_other()) ;
+            if (mPost.getRBCA_bldg_use_oth() != null){
+                mRBCA_bldg_use_oth.setText(mPost.getRBCA_bldg_use_oth()) ;
             }
             
-            int outbldg = mPost.getRBCA_outbldg();
+            int outbldg = mPost.getRBCA_bldg_outbldg();
             if (outbldg == 1)
-                mRBCA_outbldg.setTextOn(getString(R.string.yes));
+                mRBCA_bldg_outbldg.setTextOn(getString(R.string.yes));
             if (outbldg == 0)
-                mRBCA_outbldg.setTextOff(getString(R.string.no));
+                mRBCA_bldg_outbldg.setTextOff(getString(R.string.no));
             
-            if (mPost.getRBCA_outbldg_notes() != null){
-                mRBCA_outbldg_notes.setText(mPost.getRBCA_outbldg_notes()) ;
+            if (mPost.getRBCA_bldg_outbldg_notes() != null){
+                mRBCA_bldg_outbldg_notes.setText(mPost.getRBCA_bldg_outbldg_notes()) ;
             }
             
-            if (mPost.getRBCA_units_res() != 0){
-                mRBCA_units_res.setText(Double.toString(mPost.getRBCA_units_res())) ;
+            if (mPost.getRBCA_bldg_units_res() != 0){
+                mRBCA_bldg_units_res.setText(Double.toString(mPost.getRBCA_bldg_units_res())) ;
             }
             
-            if (mPost.getRBCA_units_comm() != 0){
-                mRBCA_units_comm.setText(Double.toString(mPost.getRBCA_units_comm())) ;
+            if (mPost.getRBCA_bldg_units_comm() != 0){
+                mRBCA_bldg_units_comm.setText(Double.toString(mPost.getRBCA_bldg_units_comm())) ;
             }
             
-            if (mPost.getRBCA_occu_name() != null){
-                mRBCA_occu_name.setText(mPost.getRBCA_occu_name()) ;
+            if (mPost.getRBCA_bldg_occu_name() != null){
+                mRBCA_bldg_occu_name.setText(mPost.getRBCA_bldg_occu_name()) ;
             }
             
-            if (mPost.getRBCA_occu_phone() != 0){
-                mRBCA_occu_phone.setText(Double.toString(mPost.getRBCA_occu_phone())) ;
+            if (mPost.getRBCA_bldg_occu_phone() != 0){
+                mRBCA_bldg_occu_phone.setText(Double.toString(mPost.getRBCA_bldg_occu_phone())) ;
             }
             
-            if (mPost.getRBCA_occu_notes() != null){
-                mRBCA_occu_notes.setText(mPost.getRBCA_occu_notes()) ;
+            if (mPost.getRBCA_bldg_notes() != null){
+                mRBCA_bldg_notes.setText(mPost.getRBCA_bldg_notes()) ;
             }
             
             if (mPost.getRBCA_hist_desig() != null){
                 mRBCA_hist_desig_select.setText(mPost.getRBCA_hist_desig()) ;
             }
             
-            if (mPost.getRBCA_hist_desig_other() != null){
-                mRBCA_hist_desig_other.setText(mPost.getRBCA_hist_desig_other()) ;
+            if (mPost.getRBCA_hist_desig_oth() != null){
+                mRBCA_hist_desig_oth.setText(mPost.getRBCA_hist_desig_oth()) ;
             }
             
             
@@ -749,11 +749,11 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         
         
         ////////Surveys for Android 
-        mRBCA_area_select.setOnClickListener(this);
-        mRBCA_posting_select.setOnClickListener(this);
-        mRBCA_occucy_available.setOnClickListener(this);
-        mRBCA_uses_select.setOnClickListener(this);
-        mRBCA_outbldg.setOnClickListener(this);    
+        mRBCA_bldg_area_select.setOnClickListener(this);
+        mRBCA_bldg_posting_select.setOnClickListener(this);
+        mRBCA_bldg_occucy_avail.setOnClickListener(this);
+        mRBCA_bldg_use_select.setOnClickListener(this);
+        mRBCA_bldg_outbldg.setOnClickListener(this);    
         mRBCA_hist_desig_select.setOnClickListener(this);
         /////end surverys for android
     }
@@ -968,16 +968,16 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setLongitude(0.0);
             }
             mLocationText.setText("");
-        } else if (id == R.id.RBCA_area_select){////ESTO LO AGREGE YO! Surveys for Android
-            showSelectionDialog((String) mRBCA_area_select.getText(),AreaAssessed,mRBCA_area_select);
-        } else if (id == R.id.RBCA_posting_select){
-            showSelectionDialog((String) mRBCA_posting_select.getText(),PostingChoices,mRBCA_posting_select);
-        } else if (id == R.id.RBCA_occucy_available){
-            onChangeToggleButton(mRBCA_occucy_available);
-        } else if (id == R.id.RBCA_uses_select){
-            showSelectionDialog((String) mRBCA_uses_select.getText(),usesChoices,mRBCA_uses_select);
-        } else if (id == R.id.RBCA_outbldg){
-            onChangeToggleButton(mRBCA_outbldg);
+        } else if (id == R.id.RBCA_bldg_area_select){////ESTO LO AGREGE YO! Surveys for Android
+            showSelectionDialog((String) mRBCA_bldg_area_select.getText(),AreaAssessed,mRBCA_bldg_area_select);
+        } else if (id == R.id.RBCA_bldg_posting_select){
+            showSelectionDialog((String) mRBCA_bldg_posting_select.getText(),PostingChoices,mRBCA_bldg_posting_select);
+        } else if (id == R.id.RBCA_bldg_occucy_available){
+            onChangeToggleButton(mRBCA_bldg_occucy_avail);
+        } else if (id == R.id.RBCA_bldg_use_select){
+            showSelectionDialog((String) mRBCA_bldg_use_select.getText(),usesChoices,mRBCA_bldg_use_select);
+        } else if (id == R.id.RBCA_bldg_outbldg){
+            onChangeToggleButton(mRBCA_bldg_outbldg);
         } else if (id == R.id.RBCA_hist_desig_select){
             showSelectionDialog((String) mRBCA_hist_desig_select.getText(), desigChoices,mRBCA_hist_desig_select);
         }
@@ -1775,7 +1775,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             //////////////////////SURVEYS FOR ANDROID
             
-            int selected_occucy = mRBCA_occucy_spinner.getSelectedItemPosition();
+            int selected_occucy = mRBCA_bldg_occucy_spinner.getSelectedItemPosition();
             String occupancy = "";
             switch (selected_occucy) {
             case 0:
@@ -1818,13 +1818,13 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 break;
             } 
             
-            String coord_loc_other = mRBCA_coord_loc_other.getText().toString();
+            String coord_loc_oth = mRBCA_coord_loc_oth.getText().toString();
             String coord_notes = mRBCA_coord_notes.getText().toString();
             String addr_no = mRBCA_addr_no.getText().toString();
             String addr_street = mRBCA_addr_street.getText().toString();
-            String area = mRBCA_area_select.getText().toString();
-            String posting = mRBCA_posting_select.getText().toString();
-            String posting_other = mRBCA_posting_other.getText().toString();
+            String bldg_area = mRBCA_bldg_area_select.getText().toString();
+            String bldg_posting = mRBCA_bldg_posting_select.getText().toString();
+            String bldg_posting_oth = mRBCA_bldg_posting_oth.getText().toString();
             
             
             int selected_coord_loc = mRBCA_coord_loc_spinner.getSelectedItemPosition();
@@ -1842,56 +1842,56 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 break;
             }
             
-            String occucyAvailableSelection = mRBCA_occucy_available.getText().toString(); 
+            String occucyAvailableSelection = mRBCA_bldg_occucy_avail.getText().toString(); 
             int occucy_available = 0;
             if (occucyAvailableSelection.equals("Yes"))
                     occucy_available = 1;
             
-            double stories = 0.0;
-            if (mRBCA_stories.getText() != null )
+            double bldg_stories = 0.0;
+            if (mRBCA_bldg_stories.getText() != null )
             {
-                stories = Double.parseDouble(mRBCA_stories.getText().toString());}
+                bldg_stories = Double.parseDouble(mRBCA_bldg_stories.getText().toString());}
             
-            double width = 0.0;
-            if (mRBCA_width.getText() != null){
-                width = Double.parseDouble(mRBCA_width.getText().toString());}
+            double bldg_width = 0.0;
+            if (mRBCA_bldg_width.getText() != null){
+                bldg_width = Double.parseDouble(mRBCA_bldg_width.getText().toString());}
             
-            double length = 0.0;
-            if (mRBCA_length.getText() !=null ){
-                length = Double.parseDouble(mRBCA_length.getText().toString());}
+            double bldg_length = 0.0;
+            if (mRBCA_bldg_length.getText() !=null ){
+                bldg_length = Double.parseDouble(mRBCA_bldg_length.getText().toString());}
             
-            String uses = mRBCA_uses_select.getText().toString();
-            String uses_other = mRBCA_uses_other.getText().toString();
+            String uses = mRBCA_bldg_use_select.getText().toString();
+            String uses_oth = mRBCA_bldg_use_oth.getText().toString();
             
-            String outbldgSelection = mRBCA_outbldg.getText().toString(); 
+            String outbldgSelection = mRBCA_bldg_outbldg.getText().toString(); 
             int outbldg = 0;
             if (outbldgSelection.equals("Yes"))
                     outbldg = 1;
             
-            String outbldg_notes = mRBCA_outbldg_notes.getText().toString();
+            String outbldg_notes = mRBCA_bldg_outbldg_notes.getText().toString();
             
             int units_res = 0;
-            if (mRBCA_units_res.getText() !=null ){
-                units_res = Integer.parseInt(mRBCA_units_res.getText().toString());
+            if (mRBCA_bldg_units_res.getText() !=null ){
+                units_res = Integer.parseInt(mRBCA_bldg_units_res.getText().toString());
             }
             
             
             int units_comm = 0;
-            if (mRBCA_units_comm.getText() != null ){
-                units_comm = Integer.parseInt(mRBCA_units_comm.getText().toString());
+            if (mRBCA_bldg_units_comm.getText() != null ){
+                units_comm = Integer.parseInt(mRBCA_bldg_units_comm.getText().toString());
             }
             
-            String occu_name = mRBCA_occu_name.getText().toString();
+            String occu_name = mRBCA_bldg_occu_name.getText().toString();
             
             int occu_phone = 0;
-            if (mRBCA_occu_phone.getText() != null ){
-                occu_phone = Integer.parseInt(mRBCA_occu_phone.getText().toString());}
+            if (mRBCA_bldg_occu_phone.getText() != null ){
+                occu_phone = Integer.parseInt(mRBCA_bldg_occu_phone.getText().toString());}
             
-            String occu_notes = mRBCA_occu_notes.getText().toString();
+            String occu_notes = mRBCA_bldg_notes.getText().toString();
             
             String hist_desig = mRBCA_hist_desig_select.getText().toString();
             
-            String hist_desig_other = mRBCA_hist_desig_other.getText().toString();
+            String hist_desig_oth = mRBCA_hist_desig_oth.getText().toString();
             
             ////////end Surveys fo ANDROID
             
@@ -1931,9 +1931,9 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
             if (mIsNew) {
                 mPost = new Post(mBlogID, title, content, images, pubDateTimestamp, mCategories.toString(), tags, status, password,
-                        latitude, longitude, mIsPage, postFormat, true, false,coord_location,coord_loc_other,coord_corner, 
-                        coord_notes, addr_no, addr_street,area,posting,posting_other,occupancy,occucy_available,stories,width,
-                        length,uses,uses_other,outbldg, outbldg_notes, units_res, units_comm,occu_name, occu_phone, occu_notes,hist_desig, hist_desig_other);
+                        latitude, longitude, mIsPage, postFormat, true, false,coord_location,coord_loc_oth,coord_corner, 
+                        coord_notes, addr_no, addr_street,bldg_area,bldg_posting,bldg_posting_oth,occupancy,occucy_available,bldg_stories,bldg_width,
+                        bldg_length,uses,uses_oth,outbldg, outbldg_notes, units_res, units_comm,occu_name, occu_phone, occu_notes,hist_desig, hist_desig_oth);
                 mPost.setLocalDraft(true);
 
                 // split up the post content if there's a more tag
@@ -2007,33 +2007,33 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 if (!mPost.isLocalDraft())
                     mPost.setLocalChange(true);
                 
-                ///////JORGE 
+                ///////Surveys for Android
                 mPost.setRBCA_coord_loc(coord_location);
-                mPost.setRBCA_coord_loc_other(coord_loc_other);
+                mPost.setRBCA_coord_loc_oth(coord_loc_oth);
                 mPost.setRBCA_coord_corner(coord_corner);
                 mPost.setRBCA_coord_notes(coord_notes);
                 mPost.setRBCA_addr_no(addr_no);
                 mPost.setRBCA_addr_street(addr_street);
-                mPost.setRBCA_area(area);
-                mPost.setRBCA_posting(posting);
-                mPost.setRBCA_posting_other(posting_other);
-                mPost.setRBCA_occucy(occupancy);
-                mPost.setRBCA_occucy_available(occucy_available);
-                mPost.setRBCA_num_stories(stories);
-                mPost.setRBCA_width(width);
-                mPost.setRBCA_length(length);
-                mPost.setRBCA_uses(uses);
-                mPost.setRBCA_uses_other(uses_other);
-                mPost.setRBCA_outbldg(outbldg);
-                mPost.setRBCA_outbldg_notes(outbldg_notes);
-                mPost.setRBCA_units_res(units_res);
-                mPost.setRBCA_units_comm(units_comm);
-                mPost.setRBCA_occu_name(occu_name);
-                mPost.setRBCA_occu_phone(occu_phone);
-                mPost.setRBCA_occu_notes(occu_notes);
+                mPost.setRBCA_bldg_area(bldg_area);
+                mPost.setRBCA_bldg_posting(bldg_posting);
+                mPost.setRBCA_bldg_posting_oth(bldg_posting_oth);
+                mPost.setRBCA_bldg_occucy(occupancy);
+                mPost.setRBCA_bldg_occucy_avail(occucy_available);
+                mPost.setRBCA_bldg_stories(bldg_stories);
+                mPost.setRBCA_bldg_width(bldg_width);
+                mPost.setRBCA_bldg_length(bldg_length);
+                mPost.setRBCA_bldg_use(uses);
+                mPost.setRBCA_bldg_use_oth(uses_oth);
+                mPost.setRBCA_bldg_outbldg(outbldg);
+                mPost.setRBCA_bldg_outbldg_notes(outbldg_notes);
+                mPost.setRBCA_bldg_units_res(units_res);
+                mPost.setRBCA_bldg_units_comm(units_comm);
+                mPost.setRBCA_bldg_occu_name(occu_name);
+                mPost.setRBCA_bldg_occu_phone(occu_phone);
+                mPost.setRBCA_bldg_notes(occu_notes);
                 mPost.setRBCA_hist_desig(hist_desig);
-                mPost.setRBCA_hist_desig_other(hist_desig_other);
-                ////END JORGE
+                mPost.setRBCA_hist_desig_oth(hist_desig_oth);
+                ////END Surveys for Android 
                 success = mPost.update();
             }
         }

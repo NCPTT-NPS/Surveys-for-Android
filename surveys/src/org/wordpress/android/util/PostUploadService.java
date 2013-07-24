@@ -354,12 +354,12 @@ public class PostUploadService extends Service {
             
             if (!post.isPage()){
                 Map<Object, Object> coord_loc = new HashMap<Object, Object>();
-                coord_loc.put("key", "rbca_loctn_coord_loc");
+                coord_loc.put("key", "rbca_coord_loc");
                 coord_loc.put("value", post.getRBCA_coord_loc());
                 
-                Map<Object, Object> coord_loc_other = new HashMap<Object, Object>();
-                coord_loc_other.put("key", "rbca_loctn2_coord_loc_oth");
-                coord_loc_other.put("value", post.getRBCA_coord_loc_other());
+                Map<Object, Object> coord_loc_oth = new HashMap<Object, Object>();
+                coord_loc_oth.put("key", "rbca_coord_loc_oth");
+                coord_loc_oth.put("value", post.getRBCA_coord_loc_oth());
                 
                 Map<Object, Object> coord_corner = new HashMap<Object, Object>();
                 coord_corner.put("key", "rbca_loctn2_coord_corner");
@@ -367,100 +367,100 @@ public class PostUploadService extends Service {
                 
                 
                 Map<Object, Object> coord_notes = new HashMap<Object, Object>();
-                coord_notes.put("key", "rbca_loctn2_coord_notes");
+                coord_notes.put("key", "rbca_coord_notes");
                 coord_notes.put("value", post.getRBCA_coord_notes());
                 
                 Map<Object, Object> addr_no = new HashMap<Object, Object>();
-                addr_no.put("key", "rbca_loctn2_addr_no");
+                addr_no.put("key", "rbcas_addr_no");
                 addr_no.put("value", post.getRBCA_addr_no());
                 
                 Map<Object, Object> addr_street = new HashMap<Object, Object>();
-                addr_street.put("key", "rbca_loctn2_addr_street");
+                addr_street.put("key", "rbca_addr_street");
                 addr_street.put("value", post.getRBCA_addr_street());
                 
                 Map<Object, Object> area = new HashMap<Object, Object>();
                 area.put("key", "rbca_bldg_area");
-                area.put("value", post.getRBCA_area());
+                area.put("value", post.getRBCA_bldg_area());
                 
                 Map<Object, Object> posting = new HashMap<Object, Object>();
                 posting.put("key", "rbca_bldg_posting");
-                posting.put("value", post.getRBCA_posting());
+                posting.put("value", post.getRBCA_bldg_posting());
                 
-                Map<Object, Object> posting_other = new HashMap<Object, Object>();
-                posting_other.put("key", "rbca_bldg_posting_oth");
-                posting_other.put("value", post.getRBCA_posting_other());
+                Map<Object, Object> posting_oth = new HashMap<Object, Object>();
+                posting_oth.put("key", "rbca_bldg_posting_oth");
+                posting_oth.put("value", post.getRBCA_bldg_posting_oth());
                 
                 Map<Object, Object> occupancy = new HashMap<Object, Object>();
                 occupancy.put("key", "rbca_bldg_occucy");
-                occupancy.put("value", post.getRBCA_occucy());
+                occupancy.put("value", post.getRBCA_bldg_occucy());
                 
                 Map<Object, Object> occupancy_available = new HashMap<Object, Object>();
                 occupancy_available.put("key", "rbca_bldg_occu_avail");
-                occupancy_available.put("value", post.getRBCA_occucy_available());
+                occupancy_available.put("value", post.getRBCA_bldg_occucy_avail());
                 
                 Map<Object, Object> stories = new HashMap<Object, Object>();
                 stories.put("key", "rbca_bldg_stories");
-                stories.put("value", post.getRBCA_num_stories());
+                stories.put("value", post.getRBCA_bldg_stories());
                 
                 Map<Object, Object> width = new HashMap<Object, Object>();
                 width.put("key", "rbca_bldg_width");
-                width.put("value", post.getRBCA_width());
+                width.put("value", post.getRBCA_bldg_width());
                 
                 Map<Object, Object> length = new HashMap<Object, Object>();
                 length.put("key", "rbca_bldg_length");
-                length.put("value", post.getRBCA_length());
+                length.put("value", post.getRBCA_bldg_length());
                 
                 Map<Object, Object> uses = new HashMap<Object, Object>();
                 uses.put("key", "rbca_bldg_use");
-                uses.put("value", post.getRBCA_uses());
+                uses.put("value", post.getRBCA_bldg_use());
                 
-                Map<Object, Object> uses_other = new HashMap<Object, Object>();
-                uses_other.put("key", "rbca_bldg_use_oth");
-                uses_other.put("value", post.getRBCA_uses_other());
+                Map<Object, Object> uses_oth = new HashMap<Object, Object>();
+                uses_oth.put("key", "rbca_bldg_use_oth");
+                uses_oth.put("value", post.getRBCA_bldg_use_oth());
                 
                 Map<Object, Object> outbldg = new HashMap<Object, Object>();
                 outbldg.put("key", "rbca_bldg_outbldg");
-                outbldg.put("value", post.getRBCA_outbldg());
+                outbldg.put("value", post.getRBCA_bldg_outbldg());
                 
                 Map<Object, Object> outbldg_notes = new HashMap<Object, Object>();
                 outbldg_notes.put("key", "rbca_bldg_outbldg_notes");
-                outbldg_notes.put("value", post.getRBCA_outbldg_notes());
+                outbldg_notes.put("value", post.getRBCA_bldg_outbldg_notes());
                 
                 Map<Object, Object> units_res = new HashMap<Object, Object>();
-                units_res.put("key", "rbca_bldg2_units_res");
-                units_res.put("value", post.getRBCA_units_res());
+                units_res.put("key", "rbca_bldg_units_res");
+                units_res.put("value", post.getRBCA_bldg_units_res());
                 
                 Map<Object, Object> units_comm = new HashMap<Object, Object>();
-                units_comm.put("key", "rbca_bldg2_units_comm");
-                units_comm.put("value", post.getRBCA_units_comm());
+                units_comm.put("key", "rbca_bldg_units_comm");
+                units_comm.put("value", post.getRBCA_bldg_units_comm());
                 
                 Map<Object, Object> occu_name = new HashMap<Object, Object>();
-                occu_name.put("key", "rbca_bldg2_occu_name");
-                occu_name.put("value", post.getRBCA_occu_name());
+                occu_name.put("key", "rbca_bldg_occu_name");
+                occu_name.put("value", post.getRBCA_bldg_occu_name());
                 
                 Map<Object, Object> occu_phone = new HashMap<Object, Object>();
-                occu_phone.put("key", "rbca_bldg2_occu_phone");
-                occu_phone.put("value", post.getRBCA_occu_phone());
+                occu_phone.put("key", "rbca_bldg_occu_phone");
+                occu_phone.put("value", post.getRBCA_bldg_occu_phone());
                 
-                Map<Object, Object> occu_notes = new HashMap<Object, Object>();
-                occu_notes.put("key", "rbca_bldg2_notes");
-                occu_notes.put("value", post.getRBCA_occu_notes());
+                Map<Object, Object> bldg_notes = new HashMap<Object, Object>();
+                bldg_notes.put("key", "rbca_bldg_notes");
+                bldg_notes.put("value", post.getRBCA_bldg_notes());
                 
                 Map<Object, Object> hist_desig = new HashMap<Object, Object>();
                 hist_desig.put("key", "rbca_hist_desig");
                 hist_desig.put("value", post.getRBCA_hist_desig());
                 
-                Map<Object, Object> hist_desig_other = new HashMap<Object, Object>();
-                hist_desig_other.put("key", "rbca_hist_desig_oth");
-                hist_desig_other.put("value", post.getRBCA_hist_desig_other());
+                Map<Object, Object> hist_desig_oth = new HashMap<Object, Object>();
+                hist_desig_oth.put("key", "rbca_hist_desig_oth");
+                hist_desig_oth.put("value", post.getRBCA_hist_desig_oth());
                 
                 
     
-                Object[] geo = { coord_loc, coord_loc_other, coord_corner, coord_notes,
-                                addr_no, addr_street, area, posting, posting_other ,occupancy,
-                                occupancy_available, stories,width,length,uses,uses_other,outbldg,
+                Object[] geo = { coord_loc, coord_loc_oth, coord_corner, coord_notes,
+                                addr_no, addr_street, area, posting, posting_oth ,occupancy,
+                                occupancy_available, stories,width,length,uses,uses_oth,outbldg,
                                 outbldg_notes, units_res, units_comm, occu_name, occu_phone, 
-                                occu_notes, hist_desig, hist_desig_other};
+                                bldg_notes, hist_desig, hist_desig_oth};
     
                 contentStruct.put("custom_fields", geo);
             }

@@ -415,11 +415,11 @@
   <string name="RBCA_addr_no_label">Address Number</string>
   <string name="RBCA_addr_street_label">Address Street</string>
   
-  <string name="RBCA_area_label">Area Assessed</string>
-  <string name="RBCA_area_interior">Interior</string>
-  <string name="RBCA_area_exterior">Exterior</string>
+  <string name="RBCA_bldg_area_label">Area Assessed</string>
+  <string name="RBCA_bldg_area_interior">Interior</string>
+  <string name="RBCA_bldg_area_exterior">Exterior</string>
   
-  <string name="RBCA_posting_label">Posting</string>
+  <string name="RBCA_bldg_posting_label">Posting</string>
   <string name="inspected">Inspected</string>
   <string name="restricted_use">Restricted Use</string>
   <string name="unsafe">Unsafe</string>
@@ -427,19 +427,19 @@
   <string name="other">Other</string>
   
   
-  <string name="RBCA_occucy_label">Occupancy</string>
-  <string name="RBCA_occucy_available_label">Is occupant information available?</string>
-  <string name="RBCA_stories_label"># of stories above</string>
-  <string name="RBCA_width_label">Approximate Width</string>
-  <string name="RBCA_length_label">Approximate Width</string>
-  <string name="RBCA_uses_label">Use(s)</string>
-  <string name="RBCA_outbldg_label">Outbuildings and Other Structures (detached)</string>
-  <string name="RBCA_outbldg_notes_label">Outbuilding Notes</string>
-  <string name="RBCA_units_res_label"># of Residential Units</string>
-  <string name="RBCA_units_comm_label"># of Commercial Units</string>
-  <string name="RBCA_occu_name_label">Occupant Name</string>
-  <string name="RBCA_occu_phone_label">Occupant Phone</string>
-  <string name="RBCA_occu_notes_label">Occupant Notes</string>
+  <string name="RBCA_bldg_occucy_label">Occupancy</string>
+  <string name="RBCA_bldg_occucy_available_label">Is occupant information available?</string>
+  <string name="RBCA_bldg_stories_label"># of stories above</string>
+  <string name="RBCA_bldg_width_label">Approximate Width</string>
+  <string name="RBCA_bldg_length_label">Approximate Length</string>
+  <string name="RBCA_bldg_use_label">Use(s)</string>
+  <string name="RBCA_bldg_outbldg_label">Outbuildings and Other Structures (detached)</string>
+  <string name="RBCA_bldg_outbldg_notes_label">Outbuilding Notes</string>
+  <string name="RBCA_bldg_units_res_label"># of Residential Units</string>
+  <string name="RBCA_bldg_units_comm_label"># of Commercial Units</string>
+  <string name="RBCA_bldg_occu_name_label">Occupant Name</string>
+  <string name="RBCA_bldg_occu_phone_label">Occupant Phone</string>
+  <string name="RBCA_bldg_notes_label">Occupant Notes</string>
   <string name="RBCA_hist_desig_label">Historic Designation</string>
   <string name="RBCA_hist_dist_label">Is property located in historic district?</string>
   <string name="RBCA_hist_dist_name_label">Historic District Name</string>
