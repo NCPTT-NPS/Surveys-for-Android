@@ -187,7 +187,16 @@ public class ViewPostFragment extends Fragment {
                 + "\n\n" + "Occupant Phone: "+post.getRBCA_bldg_occu_phone()
                 + "\n\n" + "Notes: "+post.getRBCA_bldg_notes()
                 + "\n\n" + "Historic Designation: "+post.getRBCA_hist_desig()
-                + "\n\n" + "Hist Designation Other: "+post.getRBCA_hist_desig_oth());
+                + "\n\n" + "Hist Designation Other: "+post.getRBCA_hist_desig_oth()
+                + "\n\n" + "Located Historic District?: "+post.getRBCA_hist_dist()
+                + "\n\n" + "Historic Distrit Name: "+post.getRBCA_hist_dist_name()
+                + "\n\n" + "Potentially Eligible: "+post.getRBCA_hist_appear()
+                + "\n\n" + "Building Age: "+post.getRBCA_hist_age()
+                + "\n\n" + "Age Is: "+post.getRBCA_hist_age_meta()
+                + "\n\n" + "Actual Year Built: "+post.getRBCA_hist_yr_built()
+                + "\n\n" + "Damage Date: "+post.getRBCA_dmg_date()
+                + "\n\n" + "Damage Source: "+post.getRBCA_dmg_source()
+                + "\n\n" + "Damage Source Oth: "+post.getRBCA_dmg_source_oth());
         
 
         String htmlText = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"webview.css\" /></head><body><div id=\"container\">"

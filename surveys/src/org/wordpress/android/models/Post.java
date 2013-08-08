@@ -43,10 +43,15 @@ public class Post {
     
     //Fields added Jorge Rodriguez
     private String rbca_coord_loc,rbca_bldg_use,rbca_bldg_use_oth, rbca_bldg_outbldg_notes,rbca_bldg_occu_name,rbca_bldg_notes;
-    private double RBCA_altitude, RBCA_accuracy, rbca_bldg_stories, rbca_bldg_width, rbca_bldg_length;
-    private String rbca_coord_notes, rbca_addr_no, rbca_addr_street, rbca_bldg_area, rbca_bldg_posting;
+    private double RBCA_altitude, RBCA_accuracy, rbca_bldg_stories, rbca_bldg_width, rbca_bldg_length,rbca_flood_depth;
+    private String rbca_coord_notes, rbca_addr_no, rbca_addr_street, rbca_bldg_area, rbca_bldg_posting,rbca_flood_sed,rbca_flood_sed_oth;
     private String rbca_bldg_posting_oth, rbca_coord_loc_oth,rbca_coord_corner,rbca_bldg_occucy, rbca_hist_desig, rbca_hist_desig_oth;
+    private String rbca_hist_dist, rbca_hist_dist_name, rbca_hist_age_meta, rbca_dmg_source, rbca_dmg_source_oth,rbca_dmg_desc;
     private int rbca_bldg_occucy_avail, rbca_bldg_outbldg,rbca_bldg_units_res, rbca_bldg_units_comm, rbca_bldg_occu_phone;
+    private int rbca_hist_appear, rbca_hist_age,rbca_hist_yr_built,rbca_dmg_date, rbca_dmg_total,rbca_struct,rbca_found,rbca_extwall;
+    private String rbca_flood_water,rbca_flood_water_oth,rbca_flood_entry,rbca_flood_entry_oth,rbca_flood_notes,rbca_struct_type;
+    private String rbca_struct_type_oth,rbca_struct_notes,rbca_found_type,rbca_found_type_oth,rbca_found_notes,rbca_extwall_mat,rbca_extwall_mat_oth;
+    private String rbca_extwall_notes,rbca_extfeat_type,rbca_extfeat_type_oth;
     
     //end of Field added
     
@@ -133,8 +138,17 @@ public class Post {
             this.rbca_bldg_notes = postVals.get(51).toString();
             this.rbca_hist_desig = postVals.get(52).toString();
             this.rbca_hist_desig_oth = postVals.get(53).toString();
+            this.rbca_hist_dist = postVals.get(54).toString();
+            this.rbca_hist_dist_name = postVals.get(55).toString(); 
+            this.rbca_hist_appear = (Integer) postVals.get(56);
+            this.rbca_hist_age = (Integer) postVals.get(57);  
+            this.rbca_hist_age_meta = postVals.get(58).toString();
+            this.rbca_hist_yr_built = (Integer) postVals.get(59);
+            this.rbca_dmg_date = (Integer) postVals.get(60);
+            this.rbca_dmg_source = postVals.get(61).toString();
+            this.rbca_dmg_source_oth = postVals.get(62).toString();
             //
-            this.isLocalChange = (Integer) postVals.get(54) > 0;
+            this.isLocalChange = (Integer) postVals.get(63) > 0;
             
             
         } else {
@@ -147,7 +161,8 @@ public class Post {
             String rbca_coord_loc,String rbca_coord_loc_oth, String rbca_coord_corner, String rbca_coord_notes, String rbca_addr_no, String rbca_addr_street,
             String rbca_bldg_area, String rbca_bldg_posting, String rbca_bldg_posting_oth, String rbca_bldg_occucy, int rbca_bldg_occucy_avail,
             double rbca_bldg_stories,double bldg_width, double bldg_length, String bldg_use, String bldg_use_oth, int rbca_bldg_outbldg, String outbldg_notes, 
-            int units_res, int units_comm, String occu_name, int occu_phone, String occu_notes, String hist_desig, String hist_desig_oth) {
+            int units_res, int units_comm, String occu_name, int occu_phone, String occu_notes, String hist_desig, String hist_desig_oth, String hist_dist, 
+            String hist_dist_name, int hist_appear, int hist_age, String hist_age_meta, int hist_yr_built,int dmg_date, String dmg_source, String dmg_source_oth) {
         // create a new post
         if (createBlogReference) {
             try {
@@ -197,6 +212,15 @@ public class Post {
         this.rbca_bldg_notes = occu_notes;
         this.rbca_hist_desig = hist_desig;
         this.rbca_hist_desig_oth = hist_desig_oth;
+        this.rbca_hist_dist = hist_dist;
+        this.rbca_hist_dist_name = hist_dist_name;
+        this.rbca_hist_appear = hist_appear;
+        this.rbca_hist_age = hist_age;
+        this.rbca_hist_age_meta = hist_age_meta;
+        this.rbca_hist_yr_built = hist_yr_built;
+        this.rbca_dmg_date = dmg_date;
+        this.rbca_dmg_source = dmg_source;
+        this.rbca_dmg_source_oth = dmg_source_oth;
     }
 
     public long getId() {
@@ -693,5 +717,90 @@ public class Post {
         this.rbca_hist_desig_oth = hist_desig_oth;
     }
     
-    //end of modification to SiteCondition
+    public String getRBCA_hist_dist(){
+        return rbca_hist_dist;
+    }
+    
+    public void setRBCA_hist_dist(String hist_dist){
+        this.rbca_hist_dist = hist_dist;
+    }
+    
+    public String getRBCA_hist_dist_name(){
+        return rbca_hist_dist_name;
+    }
+    
+    public void setRBCA_hist_dist_name(String hist_dist_name){
+        this.rbca_hist_dist_name = hist_dist_name;
+    }
+    
+    public int getRBCA_hist_appear(){
+        return rbca_hist_appear;
+    }
+    
+    public void setRBCA_hist_appear(int hist_appear){
+        this.rbca_hist_appear = hist_appear;
+    }
+    
+    public int getRBCA_hist_age(){
+        return rbca_hist_age;
+    }
+    
+    public void setRBCA_hist_age(int hist_age){
+        this.rbca_hist_age = hist_age;
+    }
+    
+    public String getRBCA_hist_age_meta(){
+        return rbca_hist_age_meta;
+    }
+    
+    public void setRBCA_hist_age_meta(String hist_age_meta){
+        this.rbca_hist_age_meta = hist_age_meta;
+    }
+    
+    public int getRBCA_hist_yr_built(){
+        return rbca_hist_yr_built;
+    }
+    
+    public void setRBCA_hist_yr_built(int hist_yr_built){
+        this.rbca_hist_yr_built = hist_yr_built;
+    }
+    
+    public int getRBCA_dmg_date(){
+        return rbca_dmg_date;
+    }
+    
+    public void setRBCA_dmg_date(int dmg_date){
+        this.rbca_dmg_date = dmg_date;
+    }
+    
+    public String getRBCA_dmg_source(){
+        return rbca_dmg_source;
+    }
+    public void setRBCA_dmg_source(String dmg_source){
+        this.rbca_dmg_source = dmg_source;
+    }
+    
+    public String getRBCA_dmg_source_oth(){
+        return rbca_dmg_source_oth;
+    }
+    public void setRBCA_dmg_source_oth(String dmg_source_oth){
+        this.rbca_dmg_source_oth = dmg_source_oth;
+    }
+    
+    /*
+     * 
+    
+    public type getRBCA_what(){
+        return rbca_what;
+    }
+    
+    public void setRBCA_what(type what){
+        this.rbca_what = what;
+    }
+    
+     * 
+     * 
+     */
+    
+    //end of modification SURVEYS
 }

@@ -261,7 +261,6 @@ public class PostUploadService extends Service {
             Map<String, Object> contentStruct = new HashMap<String, Object>();
 
             if (!post.isPage() && post.isLocalDraft()) {
-                System.out.println("Entro aqui a run in background");
                 // add the tagline
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
                 String tagline = "";
@@ -362,7 +361,7 @@ public class PostUploadService extends Service {
                 coord_loc_oth.put("value", post.getRBCA_coord_loc_oth());
                 
                 Map<Object, Object> coord_corner = new HashMap<Object, Object>();
-                coord_corner.put("key", "rbca_loctn2_coord_corner");
+                coord_corner.put("key", "rbca_coord_corner");
                 coord_corner.put("value", post.getRBCA_coord_corner());
                 
                 
@@ -429,6 +428,7 @@ public class PostUploadService extends Service {
                 Map<Object, Object> units_res = new HashMap<Object, Object>();
                 units_res.put("key", "rbca_bldg_units_res");
                 units_res.put("value", post.getRBCA_bldg_units_res());
+                System.out.println(post.getRBCA_bldg_units_res());
                 
                 Map<Object, Object> units_comm = new HashMap<Object, Object>();
                 units_comm.put("key", "rbca_bldg_units_comm");
@@ -454,13 +454,49 @@ public class PostUploadService extends Service {
                 hist_desig_oth.put("key", "rbca_hist_desig_oth");
                 hist_desig_oth.put("value", post.getRBCA_hist_desig_oth());
                 
+                Map<Object, Object> hist_dist = new HashMap<Object, Object>();
+                hist_dist.put("key", "rbca_hist_dist");
+                hist_dist.put("value", post.getRBCA_hist_dist());
+                
+                Map<Object, Object> hist_dist_name = new HashMap<Object, Object>();
+                hist_dist_name.put("key", "rbca_hist_dist_name");
+                hist_dist_name.put("value", post.getRBCA_hist_dist_name());
+                
+                Map<Object, Object> hist_appear = new HashMap<Object, Object>();
+                hist_appear.put("key", "rbca_hist_appear");
+                hist_appear.put("value", post.getRBCA_hist_appear());
+                
+                Map<Object, Object> hist_age = new HashMap<Object, Object>();
+                hist_age.put("key", "rbca_hist_age");
+                hist_age.put("value", post.getRBCA_hist_age());
+                
+                Map<Object, Object> hist_age_meta = new HashMap<Object, Object>();
+                hist_age_meta.put("key", "rbca_hist_age_meta");
+                hist_age_meta.put("value", post.getRBCA_hist_age_meta());
+                
+                Map<Object, Object> hist_yr_built = new HashMap<Object, Object>();
+                hist_yr_built.put("key", "rbca_hist_yr_built");
+                hist_yr_built.put("value", post.getRBCA_hist_yr_built());
+                
+                Map<Object, Object> dmg_date = new HashMap<Object, Object>();
+                dmg_date.put("key", "rbca_dmg_date");
+                dmg_date.put("value", post.getRBCA_dmg_date());
+                
+                Map<Object, Object> dmg_source = new HashMap<Object, Object>();
+                dmg_source.put("key", "rbca_dmg_source");
+                dmg_source.put("value", post.getRBCA_dmg_source());
+                
+                Map<Object, Object> dmg_source_oth = new HashMap<Object, Object>();
+                dmg_source_oth.put("key", "rbca_dmg_source_oth");
+                dmg_source_oth.put("value", post.getRBCA_dmg_source_oth());
                 
     
                 Object[] geo = { coord_loc, coord_loc_oth, coord_corner, coord_notes,
                                 addr_no, addr_street, area, posting, posting_oth ,occupancy,
                                 occupancy_available, stories,width,length,uses,uses_oth,outbldg,
                                 outbldg_notes, units_res, units_comm, occu_name, occu_phone, 
-                                bldg_notes, hist_desig, hist_desig_oth};
+                                bldg_notes, hist_desig, hist_desig_oth, hist_dist, hist_dist_name,hist_appear,hist_age,
+                                hist_age_meta,hist_yr_built,dmg_date,dmg_source,dmg_source_oth};
     
                 contentStruct.put("custom_fields", geo);
             }

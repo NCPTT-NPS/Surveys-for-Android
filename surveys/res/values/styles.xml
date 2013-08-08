@@ -182,5 +182,10 @@
     <style name="WordPressWelcomeStyle">
         <item name="android:layout_gravity">center</item>
     </style>
+    
+    <style name="RbcaYesNoBtn">
+        <item name="android:textOff">@string/no</item>
+        <item name="android:textOn" >@string/yes</item>
+    </style>
 
 </resources>

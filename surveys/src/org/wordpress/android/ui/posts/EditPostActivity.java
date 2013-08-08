@@ -136,13 +136,23 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private RelativeLayout mFormatBar;
     
     ////added Jorge Rodriguez
-    private ToggleButton mRBCA_bldg_occucy_avail, mRBCA_bldg_outbldg;
-    private Spinner mRBCA_bldg_occucy_spinner, mRBCA_coord_loc_spinner, mRBCA_coord_corner_spinner;
+    private ToggleButton mRBCA_bldg_occucy_avail, mRBCA_bldg_outbldg, mRBCA_hist_appear;
+    private Spinner mRBCA_bldg_occucy_spinner, mRBCA_coord_loc_spinner, mRBCA_coord_corner_spinner, mRBCA_hist_dist_spinner;
+    private Spinner mRBCA_hist_age_spinner, mRBCA_hist_age_meta_spinner,mRBCA_dmg_total_spinner,mRBCA_flood_entry_spinner,mRBCA_struct_type_spinner,mRBCA_struct_spinner;
+    private Spinner mRBCA_found_type_spinner, mRBCA_found,mRBCA_extwall_spinner, mRBCA_extfeat_spinner, mRBCA_win_spinner, mRBCA_roof_spinner,mRBCA_int_collect_extant_spinner,mRBCA_landveg,mRBCA_landblt_spinner;
     private EditText mRBCA_coord_notes, mRBCA_addr_no, mRBCA_addr_street, mRBCA_coord_loc_oth, mRBCA_bldg_posting_oth;
     private EditText mRBCA_bldg_stories, mRBCA_bldg_width, mRBCA_bldg_length, mRBCA_bldg_use_oth,mRBCA_bldg_outbldg_notes, mRBCA_bldg_units_res,mRBCA_bldg_units_comm;
-    private EditText mRBCA_bldg_occu_name, mRBCA_bldg_occu_phone, mRBCA_bldg_notes,mRBCA_hist_desig_oth;
+    private EditText mRBCA_bldg_occu_name, mRBCA_bldg_occu_phone, mRBCA_bldg_notes,mRBCA_hist_desig_oth,mRBCA_hist_dist_name;
+    private EditText mRBCA_hist_yr_built, mRBCA_dmg_date,  mRBCA_dmg_source_oth, mRBCA_dmg_desc,mRBCA_flood_water_oth,mRBCA_flood_entry_oth;
+    private EditText mRBCA_flood_depth, mRBCA_flood_sed_oth,mRBCA_flood_notes, mRBCA_struct_type_oth,mRBCA_struct_notes,mRBCA_found_type_oth;
+    private EditText mRBCA_found_notes, mRBCA_extwall_mat_oth,mRBCA_extwall_notes, mRBCA_extfeat_type_oth,mRBCA_extfeat_notes,mRBCA_win_type_oth;
+    private EditText mRBCA_win_mat_oth, mRBCA_win_notes,mRBCA_roof_type_oth, mRBCA_roof_mat_oth,mRBCA_roof_notes,mRBCA_int_collect_type_oth;
+    private EditText mRBCA_int_notes,mRBCA_landveg_feat_oth,mRBCA_landveg_notes,mRBCA_landblt_feat_oth,mRBCA_landblt_notes;
     
-    protected Button mRBCA_bldg_area_select,mRBCA_bldg_posting_select,mRBCA_bldg_use_select, mRBCA_hist_desig_select ;
+    protected Button mRBCA_bldg_area_select,mRBCA_bldg_posting_select,mRBCA_bldg_use_select, mRBCA_hist_desig_select, mRBCA_dmg_source_select;
+    protected Button mRBCA_flood_water_select, mRBCA_flood_sed_select, mRBCA_extwall_mat_select,mRBCA_extfeat_type_select,mRBCA_win_type_select;
+    protected Button mRBCA_win_mat_select,mRBCA_roof_type_select,mRBCA_roof_mat_select,mRBCA_int_cond_select, mRBCA_int_collect_type_select,mRBCA_landveg_feat_select;
+    protected Button mRBCA_landblt_fea;
     
     protected CharSequence[] AreaAssessed = { "Exterior", "Interior" };
     protected CharSequence[] PostingChoices = {"Inspected", "Restricted Use", "Unsafe", "Further Evaluation","Other"};
@@ -150,12 +160,15 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                                                 "Museum" , "School" , "Religious" , "Cemetery" , "Library/Archive",
                                                 "Hospital/Health Care", "Farming", "Military", "Other"};
     protected CharSequence[] desigChoices = {"National Landmark","NR Listed", "State", "Other"};
+    protected CharSequence[] dmgSourceChoices = {"Earth Movement","Fire", "Flood/Water", "Snow/Ice","Wind","Chemical","Explosion","Other"};
     
     protected ArrayList<CharSequence> selectedChoices = new ArrayList<CharSequence>();
     protected CharSequence[] Choices;
     protected Button strdButton;
     
-    ////// end jorge 
+    Calendar dateTime=Calendar.getInstance();
+    
+    ////// end surveys for android
     
     
     private Location mCurrentLocation;
@@ -209,7 +222,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mCategories = new JSONArray();
         mAutoSaveHandler = new Handler();
         mSelectedCategories = new Vector<String>();
-
+        
+        
         String action = getIntent().getAction();
         if (Intent.ACTION_SEND.equals(action) || Intent.ACTION_SEND_MULTIPLE.equals(action)) {
             // we arrived here from a share action
@@ -299,36 +313,43 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         
         ////////////////////////added Surveys for Android
        
-        mRBCA_coord_loc_spinner = (Spinner) findViewById(R.id.RBCA_coord_loc_spinner);
-        mRBCA_coord_loc_oth = (EditText) findViewById(R.id.RBCA_coord_loc_oth);
-        mRBCA_coord_corner_spinner = (Spinner) findViewById(R.id.RBCA_coord_corner_spinner);
-        mRBCA_coord_notes = (EditText) findViewById(R.id.RBCA_coord_notes);
-        mRBCA_addr_no = (EditText) findViewById(R.id.RBCA_addr_no);
-        mRBCA_addr_street = (EditText) findViewById(R.id.RBCA_addr_street);
-        mRBCA_bldg_area_select = (Button) findViewById(R.id.RBCA_bldg_area_select);
-        mRBCA_bldg_posting_select = (Button) findViewById(R.id.RBCA_bldg_posting_select);
-        mRBCA_bldg_posting_oth = (EditText) findViewById(R.id.RBCA_bldg_posting_oth);
-        mRBCA_bldg_occucy_spinner = (Spinner) findViewById(R.id.RBCA_bldg_occucy);
-        mRBCA_bldg_occucy_avail = (ToggleButton) findViewById(R.id.RBCA_bldg_occucy_available);
-        mRBCA_bldg_occucy_avail.setText("No");
-        mRBCA_bldg_stories = (EditText) findViewById(R.id.RBCA_bldg_stories);
-        mRBCA_bldg_width = (EditText) findViewById(R.id.RBCA_bldg_width);
-        mRBCA_bldg_length = (EditText) findViewById(R.id.RBCA_bldg_length);
-        mRBCA_bldg_use_select = (Button) findViewById(R.id.RBCA_bldg_use_select);
-        mRBCA_bldg_use_oth = (EditText) findViewById(R.id.RBCA_bldg_use_oth);
-        mRBCA_bldg_outbldg = (ToggleButton) findViewById(R.id.RBCA_bldg_outbldg);
-        mRBCA_bldg_outbldg_notes = (EditText) findViewById(R.id.RBCA_bldg_outbldg_notes);
-        mRBCA_bldg_units_res = (EditText) findViewById(R.id.RBCA_bldg_units_res);
-        mRBCA_bldg_units_comm = (EditText) findViewById(R.id.RBCA_bldg_units_comm);
-        mRBCA_bldg_occu_name = (EditText) findViewById(R.id.RBCA_bldg_occu_name);
-        mRBCA_bldg_occu_phone = (EditText) findViewById(R.id.RBCA_bldg_occu_phone);
-        mRBCA_bldg_notes = (EditText) findViewById(R.id.RBCA_bldg_notes);
-        mRBCA_hist_desig_select = (Button) findViewById(R.id.RBCA_hist_desig_select);
-        mRBCA_hist_desig_oth = (EditText) findViewById(R.id.RBCA_hist_desig_oth);
-        
-        mRBCA_bldg_units_res.setInputType(InputType.TYPE_CLASS_NUMBER);
+        mRBCA_coord_loc_spinner = (Spinner) findViewById(R.id.rbca_coord_loc_spinner);
+        mRBCA_coord_loc_oth = (EditText) findViewById(R.id.rbca_coord_loc_oth);
+        mRBCA_coord_corner_spinner = (Spinner) findViewById(R.id.rbca_coord_corner_spinner);
+        mRBCA_coord_notes = (EditText) findViewById(R.id.rbca_coord_notes);
+        mRBCA_addr_no = (EditText) findViewById(R.id.rbca_addr_no);
+        mRBCA_addr_street = (EditText) findViewById(R.id.rbca_addr_street);
+        mRBCA_bldg_area_select = (Button) findViewById(R.id.rbca_bldg_area_select);
+        mRBCA_bldg_posting_select = (Button) findViewById(R.id.rbca_bldg_posting_select);
+        mRBCA_bldg_posting_oth = (EditText) findViewById(R.id.rbca_bldg_posting_oth);
+        mRBCA_bldg_occucy_spinner = (Spinner) findViewById(R.id.rbca_bldg_occucy);
+        mRBCA_bldg_occucy_avail = (ToggleButton) findViewById(R.id.rbca_bldg_occucy_available);
+        mRBCA_bldg_stories = (EditText) findViewById(R.id.rbca_bldg_stories);
+        mRBCA_bldg_width = (EditText) findViewById(R.id.rbca_bldg_width);
+        mRBCA_bldg_length = (EditText) findViewById(R.id.rbca_bldg_length);
+        mRBCA_bldg_use_select = (Button) findViewById(R.id.rbca_bldg_use_select);
+        mRBCA_bldg_use_oth = (EditText) findViewById(R.id.rbca_bldg_use_oth);
+        mRBCA_bldg_outbldg = (ToggleButton) findViewById(R.id.rbca_bldg_outbldg);
+        mRBCA_bldg_outbldg_notes = (EditText) findViewById(R.id.rbca_bldg_outbldg_notes);
+        mRBCA_bldg_units_res = (EditText) findViewById(R.id.rbca_bldg_units_res);
+        mRBCA_bldg_units_comm = (EditText) findViewById(R.id.rbca_bldg_units_comm);
+        mRBCA_bldg_occu_name = (EditText) findViewById(R.id.rbca_bldg_occu_name);
+        mRBCA_bldg_occu_phone = (EditText) findViewById(R.id.rbca_bldg_occu_phone);
+        mRBCA_bldg_notes = (EditText) findViewById(R.id.rbca_bldg_notes);
+        mRBCA_hist_desig_select = (Button) findViewById(R.id.rbca_hist_desig_select);
+        mRBCA_hist_desig_oth = (EditText) findViewById(R.id.rbca_hist_desig_oth);
+        mRBCA_hist_dist_spinner = (Spinner) findViewById(R.id.rbca_hist_dist);
+        mRBCA_hist_dist_name = (EditText) findViewById(R.id.rbca_hist_dist_name);
+        mRBCA_hist_appear = (ToggleButton) findViewById(R.id.rbca_hist_appear);
+        mRBCA_hist_age_spinner = (Spinner) findViewById(R.id.rbca_hist_age);
+        mRBCA_hist_age_meta_spinner = (Spinner) findViewById(R.id.rbca_hist_age_meta);
+        mRBCA_hist_yr_built = (EditText) findViewById(R.id.rbca_hist_yr_built);
+        mRBCA_dmg_date = (EditText) findViewById(R.id.rbca_dmg_date);
+        mRBCA_dmg_source_select = (Button) findViewById(R.id.rbca_dmg_source_select);
+        mRBCA_dmg_source_oth = (EditText) findViewById(R.id.rbca_dmg_source_oth);
+         
        
-        //////////////////////////end Surverys for Android
+        //////////////////////////end Surveys for Android
         
         
 
@@ -337,28 +358,44 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ((TextView) findViewById(R.id.postFormatLabel)).setText(getResources().getString(R.string.post_format).toUpperCase());
         ((TextView) findViewById(R.id.pubDateLabel)).setText(getResources().getString(R.string.publish_date).toUpperCase());
         
-        //////////////////added Surverys for Android
-        ((TextView) findViewById(R.id.RBCA_coord_loc_label)).setText(getResources().getString(R.string.RBCA_coord_loc).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_coord_corner_label)).setText(getResources().getString(R.string.RBCA_coord_corner_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_area_label)).setText(getResources().getString(R.string.RBCA_bldg_area_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_posting_label)).setText(getResources().getString(R.string.RBCA_bldg_posting_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_posting_oth_label)).setText(getResources().getString(R.string.RBCA_other_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_occucy_label)).setText(getResources().getString(R.string.RBCA_bldg_occucy_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_occucy_available_label)).setText(getResources().getString(R.string.RBCA_bldg_occucy_available_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_stories_label)).setText(getResources().getString(R.string.RBCA_bldg_stories_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_width_label)).setText(getResources().getString(R.string.RBCA_bldg_width_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_length_label)).setText(getResources().getString(R.string.RBCA_bldg_length_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_use_label)).setText(getResources().getString(R.string.RBCA_bldg_use_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_use_oth_label)).setText(getResources().getString(R.string.RBCA_other_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_outbldg_label)).setText(getResources().getString(R.string.RBCA_bldg_outbldg_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_outbldg_notes_label)).setText(getResources().getString(R.string.RBCA_bldg_outbldg_notes_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_units_res_label)).setText(getResources().getString(R.string.RBCA_bldg_units_res_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_units_comm_label)).setText(getResources().getString(R.string.RBCA_bldg_units_comm_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_occu_name_label)).setText(getResources().getString(R.string.RBCA_bldg_occu_name_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_occu_phone_label)).setText(getResources().getString(R.string.RBCA_bldg_occu_phone_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_bldg_notes_label)).setText(getResources().getString(R.string.RBCA_bldg_notes_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_hist_desig_label)).setText(getResources().getString(R.string.RBCA_hist_desig_label).toUpperCase());
-        ((TextView) findViewById(R.id.RBCA_hist_desig_oth_label)).setText(getResources().getString(R.string.RBCA_other_label).toUpperCase());
+        //////////////////added Surveys for Android
+        ((TextView) findViewById(R.id.title_label)).setText(getResources().getString(R.string.title).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_coord_loc_label)).setText(getResources().getString(R.string.rbca_coord_loc).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_coord_loc_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_coord_notes_label)).setText(getResources().getString(R.string.rbca_coord_notes_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_coord_corner_label)).setText(getResources().getString(R.string.rbca_coord_corner_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_addr_no_label)).setText(getResources().getString(R.string.rbca_addr_no_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_addr_street_label)).setText(getResources().getString(R.string.rbca_addr_street_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_area_label)).setText(getResources().getString(R.string.rbca_bldg_area_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_posting_label)).setText(getResources().getString(R.string.rbca_bldg_posting_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_posting_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_occucy_label)).setText(getResources().getString(R.string.rbca_bldg_occucy_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_occucy_available_label)).setText(getResources().getString(R.string.rbca_bldg_occucy_available_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_stories_label)).setText(getResources().getString(R.string.rbca_bldg_stories_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_width_label)).setText(getResources().getString(R.string.rbca_bldg_width_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_length_label)).setText(getResources().getString(R.string.rbca_bldg_length_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_use_label)).setText(getResources().getString(R.string.rbca_bldg_use_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_use_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_outbldg_label)).setText(getResources().getString(R.string.rbca_bldg_outbldg_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_outbldg_notes_label)).setText(getResources().getString(R.string.rbca_bldg_outbldg_notes_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_units_res_label)).setText(getResources().getString(R.string.rbca_bldg_units_res_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_units_comm_label)).setText(getResources().getString(R.string.rbca_bldg_units_comm_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_occu_name_label)).setText(getResources().getString(R.string.rbca_bldg_occu_name_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_occu_phone_label)).setText(getResources().getString(R.string.rbca_bldg_occu_phone_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_bldg_notes_label)).setText(getResources().getString(R.string.rbca_bldg_notes_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_hist_desig_label)).setText(getResources().getString(R.string.rbca_hist_desig_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_hist_desig_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_hist_dist_label)).setText(getResources().getString(R.string.rbca_hist_dist_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_hist_dist_name_label)).setText(getResources().getString(R.string.rbca_hist_dist_name_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_hist_appear_label)).setText(getResources().getString(R.string.rbca_hist_appear_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_hist_age_label)).setText(getResources().getString(R.string.rbca_hist_age_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_hist_age_meta_label)).setText(getResources().getString(R.string.rbca_hist_age_meta_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_hist_yr_built_label)).setText(getResources().getString(R.string.rbca_hist_yr_built_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_dmg_date_label)).setText(getResources().getString(R.string.rbca_dmg_date_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_dmg_source_label)).setText(getResources().getString(R.string.rbca_dmg_source_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_dmg_source_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
+        
+        
         
         
         
@@ -422,8 +459,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         }
 
         //Surveys for Android/////////////////  ARRAY ADAPTERS FOR SPINNERS 
-        String[] coord_loc = new String[] { getResources().getString(R.string.RBCA_entrance_label), getResources().getString(R.string.RBCA_corner_label),
-                getResources().getString(R.string.RBCA_other_label)};
+        String[] coord_loc = new String[] { getResources().getString(R.string.rbca_entrance_label), getResources().getString(R.string.rbca_corner_label),
+                getResources().getString(R.string.rbca_other_label)};
 
         ArrayAdapter<String> coord_loc_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, coord_loc);
         coord_loc_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -440,12 +477,32 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         
         
         String[] occupancy = new String[] { getResources().getString(R.string.Occupied), getResources().getString(R.string.Vacant),
-                getResources().getString(R.string.Unknown)};
+                getResources().getString(R.string.unknown)};
 
         ArrayAdapter<String> occupancyAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, occupancy);
         occupancyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mRBCA_bldg_occucy_spinner.setAdapter(occupancyAdapter);
         
+        String[] hist_dist = new String[] { getResources().getString(R.string.yes), getResources().getString(R.string.no),
+                getResources().getString(R.string.unknown)};
+
+        ArrayAdapter<String> histDistAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, hist_dist);
+        histDistAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mRBCA_hist_dist_spinner.setAdapter(histDistAdapter);
+        
+        String[] hist_age = new String[] { getResources().getString(R.string.rbca_hist_age_lt50_label), getResources().getString(R.string.rbca_hist_age_betfifty100_label),
+                getResources().getString(R.string.rbca_hist_age_gt100_label)};
+
+        ArrayAdapter<String> histAgeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, hist_age);
+        histAgeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mRBCA_hist_age_spinner.setAdapter(histAgeAdapter);
+        
+        String[] hist_age_meta = new String[] { getResources().getString(R.string.estimated), getResources().getString(R.string.verified),
+                getResources().getString(R.string.reported)};
+
+        ArrayAdapter<String> histAgeMetaAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, hist_age_meta);
+        histAgeMetaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mRBCA_hist_age_meta_spinner.setAdapter(histAgeMetaAdapter);
         
         
         
@@ -531,7 +588,9 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (mPost.getWP_password() != null)
                 mPasswordEditText.setText(mPost.getWP_password());
             
-            ///////////////////Surverys for Android
+            
+            
+            ///////////////////SURVEYS FOR ANDROID ///////////////
             if (mPost.getRBCA_coord_loc() != null){
                 String rbca_coord_loc = mPost.getRBCA_coord_loc();
                 
@@ -596,7 +655,6 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             if (mPost.getRBCA_bldg_occucy() !=null){
                 String occupancy1 = mPost.getRBCA_bldg_occucy();
-                
                 if (occupancy.equals("Occupied")) {
                     mRBCA_bldg_occucy_spinner.setSelection(0, true);
                 } else if (occupancy1.equals("Vacant")) {
@@ -606,72 +664,110 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 }
             }
             
-            
             int occucyAvailable = mPost.getRBCA_bldg_occucy_avail();
             if (occucyAvailable == 1)
-                mRBCA_bldg_occucy_avail.setTextOn(getString(R.string.yes));
-            if (occucyAvailable == 0)
-                mRBCA_bldg_occucy_avail.setTextOff(getString(R.string.no));
+                mRBCA_bldg_occucy_avail.toggle();
             
             if (mPost.getRBCA_bldg_stories() != 0.0){
-                
-                mRBCA_bldg_stories.setText(Double.toString(mPost.getRBCA_bldg_stories())) ;
-            }
+                mRBCA_bldg_stories.setText(Double.toString(mPost.getRBCA_bldg_stories()));}
             
             if (mPost.getRBCA_bldg_width() != 0.0){
-                mRBCA_bldg_width.setText(Double.toString(mPost.getRBCA_bldg_width())) ;
-            }
+                mRBCA_bldg_width.setText(Double.toString(mPost.getRBCA_bldg_width()));}
             
             if (mPost.getRBCA_bldg_length() != 0.0){
-                mRBCA_bldg_length.setText(Double.toString(mPost.getRBCA_bldg_length())) ;
-            }
+                mRBCA_bldg_length.setText(Double.toString(mPost.getRBCA_bldg_length()));}
             
             if (mPost.getRBCA_bldg_use() != null){
-                mRBCA_bldg_use_select.setText(mPost.getRBCA_bldg_use()) ;
-            }
+                mRBCA_bldg_use_select.setText(mPost.getRBCA_bldg_use());}
             
             if (mPost.getRBCA_bldg_use_oth() != null){
-                mRBCA_bldg_use_oth.setText(mPost.getRBCA_bldg_use_oth()) ;
-            }
+                mRBCA_bldg_use_oth.setText(mPost.getRBCA_bldg_use_oth());}
             
             int outbldg = mPost.getRBCA_bldg_outbldg();
-            if (outbldg == 1)
-                mRBCA_bldg_outbldg.setTextOn(getString(R.string.yes));
-            if (outbldg == 0)
-                mRBCA_bldg_outbldg.setTextOff(getString(R.string.no));
+            if (outbldg == 1){
+                mRBCA_bldg_outbldg.toggle();}
             
             if (mPost.getRBCA_bldg_outbldg_notes() != null){
-                mRBCA_bldg_outbldg_notes.setText(mPost.getRBCA_bldg_outbldg_notes()) ;
-            }
+                mRBCA_bldg_outbldg_notes.setText(mPost.getRBCA_bldg_outbldg_notes());}
             
             if (mPost.getRBCA_bldg_units_res() != 0){
-                mRBCA_bldg_units_res.setText(Double.toString(mPost.getRBCA_bldg_units_res())) ;
-            }
+                mRBCA_bldg_units_res.setText(Integer.toString(mPost.getRBCA_bldg_units_res()));}
             
             if (mPost.getRBCA_bldg_units_comm() != 0){
-                mRBCA_bldg_units_comm.setText(Double.toString(mPost.getRBCA_bldg_units_comm())) ;
-            }
+                mRBCA_bldg_units_comm.setText(Integer.toString(mPost.getRBCA_bldg_units_comm()));}
             
             if (mPost.getRBCA_bldg_occu_name() != null){
-                mRBCA_bldg_occu_name.setText(mPost.getRBCA_bldg_occu_name()) ;
-            }
+                mRBCA_bldg_occu_name.setText(mPost.getRBCA_bldg_occu_name());}
             
             if (mPost.getRBCA_bldg_occu_phone() != 0){
-                mRBCA_bldg_occu_phone.setText(Double.toString(mPost.getRBCA_bldg_occu_phone())) ;
-            }
+                mRBCA_bldg_occu_phone.setText(Integer.toString(mPost.getRBCA_bldg_occu_phone()));}
             
             if (mPost.getRBCA_bldg_notes() != null){
-                mRBCA_bldg_notes.setText(mPost.getRBCA_bldg_notes()) ;
-            }
+                mRBCA_bldg_notes.setText(mPost.getRBCA_bldg_notes());}
             
             if (mPost.getRBCA_hist_desig() != null){
-                mRBCA_hist_desig_select.setText(mPost.getRBCA_hist_desig()) ;
-            }
+                mRBCA_hist_desig_select.setText(mPost.getRBCA_hist_desig());}
             
             if (mPost.getRBCA_hist_desig_oth() != null){
-                mRBCA_hist_desig_oth.setText(mPost.getRBCA_hist_desig_oth()) ;
+                mRBCA_hist_desig_oth.setText(mPost.getRBCA_hist_desig_oth());}
+            
+            if (mPost.getRBCA_hist_dist() !=null){
+                String hist_dist1 = mPost.getRBCA_hist_dist();
+                if (hist_dist1.equals("Yes")) {
+                    mRBCA_hist_dist_spinner.setSelection(0, true);
+                } else if (hist_dist1.equals("No")) {
+                    mRBCA_hist_dist_spinner.setSelection(1, true);
+                } else if (hist_dist1.equals("Unknown")) {
+                    mRBCA_hist_dist_spinner.setSelection(2, true);
+                }
             }
             
+            if (mPost.getRBCA_hist_dist_name() != null){
+                mRBCA_hist_dist_name.setText(mPost.getRBCA_hist_dist_name());}
+            
+            int hist_appear = mPost.getRBCA_hist_appear();
+            if (hist_appear == 1)
+                mRBCA_hist_appear.toggle();
+            
+            if (mPost.getRBCA_hist_age() > 0 ){
+                int hist_age1 = mPost.getRBCA_hist_age();
+                switch (hist_age1){
+                    case 1:
+                        mRBCA_hist_age_spinner.setSelection(0);
+                        break;
+                    case 2:
+                        mRBCA_hist_age_spinner.setSelection(1);
+                        break;
+                    case 3:
+                        mRBCA_hist_age_spinner.setSelection(2);
+                        break;
+                }
+            }
+            
+            if (mPost.getRBCA_hist_age_meta() !=null){
+                String hist_age_meta1 = mPost.getRBCA_hist_age_meta();
+                if (hist_age_meta1.equals("Estimated")) {
+                    mRBCA_hist_age_meta_spinner.setSelection(0, true);
+                } else if (hist_age_meta1.equals("Verified")) {
+                    mRBCA_hist_age_meta_spinner.setSelection(1, true);
+                } else if (hist_age_meta1.equals("Reported")) {
+                    mRBCA_hist_age_meta_spinner.setSelection(2, true);
+                }
+            }
+
+            if (mPost.getRBCA_hist_yr_built() != 0){
+                mRBCA_hist_yr_built.setText(Integer.toString(mPost.getRBCA_hist_yr_built()));}
+            
+            if (mPost.getRBCA_dmg_date() != 0){
+                mRBCA_dmg_date.setText(Integer.toString(mPost.getRBCA_dmg_date()));}
+            
+            if (mPost.getRBCA_dmg_source() != null){
+                mRBCA_dmg_source_select.setText(mPost.getRBCA_dmg_source());
+            }
+            
+            if (mPost.getRBCA_dmg_source_oth() != null){
+                mRBCA_dmg_source_oth.setText(mPost.getRBCA_dmg_source_oth());
+            }
             
             
             /////////////////////////end SURVEYS FOR ANDROID
@@ -755,6 +851,9 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_bldg_use_select.setOnClickListener(this);
         mRBCA_bldg_outbldg.setOnClickListener(this);    
         mRBCA_hist_desig_select.setOnClickListener(this);
+        mRBCA_hist_appear.setOnClickListener(this);
+        mRBCA_dmg_source_select.setOnClickListener(this);
+        //mRBCA_dmg_date.setOnClickListener(this);
         /////end surverys for android
     }
 
@@ -968,18 +1067,24 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setLongitude(0.0);
             }
             mLocationText.setText("");
-        } else if (id == R.id.RBCA_bldg_area_select){////ESTO LO AGREGE YO! Surveys for Android
+        } else if (id == R.id.rbca_bldg_area_select){////ESTO LO AGREGE YO! Surveys for Android
             showSelectionDialog((String) mRBCA_bldg_area_select.getText(),AreaAssessed,mRBCA_bldg_area_select);
-        } else if (id == R.id.RBCA_bldg_posting_select){
+        } else if (id == R.id.rbca_bldg_posting_select){
             showSelectionDialog((String) mRBCA_bldg_posting_select.getText(),PostingChoices,mRBCA_bldg_posting_select);
-        } else if (id == R.id.RBCA_bldg_occucy_available){
+        } else if (id == R.id.rbca_bldg_occucy_available){
             onChangeToggleButton(mRBCA_bldg_occucy_avail);
-        } else if (id == R.id.RBCA_bldg_use_select){
+        } else if (id == R.id.rbca_bldg_use_select){
             showSelectionDialog((String) mRBCA_bldg_use_select.getText(),usesChoices,mRBCA_bldg_use_select);
-        } else if (id == R.id.RBCA_bldg_outbldg){
+        } else if (id == R.id.rbca_bldg_outbldg){
             onChangeToggleButton(mRBCA_bldg_outbldg);
-        } else if (id == R.id.RBCA_hist_desig_select){
+        } else if (id == R.id.rbca_hist_desig_select){
             showSelectionDialog((String) mRBCA_hist_desig_select.getText(), desigChoices,mRBCA_hist_desig_select);
+        } else if (id == R.id.rbca_hist_appear){
+            onChangeToggleButton(mRBCA_hist_appear);
+        } else if (id == R.id.rbca_dmg_date){
+            chooseDate();
+        } else if (id == R.id.rbca_dmg_source_select){
+            showSelectionDialog((String) mRBCA_dmg_source_select.getText(),dmgSourceChoices,mRBCA_dmg_source_select);
         }
             
     }
@@ -1847,18 +1952,20 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (occucyAvailableSelection.equals("Yes"))
                     occucy_available = 1;
             
-            double bldg_stories = 0.0;
-            if (mRBCA_bldg_stories.getText() != null )
-            {
-                bldg_stories = Double.parseDouble(mRBCA_bldg_stories.getText().toString());}
+            double bldg_stories =0.0;
+            if (!mRBCA_bldg_stories.getText().toString().equals("")){
+                bldg_stories = Double.parseDouble(mRBCA_bldg_stories.getText().toString());
+            }
             
             double bldg_width = 0.0;
-            if (mRBCA_bldg_width.getText() != null){
-                bldg_width = Double.parseDouble(mRBCA_bldg_width.getText().toString());}
+            if (!mRBCA_bldg_width.getText().toString().equals("")){
+                bldg_width = Double.parseDouble(mRBCA_bldg_width.getText().toString());
+            }
             
             double bldg_length = 0.0;
-            if (mRBCA_bldg_length.getText() !=null ){
-                bldg_length = Double.parseDouble(mRBCA_bldg_length.getText().toString());}
+            if (!mRBCA_bldg_length.getText().toString().equals("")){
+                bldg_length = Double.parseDouble(mRBCA_bldg_length.getText().toString());
+            }
             
             String uses = mRBCA_bldg_use_select.getText().toString();
             String uses_oth = mRBCA_bldg_use_oth.getText().toString();
@@ -1871,27 +1978,98 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             String outbldg_notes = mRBCA_bldg_outbldg_notes.getText().toString();
             
             int units_res = 0;
-            if (mRBCA_bldg_units_res.getText() !=null ){
+            if (!mRBCA_bldg_units_res.getText().toString().equals("")){
                 units_res = Integer.parseInt(mRBCA_bldg_units_res.getText().toString());
-            }
+            } 
+            
             
             
             int units_comm = 0;
-            if (mRBCA_bldg_units_comm.getText() != null ){
+            if (!mRBCA_bldg_units_comm.getText().toString().equals("")){
                 units_comm = Integer.parseInt(mRBCA_bldg_units_comm.getText().toString());
             }
+            
             
             String occu_name = mRBCA_bldg_occu_name.getText().toString();
             
             int occu_phone = 0;
-            if (mRBCA_bldg_occu_phone.getText() != null ){
-                occu_phone = Integer.parseInt(mRBCA_bldg_occu_phone.getText().toString());}
+            if (!mRBCA_bldg_occu_phone.getText().toString().equals("")){
+                occu_phone = Integer.parseInt(mRBCA_bldg_occu_phone.getText().toString());
+            }
+            
             
             String occu_notes = mRBCA_bldg_notes.getText().toString();
             
             String hist_desig = mRBCA_hist_desig_select.getText().toString();
             
             String hist_desig_oth = mRBCA_hist_desig_oth.getText().toString();
+            
+            int selected_hist_dist = mRBCA_hist_dist_spinner.getSelectedItemPosition();
+            String hist_dist = "";
+
+            switch (selected_hist_dist) {
+            case 0:
+                hist_dist = "Yes";
+                break;
+            case 1:
+                hist_dist = "No";
+                break;
+            case 2:
+                hist_dist = "Unknown";
+                break;
+            }
+            
+            String hist_dist_name = mRBCA_hist_dist_name.getText().toString();
+            
+            String histAppearSelection = mRBCA_hist_appear.getText().toString(); 
+            int hist_appear = 0;
+            if (histAppearSelection.equals("Yes"))
+                    hist_appear = 1;
+            
+            int selected_hist_age = mRBCA_hist_age_spinner.getSelectedItemPosition();
+            int hist_age = 0;
+
+            switch (selected_hist_age) {
+            case 0:
+                hist_age = 1;
+                break;
+            case 1:
+                hist_age = 2;
+                break;
+            case 2:
+                hist_age = 3;
+                break;
+            }
+            
+            int selected_hist_age_meta = mRBCA_hist_age_meta_spinner.getSelectedItemPosition();
+            String hist_age_meta = "";
+
+            switch (selected_hist_age_meta) {
+            case 0:
+                hist_age_meta = "Estimated";
+                break;
+            case 1:
+                hist_age_meta = "Verified";
+                break;
+            case 2:
+                hist_age_meta = "Reported";
+                break;
+            }
+           
+            
+            int hist_yr_built = 0;
+            if (!mRBCA_hist_yr_built.getText().toString().equals("")){
+                hist_yr_built = Integer.parseInt(mRBCA_hist_yr_built.getText().toString());
+            } 
+            
+            int dmg_date = 0;
+            if (!mRBCA_dmg_date.getText().toString().equals("")){
+                dmg_date = Integer.parseInt(mRBCA_dmg_date.getText().toString());
+            } 
+            
+            String dmg_source = mRBCA_dmg_source_select.getText().toString();
+            String dmg_source_oth = mRBCA_dmg_source_oth.getText().toString();
+            
             
             ////////end Surveys fo ANDROID
             
@@ -1933,7 +2111,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost = new Post(mBlogID, title, content, images, pubDateTimestamp, mCategories.toString(), tags, status, password,
                         latitude, longitude, mIsPage, postFormat, true, false,coord_location,coord_loc_oth,coord_corner, 
                         coord_notes, addr_no, addr_street,bldg_area,bldg_posting,bldg_posting_oth,occupancy,occucy_available,bldg_stories,bldg_width,
-                        bldg_length,uses,uses_oth,outbldg, outbldg_notes, units_res, units_comm,occu_name, occu_phone, occu_notes,hist_desig, hist_desig_oth);
+                        bldg_length,uses,uses_oth,outbldg, outbldg_notes, units_res, units_comm,occu_name, occu_phone, occu_notes,hist_desig, hist_desig_oth,
+                        hist_dist, hist_dist_name,hist_appear,hist_age,hist_age_meta, hist_yr_built, dmg_date,dmg_source, dmg_source_oth);
                 mPost.setLocalDraft(true);
 
                 // split up the post content if there's a more tag
@@ -2033,6 +2212,15 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setRBCA_bldg_notes(occu_notes);
                 mPost.setRBCA_hist_desig(hist_desig);
                 mPost.setRBCA_hist_desig_oth(hist_desig_oth);
+                mPost.setRBCA_hist_dist(hist_dist);
+                mPost.setRBCA_hist_dist_name(hist_dist_name);
+                mPost.setRBCA_hist_appear(hist_appear);
+                mPost.setRBCA_hist_age(hist_age);
+                mPost.setRBCA_hist_age_meta(hist_age_meta);
+                mPost.setRBCA_hist_yr_built(hist_yr_built);
+                mPost.setRBCA_dmg_date(dmg_date);
+                mPost.setRBCA_dmg_source(dmg_source);
+                mPost.setRBCA_dmg_source_oth(dmg_source_oth);
                 ////END Surveys for Android 
                 success = mPost.update();
             }
@@ -2556,12 +2744,62 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     protected void onChangeToggleButton(ToggleButton toggleButton){
         if (!toggleButton.isChecked()){
             toggleButton.setChecked(false);
-            toggleButton.setTextOff(getString(R.string.no));
         } else {
             toggleButton.setChecked(true);
-            toggleButton.setTextOn(getString(R.string.yes));
         }
     }
+    
+    
+    public void chooseDate(){
+        new DatePickerDialog(EditPostActivity.this, d, dateTime.get(Calendar.YEAR),dateTime.get(Calendar.MONTH), dateTime.get(Calendar.DAY_OF_MONTH)).show();
+    }
+    
+    DatePickerDialog.OnDateSetListener d=new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,int dayOfMonth) {
+            dateTime.set(Calendar.YEAR,year);
+            dateTime.set(Calendar.MONTH, monthOfYear);
+            dateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabel();
+        }
+    };
+    
+    private void updateLabel() {
+        //timeLabel.setText(formatDateTime.format(dateTime.getTime()));
+    }
+    
+//    private DatePickerDialog customDatePicker() {
+//        DatePickerDialog dpd = new DatePickerDialog(this, mDateSetListner,
+//                mYear, mMonth, mDay);
+//        try {
+//            Field[] datePickerDialogFields = dpd.getClass().getDeclaredFields();
+//            for (Field datePickerDialogField : datePickerDialogFields) {
+//                if (datePickerDialogField.getName().equals("mDatePicker")) {
+//                    datePickerDialogField.setAccessible(true);
+//                    DatePicker datePicker = (DatePicker) datePickerDialogField
+//                            .get(dpd);
+//                    Field datePickerFields[] = datePickerDialogField.getType()
+//                            .getDeclaredFields();
+//                    for (Field datePickerField : datePickerFields) {
+//                        if ("mDayPicker".equals(datePickerField.getName())
+//                                || "mDaySpinner".equals(datePickerField
+//                                        .getName())) {
+//                            datePickerField.setAccessible(true);
+//                            Object dayPicker = new Object();
+//                            dayPicker = datePickerField.get(datePicker);
+//                            ((View) dayPicker).setVisibility(View.GONE);
+//                        }
+//                    }
+//                }
+//            }
+//        } catch (Exception ex) {
+//        }
+//        return dpd;
+  //  }
+
+    
+    
+    
     ///end added
     
     

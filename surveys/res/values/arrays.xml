@@ -10,5 +10,38 @@
         <item>12 Hours</item>
         <item>Daily</item>
     </string-array>
-
+    
+    <string-array name="levelOfDamage">
+        <item>None - no visible damage (0%)</item>
+        <item>Superficial - some damage, still functional (25%)</item>
+        <item>Substantial - significant damage, function impaired (75%)</item>
+        <item>Catastrophic - complete failure (100%)</item>
+    </string-array>
+    
+    <string-array name="floodEntry">
+        <item>Basement/Crawl</item>
+        <item>Other</item>
+    </string-array>
+    
+    <string-array name="structType">
+        <item>Wood Frame</item>
+        <item>Metal Frame</item>
+        <item>Masonry</item>
+        <item>Manufactured</item>
+        <item>Other</item>
+    </string-array>
+    
+    <string-array name="foundType">
+        <item>Slab</item>
+        <item>Basement</item>
+        <item>Stem/Chain Wall</item>
+        <item>Raised Pier/Post</item>
+        <item>Other</item>
+    </string-array>
+    
+    <string-array name="extfeatType">
+        <item>Decorative Elements</item>
+        <item>Porch</item>
+        <item>Other</item>
+	</string-array>
 </resources>

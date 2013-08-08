@@ -53,10 +53,10 @@ public class WordPressDB {
             + "latitude real, longitude real, localDraft boolean default 0, uploaded boolean default 0, isPage boolean default 0, wp_page_parent_id text, wp_page_parent_title text, rbca_coord_loc text default '', "
             + "rbca_coord_loc_oth text default '', rbca_coord_corner text default '', rbca_coord_notes text default '', rbca_addr_no text default '', rbca_addr_street text default '', rbca_bldg_area text default '', "
             + "rbca_bldg_posting text default '', rbca_bldg_posting_oth text default '', rbca_bldg_occucy text default '', rbca_bldg_occucy_avail integer default 0, "
-            + "rbca_bldg_stories real, rbca_bldg_width real, rbca_bldg_length real, rbca_bldg_use text defaul '', rbca_bldg_use_oth text default '',"
+            + "rbca_bldg_stories real, rbca_bldg_width real, rbca_bldg_length real, rbca_bldg_use text default '', rbca_bldg_use_oth text default '',"
             + "rbca_bldg_outbldg integer default 0, rbca_bldg_outbldg_notes text default '', rbca_bldg_units_res integer default 0, rbca_bldg_units_comm integer default 0, rbca_bldg_occu_name text default '', "
             + "rbca_bldg_occu_phone integer default 0, rbca_bldg_notes text default '', rbca_hist_desig text default '', rbca_hist_desig_oth text default '' ," 
-            + "rbca_hist_dist integer default 0, rbca_hist_dist_name text default '', "
+            + "rbca_hist_dist text default '', rbca_hist_dist_name text default '', "
             + "rbca_hist_appear integer default 0, rbca_hist_age integer default 0, rbca_hist_age_meta text default '', "
             + "rbca_hist_yr_built integer default 0, rbca_dmg_date integer default 0, rbca_dmg_source text default '', " 
             + "rbca_dmg_source_oth text default '', rbca_dmg_total integer default 0, rbca_dmg_desc text default '', "
@@ -76,7 +76,7 @@ public class WordPressDB {
             + "rbca_int_collect_type_oth text default '', rbca_int_notes text default '', rbca_landveg_feat text default '', "
             + "rbca_landveg_feat_oth text default '', rbca_landveg integer default 0, rbca_landveg_notes text default '', "
             + "rbca_landblt_feat text default '', rbca_landblt_feat_oth text default '', rbca_landblt integer default 0, "
-            + "rbca_landblt_notes text default '');"; 
+            + "rbca_landblt_notes text default '' );"; 
             		
 
     private static final String CREATE_TABLE_COMMENTS = "create table if not exists comments (blogID text, postID text, iCommentID integer, author text, comment text, commentDate text, commentDateFormatted text, status text, url text, email text, postTitle text);";
@@ -445,7 +445,9 @@ public class WordPressDB {
                             "rbca_coord_corner", "rbca_coord_notes", "rbca_addr_no", "rbca_addr_street",
                             "rbca_bldg_area","rbca_bldg_posting","rbca_bldg_posting_oth","rbca_bldg_occucy","rbca_bldg_occucy_avail", "rbca_bldg_stories", 
                             "rbca_bldg_width","rbca_bldg_length","rbca_bldg_use","rbca_bldg_use_oth","rbca_bldg_outbldg", "rbca_bldg_outbldg_notes", "rbca_bldg_units_res", 
-                            "rbca_bldg_units_comm", "rbca_bldg_occu_name", "rbca_bldg_occu_phone", "rbca_bldg_notes", "RBCA_hist_desig","RBCA_hist_desig_oth"}, null, null, null, null,
+                            "rbca_bldg_units_comm", "rbca_bldg_occu_name", "rbca_bldg_occu_phone", "rbca_bldg_notes", "rbca_hist_desig","rbca_hist_desig_oth",
+                            "rbca_hist_dist", "rbca_hist_dist_name", "rbca_hist_appear","rbca_hist_age","rbca_hist_age_meta", "rbca_hist_yr_built","rbca_dmg_date", 
+                            "rbca_dmg_source", "rbca_dmg_source_oth"}, null, null, null, null,
                             "id desc");
                     int numRows = c.getCount();
                     c.moveToFirst();
@@ -465,7 +467,8 @@ public class WordPressDB {
                                     c.getString(19),c.getString(20),c.getString(21),c.getInt(22),c.getDouble(23),
                                     c.getDouble(24),c.getDouble(25),c.getString(26),c.getString(27),c.getInt(28),
                                     c.getString(29),c.getInt(30),c.getInt(31),c.getString(32),c.getInt(33),
-                                    c.getString(34),c.getString(35),c.getString(36));
+                                    c.getString(34),c.getString(35),c.getString(36), c.getString(37), c.getString(38),
+                                    c.getInt(39),c.getInt(40),c.getString(41),c.getInt(42),c.getInt(43),c.getString(44),c.getString(45));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             savePost(post, c.getInt(0));
@@ -484,7 +487,9 @@ public class WordPressDB {
                             "rbca_addr_street","rbca_bldg_area", "rbca_bldg_posting","rbca_bldg_posting_oth", "rbca_bldg_occucy",
                             "rbca_bldg_occucy_avail","rbca_bldg_stories", "rbca_bldg_width","rbca_bldg_length","rbca_bldg_use",
                             "rbca_bldg_use_oth","rbca_bldg_outbldg", "rbca_bldg_outbldg_notes", "rbca_bldg_units_res", 
-                            "rbca_bldg_units_comm", "rbca_bldg_occu_name", "rbca_bldg_occu_phone", "rbca_bldg_notes", "RBCA_hist_desig", "RBCA_hist_desig_oth"}, null, null, null, null,
+                            "rbca_bldg_units_comm", "rbca_bldg_occu_name", "rbca_bldg_occu_phone", "rbca_bldg_notes", "rbca_hist_desig", "rbca_hist_desig_oth", 
+                            "rbca_hist_dist", "rbca_hist_dist_name","rbca_hist_appear","rbca_hist_age","rbca_hist_age_meta", "rbca_hist_yr_built", "rbca_dmg_date",
+                            "rbca_dmg_source","rbca_dmg_source_oth"}, null, null, null, null,
                             "id desc");
                     numRows = c.getCount();
                     c.moveToFirst();
@@ -500,7 +505,9 @@ public class WordPressDB {
                                     c.getString(15),c.getString(16),c.getString(17),c.getInt(18),
                                     c.getDouble(19),c.getDouble(20),c.getDouble(21),c.getString(22), 
                                     c.getString(23),c.getInt(24),c.getString(25),c.getInt(36),c.getInt(37),
-                                    c.getString(38),c.getInt(39),c.getString(40),c.getString(41), c.getString(42));
+                                    c.getString(38),c.getInt(39),c.getString(40),c.getString(41), c.getString(42),
+                                    c.getString(43), c.getString(44),c.getInt(45),c.getInt(46),c.getString(47),c.getInt(48),
+                                    c.getInt(49),c.getString(50),c.getString(51));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             post.setPage(true);
@@ -1144,6 +1151,7 @@ public class WordPressDB {
                             jsonArray.put(custom_fields[x].toString());
                             // Update geo_long and geo_lat from custom fields, if
                             // found:
+                           
                             Map<?, ?> customField = (Map<?, ?>) custom_fields[x];
                             if (customField.get("key") != null
                                     && customField.get("value") != null) {
@@ -1207,10 +1215,10 @@ public class WordPressDB {
                                 if (customField.get("key").equals("rbca_bldg_outbldg_notes"))
                                     values.put("rbca_bldg_outbldg_notes", (String) customField.get("value"));
                                 
-                                if (customField.get("key").equals("rbca_bldg2_units_res"))
+                                if (customField.get("key").equals("rbca_bldg_units_res"))
                                     values.put("rbca_bldg_units_res", (String) customField.get("value"));
                                 
-                                if (customField.get("key").equals("rbca_bldg2_units_comm"))
+                                if (customField.get("key").equals("rbca_bldg_units_comm"))
                                     values.put("rbca_bldg_units_comm", (String) customField.get("value"));
                                 
                                 if (customField.get("key").equals("rbca_bldg_occu_name"))
@@ -1223,10 +1231,38 @@ public class WordPressDB {
                                     values.put("rbca_bldg_notes", (String) customField.get("value"));
                                 
                                 if (customField.get("key").equals("rbca_hist_desig"))
-                                    values.put("RBCA_hist_desig", (String) customField.get("value"));
+                                    values.put("rbca_hist_desig", (String) customField.get("value"));
                                 
                                 if (customField.get("key").equals("rbca_hist_desig_oth"))
-                                    values.put("RBCA_hist_desig_oth", (String) customField.get("value"));
+                                    values.put("rbca_hist_desig_oth", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_hist_dist"))
+                                    values.put("rbca_hist_dist", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_hist_dist_name"))
+                                    values.put("rbca_hist_dist_name", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_hist_appear"))
+                                    values.put("rbca_hist_appear", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_hist_age"))
+                                    values.put("rbca_hist_age", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_hist_age_meta"))
+                                    values.put("rbca_hist_age_meta", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_hist_yr_built"))
+                                    values.put("rbca_hist_yr_built", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_dmg_date"))
+                                    values.put("rbca_dmg_date", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_dmg_source"))
+                                    values.put("rbca_dmg_source", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_dmg_source_oth"))
+                                    values.put("rbca_dmg_source_oth", (String) customField.get("value"));
+                                
                             }
                         }
                     }
@@ -1322,7 +1358,7 @@ public class WordPressDB {
             values.put("longitude", post.getLongitude());
             values.put("isLocalChange", post.isLocalChange());
             
-            ///added Jorge Rodriguez
+            ///added Surveys for Android
             values.put("rbca_coord_loc", post.getRBCA_coord_loc());
             values.put("rbca_coord_loc_oth", post.getRBCA_coord_loc_oth());
             values.put("rbca_coord_corner" , post.getRBCA_coord_corner());
@@ -1346,9 +1382,18 @@ public class WordPressDB {
             values.put("rbca_bldg_occu_name", post.getRBCA_bldg_occu_name());
             values.put("rbca_bldg_occu_phone" , post.getRBCA_bldg_occu_phone());
             values.put("rbca_bldg_notes", post.getRBCA_bldg_notes());
-            values.put("RBCA_hist_desig", post.getRBCA_hist_desig());
-            values.put("RBCA_hist_desig_oth", post.getRBCA_hist_desig_oth());
-            ///end added Jorge Rodriguez
+            values.put("rbca_hist_desig", post.getRBCA_hist_desig());
+            values.put("rbca_hist_desig_oth", post.getRBCA_hist_desig_oth());
+            values.put("rbca_hist_dist", post.getRBCA_hist_dist());
+            values.put("rbca_hist_dist_name", post.getRBCA_hist_dist_name());
+            values.put("rbca_hist_appear", post.getRBCA_hist_appear());
+            values.put("rbca_hist_age", post.getRBCA_hist_age());
+            values.put("rbca_hist_age_meta", post.getRBCA_hist_age_meta());
+            values.put("rbca_hist_yr_built", post.getRBCA_hist_yr_built());
+            values.put("rbca_dmg_date", post.getRBCA_dmg_date());
+            values.put("rbca_dmg_source", post.getRBCA_dmg_source());
+            values.put("rbca_dmg_source_oth", post.getRBCA_dmg_source_oth());
+            ///end added Surveys for Android
 
             returnValue = db.insert(POSTS_TABLE, null, values);
         }
@@ -1413,8 +1458,17 @@ public class WordPressDB {
             values.put("rbca_bldg_occu_name", post.getRBCA_bldg_occu_name());
             values.put("rbca_bldg_occu_phone" , post.getRBCA_bldg_occu_phone());
             values.put("rbca_bldg_notes", post.getRBCA_bldg_notes());
-            values.put("RBCA_hist_desig", post.getRBCA_hist_desig());
-            values.put("RBCA_hist_desig_oth", post.getRBCA_hist_desig_oth());
+            values.put("rbca_hist_desig", post.getRBCA_hist_desig());
+            values.put("rbca_hist_desig_oth", post.getRBCA_hist_desig_oth());
+            values.put("rbca_hist_dist", post.getRBCA_hist_dist());
+            values.put("rbca_hist_dist_name", post.getRBCA_hist_dist_name());
+            values.put("rbca_hist_appear", post.getRBCA_hist_appear());
+            values.put("rbca_hist_age", post.getRBCA_hist_age());
+            values.put("rbca_hist_age_meta", post.getRBCA_hist_age_meta());
+            values.put("rbca_hist_yr_built", post.getRBCA_hist_yr_built());
+            values.put("rbca_dmg_date", post.getRBCA_dmg_date());
+            values.put("rbca_dmg_source", post.getRBCA_dmg_source());
+            values.put("rbca_dmg_source_oth", post.getRBCA_dmg_source_oth());
             
             int pageInt = 0;
             if (post.isPage())
@@ -1557,7 +1611,16 @@ public class WordPressDB {
                 values.add(c.getString(53));  //rbca_bldg_notes
                 values.add(c.getString(54));  //rbca_hist_desig
                 values.add(c.getString(55));  //rbca_hist_desig_oth
-                values.add(c.getInt(56));     //isLocalChange
+                values.add(c.getString(56));  //rbca_hist_dist
+                values.add(c.getString(57));  //rbca_hist_dist_name
+                values.add(c.getInt(58));     //rbca_hist_appear
+                values.add(c.getInt(59));     //rbca_hist_age
+                values.add(c.getString(60));  //rbca_hist_age_meta
+                values.add(c.getInt(61));     //rbca_hist_yr_built
+                values.add(c.getInt(62));     //rbca_dmg_date
+                values.add(c.getString(63));  //rbca_dmg_source
+                values.add(c.getString(64));  //rbca_dmg_source_oth
+                values.add(c.getInt(65));     //isLocalChange
                 
                 
             }
