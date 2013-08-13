@@ -41,19 +41,23 @@ public class Post {
     private boolean isPage;
     private boolean isLocalChange;
     
-    //Fields added Jorge Rodriguez
+    //Fields added Surveys for Android
     private String rbca_coord_loc,rbca_bldg_use,rbca_bldg_use_oth, rbca_bldg_outbldg_notes,rbca_bldg_occu_name,rbca_bldg_notes;
     private double RBCA_altitude, RBCA_accuracy, rbca_bldg_stories, rbca_bldg_width, rbca_bldg_length,rbca_flood_depth;
     private String rbca_coord_notes, rbca_addr_no, rbca_addr_street, rbca_bldg_area, rbca_bldg_posting,rbca_flood_sed,rbca_flood_sed_oth;
     private String rbca_bldg_posting_oth, rbca_coord_loc_oth,rbca_coord_corner,rbca_bldg_occucy, rbca_hist_desig, rbca_hist_desig_oth;
     private String rbca_hist_dist, rbca_hist_dist_name, rbca_hist_age_meta, rbca_dmg_source, rbca_dmg_source_oth,rbca_dmg_desc;
     private int rbca_bldg_occucy_avail, rbca_bldg_outbldg,rbca_bldg_units_res, rbca_bldg_units_comm, rbca_bldg_occu_phone;
-    private int rbca_hist_appear, rbca_hist_age,rbca_hist_yr_built,rbca_dmg_date, rbca_dmg_total,rbca_struct,rbca_found,rbca_extwall;
+    private int rbca_hist_appear, rbca_hist_age,rbca_hist_yr_built,rbca_dmg_date, rbca_dmg_total,rbca_struct,rbca_found,rbca_extwall,rbca_extfeat;
     private String rbca_flood_water,rbca_flood_water_oth,rbca_flood_entry,rbca_flood_entry_oth,rbca_flood_notes,rbca_struct_type;
     private String rbca_struct_type_oth,rbca_struct_notes,rbca_found_type,rbca_found_type_oth,rbca_found_notes,rbca_extwall_mat,rbca_extwall_mat_oth;
-    private String rbca_extwall_notes,rbca_extfeat_type,rbca_extfeat_type_oth;
+    private String rbca_extwall_notes,rbca_extfeat_type,rbca_extfeat_type_oth, rbca_extfeat_notes,rbca_win_type,rbca_win_type_oth,rbca_win_mat,rbca_win_mat_oth;
+    private int rbca_win,rbca_roof,rbca_int_collect_extant,rbca_landveg,rbca_landblt;
+    private String rbca_win_notes,rbca_roof_type,rbca_roof_type_oth,rbca_roof_mat,rbca_roof_mat_oth,rbca_roof_notes,rbca_int_cond;
+    private String rbca_int_collect_type,rbca_int_collect_type_oth,rbca_int_notes,rbca_landveg_feat,rbca_landveg_feat_oth,rbca_landveg_notes ;
+    private String rbca_landblt_feat, rbca_landblt_feat_oth,rbca_landblt_notes;
     
-    //end of Field added
+    //end of Field added Surveys for Android
     
 
     private String mediaPaths;
@@ -186,7 +190,7 @@ public class Post {
         this.longitude = longitude;
         this.isLocalChange = isLocalChange;
         
-        //added Jorge 
+        //added Surveys for Android 
         this.rbca_coord_loc = rbca_coord_loc;
         this.rbca_coord_loc_oth = rbca_coord_loc_oth;
         this.rbca_coord_corner = rbca_coord_corner;
@@ -787,13 +791,379 @@ public class Post {
         this.rbca_dmg_source_oth = dmg_source_oth;
     }
     
+    public int getRBCA_dmg_total(){
+        return rbca_dmg_total;
+    }
+    
+    public void setRBCA_dmg_total(int dmg_total){
+        this.rbca_dmg_total = dmg_total;
+    }
+    
+    public String getRBCA_dmg_desc(){
+        return rbca_dmg_desc;
+    }
+    
+    public void setRBCA_dmg_desc(String dmg_desc){
+        this.rbca_dmg_desc = dmg_desc;
+    }
+    
+    public String getRBCA_flood_water(){
+        return rbca_flood_water;
+    }
+    
+    public void setRBCA_flood_water(String flood_water){
+        this.rbca_flood_water = flood_water;
+    }
+    
+    public String getRBCA_flood_water_oth(){
+        return rbca_flood_water_oth;
+    }
+    
+    public void setRBCA_flood_water_oth(String flood_water_oth){
+        this.rbca_flood_water_oth = flood_water_oth;
+    }
+    
+    public String getRBCA_flood_entry(){
+        return rbca_flood_entry;
+    }
+    
+    public void setRBCA_flood_entry(String flood_entry){
+        this.rbca_flood_entry = flood_entry;
+    }
+    
+    public String getRBCA_flood_entry_oth(){
+        return rbca_flood_entry_oth;
+    }
+    
+    public void setRBCA_flood_entry_oth(String flood_entry_oth){
+        this.rbca_flood_entry_oth = flood_entry_oth;
+    }
+    
+    public double getRBCA_flood_depth(){
+        return rbca_flood_depth;
+    }
+    
+    public void setRBCA_flood_depth(double flood_depth){
+        this.rbca_flood_depth = flood_depth;
+    }
+    
+    public String getRBCA_flood_sed(){
+        return rbca_flood_sed;
+    }
+    
+    public void setRBCA_flood_sed(String flood_sed){
+        this.rbca_flood_sed = flood_sed;
+    }
+    
+    public String getRBCA_flood_sed_oth(){
+        return rbca_flood_sed_oth;
+    }
+    
+    public void setRBCA_flood_sed_oth(String flood_sed_oth){
+        this.rbca_flood_sed_oth = flood_sed_oth;
+    }
+    
+    public String getRBCA_flood_notes(){
+        return rbca_flood_notes;
+    }
+    
+    public void setRBCA_flood_notes(String flood_notes){
+        this.rbca_flood_notes = flood_notes;
+    }
+    
+    public String getRBCA_struct_type(){
+        return rbca_struct_type;
+    }
+    
+    public void setRBCA_struct_type(String struct_type){
+        this.rbca_struct_type = struct_type;
+    }
+    
+    public String getRBCA_struct_type_oth(){
+        return rbca_struct_type_oth;
+    }
+    
+    public void setRBCA_struct_type_oth(String struct_type_oth){
+        this.rbca_struct_type_oth = struct_type_oth;
+    }
+    
+    public int getRBCA_struct(){
+        return rbca_struct;
+    }
+    public void setRBCA_struct(int struct){
+        this.rbca_struct = struct;
+    }
+    
+    
+    public String getRBCA_struct_notes(){
+        return rbca_struct_notes;
+    }
+    public void setRBCA_struct_notes(String struct_notes){
+        this.rbca_struct_notes = struct_notes;
+    }
+    
+    public String getRBCA_found_type(){
+        return rbca_found_type;
+    }
+    public void setRBCA_found_type(String found_type){
+        this.rbca_found_type = found_type;
+    }
+    
+    public String getRBCA_found_type_oth(){
+        return rbca_found_type_oth;
+    }
+    public void setRBCA_found_type_oth(String found_type_oth){
+        this.rbca_found_type_oth = found_type_oth;
+    }
+    
+    public int getRBCA_found(){
+        return rbca_found;
+    }
+    public void setRBCA_found(int found){
+        this.rbca_found = found;
+    }
+    
+    public String getRBCA_found_notes(){
+        return rbca_found_notes;
+    }
+    public void setRBCA_found_notes(String found_notes){
+        this.rbca_found_notes = found_notes;
+    }
+    
+    public String getRBCA_extwall_mat(){
+        return rbca_extwall_mat;
+    }
+    public void setRBCA_extwall_mat(String extwall_mat){
+        this.rbca_extwall_mat = extwall_mat;
+    }
+    
+    public String getRBCA_extwall_mat_oth(){
+        return rbca_extwall_mat_oth;
+    }
+    public void setRBCA_extwall_mat_oth(String extwall_mat_oth){
+        this.rbca_extwall_mat_oth = extwall_mat_oth;
+    }
+    
+    public int getRBCA_extwall(){
+        return rbca_extwall;
+    }
+    public void setRBCA_extwall(int extwall){
+        this.rbca_extwall = extwall;
+    }
+    
+    public String getRBCA_extwall_notes(){
+        return rbca_extwall_notes;
+    }
+    public void setRBCA_extwall_notes(String extwall_notes){
+        this.rbca_extwall_notes = extwall_notes;
+    }
+    
+    public String getRBCA_extfeat_type(){
+        return rbca_extfeat_type;
+    }
+    public void setRBCA_extfeat_type(String extfeat_type){
+        this.rbca_extfeat_type = extfeat_type;
+    }
+    
+    public String getRBCA_extfeat_type_oth(){
+        return rbca_extfeat_type_oth;
+    }
+    public void setRBCA_extfeat_type_oth(String extfeat_type_oth){
+        this.rbca_extfeat_type_oth = extfeat_type_oth;
+    }
+    
+    public int getRBCA_extfeat(){
+        return rbca_extfeat;
+    }
+    public void setRBCA_extfeat(int extfeat){
+        this.rbca_extfeat = extfeat;
+    }
+    
+    public String getRBCA_extfeat_notes(){
+        return rbca_extfeat_notes;
+    }
+    public void setRBCA_extfeat_notes(String extfeat_notes){
+        this.rbca_extfeat_notes = extfeat_notes;
+    }
+    
+    public String getRBCA_win_type(){
+        return rbca_win_type;
+    }
+    public void setRBCA_win_type(String win_type){
+        this.rbca_win_type = win_type;
+    }
+    
+    public String getRBCA_win_type_oth(){
+        return rbca_win_type_oth;
+    }
+    public void setRBCA_win_type_oth(String win_type_oth){
+        this.rbca_win_type_oth = win_type_oth;
+    }
+    
+    public String getRBCA_win_mat(){
+        return rbca_win_mat;
+    }
+    public void setRBCA_win_mat(String win_mat){
+        this.rbca_win_mat = win_mat;
+    }
+    
+    public String getRBCA_win_mat_oth(){
+        return rbca_win_mat_oth;
+    }
+    public void setRBCA_win_mat_oth(String win_mat_oth){
+        this.rbca_win_mat_oth = win_mat_oth;
+    }
+    
+    public int getRBCA_win(){
+        return rbca_win;
+    }
+    public void setRBCA_win(int win){
+        this.rbca_win = win;
+    }
+    
+    public String getRBCA_win_notes(){
+        return rbca_win_notes;
+    }
+    public void setRBCA_win_notes(String win_notes){
+        this.rbca_win_notes = win_notes;
+    }
+    
+    public String getRBCA_roof_type(){
+        return rbca_roof_type;
+    }
+    public void setRBCA_roof_type(String roof_type){
+        this.rbca_roof_type = roof_type;
+    }
+    
+    public String getRBCA_roof_type_oth(){
+        return rbca_roof_type_oth;
+    }
+    public void setRBCA_roof_type_oth(String roof_type_oth){
+        this.rbca_roof_type_oth = roof_type_oth;
+    }
+    
+    public String getRBCA_roof_mat(){
+        return rbca_roof_mat;
+    }
+    public void setRBCA_roof_mat(String roof_mat){
+        this.rbca_roof_mat = roof_mat;
+    }
+    
+    public String getRBCA_roof_mat_oth(){
+        return rbca_roof_mat_oth;
+    }
+    public void setRBCA_roof_mat_oth(String roof_mat_oth){
+        this.rbca_roof_mat_oth = roof_mat_oth;
+    }
+    
+    public int getRBCA_roof(){
+        return rbca_roof;
+    }
+    public void setRBCA_roof(int roof){
+        this.rbca_roof = roof;
+    }
+    
+    public String getRBCA_roof_notes(){
+        return rbca_roof_notes;
+    }
+    public void setRBCA_roof_notes(String roof_notes){
+        this.rbca_roof_notes = roof_notes;
+    }
+    
+    public String getRBCA_int_cond(){
+        return rbca_int_cond;
+    }
+    public void setRBCA_int_cond(String int_cond){
+        this.rbca_int_cond = int_cond;
+    }
+    
+    public int getRBCA_int_collect_extant(){
+        return rbca_int_collect_extant;
+    }
+    public void setRBCA_int_collect_extant(int int_collect_extant){
+        this.rbca_int_collect_extant = int_collect_extant;
+    }
+    
+    public String getRBCA_int_collect_type(){
+        return rbca_int_collect_type;
+    }
+    public void setRBCA_int_collect_type(String int_collect_type){
+        this.rbca_int_collect_type = int_collect_type;
+    }
+    
+    public String getRBCA_int_collect_type_oth(){
+        return rbca_int_collect_type_oth;
+    }
+    public void setRBCA_int_collect_type_oth(String int_collect_type_oth){
+        this.rbca_int_collect_type_oth = int_collect_type_oth;
+    }
+    
+    public String getRBCA_int_notes(){
+        return rbca_int_notes;
+    }
+    public void setRBCA_int_notes(String int_notes){
+        this.rbca_int_notes = int_notes;
+    }
+    
+    public String getRBCA_landveg_feat(){
+        return rbca_landveg_feat;
+    }
+    public void setRBCA_landveg_feat(String landveg_feat){
+        this.rbca_landveg_feat = landveg_feat;
+    }
+    
+    public String getRBCA_landveg_feat_oth(){
+        return rbca_landveg_feat_oth;
+    }
+    public void setRBCA_landveg_feat_oth(String landveg_feat_oth){
+        this.rbca_landveg_feat_oth = landveg_feat_oth;
+    }
+    
+    public int getRBCA_landveg(){
+        return rbca_landveg;
+    }
+    public void setRBCA_landveg(int landveg){
+        this.rbca_landveg = landveg;
+    }
+    
+    public String getRBCA_landveg_notes(){
+        return rbca_landveg_notes;
+    }
+    public void setRBCA_landveg_notes(String landveg_notes){
+        this.rbca_landveg_notes = landveg_notes;
+    }
+    
+    public String getRBCA_landblt_feat(){
+        return rbca_landblt_feat;
+    }
+    public void setRBCA_landblt_feat(String landblt_feat){
+        this.rbca_landblt_feat = landblt_feat;
+    }
+    public String getRBCA_landblt_feat_oth(){
+        return rbca_landblt_feat_oth;
+    }
+    public void setRBCA_landblt_feat_oth(String landblt_feat_oth){
+        this.rbca_landblt_feat_oth = landblt_feat_oth;
+    }
+    
+    public int getRBCA_landblt(){
+        return rbca_landblt;
+    }
+    public void setRBCA_landblt(int landblt){
+        this.rbca_landblt = landblt;
+    }
+    public String getRBCA_landblt_notes(){
+        return rbca_landblt_notes;
+    }
+    public void setRBCA_landblt_notes(String landblt_notes){
+        this.rbca_landblt_notes = landblt_notes;
+    }
     /*
      * 
     
     public type getRBCA_what(){
         return rbca_what;
     }
-    
     public void setRBCA_what(type what){
         this.rbca_what = what;
     }
