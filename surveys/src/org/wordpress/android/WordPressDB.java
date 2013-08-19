@@ -447,7 +447,15 @@ public class WordPressDB {
                             "rbca_bldg_width","rbca_bldg_length","rbca_bldg_use","rbca_bldg_use_oth","rbca_bldg_outbldg", "rbca_bldg_outbldg_notes", "rbca_bldg_units_res", 
                             "rbca_bldg_units_comm", "rbca_bldg_occu_name", "rbca_bldg_occu_phone", "rbca_bldg_notes", "rbca_hist_desig","rbca_hist_desig_oth",
                             "rbca_hist_dist", "rbca_hist_dist_name", "rbca_hist_appear","rbca_hist_age","rbca_hist_age_meta", "rbca_hist_yr_built","rbca_dmg_date", 
-                            "rbca_dmg_source", "rbca_dmg_source_oth"}, null, null, null, null,
+                            "rbca_dmg_source", "rbca_dmg_source_oth","rbca_dmg_total", "rbca_dmg_desc","rbca_flood_water","rbca_flood_water_oth","rbca_flood_entry",
+                            "rbca_flood_entry_oth","rbca_flood_depth","rbca_flood_sed","rbca_flood_sed_oth","rbca_flood_notes","rbca_struct_type","rbca_struct_type_oth",
+                            "rbca_struct","rbca_struct_notes","rbca_found_type","rbca_found_type_oth","rbca_found","rbca_found_notes","rbca_extwall_mat","rbca_extwall_mat_oth",
+                            "rbca_extwall","rbca_extwall_notes","rbca_extfeat_type","rbca_extfeat_type_oth","rbca_extfeat","rbca_extfeat_notes","rbca_win_type",
+                            "rbca_win_type_oth","rbca_win_mat","rbca_win_mat_oth","rbca_win","rbca_win_notes","rbca_roof_type","rbca_roof_type_oth","rbca_roof_mat",
+                            "rbca_roof_mat","rbca_roof_mat_oth","rbca_roof","rbca_roof_notes","rbca_int_cond","rbca_int_collect_extant","rbca_int_collect_type","rbca_int_collect_type_oth",
+                            "rbca_int_notes","rbca_landveg_feat","rbca_landveg_feat_oth","rbca_landveg","rbca_landveg_notes","rbca_landblt_feat","rbca_landblt_feat_oth",
+                            "rbca_landblt","rbca_landblt_notes"}, null, null, null, null,
+                           
                             "id desc");
                     int numRows = c.getCount();
                     c.moveToFirst();
@@ -468,7 +476,7 @@ public class WordPressDB {
                                     c.getDouble(24),c.getDouble(25),c.getString(26),c.getString(27),c.getInt(28),
                                     c.getString(29),c.getInt(30),c.getInt(31),c.getString(32),c.getInt(33),
                                     c.getString(34),c.getString(35),c.getString(36), c.getString(37), c.getString(38),
-                                    c.getInt(39),c.getInt(40),c.getString(41),c.getInt(42),c.getInt(43),c.getString(44),c.getString(45));
+                                    c.getInt(39),c.getInt(40),c.getString(41),c.getInt(42),c.getInt(43),c.getString(44),c.getString(45),c.getInt(46));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             savePost(post, c.getInt(0));
@@ -489,7 +497,14 @@ public class WordPressDB {
                             "rbca_bldg_use_oth","rbca_bldg_outbldg", "rbca_bldg_outbldg_notes", "rbca_bldg_units_res", 
                             "rbca_bldg_units_comm", "rbca_bldg_occu_name", "rbca_bldg_occu_phone", "rbca_bldg_notes", "rbca_hist_desig", "rbca_hist_desig_oth", 
                             "rbca_hist_dist", "rbca_hist_dist_name","rbca_hist_appear","rbca_hist_age","rbca_hist_age_meta", "rbca_hist_yr_built", "rbca_dmg_date",
-                            "rbca_dmg_source","rbca_dmg_source_oth"}, null, null, null, null,
+                            "rbca_dmg_source","rbca_dmg_source_oth","rbca_dmg_total", "rbca_dmg_desc","rbca_flood_water","rbca_flood_water_oth","rbca_flood_entry",
+                            "rbca_flood_entry_oth","rbca_flood_depth","rbca_flood_sed","rbca_flood_sed_oth","rbca_flood_notes","rbca_struct_type","rbca_struct_type_oth",
+                            "rbca_struct","rbca_struct_notes","rbca_found_type","rbca_found_type_oth","rbca_found","rbca_found_notes","rbca_extwall_mat","rbca_extwall_mat_oth",
+                            "rbca_extwall","rbca_extwall_notes","rbca_extfeat_type","rbca_extfeat_type_oth","rbca_extfeat","rbca_extfeat_notes","rbca_win_type",
+                            "rbca_win_type_oth","rbca_win_mat","rbca_win_mat_oth","rbca_win","rbca_win_notes","rbca_roof_type","rbca_roof_type_oth","rbca_roof_mat",
+                            "rbca_roof_mat","rbca_roof_mat_oth","rbca_roof","rbca_roof_notes","rbca_int_cond","rbca_int_collect_extant","rbca_int_collect_type","rbca_int_collect_type_oth",
+                            "rbca_int_notes","rbca_landveg_feat","rbca_landveg_feat_oth","rbca_landveg","rbca_landveg_notes","rbca_landblt_feat","rbca_landblt_feat_oth",
+                            "rbca_landblt","rbca_landblt_notes"}, null, null, null, null,
                             "id desc");
                     numRows = c.getCount();
                     c.moveToFirst();
@@ -507,7 +522,7 @@ public class WordPressDB {
                                     c.getString(23),c.getInt(24),c.getString(25),c.getInt(36),c.getInt(37),
                                     c.getString(38),c.getInt(39),c.getString(40),c.getString(41), c.getString(42),
                                     c.getString(43), c.getString(44),c.getInt(45),c.getInt(46),c.getString(47),c.getInt(48),
-                                    c.getInt(49),c.getString(50),c.getString(51));
+                                    c.getInt(49),c.getString(50),c.getString(51),c.getInt(52));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             post.setPage(true);
@@ -1263,6 +1278,9 @@ public class WordPressDB {
                                 if (customField.get("key").equals("rbca_dmg_source_oth"))
                                     values.put("rbca_dmg_source_oth", (String) customField.get("value"));
                                 
+                                if (customField.get("key").equals("rbca_dmg_total"))
+                                    values.put("rbca_dmg_total", (String) customField.get("value"));
+                                
                             }
                         }
                     }
@@ -1393,6 +1411,7 @@ public class WordPressDB {
             values.put("rbca_dmg_date", post.getRBCA_dmg_date());
             values.put("rbca_dmg_source", post.getRBCA_dmg_source());
             values.put("rbca_dmg_source_oth", post.getRBCA_dmg_source_oth());
+            values.put("rbca_dmg_total", post.getRBCA_dmg_total());
             ///end added Surveys for Android
 
             returnValue = db.insert(POSTS_TABLE, null, values);
@@ -1469,6 +1488,7 @@ public class WordPressDB {
             values.put("rbca_dmg_date", post.getRBCA_dmg_date());
             values.put("rbca_dmg_source", post.getRBCA_dmg_source());
             values.put("rbca_dmg_source_oth", post.getRBCA_dmg_source_oth());
+            values.put("rbca_dmg_total", post.getRBCA_dmg_total());
             
             int pageInt = 0;
             if (post.isPage())
@@ -1620,6 +1640,7 @@ public class WordPressDB {
                 values.add(c.getInt(62));     //rbca_dmg_date
                 values.add(c.getString(63));  //rbca_dmg_source
                 values.add(c.getString(64));  //rbca_dmg_source_oth
+                values.add(c.getInt(65));     //rbca_dmg_total
                 values.add(c.getInt(65));     //isLocalChange
                 
                 

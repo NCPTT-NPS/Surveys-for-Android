@@ -490,13 +490,17 @@ public class PostUploadService extends Service {
                 dmg_source_oth.put("key", "rbca_dmg_source_oth");
                 dmg_source_oth.put("value", post.getRBCA_dmg_source_oth());
                 
+                Map<Object, Object> dmg_total = new HashMap<Object, Object>();
+                dmg_total.put("key", "rbca_dmg_total");
+                dmg_total.put("value", post.getRBCA_dmg_total());
+                
     
                 Object[] geo = { coord_loc, coord_loc_oth, coord_corner, coord_notes,
                                 addr_no, addr_street, area, posting, posting_oth ,occupancy,
                                 occupancy_available, stories,width,length,uses,uses_oth,outbldg,
                                 outbldg_notes, units_res, units_comm, occu_name, occu_phone, 
                                 bldg_notes, hist_desig, hist_desig_oth, hist_dist, hist_dist_name,hist_appear,hist_age,
-                                hist_age_meta,hist_yr_built,dmg_date,dmg_source,dmg_source_oth};
+                                hist_age_meta,hist_yr_built,dmg_date,dmg_source,dmg_source_oth,dmg_total};
     
                 contentStruct.put("custom_fields", geo);
             }
