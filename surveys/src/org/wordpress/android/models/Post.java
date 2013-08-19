@@ -152,8 +152,10 @@ public class Post {
             this.rbca_dmg_source = postVals.get(61).toString();
             this.rbca_dmg_source_oth = postVals.get(62).toString();
             this.rbca_dmg_total = (Integer) postVals.get(63);
+            this.rbca_dmg_desc = postVals.get(64).toString();
+            this.rbca_flood_water = postVals.get(65).toString();
             //
-            this.isLocalChange = (Integer) postVals.get(64) > 0;
+            this.isLocalChange = (Integer) postVals.get(99) > 0;
             
             
         } else {
@@ -167,7 +169,8 @@ public class Post {
             String rbca_bldg_area, String rbca_bldg_posting, String rbca_bldg_posting_oth, String rbca_bldg_occucy, int rbca_bldg_occucy_avail,
             double rbca_bldg_stories,double bldg_width, double bldg_length, String bldg_use, String bldg_use_oth, int rbca_bldg_outbldg, String outbldg_notes, 
             int units_res, int units_comm, String occu_name, int occu_phone, String occu_notes, String hist_desig, String hist_desig_oth, String hist_dist, 
-            String hist_dist_name, int hist_appear, int hist_age, String hist_age_meta, int hist_yr_built,int dmg_date, String dmg_source, String dmg_source_oth,int dmg_total) {
+            String hist_dist_name, int hist_appear, int hist_age, String hist_age_meta, int hist_yr_built,int dmg_date, String dmg_source, String dmg_source_oth,
+            int dmg_total,String dmg_desc,String flood_water) {
         // create a new post
         if (createBlogReference) {
             try {
@@ -227,6 +230,8 @@ public class Post {
         this.rbca_dmg_source = dmg_source;
         this.rbca_dmg_source_oth = dmg_source_oth;
         this.rbca_dmg_total = dmg_total;
+        this.rbca_dmg_desc = dmg_desc;
+        this.rbca_flood_water = flood_water;
     }
 
     public long getId() {
@@ -1160,19 +1165,7 @@ public class Post {
     public void setRBCA_landblt_notes(String landblt_notes){
         this.rbca_landblt_notes = landblt_notes;
     }
-    /*
-     * 
     
-    public type getRBCA_what(){
-        return rbca_what;
-    }
-    public void setRBCA_what(type what){
-        this.rbca_what = what;
-    }
-    
-     * 
-     * 
-     */
     
     //end of modification SURVEYS
 }
