@@ -709,8 +709,6 @@ public class PostUploadService extends Service {
     
                 contentStruct.put("custom_fields", geo);
             }
-            
-            
 
             // featured image
             if (featuredImageID != -1)
