@@ -161,6 +161,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                                                 "Hospital/Health Care", "Farming", "Military", "Other"};
     protected CharSequence[] desigChoices = {"National Landmark","NR Listed", "State", "Other"};
     protected CharSequence[] dmgSourceChoices = {"Earth Movement","Fire", "Flood/Water", "Snow/Ice","Wind","Chemical","Explosion","Other"};
+    protected CharSequence[] floodWaterChoices = {"Standing","Flowing","Ground Water","Water Marks","Other"};
     
     protected ArrayList<CharSequence> selectedChoices = new ArrayList<CharSequence>();
     protected CharSequence[] Choices;
@@ -350,6 +351,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_dmg_total_spinner = (Spinner) findViewById(R.id.rbca_dmg_total);
         mRBCA_dmg_desc = (EditText) findViewById(R.id.rbca_dmg_desc);
         mRBCA_flood_water_select = (Button) findViewById(R.id.rbca_flood_water_select);
+        mRBCA_flood_water_oth = (EditText) findViewById(R.id.rbca_flood_water_oth);
           
        
         //////////////////////////end Surveys for Android
@@ -400,7 +402,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ((TextView) findViewById(R.id.rbca_dmg_total_label)).setText(getResources().getString(R.string.rbca_dmg_total_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_dmg_desc_label)).setText(getResources().getString(R.string.rbca_dmg_desc_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_flood_water_label)).setText(getResources().getString(R.string.rbca_flood_water_label).toUpperCase());
-        
+        ((TextView) findViewById(R.id.rbca_flood_water_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
         
         
         
@@ -799,6 +801,9 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (mPost.getRBCA_flood_water() != null){
                 mRBCA_flood_water_select.setText(mPost.getRBCA_flood_water());}
             
+            if (mPost.getRBCA_flood_water_oth() != null){
+                mRBCA_flood_water_oth.setText(mPost.getRBCA_flood_water_oth());}
+            
             
             /////////////////////////end SURVEYS FOR ANDROID
             
@@ -883,6 +888,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_hist_desig_select.setOnClickListener(this);
         mRBCA_hist_appear.setOnClickListener(this);
         mRBCA_dmg_source_select.setOnClickListener(this);
+        mRBCA_flood_water_select.setOnClickListener(this);
         //mRBCA_dmg_date.setOnClickListener(this);
         /////end surverys for android
     }
@@ -1115,6 +1121,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             chooseDate();
         } else if (id == R.id.rbca_dmg_source_select){
             showSelectionDialog((String) mRBCA_dmg_source_select.getText(),dmgSourceChoices,mRBCA_dmg_source_select);
+        } else if (id == R.id.rbca_flood_water_select){
+            showSelectionDialog((String) mRBCA_flood_water_select.getText(),floodWaterChoices,mRBCA_flood_water_select);
         }
             
     }
@@ -2106,6 +2114,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             String flood_water = mRBCA_flood_water_select.getText().toString();
             
+            String flood_water_oth = mRBCA_flood_water_oth.getText().toString();
+            
             
             ////////end Surveys fo ANDROID
             
@@ -2149,7 +2159,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                         coord_notes, addr_no, addr_street,bldg_area,bldg_posting,bldg_posting_oth,occupancy,occucy_available,bldg_stories,bldg_width,
                         bldg_length,uses,uses_oth,outbldg, outbldg_notes, units_res, units_comm,occu_name, occu_phone, occu_notes,hist_desig, hist_desig_oth,
                         hist_dist, hist_dist_name,hist_appear,hist_age,hist_age_meta, hist_yr_built, dmg_date,dmg_source, dmg_source_oth,dmg_total,dmg_desc,
-                        flood_water);
+                        flood_water,flood_water_oth);
                 mPost.setLocalDraft(true);
 
                 // split up the post content if there's a more tag
@@ -2261,6 +2271,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setRBCA_dmg_total(dmg_total);
                 mPost.setRBCA_dmg_desc(dmg_desc);
                 mPost.setRBCA_flood_water(flood_water);
+                mPost.setRBCA_flood_water_oth(flood_water_oth);
                 ////END Surveys for Android 
                 success = mPost.update();
             }

@@ -477,7 +477,7 @@ public class WordPressDB {
                                     c.getString(29),c.getInt(30),c.getInt(31),c.getString(32),c.getInt(33),
                                     c.getString(34),c.getString(35),c.getString(36), c.getString(37), c.getString(38),
                                     c.getInt(39),c.getInt(40),c.getString(41),c.getInt(42),c.getInt(43),c.getString(44),c.getString(45),c.getInt(46),
-                                    c.getString(47),c.getString(48));
+                                    c.getString(47),c.getString(48),c.getString(49));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             savePost(post, c.getInt(0));
@@ -523,7 +523,7 @@ public class WordPressDB {
                                     c.getString(23),c.getInt(24),c.getString(25),c.getInt(36),c.getInt(37),
                                     c.getString(38),c.getInt(39),c.getString(40),c.getString(41), c.getString(42),
                                     c.getString(43), c.getString(44),c.getInt(45),c.getInt(46),c.getString(47),c.getInt(48),
-                                    c.getInt(49),c.getString(50),c.getString(51),c.getInt(52),c.getString(53),c.getString(54));
+                                    c.getInt(49),c.getString(50),c.getString(51),c.getInt(52),c.getString(53),c.getString(54),c.getString(55));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             post.setPage(true);
@@ -1288,6 +1288,9 @@ public class WordPressDB {
                                 if (customField.get("key").equals("rbca_flood_water"))
                                     values.put("rbca_flood_water", (String) customField.get("value"));
                                 
+                                if (customField.get("key").equals("rbca_flood_water_oth"))
+                                    values.put("rbca_flood_water_oth", (String) customField.get("value"));
+                                
                             }
                         }
                     }
@@ -1421,6 +1424,7 @@ public class WordPressDB {
             values.put("rbca_dmg_total", post.getRBCA_dmg_total());
             values.put("rbca_dmg_desc", post.getRBCA_dmg_desc());
             values.put("rbca_flood_water", post.getRBCA_flood_water());
+            values.put("rbca_flood_water_oth", post.getRBCA_flood_water_oth());
             ///end added Surveys for Android
 
             returnValue = db.insert(POSTS_TABLE, null, values);
@@ -1500,6 +1504,7 @@ public class WordPressDB {
             values.put("rbca_dmg_total", post.getRBCA_dmg_total());
             values.put("rbca_dmg_desc", post.getRBCA_dmg_desc());
             values.put("rbca_flood_water", post.getRBCA_flood_water());
+            values.put("rbca_flood_water_oth", post.getRBCA_flood_water_oth());
             
             int pageInt = 0;
             if (post.isPage())
@@ -1654,6 +1659,7 @@ public class WordPressDB {
                 values.add(c.getInt(65));     //rbca_dmg_total
                 values.add(c.getString(66));  //rbca_dmg_desc
                 values.add(c.getString(67));  //rbca_flood_water    
+                values.add(c.getString(68));  //rbca_flood_water_oth
                 values.add(c.getInt(99));     //isLocalChange
                 
                 

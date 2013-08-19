@@ -154,6 +154,7 @@ public class Post {
             this.rbca_dmg_total = (Integer) postVals.get(63);
             this.rbca_dmg_desc = postVals.get(64).toString();
             this.rbca_flood_water = postVals.get(65).toString();
+            this.rbca_flood_water_oth = postVals.get(66).toString();
             //
             this.isLocalChange = (Integer) postVals.get(99) > 0;
             
@@ -170,7 +171,7 @@ public class Post {
             double rbca_bldg_stories,double bldg_width, double bldg_length, String bldg_use, String bldg_use_oth, int rbca_bldg_outbldg, String outbldg_notes, 
             int units_res, int units_comm, String occu_name, int occu_phone, String occu_notes, String hist_desig, String hist_desig_oth, String hist_dist, 
             String hist_dist_name, int hist_appear, int hist_age, String hist_age_meta, int hist_yr_built,int dmg_date, String dmg_source, String dmg_source_oth,
-            int dmg_total,String dmg_desc,String flood_water) {
+            int dmg_total,String dmg_desc,String flood_water,String flood_water_oth) {
         // create a new post
         if (createBlogReference) {
             try {
@@ -232,6 +233,7 @@ public class Post {
         this.rbca_dmg_total = dmg_total;
         this.rbca_dmg_desc = dmg_desc;
         this.rbca_flood_water = flood_water;
+        this.rbca_flood_water = flood_water_oth;
     }
 
     public long getId() {
