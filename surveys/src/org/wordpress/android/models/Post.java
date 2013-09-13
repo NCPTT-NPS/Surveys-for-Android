@@ -157,8 +157,17 @@ public class Post {
             this.rbca_flood_water_oth = postVals.get(66).toString();
             this.rbca_flood_entry = postVals.get(67).toString();
             this.rbca_flood_entry_oth = postVals.get(68).toString();
+            this.rbca_flood_depth = (Double) postVals.get(69);
+            this.rbca_flood_sed = postVals.get(70).toString();
+            this.rbca_flood_sed_oth = postVals.get(71).toString();
+            this.rbca_flood_notes = postVals.get(72).toString();
+            this.rbca_struct_type = postVals.get(73).toString();
+            this.rbca_struct_type_oth = postVals.get(74).toString();
+            this.rbca_struct = (Integer) postVals.get(75);
+            this.rbca_struct_notes = postVals.get(76).toString();
+
             //
-            this.isLocalChange = (Integer) postVals.get(99) > 0;
+            this.isLocalChange = (Integer) postVals.get(77) > 0;
             
             
         } else {
@@ -173,7 +182,8 @@ public class Post {
             double rbca_bldg_stories,double bldg_width, double bldg_length, String bldg_use, String bldg_use_oth, int rbca_bldg_outbldg, String outbldg_notes, 
             int units_res, int units_comm, String occu_name, int occu_phone, String occu_notes, String hist_desig, String hist_desig_oth, String hist_dist, 
             String hist_dist_name, int hist_appear, int hist_age, String hist_age_meta, int hist_yr_built,int dmg_date, String dmg_source, String dmg_source_oth,
-            int dmg_total,String dmg_desc,String flood_water,String flood_water_oth,String flood_entry,String flood_entry_oth) {
+            int dmg_total,String dmg_desc,String flood_water,String flood_water_oth,String flood_entry,String flood_entry_oth,double flood_depth,String flood_sed,
+            String flood_sed_oth,String flood_notes,String struct_type,String struct_type_oth, int struct,String struct_notes) {
         // create a new post
         if (createBlogReference) {
             try {
@@ -238,6 +248,13 @@ public class Post {
         this.rbca_flood_water_oth = flood_water_oth;
         this.rbca_flood_entry = flood_entry;
         this.rbca_flood_entry_oth = flood_entry_oth;
+        this.rbca_flood_depth = flood_depth;
+        this.rbca_flood_sed = flood_sed;
+        this.rbca_flood_sed_oth = flood_sed_oth;
+        this.rbca_flood_notes = flood_notes;
+        this.rbca_struct_type_oth = struct_type_oth;
+        this.rbca_struct = struct;
+        this.rbca_struct_notes = struct_notes;
     }
 
     public long getId() {

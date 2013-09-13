@@ -163,6 +163,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     protected CharSequence[] dmgSourceChoices = {"Earth Movement","Fire", "Flood/Water", "Snow/Ice","Wind","Chemical","Explosion","Other"};
     protected CharSequence[] floodWaterChoices = {"Standing","Flowing","Ground Water","Water Marks","Other"};
     protected CharSequence[] floodEntryChoices = {"Basement/Crawl","Other"};
+    protected CharSequence[] floodSedChoices = {"Deposit","Eroded","Unknown","None","Other"};
     
     protected ArrayList<CharSequence> selectedChoices = new ArrayList<CharSequence>();
     protected CharSequence[] Choices;
@@ -355,7 +356,14 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_flood_water_oth = (EditText) findViewById(R.id.rbca_flood_water_oth);
         mRBCA_flood_entry_spinner = (Spinner) findViewById(R.id.rbca_flood_entry);
         mRBCA_flood_entry_oth = (EditText) findViewById(R.id.rbca_flood_entry_oth);
-          
+        mRBCA_flood_depth = (EditText) findViewById(R.id.rbca_flood_depth);
+        mRBCA_flood_sed_select = (Button) findViewById(R.id.rbca_flood_sed_select);
+        mRBCA_flood_sed_oth = (EditText) findViewById(R.id.rbca_flood_sed_oth);
+        mRBCA_flood_notes = (EditText) findViewById(R.id.rbca_flood_notes);  
+        mRBCA_struct_type_spinner = (Spinner) findViewById(R.id.rbca_struct_type);
+        mRBCA_struct_type_oth = (EditText) findViewById(R.id.rbca_struct_type_oth);
+        mRBCA_struct_spinner = (Spinner) findViewById(R.id.rbca_struct);
+        mRBCA_struct_notes = (EditText) findViewById(R.id.rbca_struct_notes);
        
         //////////////////////////end Surveys for Android
         
@@ -408,10 +416,14 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ((TextView) findViewById(R.id.rbca_flood_water_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_flood_entry_label)).setText(getResources().getString(R.string.rbca_flood_entry_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_flood_entry_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
-        
-        
-        
-        
+        ((TextView) findViewById(R.id.rbca_flood_depth_label)).setText(getResources().getString(R.string.rbca_flood_depth_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_flood_sed_label)).setText(getResources().getString(R.string.rbca_flood_sed_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_flood_sed_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_flood_notes_label)).setText(getResources().getString(R.string.rbca_flood_notes_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_struct_type_label)).setText(getResources().getString(R.string.rbca_struct_type_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_struct_type_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_struct_label)).setText(getResources().getString(R.string.rbca_struct_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_struct_notes_label)).setText(getResources().getString(R.string.rbca_struct_notes_label).toUpperCase());
         /////////////
         
         
@@ -818,6 +830,60 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (mPost.getRBCA_flood_entry_oth() != null){
                 mRBCA_flood_entry_oth.setText(mPost.getRBCA_flood_entry_oth());}
             
+            if (mPost.getRBCA_flood_depth() != 0.0){
+                mRBCA_flood_depth.setText(Double.toString(mPost.getRBCA_flood_depth()));}
+            
+            if (mPost.getRBCA_flood_sed() != null){
+                mRBCA_flood_sed_select.setText(mPost.getRBCA_flood_sed());}
+            
+            if (mPost.getRBCA_flood_sed_oth() != null){
+                mRBCA_flood_sed_oth.setText(mPost.getRBCA_flood_sed_oth());}
+            
+            if (mPost.getRBCA_flood_notes() != null){
+                mRBCA_flood_notes.setText(mPost.getRBCA_flood_notes());}
+            
+            if (mPost.getRBCA_struct_type() != null){
+                String rbca_struct_type = mPost.getRBCA_struct_type();
+                
+                if (rbca_struct_type.equals("Wood Frame")) {
+                    mRBCA_struct_type_spinner.setSelection(0, true);
+                } else if (rbca_struct_type.equals("Metal Frame")) {
+                    mRBCA_struct_type_spinner.setSelection(1, true);
+                } else if (rbca_struct_type.equals("Masonry")) {
+                    mRBCA_struct_type_spinner.setSelection(2, true);
+                } else if (rbca_struct_type.equals("Manufactured")) {
+                    mRBCA_struct_type_spinner.setSelection(3, true);
+                } else if (rbca_struct_type.equals("Other")) {
+                    mRBCA_struct_type_spinner.setSelection(4, true);
+                } 
+            }
+            
+            if (mPost.getRBCA_struct_type_oth() != null){
+                mRBCA_struct_type_oth.setText(mPost.getRBCA_struct_type_oth());}
+            
+            
+            if (mPost.getRBCA_struct() > 0 ){
+                int struct1 = mPost.getRBCA_struct();
+                switch (struct1){
+                    case 1:
+                        mRBCA_struct_spinner.setSelection(0);
+                        break;
+                    case 2:
+                        mRBCA_struct_spinner.setSelection(1);
+                        break;
+                    case 3:
+                        mRBCA_struct_spinner.setSelection(2);
+                        break;
+                    case 4:
+                        mRBCA_struct_spinner.setSelection(3);
+                        break;
+                }
+            }
+            
+           
+            if (mPost.getRBCA_struct_notes() != null){
+                mRBCA_struct_notes.setText(mPost.getRBCA_struct_notes());}
+            
             /////////////////////////end SURVEYS FOR ANDROID
             
             
@@ -902,6 +968,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_hist_appear.setOnClickListener(this);
         mRBCA_dmg_source_select.setOnClickListener(this);
         mRBCA_flood_water_select.setOnClickListener(this);
+        mRBCA_flood_sed_select.setOnClickListener(this);
         
         //mRBCA_dmg_date.setOnClickListener(this);
         /////end surverys for android
@@ -1137,7 +1204,9 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             showSelectionDialog((String) mRBCA_dmg_source_select.getText(),dmgSourceChoices,mRBCA_dmg_source_select);
         } else if (id == R.id.rbca_flood_water_select){
             showSelectionDialog((String) mRBCA_flood_water_select.getText(),floodWaterChoices,mRBCA_flood_water_select);
-        } 
+        } else if (id == R.id.rbca_flood_sed_select){
+            showSelectionDialog((String) mRBCA_flood_sed_select.getText(),floodSedChoices,mRBCA_flood_sed_select);
+        }
             
     }
 
@@ -2142,6 +2211,44 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             String flood_entry_oth = mRBCA_flood_entry_oth.getText().toString();
             
+            double flood_depth =0.0;
+            if (!mRBCA_flood_depth.getText().toString().equals("")){
+                flood_depth = Double.parseDouble(mRBCA_flood_depth.getText().toString());
+            }
+            
+            String flood_sed = mRBCA_flood_sed_select.getText().toString();
+            
+            String flood_sed_oth = mRBCA_flood_sed_oth.getText().toString();
+            
+            String flood_notes = mRBCA_flood_notes.getText().toString();
+            
+            int selected_struct_type = mRBCA_struct_type_spinner.getSelectedItemPosition();
+            String struct_type = "";
+            switch (selected_struct_type) {
+            case 0:
+                struct_type = "Wood Frame";
+                break;
+            case 1:
+                struct_type = "Metal Frame";
+                break;
+            case 2:
+                struct_type = "Masonry";
+                break;
+            case 3:
+                struct_type = "Manufactured";
+                break;
+            case 4:
+                struct_type = "Other";
+                break;
+            } 
+            
+            String struct_type_oth = mRBCA_struct_type_oth.getText().toString();
+            
+            int struct = mRBCA_struct_spinner.getSelectedItemPosition();
+            
+            String struct_notes = mRBCA_struct_notes.getText().toString();
+
+
             
             ////////end Surveys fo ANDROID
             
@@ -2185,7 +2292,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                         coord_notes, addr_no, addr_street,bldg_area,bldg_posting,bldg_posting_oth,occupancy,occucy_available,bldg_stories,bldg_width,
                         bldg_length,uses,uses_oth,outbldg, outbldg_notes, units_res, units_comm,occu_name, occu_phone, occu_notes,hist_desig, hist_desig_oth,
                         hist_dist, hist_dist_name,hist_appear,hist_age,hist_age_meta, hist_yr_built, dmg_date,dmg_source, dmg_source_oth,dmg_total,dmg_desc,
-                        flood_water,flood_water_oth,flood_entry,flood_entry_oth);
+                        flood_water,flood_water_oth,flood_entry,flood_entry_oth,flood_depth,flood_sed,flood_sed_oth,flood_notes,struct_type,struct_type_oth,struct,struct_notes);
                 mPost.setLocalDraft(true);
 
                 // split up the post content if there's a more tag
@@ -2300,6 +2407,14 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setRBCA_flood_water_oth(flood_water_oth);
                 mPost.setRBCA_flood_entry(flood_entry);
                 mPost.setRBCA_flood_entry_oth(flood_entry_oth);
+                mPost.setRBCA_flood_depth(flood_depth);
+                mPost.setRBCA_flood_sed(flood_sed);
+                mPost.setRBCA_flood_sed_oth(flood_sed_oth);
+                mPost.setRBCA_flood_notes(flood_notes);
+                mPost.setRBCA_struct_type(struct_type);
+                mPost.setRBCA_struct_type_oth(struct_type_oth);
+                mPost.setRBCA_struct(struct);
+                mPost.setRBCA_struct_notes(struct_notes);
                 ////END Surveys for Android 
                 success = mPost.update();
             }
