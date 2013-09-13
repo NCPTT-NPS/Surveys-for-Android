@@ -2250,6 +2250,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
 
             
+            
             ////////end Surveys fo ANDROID
             
             int selectedStatus = mStatusSpinner.getSelectedItemPosition();
