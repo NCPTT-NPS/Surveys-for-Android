@@ -478,7 +478,7 @@ public class WordPressDB {
                                     c.getString(34),c.getString(35),c.getString(36), c.getString(37), c.getString(38),
                                     c.getInt(39),c.getInt(40),c.getString(41),c.getInt(42),c.getInt(43),c.getString(44),c.getString(45),c.getInt(46),
                                     c.getString(47),c.getString(48),c.getString(49),c.getString(50),c.getString(51),c.getDouble(52),c.getString(53),
-                                    c.getString(54),c.getString(55),c.getString(56),c.getString(57),c.getInt(58),c.getString(59));
+                                    c.getString(54),c.getString(55),c.getString(56),c.getString(57),c.getInt(58),c.getString(59),c.getString(60));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             savePost(post, c.getInt(0));
@@ -526,7 +526,7 @@ public class WordPressDB {
                                     c.getString(43), c.getString(44),c.getInt(45),c.getInt(46),c.getString(47),c.getInt(48),
                                     c.getInt(49),c.getString(50),c.getString(51),c.getInt(52),c.getString(53),c.getString(54),c.getString(55),
                                     c.getString(56),c.getString(57),c.getDouble(58),c.getString(59),c.getString(60),c.getString(61),c.getString(62),
-                                    c.getString(63),c.getInt(64),c.getString(65));
+                                    c.getString(63),c.getInt(64),c.getString(65),c.getString(66));
                             post.setLocalDraft(true);
                             post.setPost_status("localdraft");
                             post.setPage(true);
@@ -1323,6 +1323,9 @@ public class WordPressDB {
                                 
                                 if (customField.get("key").equals("rbca_struct_notes"))
                                     values.put("rbca_struct_notes", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_found_type"))
+                                    values.put("rbca_found_type", (String) customField.get("value"));
 
 
                                 
@@ -1470,6 +1473,7 @@ public class WordPressDB {
             values.put("rbca_struct_type_oth", post.getRBCA_struct_type_oth());
             values.put("rbca_struct", post.getRBCA_struct());
             values.put("rbca_struct_notes", post.getRBCA_struct_notes());
+            values.put("rbca_found_type", post.getRBCA_found_type());
             ///end added Surveys for Android
 
             returnValue = db.insert(POSTS_TABLE, null, values);
@@ -1560,6 +1564,7 @@ public class WordPressDB {
             values.put("rbca_struct_type_oth", post.getRBCA_struct_type_oth());
             values.put("rbca_struct", post.getRBCA_struct());
             values.put("rbca_struct_notes", post.getRBCA_struct_notes());
+            values.put("rbca_found_type", post.getRBCA_found_type());
             
             int pageInt = 0;
             if (post.isPage())
@@ -1725,7 +1730,8 @@ public class WordPressDB {
                 values.add(c.getString(76));  //rbca_struct_type_oth
                 values.add(c.getInt(77));     //rbca_struct
                 values.add(c.getString(78));  //rbca_struct_notes
-                values.add(c.getInt(79));     //isLocalChange
+                values.add(c.getString(79));  //rbca_found_type
+                values.add(c.getInt(78));     //isLocalChange
                 
                 
             }

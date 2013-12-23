@@ -165,9 +165,10 @@ public class Post {
             this.rbca_struct_type_oth = postVals.get(74).toString();
             this.rbca_struct = (Integer) postVals.get(75);
             this.rbca_struct_notes = postVals.get(76).toString();
+            this.rbca_found_type = postVals.get(77).toString();
 
             //
-            this.isLocalChange = (Integer) postVals.get(77) > 0;
+            this.isLocalChange = (Integer) postVals.get(78) > 0;
             
             
         } else {
@@ -183,7 +184,7 @@ public class Post {
             int units_res, int units_comm, String occu_name, int occu_phone, String occu_notes, String hist_desig, String hist_desig_oth, String hist_dist, 
             String hist_dist_name, int hist_appear, int hist_age, String hist_age_meta, int hist_yr_built,int dmg_date, String dmg_source, String dmg_source_oth,
             int dmg_total,String dmg_desc,String flood_water,String flood_water_oth,String flood_entry,String flood_entry_oth,double flood_depth,String flood_sed,
-            String flood_sed_oth,String flood_notes,String struct_type,String struct_type_oth, int struct,String struct_notes) {
+            String flood_sed_oth,String flood_notes,String struct_type,String struct_type_oth, int struct,String struct_notes,String found_type) {
         // create a new post
         if (createBlogReference) {
             try {
@@ -255,6 +256,7 @@ public class Post {
         this.rbca_struct_type_oth = struct_type_oth;
         this.rbca_struct = struct;
         this.rbca_struct_notes = struct_notes;
+        this.rbca_found_type = found_type;
     }
 
     public long getId() {

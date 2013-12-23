@@ -364,6 +364,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_struct_type_oth = (EditText) findViewById(R.id.rbca_struct_type_oth);
         mRBCA_struct_spinner = (Spinner) findViewById(R.id.rbca_struct);
         mRBCA_struct_notes = (EditText) findViewById(R.id.rbca_struct_notes);
+        mRBCA_found_type_spinner = (Spinner) findViewById(R.id.rbca_found_type);
        
         //////////////////////////end Surveys for Android
         
@@ -424,6 +425,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ((TextView) findViewById(R.id.rbca_struct_type_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_struct_label)).setText(getResources().getString(R.string.rbca_struct_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_struct_notes_label)).setText(getResources().getString(R.string.rbca_struct_notes_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_found_type_label)).setText(getResources().getString(R.string.rbca_found_type_label).toUpperCase());
         /////////////
         
         
@@ -883,6 +885,22 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
            
             if (mPost.getRBCA_struct_notes() != null){
                 mRBCA_struct_notes.setText(mPost.getRBCA_struct_notes());}
+            
+            if (mPost.getRBCA_found_type() != null){
+                String rbca_found_type = mPost.getRBCA_found_type();
+                
+                if (rbca_found_type.equals("Slab")) {
+                    mRBCA_found_type_spinner.setSelection(0, true);
+                } else if (rbca_found_type.equals("Basement")) {
+                    mRBCA_found_type_spinner.setSelection(1, true);
+                } else if (rbca_found_type.equals("Stem/Chain Wall")) {
+                    mRBCA_found_type_spinner.setSelection(2, true);
+                } else if (rbca_found_type.equals("Raised Pier/Post")) {
+                    mRBCA_found_type_spinner.setSelection(3, true);
+                } else if (rbca_found_type.equals("Other")) {
+                    mRBCA_found_type_spinner.setSelection(4, true);
+                }
+            }
             
             /////////////////////////end SURVEYS FOR ANDROID
             
@@ -2247,6 +2265,27 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             int struct = mRBCA_struct_spinner.getSelectedItemPosition();
             
             String struct_notes = mRBCA_struct_notes.getText().toString();
+            
+            int selected_found_type = mRBCA_found_type_spinner.getSelectedItemPosition();
+            String found_type = "";
+            switch (selected_found_type) {
+            case 0:
+                found_type = "Slab";
+                break;
+            case 1:
+                found_type = "Basement";
+                break;
+            case 2:
+                found_type = "Stem/Chain Wall";
+                break;
+            case 3:
+                found_type = "Raised Pier/Post";
+                break;
+            case 4:
+                found_type = "Other";
+                break;
+            } 
+
 
 
             
@@ -2293,7 +2332,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                         coord_notes, addr_no, addr_street,bldg_area,bldg_posting,bldg_posting_oth,occupancy,occucy_available,bldg_stories,bldg_width,
                         bldg_length,uses,uses_oth,outbldg, outbldg_notes, units_res, units_comm,occu_name, occu_phone, occu_notes,hist_desig, hist_desig_oth,
                         hist_dist, hist_dist_name,hist_appear,hist_age,hist_age_meta, hist_yr_built, dmg_date,dmg_source, dmg_source_oth,dmg_total,dmg_desc,
-                        flood_water,flood_water_oth,flood_entry,flood_entry_oth,flood_depth,flood_sed,flood_sed_oth,flood_notes,struct_type,struct_type_oth,struct,struct_notes);
+                        flood_water,flood_water_oth,flood_entry,flood_entry_oth,flood_depth,flood_sed,flood_sed_oth,flood_notes,struct_type,struct_type_oth,struct,
+                        struct_notes,found_type);
                 mPost.setLocalDraft(true);
 
                 // split up the post content if there's a more tag
@@ -2416,6 +2456,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setRBCA_struct_type_oth(struct_type_oth);
                 mPost.setRBCA_struct(struct);
                 mPost.setRBCA_struct_notes(struct_notes);
+                mPost.setRBCA_found_type(found_type);
                 ////END Surveys for Android 
                 success = mPost.update();
             }

@@ -533,22 +533,22 @@ public class PostUploadService extends Service {
                 Map<Object, Object> struct_type = new HashMap<Object, Object>();
                 struct_type.put("key", "rbca_struct_type");
                 struct_type.put("value", post.getRBCA_struct_type());
-//                
-//                Map<Object, Object> struct_type_oth = new HashMap<Object, Object>();
-//                struct_type_oth.put("key", "rbca_struct_type_oth");
-//                struct_type_oth.put("value", post.getRBCA_struct_type_oth());
-//                
-//                Map<Object, Object> struct = new HashMap<Object, Object>();
-//                struct.put("key", "rbca_struct");
-//                struct.put("value", post.getRBCA_struct());
-//                
-//                Map<Object, Object> struct_notes = new HashMap<Object, Object>();
-//                struct_notes.put("key", "rbca_struct_notes");
-//                struct_notes.put("value", post.getRBCA_struct_notes());
-//                
-//                Map<Object, Object> found_type = new HashMap<Object, Object>();
-//                found_type.put("key", "rbca_found_type");
-//                found_type.put("value", post.getRBCA_found_type());
+                
+                Map<Object, Object> struct_type_oth = new HashMap<Object, Object>();
+                struct_type_oth.put("key", "rbca_struct_type_oth");
+                struct_type_oth.put("value", post.getRBCA_struct_type_oth());
+                
+                Map<Object, Object> struct = new HashMap<Object, Object>();
+                struct.put("key", "rbca_struct");
+                struct.put("value", post.getRBCA_struct());
+                
+                Map<Object, Object> struct_notes = new HashMap<Object, Object>();
+                struct_notes.put("key", "rbca_struct_notes");
+                struct_notes.put("value", post.getRBCA_struct_notes());
+                
+                Map<Object, Object> found_type = new HashMap<Object, Object>();
+                found_type.put("key", "rbca_found_type");
+                found_type.put("value", post.getRBCA_found_type());
 //                
 //                Map<Object, Object> found_type_oth = new HashMap<Object, Object>();
 //                found_type_oth.put("key", "rbca_found_type_oth");
@@ -700,9 +700,10 @@ public class PostUploadService extends Service {
                                 outbldg_notes, units_res, units_comm, occu_name, occu_phone, 
                                 bldg_notes, hist_desig, hist_desig_oth, hist_dist, hist_dist_name,hist_appear,hist_age,
                                 hist_age_meta,hist_yr_built,dmg_date,dmg_source,dmg_source_oth,dmg_total,dmg_desc,flood_water,
-                                flood_water_oth,flood_entry,flood_entry_oth,flood_depth,flood_sed,flood_sed_oth,flood_notes,struct_type};
+                                flood_water_oth,flood_entry,flood_entry_oth,flood_depth,flood_sed,flood_sed_oth,flood_notes,struct_type,
+                                struct_type_oth,struct,struct_notes,found_type};
 //                               
-//                                struct_type_oth,struct,struct_notes,found_type,found_type_oth,found,found_notes,extwall_mat,extwall_mat_oth,extwall,
+//                                found_type_oth,found,found_notes,extwall_mat,extwall_mat_oth,extwall,
 //                                extwall_notes,extfeat_type,extfeat_type_oth,extfeat,extfeat_notes,win_type,win_type_oth,win_mat,win_mat_oth,win,
 //                                win_notes,roof_type,roof_type_oth,roof_mat,roof_mat_oth,roof,roof_notes,int_cond,int_collect_extant,
 //                                int_collect_type,int_collect_type_oth,int_notes,landveg_feat,landveg_feat_oth,landveg,landveg_notes,
