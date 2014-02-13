@@ -1423,7 +1423,7 @@
                     style="@style/WordPress.ToggleButton"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:layout_below="@id/postContent"
+                    android:layout_below="@id/contentpost"
                     android:textOff="B"
                     android:textOn="B"
                     android:textStyle="bold" />
