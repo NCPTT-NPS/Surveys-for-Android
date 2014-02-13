@@ -474,6 +474,7 @@
   
   
   <string name="rbca_hist_yr_built_label">Actual Year Built</string>
+  <string name="rbca_hist_age_src_label">Age Source</string>
   <string name="rbca_dmg_date_label">Damage Date</string>
   <string name="rbca_dmg_source_label">Damage Source</string>
   <string name="rbca_dmg_total_label">Overall Degree of Damage</string>
@@ -484,6 +485,7 @@
   <string name="rbca_flood_sed_label">Sediment on site</string>
   <string name="rbca_flood_notes_label">Flood Notes</string>
   <string name="rbca_struct_type_label">Type of Construction</string>
+  <string name="rbca_struct_defects_label">Structural Damage/Defects</string>
   <string name="rbca_struct_label">Structure Damage</string>
   <string name="rbca_struct_notes_label">Structure damage notes</string>
   <string name="rbca_found_type_label">Foundation Type</string>
@@ -513,6 +515,15 @@
   <string name="rbca_landblt_feat_label">Landscape (Built) Features</string>
   <string name="rbca_landblt_label">Landscape (Built) Damage</string>
   <string name="rbca_landblt_notes_label">Landscape (Built) Notes</string>
+  <string name="rbca_hzrd_label">Are there any apparent treaths to health or safety?</string>
+  <string name="rbca_hzrd_type_label">Hazards</string>
+  <string name="rbca_hzrd_notes_label">Hazard Description</string>
+  <string name="rbca_hzrd_hazmat_label">Please specify hazardous materials</string>
+  <string name="rbca_actn_label">Recommended Actions</string>
+  <string name="rbca_eval_label">Recommended Further Evaluations</string>
+  <string name="rbca_notes_label">Notes</string>
+  
+  
   
   
   

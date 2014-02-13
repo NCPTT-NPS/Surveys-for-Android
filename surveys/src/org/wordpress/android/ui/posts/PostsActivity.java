@@ -89,9 +89,9 @@ public class PostsActivity extends WPActionBarActivity implements OnPostSelected
                     case COMMENTS_ACTIVITY:
                         i = new Intent(this, CommentsActivity.class);
                         break;
-                    case STATS_ACTIVITY:
-                        i = new Intent(this, StatsActivity.class);
-                        break;
+//                    case STATS_ACTIVITY:
+//                        i = new Intent(this, StatsActivity.class);
+//                        break;
                     case VIEW_SITE_ACTIVITY:
                         i = new Intent(this, ViewSiteActivity.class);
                         break;

@@ -457,17 +457,43 @@
                     android:inputType="number" />
                 
                 <TextView
-                    android:id="@+id/rbca_dmg_date_label"
+                    android:id="@+id/rbca_hist_age_src_label"
                     style="@style/WordPressSubHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/rbca_dmg_date_label" />
+                    android:text="@string/rbca_hist_age_src_label" />
+                <Spinner
+                    android:id="@+id/rbca_hist_age_src"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:prompt="@string/rbca_hist_age_src_label"
+                    android:entries="@array/histAgeSrc" />   
+                    
+                <TextView
+                    android:id="@+id/rbca_hist_age_src_oth_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_other_label" />
                 <EditText
-                    android:id="@+id/rbca_dmg_date"
+                    android:id="@+id/rbca_hist_age_src_oth"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:inputType="date" />
+                    android:inputType="textCapSentences|textAutoCorrect" />
+                
+                <TextView
+                    android:id="@+id/rbca_hist_notes_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_notes_label" />
+                <EditText
+                    android:id="@+id/rbca_hist_notes"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:inputType="textCapSentences|textAutoCorrect" />
                 
                 <TextView
                     android:id="@+id/rbca_dmg_source_label"
@@ -500,14 +526,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/rbca_dmg_total_label" />
-                 <Spinner
+                <Spinner
                     android:id="@+id/rbca_dmg_total"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:prompt="@string/rbca_dmg_total_label"
                     android:entries="@array/levelOfDamage" />
                  
-                 <TextView
+                <TextView
                     android:id="@+id/rbca_dmg_desc_label"
                     style="@style/WordPressSubHeader"
                     android:layout_width="wrap_content"
@@ -520,107 +546,6 @@
                     android:layout_marginTop="4dp"
                     android:inputType="textCapSentences|textAutoCorrect" />
                 
-                 <TextView
-                    android:id="@+id/rbca_flood_water_label"
-                    style="@style/WordPressSubHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rbca_flood_water_label" />
-                <Button
-                    android:id="@+id/rbca_flood_water_select"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp" />
-                
-                <TextView
-                    android:id="@+id/rbca_flood_water_oth_label"
-                    style="@style/WordPressSubHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rbca_other_label" />
-                <EditText
-                    android:id="@+id/rbca_flood_water_oth"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:inputType="textCapSentences|textAutoCorrect" />
-                
-                 <TextView
-                    android:id="@+id/rbca_flood_entry_label"
-                    style="@style/WordPressSubHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rbca_flood_entry_label" />
-                 <Spinner
-                    android:id="@+id/rbca_flood_entry"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:prompt="@string/rbca_flood_entry_label"
-                    android:entries="@array/floodEntry" />
-                 
-                 <TextView
-                    android:id="@+id/rbca_flood_entry_oth_label"
-                    style="@style/WordPressSubHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rbca_other_label" />
-                <EditText
-                    android:id="@+id/rbca_flood_entry_oth"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:inputType="textCapSentences|textAutoCorrect" />
-                
-                <TextView
-                    android:id="@+id/rbca_flood_depth_label"
-                    style="@style/WordPressSubHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rbca_flood_depth_label" />
-                <EditText
-                    android:id="@+id/rbca_flood_depth"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:inputType="numberDecimal" />
-                
-                <TextView
-                    android:id="@+id/rbca_flood_sed_label"
-                    style="@style/WordPressSubHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rbca_flood_sed_label" />
-                <Button
-                    android:id="@+id/rbca_flood_sed_select"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp" />
-                
-                <TextView
-                    android:id="@+id/rbca_flood_sed_oth_label"
-                    style="@style/WordPressSubHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rbca_other_label" />
-                <EditText
-                    android:id="@+id/rbca_flood_sed_oth"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:inputType="textCapSentences|textAutoCorrect" />
-                
-                <TextView
-                    android:id="@+id/rbca_flood_notes_label"
-                    style="@style/WordPressSubHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rbca_flood_notes_label" />
-                <EditText
-                    android:id="@+id/rbca_flood_notes"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:inputType="textCapSentences|textAutoCorrect" />
                 
                 <TextView
                     android:id="@+id/rbca_struct_type_label"
@@ -647,6 +572,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:inputType="textCapSentences|textAutoCorrect" />
+                
+                <TextView
+                    android:id="@+id/rbca_struct_defects_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_struct_defects_label" />
+                <Button
+                    android:id="@+id/rbca_struct_defects_select"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" />
                 
                 <TextView
                     android:id="@+id/rbca_struct_label"
@@ -726,7 +663,7 @@
                     android:layout_marginTop="4dp"
                     android:inputType="textCapSentences|textAutoCorrect" />
                 
-                 <TextView
+                <TextView
                     android:id="@+id/rbca_extwall_mat_label"
                     style="@style/WordPressSubHeader"
                     android:layout_width="wrap_content"
@@ -828,7 +765,7 @@
                     android:layout_marginTop="4dp"
                     android:inputType="textCapSentences|textAutoCorrect" />
                 
-                 <TextView
+                <TextView
                     android:id="@+id/rbca_win_type_label"
                     style="@style/WordPressSubHeader"
                     android:layout_width="wrap_content"
@@ -1139,6 +1076,144 @@
                     android:text="@string/rbca_landblt_notes_label" />
                 <EditText
                     android:id="@+id/rbca_landblt_notes"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:inputType="textCapSentences|textAutoCorrect" />
+                
+                <TextView
+				    android:id="@+id/rbca_hzrd_label"
+				    style="@style/WordPressSubHeader"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/rbca_hzrd_label" />
+				<ToggleButton
+				    android:id="@+id/rbca_hzrd"
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content"
+				    style="@style/RbcaYesNoBtn"  /> 
+				    
+				<TextView
+                    android:id="@+id/rbca_hzrd_type_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_hzrd_type_label" />
+                <Button
+                    android:id="@+id/rbca_hzrd_type_select"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" />
+                
+                <TextView
+                    android:id="@+id/rbca_hzrd_type_oth_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_other_label" />
+                <EditText
+                    android:id="@+id/rbca_hzrd_type_oth"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:inputType="textCapSentences|textAutoCorrect" />    
+                    
+                <TextView
+                    android:id="@+id/rbca_hzrd_notes_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_hzrd_notes_label" />
+                <EditText
+                    android:id="@+id/rbca_hzrd_notes"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:inputType="textCapSentences|textAutoCorrect" />
+                
+                <TextView
+                    android:id="@+id/rbca_hzrd_hazmat_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_hzrd_hazmat_label" />
+                <Button
+                    android:id="@+id/rbca_hzrd_hazmat_select"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" />
+                
+                <TextView
+                    android:id="@+id/rbca_hzrd_hazmat_oth_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_other_label" />
+                <EditText
+                    android:id="@+id/rbca_hzrd_hazmat_oth"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:inputType="textCapSentences|textAutoCorrect" />
+                
+                <TextView
+                    android:id="@+id/rbca_actn_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_actn_label" />
+                <Button
+                    android:id="@+id/rbca_actn_select"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" />
+                
+                <TextView
+                    android:id="@+id/rbca_actn_oth_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_other_label" />
+                <EditText
+                    android:id="@+id/rbca_actn_oth"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:inputType="textCapSentences|textAutoCorrect" />
+                
+                <TextView
+                    android:id="@+id/rbca_eval_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_eval_label" />
+                <Button
+                    android:id="@+id/rbca_eval_select"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" />
+                
+                <TextView
+                    android:id="@+id/rbca_eval_oth_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_other_label" />
+                <EditText
+                    android:id="@+id/rbca_eval_oth"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:inputType="textCapSentences|textAutoCorrect" />
+                
+                <TextView
+                    android:id="@+id/rbca_eval_notes_label"
+                    style="@style/WordPressSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rbca_notes_label" />
+                <EditText
+                    android:id="@+id/rbca_eval_notes"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"

@@ -478,9 +478,17 @@ public class PostUploadService extends Service {
                 hist_yr_built.put("key", "rbca_hist_yr_built");
                 hist_yr_built.put("value", post.getRBCA_hist_yr_built());
                 
-                Map<Object, Object> dmg_date = new HashMap<Object, Object>();
-                dmg_date.put("key", "rbca_dmg_date");
-                dmg_date.put("value", post.getRBCA_dmg_date());
+                Map<Object, Object> hist_age_src = new HashMap<Object, Object>();
+                hist_age_src.put("key", "rbca_hist_age_src");
+                hist_age_src.put("value", post.getRBCA_hist_age_src());
+                
+                Map<Object, Object> hist_age_src_oth = new HashMap<Object, Object>();
+                hist_age_src_oth.put("key", "rbca_hist_age_src_oth");
+                hist_age_src_oth.put("value", post.getRBCA_hist_age_src_oth());
+                
+                Map<Object, Object> hist_notes = new HashMap<Object, Object>();
+                hist_notes.put("key", "rbca_hist_notes");
+                hist_notes.put("value", post.getRBCA_hist_notes());
                 
                 Map<Object, Object> dmg_source = new HashMap<Object, Object>();
                 dmg_source.put("key", "rbca_dmg_source");
@@ -497,38 +505,6 @@ public class PostUploadService extends Service {
                 Map<Object, Object> dmg_desc = new HashMap<Object, Object>();
                 dmg_desc.put("key", "rbca_dmg_desc");
                 dmg_desc.put("value", post.getRBCA_dmg_desc());
-                
-                Map<Object, Object> flood_water = new HashMap<Object, Object>();
-                flood_water.put("key", "rbca_flood_water");
-                flood_water.put("value", post.getRBCA_flood_water());
-                
-                Map<Object, Object> flood_water_oth = new HashMap<Object, Object>();
-                flood_water_oth.put("key", "rbca_flood_water_oth");
-                flood_water_oth.put("value", post.getRBCA_flood_water_oth());
-                
-                Map<Object, Object> flood_entry = new HashMap<Object, Object>();
-                flood_entry.put("key", "rbca_flood_entry");
-                flood_entry.put("value", post.getRBCA_flood_entry());
-                
-                Map<Object, Object> flood_entry_oth = new HashMap<Object, Object>();
-                flood_entry_oth.put("key", "rbca_flood_entry_oth");
-                flood_entry_oth.put("value", post.getRBCA_flood_entry_oth());
-                
-                Map<Object, Object> flood_depth = new HashMap<Object, Object>();
-                flood_depth.put("key", "rbca_flood_depth");
-                flood_depth.put("value", post.getRBCA_flood_depth());
-                
-                Map<Object, Object> flood_sed = new HashMap<Object, Object>();
-                flood_sed.put("key", "rbca_flood_sed");
-                flood_sed.put("value", post.getRBCA_flood_sed());
-                
-                Map<Object, Object> flood_sed_oth = new HashMap<Object, Object>();
-                flood_sed_oth.put("key", "rbca_flood_sed_oth");
-                flood_sed_oth.put("value", post.getRBCA_flood_sed_oth());
-                
-                Map<Object, Object> flood_notes = new HashMap<Object, Object>();
-                flood_notes.put("key", "rbca_flood_notes");
-                flood_notes.put("value", post.getRBCA_flood_notes());
                    
                 Map<Object, Object> struct_type = new HashMap<Object, Object>();
                 struct_type.put("key", "rbca_struct_type");
@@ -537,6 +513,10 @@ public class PostUploadService extends Service {
                 Map<Object, Object> struct_type_oth = new HashMap<Object, Object>();
                 struct_type_oth.put("key", "rbca_struct_type_oth");
                 struct_type_oth.put("value", post.getRBCA_struct_type_oth());
+                
+                Map<Object, Object> struct_defects = new HashMap<Object, Object>();
+                struct_defects.put("key", "rbca_struct_defects");
+                struct_defects.put("value", post.getRBCA_struct_defects());
                 
                 Map<Object, Object> struct = new HashMap<Object, Object>();
                 struct.put("key", "rbca_struct");
@@ -549,165 +529,204 @@ public class PostUploadService extends Service {
                 Map<Object, Object> found_type = new HashMap<Object, Object>();
                 found_type.put("key", "rbca_found_type");
                 found_type.put("value", post.getRBCA_found_type());
-//                
-//                Map<Object, Object> found_type_oth = new HashMap<Object, Object>();
-//                found_type_oth.put("key", "rbca_found_type_oth");
-//                found_type_oth.put("value", post.getRBCA_found_type_oth());
-//                
-//                Map<Object, Object> found = new HashMap<Object, Object>();
-//                found.put("key", "rbca_found");
-//                found.put("value", post.getRBCA_found());
-//                
-//                Map<Object, Object> found_notes = new HashMap<Object, Object>();
-//                found_notes.put("key", "rbca_found_notes");
-//                found_notes.put("value", post.getRBCA_found_notes());
-//                
-//                Map<Object, Object> extwall_mat = new HashMap<Object, Object>();
-//                extwall_mat.put("key", "rbca_extwall_mat");
-//                extwall_mat.put("value", post.getRBCA_extwall_mat());
-//                
-//                Map<Object, Object> extwall_mat_oth = new HashMap<Object, Object>();
-//                extwall_mat_oth.put("key", "rbca_extwall_mat_oth");
-//                extwall_mat_oth.put("value", post.getRBCA_extwall_mat_oth());
-//                
-//                Map<Object, Object> extwall = new HashMap<Object, Object>();
-//                extwall.put("key", "rbca_extwall");
-//                extwall.put("value", post.getRBCA_extwall());
-//                
-//                Map<Object, Object> extwall_notes = new HashMap<Object, Object>();
-//                extwall_notes.put("key", "rbca_extwall_notes");
-//                extwall_notes.put("value", post.getRBCA_extwall_notes());
-//                
-//                Map<Object, Object> extfeat_type = new HashMap<Object, Object>();
-//                extfeat_type.put("key", "rbca_extfeat_type");
-//                extfeat_type.put("value", post.getRBCA_extfeat_type());
-//                
-//                Map<Object, Object> extfeat_type_oth = new HashMap<Object, Object>();
-//                extfeat_type_oth.put("key", "rbca_extfeat_type_oth");
-//                extfeat_type_oth.put("value", post.getRBCA_extfeat_type_oth());
-//                
-//                Map<Object, Object> extfeat = new HashMap<Object, Object>();
-//                extfeat.put("key", "rbca_extfeat");
-//                extfeat.put("value", post.getRBCA_extfeat());
-//                
-//                Map<Object, Object> extfeat_notes = new HashMap<Object, Object>();
-//                extfeat_notes.put("key", "rbca_extfeat_notes");
-//                extfeat_notes.put("value", post.getRBCA_extfeat_notes());
-//                
-//                Map<Object, Object> win_type = new HashMap<Object, Object>();
-//                win_type.put("key", "rbca_win_type");
-//                win_type.put("value", post.getRBCA_win_type());
-//                
-//                Map<Object, Object> win_type_oth = new HashMap<Object, Object>();
-//                win_type_oth.put("key", "rbca_win_type_oth");
-//                win_type_oth.put("value", post.getRBCA_win_type_oth());
-//                
-//                Map<Object, Object> win_mat = new HashMap<Object, Object>();
-//                win_mat.put("key", "rbca_win_mat");
-//                win_mat.put("value", post.getRBCA_win_mat());
-//                
-//                Map<Object, Object> win_mat_oth = new HashMap<Object, Object>();
-//                win_mat_oth.put("key", "rbca_win_mat_oth");
-//                win_mat_oth.put("value", post.getRBCA_win_mat_oth());
-//                
-//                Map<Object, Object> win = new HashMap<Object, Object>();
-//                win.put("key", "rbca_win");
-//                win.put("value", post.getRBCA_win());
-//                
-//                Map<Object, Object> win_notes = new HashMap<Object, Object>();
-//                win_notes.put("key", "rbca_win_notes");
-//                win_notes.put("value", post.getRBCA_win_notes());
-//                
-//                Map<Object, Object> roof_type = new HashMap<Object, Object>();
-//                roof_type.put("key", "rbca_roof_type");
-//                roof_type.put("value", post.getRBCA_roof_type());
-//                
-//                Map<Object, Object> roof_type_oth = new HashMap<Object, Object>();
-//                roof_type_oth.put("key", "rbca_roof_type_oth");
-//                roof_type_oth.put("value", post.getRBCA_roof_type_oth());
-//                
-//                Map<Object, Object> roof_mat = new HashMap<Object, Object>();
-//                roof_mat.put("key", "rbca_roof_mat");
-//                roof_mat.put("value", post.getRBCA_roof_mat());
-//                
-//                Map<Object, Object> roof_mat_oth = new HashMap<Object, Object>();
-//                roof_mat_oth.put("key", "rbca_roof_mat_oth");
-//                roof_mat_oth.put("value", post.getRBCA_roof_mat_oth());
-//                
-//                Map<Object, Object> roof = new HashMap<Object, Object>();
-//                roof.put("key", "rbca_roof");
-//                roof.put("value", post.getRBCA_roof());
-//                
-//                Map<Object, Object> roof_notes = new HashMap<Object, Object>();
-//                roof_notes.put("key", "rbca_roof_notes");
-//                roof_notes.put("value", post.getRBCA_roof_notes());
-//                
-//                Map<Object, Object> int_cond = new HashMap<Object, Object>();
-//                int_cond.put("key", "rbca_int_cond");
-//                int_cond.put("value", post.getRBCA_int_cond());
-//                
-//                Map<Object, Object> int_collect_extant = new HashMap<Object, Object>();
-//                int_collect_extant.put("key", "rbca_int_collect_extant");
-//                int_collect_extant.put("value", post.getRBCA_int_collect_extant());
-//                
-//                Map<Object, Object> int_collect_type = new HashMap<Object, Object>();
-//                int_collect_type.put("key", "rbca_int_collect_type");
-//                int_collect_type.put("value", post.getRBCA_int_collect_type());
-//                
-//                Map<Object, Object> int_collect_type_oth = new HashMap<Object, Object>();
-//                int_collect_type_oth.put("key", "rbca_int_collect_type_oth");
-//                int_collect_type_oth.put("value", post.getRBCA_int_collect_type_oth());
-//                
-//                Map<Object, Object> int_notes = new HashMap<Object, Object>();
-//                int_notes.put("key", "rbca_int_notes");
-//                int_notes.put("value", post.getRBCA_int_notes());
-//                
-//                Map<Object, Object> landveg_feat = new HashMap<Object, Object>();
-//                landveg_feat.put("key", "rbca_landveg_feat");
-//                landveg_feat.put("value", post.getRBCA_landveg_feat());
-//                
-//                Map<Object, Object> landveg_feat_oth = new HashMap<Object, Object>();
-//                landveg_feat_oth.put("key", "rbca_landveg_feat_oth");
-//                landveg_feat_oth.put("value", post.getRBCA_landveg_feat_oth());
-//                
-//                Map<Object, Object> landveg = new HashMap<Object, Object>();
-//                landveg.put("key", "rbca_landveg");
-//                landveg.put("value", post.getRBCA_landveg());
-//                
-//                Map<Object, Object> landveg_notes = new HashMap<Object, Object>();
-//                landveg_notes.put("key", "rbca_landveg_notes");
-//                landveg_notes.put("value", post.getRBCA_landveg_notes());
-//                
-//                Map<Object, Object> landblt_feat = new HashMap<Object, Object>();
-//                landblt_feat.put("key", "rbca_landblt_feat");
-//                landblt_feat.put("value", post.getRBCA_landblt_feat());
-//                
-//                Map<Object, Object> landblt_feat_oth = new HashMap<Object, Object>();
-//                landblt_feat_oth.put("key", "rbca_landblt_feat_oth");
-//                landblt_feat_oth.put("value", post.getRBCA_landblt_feat_oth());
-//                
-//                Map<Object, Object> landblt = new HashMap<Object, Object>();
-//                landblt.put("key", "rbca_landblt");
-//                landblt.put("value", post.getRBCA_landblt());
-//                
-//                Map<Object, Object> landblt_notes = new HashMap<Object, Object>();
-//                landblt_notes.put("key", "rbca_landblt_notes");
-//                landblt_notes.put("value", post.getRBCA_landblt_notes());
+                
+                Map<Object, Object> found_type_oth = new HashMap<Object, Object>();
+                found_type_oth.put("key", "rbca_found_type_oth");
+                found_type_oth.put("value", post.getRBCA_found_type_oth());
+                
+                Map<Object, Object> found = new HashMap<Object, Object>();
+                found.put("key", "rbca_found");
+                found.put("value", post.getRBCA_found());
+                
+                Map<Object, Object> found_notes = new HashMap<Object, Object>();
+                found_notes.put("key", "rbca_found_notes");
+                found_notes.put("value", post.getRBCA_found_notes());
+                
+                Map<Object, Object> extwall_mat = new HashMap<Object, Object>();
+                extwall_mat.put("key", "rbca_extwall_mat");
+                extwall_mat.put("value", post.getRBCA_extwall_mat());
+                
+                Map<Object, Object> extwall_mat_oth = new HashMap<Object, Object>();
+                extwall_mat_oth.put("key", "rbca_extwall_mat_oth");
+                extwall_mat_oth.put("value", post.getRBCA_extwall_mat_oth());
+                
+                Map<Object, Object> extwall = new HashMap<Object, Object>();
+                extwall.put("key", "rbca_extwall");
+                extwall.put("value", post.getRBCA_extwall());
+                
+                Map<Object, Object> extwall_notes = new HashMap<Object, Object>();
+                extwall_notes.put("key", "rbca_extwall_notes");
+                extwall_notes.put("value", post.getRBCA_extwall_notes());
+                
+                Map<Object, Object> extfeat_type = new HashMap<Object, Object>();
+                extfeat_type.put("key", "rbca_extfeat_type");
+                extfeat_type.put("value", post.getRBCA_extfeat_type());
+                
+                Map<Object, Object> extfeat_type_oth = new HashMap<Object, Object>();
+                extfeat_type_oth.put("key", "rbca_extfeat_type_oth");
+                extfeat_type_oth.put("value", post.getRBCA_extfeat_type_oth());
+                
+                Map<Object, Object> extfeat = new HashMap<Object, Object>();
+                extfeat.put("key", "rbca_extfeat");
+                extfeat.put("value", post.getRBCA_extfeat());
+                
+                Map<Object, Object> extfeat_notes = new HashMap<Object, Object>();
+                extfeat_notes.put("key", "rbca_extfeat_notes");
+                extfeat_notes.put("value", post.getRBCA_extfeat_notes());
+                
+                Map<Object, Object> win_type = new HashMap<Object, Object>();
+                win_type.put("key", "rbca_win_type");
+                win_type.put("value", post.getRBCA_win_type());
+                
+                Map<Object, Object> win_type_oth = new HashMap<Object, Object>();
+                win_type_oth.put("key", "rbca_win_type_oth");
+                win_type_oth.put("value", post.getRBCA_win_type_oth());
+                
+                Map<Object, Object> win_mat = new HashMap<Object, Object>();
+                win_mat.put("key", "rbca_win_mat");
+                win_mat.put("value", post.getRBCA_win_mat());
+                
+                Map<Object, Object> win_mat_oth = new HashMap<Object, Object>();
+                win_mat_oth.put("key", "rbca_win_mat_oth");
+                win_mat_oth.put("value", post.getRBCA_win_mat_oth());
+                
+                Map<Object, Object> win = new HashMap<Object, Object>();
+                win.put("key", "rbca_win");
+                win.put("value", post.getRBCA_win());
+                
+                Map<Object, Object> win_notes = new HashMap<Object, Object>();
+                win_notes.put("key", "rbca_win_notes");
+                win_notes.put("value", post.getRBCA_win_notes());
+                
+                Map<Object, Object> roof_type = new HashMap<Object, Object>();
+                roof_type.put("key", "rbca_roof_type");
+                roof_type.put("value", post.getRBCA_roof_type());
+                
+                Map<Object, Object> roof_type_oth = new HashMap<Object, Object>();
+                roof_type_oth.put("key", "rbca_roof_type_oth");
+                roof_type_oth.put("value", post.getRBCA_roof_type_oth());
+                
+                Map<Object, Object> roof_mat = new HashMap<Object, Object>();
+                roof_mat.put("key", "rbca_roof_mat");
+                roof_mat.put("value", post.getRBCA_roof_mat());
+                
+                Map<Object, Object> roof_mat_oth = new HashMap<Object, Object>();
+                roof_mat_oth.put("key", "rbca_roof_mat_oth");
+                roof_mat_oth.put("value", post.getRBCA_roof_mat_oth());
+                
+                Map<Object, Object> roof = new HashMap<Object, Object>();
+                roof.put("key", "rbca_roof");
+                roof.put("value", post.getRBCA_roof());
+                
+                Map<Object, Object> roof_notes = new HashMap<Object, Object>();
+                roof_notes.put("key", "rbca_roof_notes");
+                roof_notes.put("value", post.getRBCA_roof_notes());
+                
+                Map<Object, Object> int_cond = new HashMap<Object, Object>();
+                int_cond.put("key", "rbca_int_cond");
+                int_cond.put("value", post.getRBCA_int_cond());
+                
+                Map<Object, Object> int_collect_extant = new HashMap<Object, Object>();
+                int_collect_extant.put("key", "rbca_int_collect_extant");
+                int_collect_extant.put("value", post.getRBCA_int_collect_extant());
+                
+                Map<Object, Object> int_collect_type = new HashMap<Object, Object>();
+                int_collect_type.put("key", "rbca_int_collect_type");
+                int_collect_type.put("value", post.getRBCA_int_collect_type());
+                
+                Map<Object, Object> int_collect_type_oth = new HashMap<Object, Object>();
+                int_collect_type_oth.put("key", "rbca_int_collect_type_oth");
+                int_collect_type_oth.put("value", post.getRBCA_int_collect_type_oth());
+                
+                Map<Object, Object> int_notes = new HashMap<Object, Object>();
+                int_notes.put("key", "rbca_int_notes");
+                int_notes.put("value", post.getRBCA_int_notes());
+                
+                Map<Object, Object> landveg_feat = new HashMap<Object, Object>();
+                landveg_feat.put("key", "rbca_landveg_feat");
+                landveg_feat.put("value", post.getRBCA_landveg_feat());
+                
+                Map<Object, Object> landveg_feat_oth = new HashMap<Object, Object>();
+                landveg_feat_oth.put("key", "rbca_landveg_feat_oth");
+                landveg_feat_oth.put("value", post.getRBCA_landveg_feat_oth());
+                
+                Map<Object, Object> landveg = new HashMap<Object, Object>();
+                landveg.put("key", "rbca_landveg");
+                landveg.put("value", post.getRBCA_landveg());
+                
+                Map<Object, Object> landveg_notes = new HashMap<Object, Object>();
+                landveg_notes.put("key", "rbca_landveg_notes");
+                landveg_notes.put("value", post.getRBCA_landveg_notes());
+                
+                Map<Object, Object> landblt_feat = new HashMap<Object, Object>();
+                landblt_feat.put("key", "rbca_landblt_feat");
+                landblt_feat.put("value", post.getRBCA_landblt_feat());
+                
+                Map<Object, Object> landblt_feat_oth = new HashMap<Object, Object>();
+                landblt_feat_oth.put("key", "rbca_landblt_feat_oth");
+                landblt_feat_oth.put("value", post.getRBCA_landblt_feat_oth());
+                
+                Map<Object, Object> landblt = new HashMap<Object, Object>();
+                landblt.put("key", "rbca_landblt");
+                landblt.put("value", post.getRBCA_landblt());
+                
+                Map<Object, Object> landblt_notes = new HashMap<Object, Object>();
+                landblt_notes.put("key", "rbca_landblt_notes");
+                landblt_notes.put("value", post.getRBCA_landblt_notes());
+                
+                Map<Object, Object> hzrd = new HashMap<Object, Object>();
+                hzrd.put("key", "rbca_hzrd");
+                hzrd.put("value", post.getRBCA_hzrd());
+                
+                Map<Object, Object> hzrd_type = new HashMap<Object, Object>();
+                hzrd_type.put("key", "rbca_hzrd_type");
+                hzrd_type.put("value", post.getRBCA_hzrd_type());
+                
+                Map<Object, Object> hzrd_type_oth = new HashMap<Object, Object>();
+                hzrd_type_oth.put("key", "rbca_hzrd_type_oth");
+                hzrd_type_oth.put("value", post.getRBCA_hzrd_type_oth());
+                
+                Map<Object, Object> hzrd_notes = new HashMap<Object, Object>();
+                hzrd_notes.put("key", "rbca_hzrd_notes");
+                hzrd_notes.put("value", post.getRBCA_hzrd_notes());
+                
+                Map<Object, Object> hzrd_hazmat = new HashMap<Object, Object>();
+                hzrd_hazmat.put("key", "rbca_hzrd_hazmat");
+                hzrd_hazmat.put("value", post.getRBCA_hzrd_hazmat());
+                
+                Map<Object, Object> hzrd_hazmat_oth = new HashMap<Object, Object>();
+                hzrd_hazmat_oth.put("key", "rbca_hzrd_hazmat_oth");
+                hzrd_hazmat_oth.put("value", post.getRBCA_hzrd_hazmat_oth());
+                
+                Map<Object, Object> actn = new HashMap<Object, Object>();
+                actn.put("key", "rbca_actn");
+                actn.put("value", post.getRBCA_actn());
+                
+                Map<Object, Object> actn_oth = new HashMap<Object, Object>();
+                actn_oth.put("key", "rbca_actn_oth");
+                actn_oth.put("value", post.getRBCA_actn_oth());
+                
+                Map<Object, Object> eval = new HashMap<Object, Object>();
+                eval.put("key", "rbca_eval");
+                eval.put("value", post.getRBCA_eval());
+                
+                Map<Object, Object> eval_oth = new HashMap<Object, Object>();
+                eval_oth.put("key", "rbca_eval_oth");
+                eval_oth.put("value", post.getRBCA_eval_oth());
     
                 Object[] geo = { coord_loc, coord_loc_oth, coord_corner, coord_notes,
                                 addr_no, addr_street, area, posting, posting_oth ,occupancy,
                                 occupancy_available, stories,width,length,uses,uses_oth,outbldg,
                                 outbldg_notes, units_res, units_comm, occu_name, occu_phone, 
                                 bldg_notes, hist_desig, hist_desig_oth, hist_dist, hist_dist_name,hist_appear,hist_age,
-                                hist_age_meta,hist_yr_built,dmg_date,dmg_source,dmg_source_oth,dmg_total,dmg_desc,flood_water,
-                                flood_water_oth,flood_entry,flood_entry_oth,flood_depth,flood_sed,flood_sed_oth,flood_notes,struct_type,
-                                struct_type_oth,struct,struct_notes,found_type};
-//                               
-//                                found_type_oth,found,found_notes,extwall_mat,extwall_mat_oth,extwall,
-//                                extwall_notes,extfeat_type,extfeat_type_oth,extfeat,extfeat_notes,win_type,win_type_oth,win_mat,win_mat_oth,win,
-//                                win_notes,roof_type,roof_type_oth,roof_mat,roof_mat_oth,roof,roof_notes,int_cond,int_collect_extant,
-//                                int_collect_type,int_collect_type_oth,int_notes,landveg_feat,landveg_feat_oth,landveg,landveg_notes,
-//                                landblt_feat,landblt_feat_oth,landblt,landblt_notes};
+                                hist_age_meta,hist_yr_built,hist_age_src,hist_age_src_oth, hist_notes,dmg_source,dmg_source_oth,dmg_total,dmg_desc,struct_type,
+                                struct_type_oth,struct_defects, struct,struct_notes,found_type,found_type_oth,found,found_notes,
+                                extwall_mat,extwall_mat_oth,extwall,extwall_notes,extfeat_type,extfeat_type_oth,extfeat,
+                                extfeat_notes,win_type,win_type_oth,win_mat,win_mat_oth,win,win_notes,roof_type,roof_type_oth,
+                                roof_mat,roof_mat_oth,roof,roof_notes,int_cond,int_collect_extant,int_collect_type,
+                                int_collect_type_oth,int_notes,landveg_feat,landveg_feat_oth,landveg,landveg_notes,
+                                landblt_feat,landblt_feat_oth,landblt,landblt_notes, hzrd, hzrd_type, hzrd_type_oth, 
+                                hzrd_notes, hzrd_hazmat, hzrd_hazmat_oth,actn, actn_oth, eval, eval_oth};
     
                 contentStruct.put("custom_fields", geo);
             }

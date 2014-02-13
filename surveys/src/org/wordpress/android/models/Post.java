@@ -43,19 +43,20 @@ public class Post {
     
     //Fields added Surveys for Android
     private String rbca_coord_loc,rbca_bldg_use,rbca_bldg_use_oth, rbca_bldg_outbldg_notes,rbca_bldg_occu_name,rbca_bldg_notes;
-    private double RBCA_altitude, RBCA_accuracy, rbca_bldg_stories, rbca_bldg_width, rbca_bldg_length,rbca_flood_depth;
-    private String rbca_coord_notes, rbca_addr_no, rbca_addr_street, rbca_bldg_area, rbca_bldg_posting,rbca_flood_sed,rbca_flood_sed_oth;
+    private double rbca_altitude, rbca_accuracy, rbca_bldg_stories, rbca_bldg_width, rbca_bldg_length;
+    private String rbca_coord_notes, rbca_addr_no, rbca_addr_street, rbca_bldg_area, rbca_bldg_posting;
     private String rbca_bldg_posting_oth, rbca_coord_loc_oth,rbca_coord_corner,rbca_bldg_occucy, rbca_hist_desig, rbca_hist_desig_oth;
     private String rbca_hist_dist, rbca_hist_dist_name, rbca_hist_age_meta, rbca_dmg_source, rbca_dmg_source_oth,rbca_dmg_desc;
     private int rbca_bldg_occucy_avail, rbca_bldg_outbldg,rbca_bldg_units_res, rbca_bldg_units_comm, rbca_bldg_occu_phone;
-    private int rbca_hist_appear, rbca_hist_age,rbca_hist_yr_built,rbca_dmg_date, rbca_dmg_total,rbca_struct,rbca_found,rbca_extwall,rbca_extfeat;
-    private String rbca_flood_water,rbca_flood_water_oth,rbca_flood_entry,rbca_flood_entry_oth,rbca_flood_notes,rbca_struct_type;
+    private int rbca_hist_appear, rbca_hist_age,rbca_hist_yr_built, rbca_dmg_total,rbca_struct,rbca_found,rbca_extwall,rbca_extfeat;
+    private String rbca_struct_type, rbca_hist_age_src_oth, rbca_hist_notes, rbca_struct_defects;
     private String rbca_struct_type_oth,rbca_struct_notes,rbca_found_type,rbca_found_type_oth,rbca_found_notes,rbca_extwall_mat,rbca_extwall_mat_oth;
     private String rbca_extwall_notes,rbca_extfeat_type,rbca_extfeat_type_oth, rbca_extfeat_notes,rbca_win_type,rbca_win_type_oth,rbca_win_mat,rbca_win_mat_oth;
-    private int rbca_win,rbca_roof,rbca_int_collect_extant,rbca_landveg,rbca_landblt;
+    private int rbca_win,rbca_roof,rbca_int_collect_extant,rbca_landveg,rbca_landblt, rbca_hzrd, rbca_hist_age_src;
     private String rbca_win_notes,rbca_roof_type,rbca_roof_type_oth,rbca_roof_mat,rbca_roof_mat_oth,rbca_roof_notes,rbca_int_cond;
     private String rbca_int_collect_type,rbca_int_collect_type_oth,rbca_int_notes,rbca_landveg_feat,rbca_landveg_feat_oth,rbca_landveg_notes ;
-    private String rbca_landblt_feat, rbca_landblt_feat_oth,rbca_landblt_notes;
+    private String rbca_landblt_feat, rbca_landblt_feat_oth,rbca_landblt_notes, rbca_hzrd_type, rbca_hzrd_type_oth, rbca_hzrd_notes,rbca_hzrd_hazmat;
+    private String rbca_hzrd_hazmat_oth, rbca_actn, rbca_actn_oth, rbca_eval, rbca_eval_oth;
     
     //end of Field added Surveys for Android
     
@@ -148,24 +149,65 @@ public class Post {
             this.rbca_hist_age = (Integer) postVals.get(57);  
             this.rbca_hist_age_meta = postVals.get(58).toString();
             this.rbca_hist_yr_built = (Integer) postVals.get(59);
-            this.rbca_dmg_date = (Integer) postVals.get(60);
-            this.rbca_dmg_source = postVals.get(61).toString();
-            this.rbca_dmg_source_oth = postVals.get(62).toString();
-            this.rbca_dmg_total = (Integer) postVals.get(63);
-            this.rbca_dmg_desc = postVals.get(64).toString();
-            this.rbca_flood_water = postVals.get(65).toString();
-            this.rbca_flood_water_oth = postVals.get(66).toString();
-            this.rbca_flood_entry = postVals.get(67).toString();
-            this.rbca_flood_entry_oth = postVals.get(68).toString();
-            this.rbca_flood_depth = (Double) postVals.get(69);
-            this.rbca_flood_sed = postVals.get(70).toString();
-            this.rbca_flood_sed_oth = postVals.get(71).toString();
-            this.rbca_flood_notes = postVals.get(72).toString();
-            this.rbca_struct_type = postVals.get(73).toString();
-            this.rbca_struct_type_oth = postVals.get(74).toString();
-            this.rbca_struct = (Integer) postVals.get(75);
-            this.rbca_struct_notes = postVals.get(76).toString();
-            this.rbca_found_type = postVals.get(77).toString();
+            this.rbca_hist_age_src = (Integer) postVals.get(60);
+            this.rbca_hist_age_src_oth = postVals.get(61).toString();
+            this.rbca_hist_notes = postVals.get(62).toString();
+            this.rbca_dmg_source = postVals.get(63).toString();
+            this.rbca_dmg_source_oth = postVals.get(64).toString();
+            this.rbca_dmg_total = (Integer) postVals.get(65);
+            this.rbca_dmg_desc = postVals.get(66).toString();
+            this.rbca_struct_type = postVals.get(67).toString();
+            this.rbca_struct_type_oth = postVals.get(68).toString();
+            this.rbca_struct_defects = postVals.get(69).toString();
+            this.rbca_struct = (Integer) postVals.get(70);
+            this.rbca_struct_notes = postVals.get(71).toString();
+            this.rbca_found_type = postVals.get(72).toString();
+            this.rbca_found_type_oth = postVals.get(73).toString();
+            this.rbca_found = (Integer) postVals.get(74);
+            this.rbca_found_notes = postVals.get(75).toString();
+            this.rbca_extwall_mat = postVals.get(76).toString();
+            this.rbca_extwall_mat_oth = postVals.get(77).toString();
+            this.rbca_extwall = (Integer) postVals.get(78);
+            this.rbca_extwall_notes = postVals.get(79).toString();
+            this.rbca_extfeat_type = postVals.get(80).toString();
+            this.rbca_extfeat_type_oth = postVals.get(81).toString();
+            this.rbca_extfeat = (Integer) postVals.get(82);
+            this.rbca_extfeat_notes = postVals.get(83).toString();
+            this.rbca_win_type = postVals.get(84).toString();
+            this.rbca_win_type_oth = postVals.get(85).toString();
+            this.rbca_win_mat = postVals.get(86).toString();
+            this.rbca_win_mat_oth = postVals.get(87).toString();
+            this.rbca_win = (Integer) postVals.get(88);
+            this.rbca_win_notes = postVals.get(89).toString();
+            this.rbca_roof_type = postVals.get(90).toString();
+            this.rbca_roof_type_oth = postVals.get(91).toString();
+            this.rbca_roof_mat = postVals.get(92).toString();
+            this.rbca_roof_mat_oth = postVals.get(93).toString();
+            this.rbca_roof = (Integer) postVals.get(94);
+            this.rbca_roof_notes = postVals.get(95).toString();
+            this.rbca_int_cond = postVals.get(96).toString();
+            this.rbca_int_collect_extant = (Integer) postVals.get(97);
+            this.rbca_int_collect_type = postVals.get(98).toString();
+            this.rbca_int_collect_type_oth = postVals.get(99).toString();
+            this.rbca_int_notes = postVals.get(100).toString();
+            this.rbca_landveg_feat = postVals.get(101).toString();
+            this.rbca_landveg_feat_oth = postVals.get(102).toString();
+            this.rbca_landveg = (Integer) postVals.get(103);
+            this.rbca_landveg_notes = postVals.get(104).toString();
+            this.rbca_landblt_feat = postVals.get(105).toString();
+            this.rbca_landblt_feat_oth = postVals.get(106).toString();
+            this.rbca_landblt = (Integer) postVals.get(106);
+            this.rbca_landblt_notes = postVals.get(107).toString();
+            this.rbca_hzrd = (Integer) postVals.get(108);
+            this.rbca_hzrd_type = postVals.get(109).toString();
+            this.rbca_hzrd_type_oth = postVals.get(110).toString();
+            this.rbca_hzrd_notes = postVals.get(111).toString();
+            this.rbca_hzrd_hazmat = postVals.get(112).toString();
+            this.rbca_hzrd_hazmat_oth = postVals.get(113).toString();
+            this.rbca_actn = postVals.get(114).toString();
+            this.rbca_actn_oth = postVals.get(115).toString();
+            this.rbca_eval = postVals.get(116).toString();
+            this.rbca_eval_oth = postVals.get(117).toString();
 
             //
             this.isLocalChange = (Integer) postVals.get(78) > 0;
@@ -182,9 +224,14 @@ public class Post {
             String rbca_bldg_area, String rbca_bldg_posting, String rbca_bldg_posting_oth, String rbca_bldg_occucy, int rbca_bldg_occucy_avail,
             double rbca_bldg_stories,double bldg_width, double bldg_length, String bldg_use, String bldg_use_oth, int rbca_bldg_outbldg, String outbldg_notes, 
             int units_res, int units_comm, String occu_name, int occu_phone, String occu_notes, String hist_desig, String hist_desig_oth, String hist_dist, 
-            String hist_dist_name, int hist_appear, int hist_age, String hist_age_meta, int hist_yr_built,int dmg_date, String dmg_source, String dmg_source_oth,
-            int dmg_total,String dmg_desc,String flood_water,String flood_water_oth,String flood_entry,String flood_entry_oth,double flood_depth,String flood_sed,
-            String flood_sed_oth,String flood_notes,String struct_type,String struct_type_oth, int struct,String struct_notes,String found_type) {
+            String hist_dist_name, int hist_appear, int hist_age, String hist_age_meta, int hist_yr_built,int hist_age_src, String hist_age_src_oth, String hist_notes,
+            String dmg_source, String dmg_source_oth,int dmg_total,String dmg_desc,String struct_type,String struct_type_oth, String struct_defects, int struct, String struct_notes,
+            String found_type, String found_type_oth, int found, String found_notes, String extwall_mat, String extwall_mat_oth, int extwall, String extwall_notes,
+            String extfeat_type, String extfeat_type_oth, int extfeat, String extfeat_notes, String win_type, String win_type_oth, String win_mat, String win_mat_oth,
+            int win, String win_notes, String roof_type, String roof_type_oth, String roof_mat, String roof_mat_oth, int roof, String roof_notes, String int_cond,
+            int int_collect_extant, String int_collect_type, String int_collect_type_oth, String int_notes, String landveg_feat, String landveg_feat_oth, 
+            int landveg, String landveg_notes, String landblt_feat, String landblt_feat_oth, int landblt, String landblt_notes, int hzrd, String hzrd_type,
+            String hzrd_type_oth, String hzrd_notes, String hzrd_hazmat, String hzrd_hazmat_oth, String actn, String actn_oth, String eval, String eval_oth) {
         // create a new post
         if (createBlogReference) {
             try {
@@ -240,23 +287,68 @@ public class Post {
         this.rbca_hist_age = hist_age;
         this.rbca_hist_age_meta = hist_age_meta;
         this.rbca_hist_yr_built = hist_yr_built;
-        this.rbca_dmg_date = dmg_date;
+        this.rbca_hist_age_src = hist_age_src;
+        this.rbca_hist_age_src_oth = hist_age_src_oth;
+        this.rbca_hist_notes = hist_notes;
         this.rbca_dmg_source = dmg_source;
         this.rbca_dmg_source_oth = dmg_source_oth;
         this.rbca_dmg_total = dmg_total;
         this.rbca_dmg_desc = dmg_desc;
-        this.rbca_flood_water = flood_water;
-        this.rbca_flood_water_oth = flood_water_oth;
-        this.rbca_flood_entry = flood_entry;
-        this.rbca_flood_entry_oth = flood_entry_oth;
-        this.rbca_flood_depth = flood_depth;
-        this.rbca_flood_sed = flood_sed;
-        this.rbca_flood_sed_oth = flood_sed_oth;
-        this.rbca_flood_notes = flood_notes;
+        this.rbca_struct_type = struct_type;
         this.rbca_struct_type_oth = struct_type_oth;
+        this.rbca_struct_defects = struct_defects;
         this.rbca_struct = struct;
         this.rbca_struct_notes = struct_notes;
         this.rbca_found_type = found_type;
+        this.rbca_found_type_oth = found_type_oth;
+        this.rbca_found = found;
+        this.rbca_found_notes = found_notes;
+        this.rbca_extwall_mat = extwall_mat;
+        this.rbca_extwall_mat_oth = extwall_mat_oth;
+        this.rbca_extwall = extwall;
+        this.rbca_extwall_notes = extwall_notes;
+        this.rbca_extfeat_type = extfeat_type;
+        this.rbca_extfeat_type_oth = extfeat_type_oth;
+        this.rbca_extfeat = extfeat;
+        this.rbca_extfeat_notes = extfeat_notes;
+        this.rbca_win_type = win_type;
+        this.rbca_win_type_oth = win_type_oth;
+        this.rbca_win_mat = win_mat;
+        this.rbca_win_mat_oth = win_mat_oth;
+        this.rbca_win = win;
+        this.rbca_win_notes = win_notes;
+        this.rbca_roof_type = roof_type;
+        this.rbca_roof_type_oth = roof_type_oth;
+        this.rbca_roof_mat = roof_mat;
+        this.rbca_roof_mat_oth = roof_mat_oth;
+        this.rbca_roof = roof;
+        this.rbca_roof_notes = roof_notes;
+        this.rbca_int_cond = int_cond;
+        this.rbca_int_collect_extant = int_collect_extant;
+        this.rbca_int_collect_type = int_collect_type;
+        this.rbca_int_collect_type_oth = int_collect_type_oth;
+        this.rbca_int_notes = int_notes;
+        this.rbca_landveg_feat = landveg_feat;
+        this.rbca_landveg_feat_oth = landveg_feat_oth;
+        this.rbca_landveg = landveg;
+        this.rbca_landveg_notes = landveg_notes;
+        this.rbca_landblt_feat = landblt_feat;
+        this.rbca_landblt_feat_oth = landblt_feat_oth;
+        this.rbca_landblt = landblt;
+        this.rbca_landblt_notes = landblt_notes;
+        this.rbca_hzrd = hzrd;
+        this.rbca_hzrd_type = hzrd_type;
+        this.rbca_hzrd_type_oth = hzrd_type_oth;
+        this.rbca_hzrd_notes = hzrd_notes;
+        this.rbca_hzrd_hazmat = hzrd_hazmat;
+        this.rbca_hzrd_hazmat_oth = hzrd_hazmat_oth;
+        this.rbca_actn = actn;
+        this.rbca_actn_oth = actn_oth;
+        this.rbca_eval = eval;
+        this.rbca_eval_oth = eval_oth;
+        
+        
+        
     }
 
     public long getId() {
@@ -801,12 +893,26 @@ public class Post {
         this.rbca_hist_yr_built = hist_yr_built;
     }
     
-    public int getRBCA_dmg_date(){
-        return rbca_dmg_date;
+    
+    public int getRBCA_hist_age_src(){
+        return this.rbca_hist_age_src;
+    }
+    public void setRBCA_hist_age_src(int hist_age_src){
+        this.rbca_hist_age_src = hist_age_src;
     }
     
-    public void setRBCA_dmg_date(int dmg_date){
-        this.rbca_dmg_date = dmg_date;
+    public String getRBCA_hist_age_src_oth(){
+        return this.rbca_hist_age_src_oth;
+    }
+    public void setRBCA_hist_age_src_oth(String hist_age_src_oth){
+        this.rbca_hist_age_src_oth = hist_age_src_oth;
+    }
+    
+    public String getRBCA_hist_notes(){
+        return this.rbca_hist_notes;
+    }
+    public void setRBCA_hist_notes(String hist_notes){
+        this.rbca_hist_notes = hist_notes;
     }
     
     public String getRBCA_dmg_source(){
@@ -839,74 +945,9 @@ public class Post {
         this.rbca_dmg_desc = dmg_desc;
     }
     
-    public String getRBCA_flood_water(){
-        return rbca_flood_water;
-    }
-    
-    public void setRBCA_flood_water(String flood_water){
-        this.rbca_flood_water = flood_water;
-    }
-    
-    public String getRBCA_flood_water_oth(){
-        return rbca_flood_water_oth;
-    }
-    
-    public void setRBCA_flood_water_oth(String flood_water_oth){
-        this.rbca_flood_water_oth = flood_water_oth;
-    }
-    
-    public String getRBCA_flood_entry(){
-        return rbca_flood_entry;
-    }
-    
-    public void setRBCA_flood_entry(String flood_entry){
-        this.rbca_flood_entry = flood_entry;
-    }
-    
-    public String getRBCA_flood_entry_oth(){
-        return rbca_flood_entry_oth;
-    }
-    
-    public void setRBCA_flood_entry_oth(String flood_entry_oth){
-        this.rbca_flood_entry_oth = flood_entry_oth;
-    }
-    
-    public double getRBCA_flood_depth(){
-        return rbca_flood_depth;
-    }
-    
-    public void setRBCA_flood_depth(double flood_depth){
-        this.rbca_flood_depth = flood_depth;
-    }
-    
-    public String getRBCA_flood_sed(){
-        return rbca_flood_sed;
-    }
-    
-    public void setRBCA_flood_sed(String flood_sed){
-        this.rbca_flood_sed = flood_sed;
-    }
-    
-    public String getRBCA_flood_sed_oth(){
-        return rbca_flood_sed_oth;
-    }
-    
-    public void setRBCA_flood_sed_oth(String flood_sed_oth){
-        this.rbca_flood_sed_oth = flood_sed_oth;
-    }
-    
-    public String getRBCA_flood_notes(){
-        return rbca_flood_notes;
-    }
-    
-    public void setRBCA_flood_notes(String flood_notes){
-        this.rbca_flood_notes = flood_notes;
-    }
-    
     public String getRBCA_struct_type(){
         return rbca_struct_type;
     }
-    
     public void setRBCA_struct_type(String struct_type){
         this.rbca_struct_type = struct_type;
     }
@@ -917,6 +958,13 @@ public class Post {
     
     public void setRBCA_struct_type_oth(String struct_type_oth){
         this.rbca_struct_type_oth = struct_type_oth;
+    }
+    
+    public void setRBCA_struct_defects(String struct_defects){
+        this.rbca_struct_defects = struct_defects;
+    }
+    public String getRBCA_struct_defects(){
+        return this.rbca_struct_defects;
     }
     
     public int getRBCA_struct(){
@@ -1189,6 +1237,76 @@ public class Post {
     }
     public void setRBCA_landblt_notes(String landblt_notes){
         this.rbca_landblt_notes = landblt_notes;
+    }
+    
+    public int getRBCA_hzrd(){
+        return this.rbca_hzrd;
+    }
+    public void setRBCA_hzrd(int hzrd){
+        this.rbca_hzrd = hzrd;
+    }
+    
+    public String getRBCA_hzrd_type(){
+        return this.rbca_hzrd_type;
+    }
+    public void setRBCA_hzrd_type(String hzrd_type){
+        this.rbca_hzrd_type = hzrd_type;
+    }
+    
+    public String getRBCA_hzrd_type_oth(){
+        return this.rbca_hzrd_type_oth;
+    }
+    public void setRBCA_hzrd_type_oth(String hzrd_type_oth){
+        this.rbca_hzrd_type_oth = hzrd_type_oth;
+    }
+    
+    public String getRBCA_hzrd_notes(){
+        return this.rbca_hzrd_notes;
+    }
+    public void setRBCA_hzrd_notes(String hzrd_notes){
+        this.rbca_hzrd_notes = hzrd_notes;
+    }
+    
+    public String getRBCA_hzrd_hazmat(){
+        return this.rbca_hzrd_hazmat;
+    }
+    public void setRBCA_hzrd_hazmat(String hzrd_hazmat){
+        this.rbca_hzrd_hazmat = hzrd_hazmat;
+    }
+    
+    public String getRBCA_hzrd_hazmat_oth(){
+        return this.rbca_hzrd_hazmat_oth;
+    }
+    public void setRBCA_hzrd_hazmat_oth(String hzrd_hazmat_oth){
+        this.rbca_hzrd_hazmat_oth = hzrd_hazmat_oth;
+    }
+    
+    public String getRBCA_actn(){
+        return this.rbca_actn;
+    }
+    public void setRBCA_actn(String actn){
+        this.rbca_actn = actn;
+    }
+    
+    public String getRBCA_actn_oth(){
+        return this.rbca_actn_oth;
+    }
+    public void setRBCA_actn_oth(String actn_oth){
+        this.rbca_actn_oth = actn_oth;
+    }
+    
+    public String getRBCA_eval(){
+        return this.rbca_eval;
+    }
+    public void setRBCA_eval(String eval){
+        this.rbca_eval = eval;
+    }
+    
+    public String getRBCA_eval_oth(){
+        return this.rbca_eval_oth;
+    }
+    public void setRBCA_eval_oth(String eval_oth){
+        this.rbca_eval_oth = eval_oth;
     }
     
     

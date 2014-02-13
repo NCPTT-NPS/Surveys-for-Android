@@ -78,12 +78,12 @@ public abstract class WPActionBarActivity extends SherlockFragmentActivity {
     protected static final int POSTS_ACTIVITY = 1;
     protected static final int PAGES_ACTIVITY = 2;
     protected static final int COMMENTS_ACTIVITY = 3;
-    protected static final int STATS_ACTIVITY = 4;
-    protected static final int QUICK_PHOTO_ACTIVITY = 5;
-    protected static final int QUICK_VIDEO_ACTIVITY = 6;
-    protected static final int VIEW_SITE_ACTIVITY = 7;
-    protected static final int DASHBOARD_ACTIVITY = 8;
-    protected static final int SETTINGS_ACTIVITY = 9;
+    //protected static final int STATS_ACTIVITY = 4;
+    protected static final int QUICK_PHOTO_ACTIVITY = 4;
+    protected static final int QUICK_VIDEO_ACTIVITY = 5;
+    protected static final int VIEW_SITE_ACTIVITY = 6;
+    protected static final int DASHBOARD_ACTIVITY = 7;
+    protected static final int SETTINGS_ACTIVITY = 8;
     
     protected MenuDrawer mMenuDrawer;
     private static int[] blogIDs;
@@ -309,8 +309,8 @@ public abstract class WPActionBarActivity extends SherlockFragmentActivity {
             mActivePosition = 2;
         else if ((WPActionBarActivity.this instanceof CommentsActivity))
             mActivePosition = 3;
-        else if ((WPActionBarActivity.this instanceof StatsActivity))
-            mActivePosition = 4;
+//        else if ((WPActionBarActivity.this instanceof StatsActivity))
+//            mActivePosition = 4;
         else if ((WPActionBarActivity.this instanceof ViewSiteActivity))
             mActivePosition = 7;
         else if ((WPActionBarActivity.this instanceof DashboardActivity))
@@ -388,16 +388,16 @@ public abstract class WPActionBarActivity extends SherlockFragmentActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     editor.putInt("wp_pref_last_activity", COMMENTS_ACTIVITY);
                     break;
-                case STATS_ACTIVITY:
-                    if (!(WPActionBarActivity.this instanceof StatsActivity))
-                        mShouldFinish = true;
-                    intent = new Intent(WPActionBarActivity.this, StatsActivity.class);
-                    intent.putExtra("id", WordPress.currentBlog.getId());
-                    intent.putExtra("isNew",
-                            true);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    editor.putInt("wp_pref_last_activity", STATS_ACTIVITY);
-                    break;
+//                case STATS_ACTIVITY:
+//                    if (!(WPActionBarActivity.this instanceof StatsActivity))
+//                        mShouldFinish = true;
+//                    intent = new Intent(WPActionBarActivity.this, StatsActivity.class);
+//                    intent.putExtra("id", WordPress.currentBlog.getId());
+//                    intent.putExtra("isNew",
+//                            true);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                    editor.putInt("wp_pref_last_activity", STATS_ACTIVITY);
+//                    break;
                 case QUICK_PHOTO_ACTIVITY:
                     mShouldFinish = false;
                     intent = new Intent(WPActionBarActivity.this, EditPostActivity.class);
