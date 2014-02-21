@@ -138,21 +138,24 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     ////added Jorge Rodriguez
     private ToggleButton mRBCA_bldg_occucy_avail, mRBCA_bldg_outbldg, mRBCA_hist_appear;
     private Spinner mRBCA_bldg_occucy_spinner, mRBCA_coord_loc_spinner, mRBCA_coord_corner_spinner, mRBCA_hist_dist_spinner;
-    private Spinner mRBCA_hist_age_spinner, mRBCA_hist_age_meta_spinner,mRBCA_dmg_total_spinner,mRBCA_flood_entry_spinner,mRBCA_struct_type_spinner,mRBCA_struct_spinner;
-    private Spinner mRBCA_found_type_spinner, mRBCA_found,mRBCA_extwall_spinner, mRBCA_extfeat_spinner, mRBCA_win_spinner, mRBCA_roof_spinner,mRBCA_int_collect_extant_spinner,mRBCA_landveg,mRBCA_landblt_spinner;
+    private Spinner mRBCA_hist_age_spinner, mRBCA_hist_age_meta_spinner,mRBCA_dmg_total_spinner,mRBCA_struct_type_spinner,mRBCA_struct_spinner;
+    private Spinner mRBCA_found_type_spinner, mRBCA_found,mRBCA_extwall_spinner, mRBCA_extfeat_spinner, mRBCA_win_spinner;
+    private Spinner mRBCA_roof_spinner,mRBCA_int_collect_extant_spinner,mRBCA_landveg,mRBCA_landblt_spinner, mRBCA_hist_age_src;
+    private Spinner mRBCA_hzrd_spinner;
     private EditText mRBCA_coord_notes, mRBCA_addr_no, mRBCA_addr_street, mRBCA_coord_loc_oth, mRBCA_bldg_posting_oth;
     private EditText mRBCA_bldg_stories, mRBCA_bldg_width, mRBCA_bldg_length, mRBCA_bldg_use_oth,mRBCA_bldg_outbldg_notes, mRBCA_bldg_units_res,mRBCA_bldg_units_comm;
     private EditText mRBCA_bldg_occu_name, mRBCA_bldg_occu_phone, mRBCA_bldg_notes,mRBCA_hist_desig_oth,mRBCA_hist_dist_name;
-    private EditText mRBCA_hist_yr_built, mRBCA_dmg_date,  mRBCA_dmg_source_oth, mRBCA_dmg_desc,mRBCA_flood_water_oth,mRBCA_flood_entry_oth;
-    private EditText mRBCA_flood_depth, mRBCA_flood_sed_oth,mRBCA_flood_notes, mRBCA_struct_type_oth,mRBCA_struct_notes,mRBCA_found_type_oth;
+    private EditText mRBCA_hist_yr_built,  mRBCA_dmg_source_oth, mRBCA_dmg_desc;
+    private EditText mRBCA_struct_type_oth,mRBCA_struct_notes,mRBCA_found_type_oth,mRBCA_actn_oth,mRBCA_eval_oth;
     private EditText mRBCA_found_notes, mRBCA_extwall_mat_oth,mRBCA_extwall_notes, mRBCA_extfeat_type_oth,mRBCA_extfeat_notes,mRBCA_win_type_oth;
     private EditText mRBCA_win_mat_oth, mRBCA_win_notes,mRBCA_roof_type_oth, mRBCA_roof_mat_oth,mRBCA_roof_notes,mRBCA_int_collect_type_oth;
     private EditText mRBCA_int_notes,mRBCA_landveg_feat_oth,mRBCA_landveg_notes,mRBCA_landblt_feat_oth,mRBCA_landblt_notes;
+    private EditText mRBCA_hist_age_src_oth, mRBCA_hist_age_notes,mRBCA_hzrd_type_oth,mRBCA_hzrd_notes,mRBCA_hzrd_hazmat_oth;
     
     protected Button mRBCA_bldg_area_select,mRBCA_bldg_posting_select,mRBCA_bldg_use_select, mRBCA_hist_desig_select, mRBCA_dmg_source_select;
-    protected Button mRBCA_flood_water_select, mRBCA_flood_sed_select, mRBCA_extwall_mat_select,mRBCA_extfeat_type_select,mRBCA_win_type_select;
+    protected Button mRBCA_extwall_mat_select,mRBCA_extfeat_type_select,mRBCA_win_type_select, mRBCA_struct_defects;
     protected Button mRBCA_win_mat_select,mRBCA_roof_type_select,mRBCA_roof_mat_select,mRBCA_int_cond_select, mRBCA_int_collect_type_select,mRBCA_landveg_feat_select;
-    protected Button mRBCA_landblt_fea;
+    protected Button mRBCA_landblt_fea_select,mRBCA_hzrd_type_select,mRBCA_hzrd_hazmat_select, mRBCA_actn, mRBCA_eval;
     
     protected CharSequence[] AreaAssessed = { "Exterior", "Interior" };
     protected CharSequence[] PostingChoices = {"Inspected", "Restricted Use", "Unsafe", "Further Evaluation","Other"};
