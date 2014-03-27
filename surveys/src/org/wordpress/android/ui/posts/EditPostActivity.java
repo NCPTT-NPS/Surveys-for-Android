@@ -139,13 +139,13 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private ToggleButton mRBCA_bldg_occucy_avail, mRBCA_bldg_outbldg, mRBCA_hist_appear;
     private Spinner mRBCA_bldg_occucy_spinner, mRBCA_coord_loc_spinner, mRBCA_coord_corner_spinner, mRBCA_hist_dist_spinner;
     private Spinner mRBCA_hist_age_spinner, mRBCA_hist_age_meta_spinner,mRBCA_dmg_total_spinner,mRBCA_struct_type_spinner,mRBCA_struct_spinner;
-    private Spinner mRBCA_found_type_spinner, mRBCA_found,mRBCA_extwall_spinner, mRBCA_extfeat_spinner, mRBCA_win_spinner;
-    private Spinner mRBCA_roof_spinner,mRBCA_int_collect_extant_spinner,mRBCA_landveg,mRBCA_landblt_spinner, mRBCA_hist_age_src;
+    private Spinner mRBCA_found_type_spinner, mRBCA_found_spinner,mRBCA_extwall_spinner, mRBCA_extfeat_spinner, mRBCA_win_spinner;
+    private Spinner mRBCA_roof_spinner,mRBCA_int_collect_extant_spinner,mRBCA_landveg_spinner,mRBCA_landblt_spinner, mRBCA_hist_age_src_spinner;
     private Spinner mRBCA_hzrd_spinner;
     private EditText mRBCA_coord_notes, mRBCA_addr_no, mRBCA_addr_street, mRBCA_coord_loc_oth, mRBCA_bldg_posting_oth;
     private EditText mRBCA_bldg_stories, mRBCA_bldg_width, mRBCA_bldg_length, mRBCA_bldg_use_oth,mRBCA_bldg_outbldg_notes, mRBCA_bldg_units_res,mRBCA_bldg_units_comm;
     private EditText mRBCA_bldg_occu_name, mRBCA_bldg_occu_phone, mRBCA_bldg_notes,mRBCA_hist_desig_oth,mRBCA_hist_dist_name;
-    private EditText mRBCA_hist_yr_built,  mRBCA_dmg_source_oth, mRBCA_dmg_desc;
+    private EditText mRBCA_hist_yr_built,  mRBCA_dmg_source_oth, mRBCA_dmg_desc, mRBCA_hist_notes;
     private EditText mRBCA_struct_type_oth,mRBCA_struct_notes,mRBCA_found_type_oth,mRBCA_actn_oth,mRBCA_eval_oth;
     private EditText mRBCA_found_notes, mRBCA_extwall_mat_oth,mRBCA_extwall_notes, mRBCA_extfeat_type_oth,mRBCA_extfeat_notes,mRBCA_win_type_oth;
     private EditText mRBCA_win_mat_oth, mRBCA_win_notes,mRBCA_roof_type_oth, mRBCA_roof_mat_oth,mRBCA_roof_notes,mRBCA_int_collect_type_oth;
@@ -153,9 +153,10 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private EditText mRBCA_hist_age_src_oth, mRBCA_hist_age_notes,mRBCA_hzrd_type_oth,mRBCA_hzrd_notes,mRBCA_hzrd_hazmat_oth;
     
     protected Button mRBCA_bldg_area_select,mRBCA_bldg_posting_select,mRBCA_bldg_use_select, mRBCA_hist_desig_select, mRBCA_dmg_source_select;
-    protected Button mRBCA_extwall_mat_select,mRBCA_extfeat_type_select,mRBCA_win_type_select, mRBCA_struct_defects;
+    protected Button mRBCA_extwall_mat_select,mRBCA_extfeat_type_select,mRBCA_win_type_select, mRBCA_struct_defects_select;
     protected Button mRBCA_win_mat_select,mRBCA_roof_type_select,mRBCA_roof_mat_select,mRBCA_int_cond_select, mRBCA_int_collect_type_select,mRBCA_landveg_feat_select;
-    protected Button mRBCA_landblt_fea_select,mRBCA_hzrd_type_select,mRBCA_hzrd_hazmat_select, mRBCA_actn, mRBCA_eval;
+    protected Button mRBCA_landblt_feat_select,mRBCA_hzrd_type_select,mRBCA_hzrd_hazmat_select, mRBCA_actn_select, mRBCA_eval_select;
+    
     
     protected CharSequence[] AreaAssessed = { "Exterior", "Interior" };
     protected CharSequence[] PostingChoices = {"Inspected", "Restricted Use", "Unsafe", "Further Evaluation","Other"};
@@ -167,6 +168,22 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     protected CharSequence[] floodWaterChoices = {"Standing","Flowing","Ground Water","Water Marks","Other"};
     protected CharSequence[] floodEntryChoices = {"Basement/Crawl","Other"};
     protected CharSequence[] floodSedChoices = {"Deposit","Eroded","Unknown","None","Other"};
+    protected CharSequence[] struct_defects_choices = {"Racking/Movement","Off Foundation","Partial Collapse","Inminent Collapse","Total Collapse"};
+    protected CharSequence[] extwall_mat_choices = {"Wood","Vinyl","Masonry","Aluminum","Metal(non aluminum)","Asphalt Siding","Stucco/Plaster","Cememtitious Siding","Other"};
+    protected CharSequence[] extfeat_type_choices = {"Decorative Elements","Porch/Verandah/Deck","Balcony","Gutters/Downspouts","Other"};
+    protected CharSequence[] win_type_choices = {"Fixed","Double/Single-hung","Casement","Sliding","Hopper","Awning","Pivot","Louver","Other"};
+    protected CharSequence[] win_mat_choices = {"Wood","Steel","Aluminum","Vinyl","Other"};
+    protected CharSequence[] roof_type_choices = {"Hipped","Gable","Mansard","Pyramid","Flat","Shed","Gambrel","Other"};
+    protected CharSequence[] roof_mat_choices = {"Slate","Metal","Tile","Asphalt","Cement/Asbestos","Other"};
+    protected CharSequence[] int_cond_choices = {"Structural Damage","Mold/Mildew","Falling Plaster","Debris Deposited"};
+    protected CharSequence[] int_collect_type_choices = {"Antiques","Archives","Art Work","Other"};
+    protected CharSequence[] landveg_feat_choices = {"Trees","Hedges/Shrubs","Planting Beds","Other"};
+    protected CharSequence[] landblt_feat_choices = {"Pavement/Roads/Walkway","Fence","Wall","Sculpture","Fountain","Other"};
+    protected CharSequence[] hzrd_type_choices = {"Racking/Structural Movement","Off Foundation","Partial Collapse","Inminent Collapse","Total Collapse","Ground Shift","Falling Hazard","Animals/Reptiles","Hazardous Materials","Other"};
+    protected CharSequence[] hzrd_hazmat_choices = {"Mold/Mildew","Flood Water","Sewage","Chemicals","Biological Waste (eg. animal carcass)","Asbestos","Other"};
+    protected CharSequence[] actn_choices = {"Debris Removal","Personal Protective Measures","Falling Hazard Removal","Shoring/Bracing","Barricades","Other"};
+    protected CharSequence[] eval_choices = {"Structural","Geotechnical","Archeological","Collections","Determination of Eligibility","HazMat","Other"};
+    
     
     protected ArrayList<CharSequence> selectedChoices = new ArrayList<CharSequence>();
     protected CharSequence[] Choices;
@@ -350,24 +367,65 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_hist_age_spinner = (Spinner) findViewById(R.id.rbca_hist_age);
         mRBCA_hist_age_meta_spinner = (Spinner) findViewById(R.id.rbca_hist_age_meta);
         mRBCA_hist_yr_built = (EditText) findViewById(R.id.rbca_hist_yr_built);
-        mRBCA_dmg_date = (EditText) findViewById(R.id.rbca_dmg_date);
+        mRBCA_hist_age_src_spinner = (Spinner) findViewById(R.id.rbca_hist_age_src);
+        mRBCA_hist_age_src_oth = (EditText) findViewById(R.id.rbca_hist_age_src_oth);
+        mRBCA_hist_notes = (EditText) findViewById(R.id.rbca_hist_notes);
         mRBCA_dmg_source_select = (Button) findViewById(R.id.rbca_dmg_source_select);
         mRBCA_dmg_source_oth = (EditText) findViewById(R.id.rbca_dmg_source_oth);
         mRBCA_dmg_total_spinner = (Spinner) findViewById(R.id.rbca_dmg_total);
-        mRBCA_dmg_desc = (EditText) findViewById(R.id.rbca_dmg_desc);
-        mRBCA_flood_water_select = (Button) findViewById(R.id.rbca_flood_water_select);
-        mRBCA_flood_water_oth = (EditText) findViewById(R.id.rbca_flood_water_oth);
-        mRBCA_flood_entry_spinner = (Spinner) findViewById(R.id.rbca_flood_entry);
-        mRBCA_flood_entry_oth = (EditText) findViewById(R.id.rbca_flood_entry_oth);
-        mRBCA_flood_depth = (EditText) findViewById(R.id.rbca_flood_depth);
-        mRBCA_flood_sed_select = (Button) findViewById(R.id.rbca_flood_sed_select);
-        mRBCA_flood_sed_oth = (EditText) findViewById(R.id.rbca_flood_sed_oth);
-        mRBCA_flood_notes = (EditText) findViewById(R.id.rbca_flood_notes);  
+        mRBCA_dmg_desc = (EditText) findViewById(R.id.rbca_dmg_desc); 
         mRBCA_struct_type_spinner = (Spinner) findViewById(R.id.rbca_struct_type);
         mRBCA_struct_type_oth = (EditText) findViewById(R.id.rbca_struct_type_oth);
+        mRBCA_struct_defects_select = (Button) findViewById(R.id.rbca_struct_defects_select);
         mRBCA_struct_spinner = (Spinner) findViewById(R.id.rbca_struct);
         mRBCA_struct_notes = (EditText) findViewById(R.id.rbca_struct_notes);
         mRBCA_found_type_spinner = (Spinner) findViewById(R.id.rbca_found_type);
+        mRBCA_found_type_oth = (EditText) findViewById(R.id.rbca_found_type_oth);
+        mRBCA_found_spinner = (Spinner) findViewById(R.id.rbca_found);
+        mRBCA_found_notes = (EditText) findViewById(R.id.rbca_found_notes);
+        mRBCA_extwall_mat_select = (Button) findViewById(R.id.rbca_extwall_mat_select);
+        mRBCA_extwall_mat_oth = (EditText) findViewById(R.id.rbca_extwall_mat_oth);
+        mRBCA_extwall_spinner = (Spinner) findViewById(R.id.rbca_extwall);
+        mRBCA_extwall_notes = (EditText) findViewById(R.id.rbca_extwall_notes);
+        mRBCA_extfeat_type_select = (Button) findViewById(R.id.rbca_extfeat_type_select);
+        mRBCA_extfeat_type_oth = (EditText) findViewById(R.id.rbca_extfeat_type_oth);
+        mRBCA_extfeat_spinner = (Spinner) findViewById(R.id.rbca_extfeat);
+        mRBCA_extfeat_notes = (EditText) findViewById(R.id.rbca_extfeat_notes);
+        mRBCA_win_type_select = (Button) findViewById(R.id.rbca_win_type_select);
+        mRBCA_win_type_oth = (EditText) findViewById(R.id.rbca_win_type_oth);
+        mRBCA_win_mat_select = (Button) findViewById(R.id.rbca_win_mat_select);
+        mRBCA_win_mat_oth = (EditText) findViewById(R.id.rbca_win_mat_oth);
+        mRBCA_win_spinner = (Spinner) findViewById(R.id.rbca_win);
+        mRBCA_win_notes = (EditText) findViewById(R.id.rbca_win_notes);
+        mRBCA_roof_type_select = (Button) findViewById(R.id.rbca_roof_type_select);
+        mRBCA_roof_type_oth = (EditText) findViewById(R.id.rbca_roof_type_oth);
+        mRBCA_roof_mat_select = (Button) findViewById(R.id.rbca_roof_mat_select);
+        mRBCA_roof_mat_oth = (EditText) findViewById(R.id.rbca_roof_mat_oth);
+        mRBCA_roof_spinner = (Spinner) findViewById(R.id.rbca_roof);
+        mRBCA_roof_notes = (EditText) findViewById(R.id.rbca_roof_notes);
+        mRBCA_int_cond_select = (Button) findViewById(R.id.rbca_int_cond_select);
+        mRBCA_int_collect_extant_spinner = (Spinner) findViewById(R.id.rbca_int_collect_extant);
+        mRBCA_int_collect_type_select = (Button) findViewById(R.id.rbca_int_collect_type_select);
+        mRBCA_int_collect_type_oth = (EditText) findViewById(R.id.rbca_int_collect_type_oth);
+        mRBCA_int_notes = (EditText) findViewById(R.id.rbca_int_notes);
+        mRBCA_landveg_feat_select = (Button) findViewById(R.id.rbca_landveg_feat_select);
+        mRBCA_landveg_feat_oth = (EditText) findViewById(R.id.rbca_landveg_feat_oth);
+        mRBCA_landveg_spinner = (Spinner) findViewById(R.id.rbca_landveg);
+        mRBCA_landveg_notes = (EditText) findViewById(R.id.rbca_landveg_notes);
+        mRBCA_landblt_feat_select = (Button) findViewById(R.id.rbca_landblt_feat_select);
+        mRBCA_landblt_feat_oth = (EditText) findViewById(R.id.rbca_landblt_feat_oth);
+        mRBCA_landblt_spinner = (Spinner) findViewById(R.id.rbca_landblt);
+        mRBCA_landblt_notes = (EditText) findViewById(R.id.rbca_landblt_notes);
+        mRBCA_hzrd_spinner = (Spinner) findViewById(R.id.rbca_hzrd);
+        mRBCA_hzrd_type_select = (Button) findViewById(R.id.rbca_hzrd_type_select);
+        mRBCA_hzrd_type_oth = (EditText) findViewById(R.id.rbca_hzrd_type_oth);
+        mRBCA_hzrd_notes = (EditText) findViewById(R.id.rbca_hzrd_notes);
+        mRBCA_hzrd_hazmat_select = (Button) findViewById(R.id.rbca_hzrd_hazmat_select);
+        mRBCA_hzrd_hazmat_oth = (EditText) findViewById(R.id.rbca_hzrd_hazmat_oth);
+        mRBCA_actn_select = (Button) findViewById(R.id.rbca_actn_select);
+        mRBCA_actn_oth = (EditText) findViewById(R.id.rbca_actn_oth);
+        mRBCA_eval_select = (Button) findViewById(R.id.rbca_eval_select);
+        mRBCA_eval_oth = (EditText) findViewById(R.id.rbca_eval_oth);
        
         //////////////////////////end Surveys for Android
         
@@ -411,19 +469,19 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ((TextView) findViewById(R.id.rbca_hist_age_label)).setText(getResources().getString(R.string.rbca_hist_age_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_hist_age_meta_label)).setText(getResources().getString(R.string.rbca_hist_age_meta_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_hist_yr_built_label)).setText(getResources().getString(R.string.rbca_hist_yr_built_label).toUpperCase());
-        ((TextView) findViewById(R.id.rbca_dmg_date_label)).setText(getResources().getString(R.string.rbca_dmg_date_label).toUpperCase());
+       // ((TextView) findViewById(R.id.rbca_dmg_date_label)).setText(getResources().getString(R.string.rbca_dmg_date_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_dmg_source_label)).setText(getResources().getString(R.string.rbca_dmg_source_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_dmg_source_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_dmg_total_label)).setText(getResources().getString(R.string.rbca_dmg_total_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_dmg_desc_label)).setText(getResources().getString(R.string.rbca_dmg_desc_label).toUpperCase());
-        ((TextView) findViewById(R.id.rbca_flood_water_label)).setText(getResources().getString(R.string.rbca_flood_water_label).toUpperCase());
-        ((TextView) findViewById(R.id.rbca_flood_water_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
-        ((TextView) findViewById(R.id.rbca_flood_entry_label)).setText(getResources().getString(R.string.rbca_flood_entry_label).toUpperCase());
-        ((TextView) findViewById(R.id.rbca_flood_entry_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
-        ((TextView) findViewById(R.id.rbca_flood_depth_label)).setText(getResources().getString(R.string.rbca_flood_depth_label).toUpperCase());
-        ((TextView) findViewById(R.id.rbca_flood_sed_label)).setText(getResources().getString(R.string.rbca_flood_sed_label).toUpperCase());
-        ((TextView) findViewById(R.id.rbca_flood_sed_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
-        ((TextView) findViewById(R.id.rbca_flood_notes_label)).setText(getResources().getString(R.string.rbca_flood_notes_label).toUpperCase());
+//        ((TextView) findViewById(R.id.rbca_flood_water_label)).setText(getResources().getString(R.string.rbca_flood_water_label).toUpperCase());
+//        ((TextView) findViewById(R.id.rbca_flood_water_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
+//        ((TextView) findViewById(R.id.rbca_flood_entry_label)).setText(getResources().getString(R.string.rbca_flood_entry_label).toUpperCase());
+//        ((TextView) findViewById(R.id.rbca_flood_entry_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
+//        ((TextView) findViewById(R.id.rbca_flood_depth_label)).setText(getResources().getString(R.string.rbca_flood_depth_label).toUpperCase());
+//        ((TextView) findViewById(R.id.rbca_flood_sed_label)).setText(getResources().getString(R.string.rbca_flood_sed_label).toUpperCase());
+//        ((TextView) findViewById(R.id.rbca_flood_sed_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
+//        ((TextView) findViewById(R.id.rbca_flood_notes_label)).setText(getResources().getString(R.string.rbca_flood_notes_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_struct_type_label)).setText(getResources().getString(R.string.rbca_struct_type_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_struct_type_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_struct_label)).setText(getResources().getString(R.string.rbca_struct_label).toUpperCase());
@@ -685,7 +743,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             if (mPost.getRBCA_bldg_occucy() !=null){
                 String occupancy1 = mPost.getRBCA_bldg_occucy();
-                if (occupancy.equals("Occupied")) {
+                if (occupancy1.equals("Occupied")) {
                     mRBCA_bldg_occucy_spinner.setSelection(0, true);
                 } else if (occupancy1.equals("Vacant")) {
                     mRBCA_bldg_occucy_spinner.setSelection(1, true);
@@ -788,8 +846,32 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (mPost.getRBCA_hist_yr_built() != 0){
                 mRBCA_hist_yr_built.setText(Integer.toString(mPost.getRBCA_hist_yr_built()));}
             
-            if (mPost.getRBCA_dmg_date() != 0){
-                mRBCA_dmg_date.setText(Integer.toString(mPost.getRBCA_dmg_date()));}
+           
+            if (mPost.getRBCA_hist_age_src() > 0 ){
+                int hist_age_src1 = mPost.getRBCA_hist_age_src();
+                switch (hist_age_src1){
+                    case 1:
+                        mRBCA_hist_age_src_spinner.setSelection(0);
+                        break;
+                    case 2:
+                        mRBCA_hist_age_src_spinner.setSelection(1);
+                        break;
+                    case 3:
+                        mRBCA_hist_age_src_spinner.setSelection(2);
+                        break;
+                    case 4:
+                        mRBCA_hist_age_src_spinner.setSelection(3);
+                        break;
+                }
+            }
+            
+            if (mPost.getRBCA_hist_age_src_oth() != null){
+                mRBCA_hist_age_src_oth.setText(mPost.getRBCA_hist_age_src_oth());}
+            
+            System.out.println(mPost.getRBCA_hist_notes());
+            if (mPost.getRBCA_hist_notes() != null){
+                //mRBCA_hist_age_notes.setText(mPost.getRBCA_hist_notes());
+                }
             
             if (mPost.getRBCA_dmg_source() != null){
                 mRBCA_dmg_source_select.setText(mPost.getRBCA_dmg_source());
@@ -820,32 +902,33 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (mPost.getRBCA_dmg_desc() != null){
                 mRBCA_dmg_desc.setText(mPost.getRBCA_dmg_desc());}
             
-            if (mPost.getRBCA_flood_water() != null){
-                mRBCA_flood_water_select.setText(mPost.getRBCA_flood_water());}
-            
-            if (mPost.getRBCA_flood_water_oth() != null){
-                mRBCA_flood_water_oth.setText(mPost.getRBCA_flood_water_oth());}
-            
-            if (mPost.getRBCA_flood_entry() != null ){
-                String floodEntry = mPost.getRBCA_flood_entry();
-                if (floodEntry.equals("Basement/Crawl")){mRBCA_flood_entry_spinner.setSelection(0);}
-                if (floodEntry.equals("Other")) {mRBCA_flood_entry_spinner.setSelection(1);}
-            }
-            
-            if (mPost.getRBCA_flood_entry_oth() != null){
-                mRBCA_flood_entry_oth.setText(mPost.getRBCA_flood_entry_oth());}
-            
-            if (mPost.getRBCA_flood_depth() != 0.0){
-                mRBCA_flood_depth.setText(Double.toString(mPost.getRBCA_flood_depth()));}
-            
-            if (mPost.getRBCA_flood_sed() != null){
-                mRBCA_flood_sed_select.setText(mPost.getRBCA_flood_sed());}
-            
-            if (mPost.getRBCA_flood_sed_oth() != null){
-                mRBCA_flood_sed_oth.setText(mPost.getRBCA_flood_sed_oth());}
-            
-            if (mPost.getRBCA_flood_notes() != null){
-                mRBCA_flood_notes.setText(mPost.getRBCA_flood_notes());}
+            // this part was deleted in revision 7./////////////////
+//            if (mPost.getRBCA_flood_water() != null){
+//                mRBCA_flood_water_select.setText(mPost.getRBCA_flood_water());}
+//            
+//            if (mPost.getRBCA_flood_water_oth() != null){
+//                mRBCA_flood_water_oth.setText(mPost.getRBCA_flood_water_oth());}
+//            
+//            if (mPost.getRBCA_flood_entry() != null ){
+//                String floodEntry = mPost.getRBCA_flood_entry();
+//                if (floodEntry.equals("Basement/Crawl")){mRBCA_flood_entry_spinner.setSelection(0);}
+//                if (floodEntry.equals("Other")) {mRBCA_flood_entry_spinner.setSelection(1);}
+//            }
+//            
+//            if (mPost.getRBCA_flood_entry_oth() != null){
+//                mRBCA_flood_entry_oth.setText(mPost.getRBCA_flood_entry_oth());}
+//            
+//            if (mPost.getRBCA_flood_depth() != 0.0){
+//                mRBCA_flood_depth.setText(Double.toString(mPost.getRBCA_flood_depth()));}
+//            
+//            if (mPost.getRBCA_flood_sed() != null){
+//                mRBCA_flood_sed_select.setText(mPost.getRBCA_flood_sed());}
+//            
+//            if (mPost.getRBCA_flood_sed_oth() != null){
+//                mRBCA_flood_sed_oth.setText(mPost.getRBCA_flood_sed_oth());}
+//            
+//            if (mPost.getRBCA_flood_notes() != null){
+//                mRBCA_flood_notes.setText(mPost.getRBCA_flood_notes());}
             
             if (mPost.getRBCA_struct_type() != null){
                 String rbca_struct_type = mPost.getRBCA_struct_type();
@@ -865,6 +948,9 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             if (mPost.getRBCA_struct_type_oth() != null){
                 mRBCA_struct_type_oth.setText(mPost.getRBCA_struct_type_oth());}
+            
+            if (mPost.getRBCA_struct_defects() != null){
+                mRBCA_struct_defects_select.setText(mPost.getRBCA_struct_defects());}
             
             
             if (mPost.getRBCA_struct() > 0 ){
@@ -904,6 +990,272 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                     mRBCA_found_type_spinner.setSelection(4, true);
                 }
             }
+            
+            if (mPost.getRBCA_found_type_oth() != null){
+                mRBCA_found_type_oth.setText(mPost.getRBCA_found_type_oth());}
+            
+            if (mPost.getRBCA_found() > 0 ){
+                int found1 = mPost.getRBCA_found();
+                switch (found1){
+                    case 1:
+                        mRBCA_found_spinner.setSelection(0);
+                        break;
+                    case 2:
+                        mRBCA_found_spinner.setSelection(1);
+                        break;
+                    case 3:
+                        mRBCA_found_spinner.setSelection(2);
+                        break;
+                    case 4:
+                        mRBCA_found_spinner.setSelection(3);
+                        break;
+                }
+            }
+            
+            if (mPost.getRBCA_found_notes() != null){
+                mRBCA_found_notes.setText(mPost.getRBCA_found_notes());}
+            
+            if (mPost.getRBCA_extwall_mat() != null){
+                mRBCA_extwall_mat_select.setText(mPost.getRBCA_extwall_mat());}
+            
+            if (mPost.getRBCA_extwall_mat_oth() != null){
+                mRBCA_extwall_mat_oth.setText(mPost.getRBCA_extwall_mat_oth());}
+            
+            if (mPost.getRBCA_extwall() > 0 ){
+                int extwall1 = mPost.getRBCA_extwall();
+                switch (extwall1){
+                    case 1:
+                        mRBCA_extwall_spinner.setSelection(0);
+                        break;
+                    case 2:
+                        mRBCA_extwall_spinner.setSelection(1);
+                        break;
+                    case 3:
+                        mRBCA_extwall_spinner.setSelection(2);
+                        break;
+                    case 4:
+                        mRBCA_extwall_spinner.setSelection(3);
+                        break;
+                }
+            }
+            
+            if (mPost.getRBCA_extfeat_type() != null){
+                mRBCA_extfeat_type_select.setText(mPost.getRBCA_extfeat_type());}
+            
+            if (mPost.getRBCA_extfeat_type_oth() != null){
+                mRBCA_extfeat_type_oth.setText(mPost.getRBCA_extfeat_type_oth());}
+            
+            if (mPost.getRBCA_extfeat() > 0 ){
+                int extfeat1 = mPost.getRBCA_extfeat();
+                switch (extfeat1){
+                    case 1:
+                        mRBCA_extfeat_spinner.setSelection(0);
+                        break;
+                    case 2:
+                        mRBCA_extfeat_spinner.setSelection(1);
+                        break;
+                    case 3:
+                        mRBCA_extfeat_spinner.setSelection(2);
+                        break;
+                    case 4:
+                        mRBCA_extfeat_spinner.setSelection(3);
+                        break;
+                }
+            }
+            
+            if (mPost.getRBCA_extfeat_notes() != null){
+                mRBCA_extfeat_notes.setText(mPost.getRBCA_extfeat_notes());}
+            
+            if (mPost.getRBCA_win_type() != null){
+                mRBCA_win_type_select.setText(mPost.getRBCA_win_type());}
+            
+            if (mPost.getRBCA_win_type_oth() != null){
+                mRBCA_win_type_oth.setText(mPost.getRBCA_win_type_oth());}
+            
+            if (mPost.getRBCA_win_mat() != null){
+                mRBCA_win_mat_select.setText(mPost.getRBCA_win_mat());}
+            
+            if (mPost.getRBCA_win_mat_oth() != null){
+                mRBCA_win_mat_oth.setText(mPost.getRBCA_win_mat_oth());}
+            
+            if (mPost.getRBCA_win() > 0 ){
+                int win1 = mPost.getRBCA_win();
+                switch (win1){
+                    case 1:
+                        mRBCA_win_spinner.setSelection(0);
+                        break;
+                    case 2:
+                        mRBCA_win_spinner.setSelection(1);
+                        break;
+                    case 3:
+                        mRBCA_win_spinner.setSelection(2);
+                        break;
+                    case 4:
+                        mRBCA_win_spinner.setSelection(3);
+                        break;
+                }
+            }
+            
+            if (mPost.getRBCA_win_notes() != null){
+                mRBCA_win_notes.setText(mPost.getRBCA_win_notes());}
+            
+            if (mPost.getRBCA_roof_type() != null){
+                mRBCA_roof_type_select.setText(mPost.getRBCA_roof_type());}
+            
+            if (mPost.getRBCA_roof_type_oth() != null){
+                mRBCA_roof_type_oth.setText(mPost.getRBCA_roof_type_oth());}
+            
+            if (mPost.getRBCA_roof_mat() != null){
+                mRBCA_roof_mat_select.setText(mPost.getRBCA_roof_mat());}
+            
+            if (mPost.getRBCA_roof_mat_oth() != null){
+                mRBCA_roof_mat_oth.setText(mPost.getRBCA_roof_mat_oth());}
+            
+            if (mPost.getRBCA_roof() > 0 ){
+                int roof1 = mPost.getRBCA_roof();
+                switch (roof1){
+                    case 1:
+                        mRBCA_roof_spinner.setSelection(0);
+                        break;
+                    case 2:
+                        mRBCA_roof_spinner.setSelection(1);
+                        break;
+                    case 3:
+                        mRBCA_roof_spinner.setSelection(2);
+                        break;
+                    case 4:
+                        mRBCA_roof_spinner.setSelection(3);
+                        break;
+                }
+            }
+            
+            if (mPost.getRBCA_roof_notes() != null){
+                mRBCA_roof_notes.setText(mPost.getRBCA_roof_notes());}
+            
+            if (mPost.getRBCA_int_cond() != null){
+                mRBCA_int_cond_select.setText(mPost.getRBCA_int_cond());}
+            
+            if (mPost.getRBCA_int_collect_extant() > 0 ){
+                int int_collect_extant1 = mPost.getRBCA_int_collect_extant();
+                switch (int_collect_extant1){
+                    case 1:
+                        mRBCA_int_collect_extant_spinner.setSelection(0);
+                        break;
+                    case 2:
+                        mRBCA_int_collect_extant_spinner.setSelection(1);
+                        break;
+                    case 3:
+                        mRBCA_int_collect_extant_spinner.setSelection(2);
+                        break;
+                    case 4:
+                        mRBCA_int_collect_extant_spinner.setSelection(3);
+                        break;
+                }
+            }
+            
+            if (mPost.getRBCA_int_collect_type() != null){
+                mRBCA_int_collect_type_select.setText(mPost.getRBCA_int_collect_type());}
+            
+            if (mPost.getRBCA_int_collect_type_oth() != null){
+                mRBCA_int_collect_type_oth.setText(mPost.getRBCA_int_collect_type_oth());}
+            
+            if (mPost.getRBCA_int_notes() != null){
+                mRBCA_int_notes.setText(mPost.getRBCA_int_notes());}
+            
+            if (mPost.getRBCA_landveg_feat() != null){
+                mRBCA_landveg_feat_select.setText(mPost.getRBCA_landveg_feat());}
+            
+            if (mPost.getRBCA_landveg_feat_oth() != null){
+                mRBCA_landveg_feat_oth.setText(mPost.getRBCA_landveg_feat_oth());}
+            
+            if (mPost.getRBCA_landveg() > 0 ){
+                int landveg1 = mPost.getRBCA_landveg();
+                switch (landveg1){
+                    case 1:
+                        mRBCA_landveg_spinner.setSelection(0);
+                        break;
+                    case 2:
+                        mRBCA_landveg_spinner.setSelection(1);
+                        break;
+                    case 3:
+                        mRBCA_landveg_spinner.setSelection(2);
+                        break;
+                    case 4:
+                        mRBCA_landveg_spinner.setSelection(3);
+                        break;
+                }
+            }
+            
+            if (mPost.getRBCA_landveg_notes() != null){
+                mRBCA_landveg_notes.setText(mPost.getRBCA_landveg_notes());}
+            
+            if (mPost.getRBCA_landblt_feat() != null){
+                mRBCA_landblt_feat_select.setText(mPost.getRBCA_landblt_feat());}
+            
+            if (mPost.getRBCA_landblt_feat_oth() != null){
+                mRBCA_landblt_feat_oth.setText(mPost.getRBCA_landblt_feat_oth());}
+            
+            if (mPost.getRBCA_landblt() > 0 ){
+                int landblt1 = mPost.getRBCA_landblt();
+                switch (landblt1){
+                    case 1:
+                        mRBCA_landblt_spinner.setSelection(0);
+                        break;
+                    case 2:
+                        mRBCA_landblt_spinner.setSelection(1);
+                        break;
+                    case 3:
+                        mRBCA_landblt_spinner.setSelection(2);
+                        break;
+                    case 4:
+                        mRBCA_landblt_spinner.setSelection(3);
+                        break;
+                }
+            }
+            
+            if (mPost.getRBCA_landblt_notes() != null){
+                mRBCA_landblt_notes.setText(mPost.getRBCA_landblt_notes());}
+            
+            if (mPost.getRBCA_hzrd() > 0 ){
+                int hzrd1 = mPost.getRBCA_hzrd();
+                switch (hzrd1){
+                    case 1:
+                        mRBCA_hzrd_spinner.setSelection(0);
+                        break;
+                    case 2:
+                        mRBCA_hzrd_spinner.setSelection(1);
+                        break;
+                }
+            }
+            
+            if (mPost.getRBCA_hzrd_type() != null){
+                mRBCA_hzrd_type_select.setText(mPost.getRBCA_hzrd_type());}
+            
+            if (mPost.getRBCA_hzrd_type_oth() != null){
+                mRBCA_hzrd_type_oth.setText(mPost.getRBCA_hzrd_type_oth());}
+            
+            if (mPost.getRBCA_hzrd_notes() != null){
+                mRBCA_hzrd_notes.setText(mPost.getRBCA_hzrd_notes());}
+            
+            if (mPost.getRBCA_hzrd_hazmat() != null){
+                mRBCA_hzrd_hazmat_select.setText(mPost.getRBCA_hzrd_hazmat());}
+            
+            if (mPost.getRBCA_hzrd_hazmat_oth() != null){
+                mRBCA_hzrd_hazmat_oth.setText(mPost.getRBCA_hzrd_hazmat_oth());}
+            
+            if (mPost.getRBCA_actn() != null){
+                mRBCA_actn_select.setText(mPost.getRBCA_actn());}
+            
+            if (mPost.getRBCA_actn_oth() != null){
+                mRBCA_actn_oth.setText(mPost.getRBCA_actn_oth());}
+            
+            if (mPost.getRBCA_eval() != null){
+                mRBCA_eval_select.setText(mPost.getRBCA_eval());}
+            
+            if (mPost.getRBCA_eval_oth() != null){
+                mRBCA_eval_oth.setText(mPost.getRBCA_eval_oth());}
+            
+            
             
             /////////////////////////end SURVEYS FOR ANDROID
             
@@ -979,7 +1331,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mMoreButton.setOnClickListener(this);
         
         
-        ////////Surveys for Android 
+        ////////Moca for Android 
         mRBCA_bldg_area_select.setOnClickListener(this);
         mRBCA_bldg_posting_select.setOnClickListener(this);
         mRBCA_bldg_occucy_avail.setOnClickListener(this);
@@ -988,11 +1340,22 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_hist_desig_select.setOnClickListener(this);
         mRBCA_hist_appear.setOnClickListener(this);
         mRBCA_dmg_source_select.setOnClickListener(this);
-        mRBCA_flood_water_select.setOnClickListener(this);
-        mRBCA_flood_sed_select.setOnClickListener(this);
-        
-        //mRBCA_dmg_date.setOnClickListener(this);
-        /////end surverys for android
+        mRBCA_struct_defects_select.setOnClickListener(this);
+        mRBCA_extwall_mat_select.setOnClickListener(this);
+        mRBCA_extfeat_type_select.setOnClickListener(this);
+        mRBCA_win_type_select.setOnClickListener(this);
+        mRBCA_win_mat_select.setOnClickListener(this);
+        mRBCA_roof_type_select.setOnClickListener(this);
+        mRBCA_roof_mat_select.setOnClickListener(this);
+        mRBCA_int_cond_select.setOnClickListener(this);
+        mRBCA_int_collect_type_select.setOnClickListener(this);
+        mRBCA_landveg_feat_select.setOnClickListener(this);
+        mRBCA_landblt_feat_select.setOnClickListener(this);
+        mRBCA_hzrd_type_select.setOnClickListener(this);
+        mRBCA_hzrd_hazmat_select.setOnClickListener(this);
+        mRBCA_actn_select.setOnClickListener(this);
+        mRBCA_eval_select.setOnClickListener(this);
+        /////end Moca for android
     }
 
     @Override
@@ -1205,7 +1568,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setLongitude(0.0);
             }
             mLocationText.setText("");
-        } else if (id == R.id.rbca_bldg_area_select){////ESTO LO AGREGE YO! Surveys for Android
+        } else if (id == R.id.rbca_bldg_area_select){////Moca for Android////////////////////////////////////////
             showSelectionDialog((String) mRBCA_bldg_area_select.getText(),AreaAssessed,mRBCA_bldg_area_select);
         } else if (id == R.id.rbca_bldg_posting_select){
             showSelectionDialog((String) mRBCA_bldg_posting_select.getText(),PostingChoices,mRBCA_bldg_posting_select);
@@ -1219,14 +1582,36 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             showSelectionDialog((String) mRBCA_hist_desig_select.getText(), desigChoices,mRBCA_hist_desig_select);
         } else if (id == R.id.rbca_hist_appear){
             onChangeToggleButton(mRBCA_hist_appear);
-        } else if (id == R.id.rbca_dmg_date){
-            chooseDate();
-        } else if (id == R.id.rbca_dmg_source_select){
-            showSelectionDialog((String) mRBCA_dmg_source_select.getText(),dmgSourceChoices,mRBCA_dmg_source_select);
-        } else if (id == R.id.rbca_flood_water_select){
-            showSelectionDialog((String) mRBCA_flood_water_select.getText(),floodWaterChoices,mRBCA_flood_water_select);
-        } else if (id == R.id.rbca_flood_sed_select){
-            showSelectionDialog((String) mRBCA_flood_sed_select.getText(),floodSedChoices,mRBCA_flood_sed_select);
+        } else if (id == R.id.rbca_struct_defects_select){
+            showSelectionDialog((String) mRBCA_struct_defects_select.getText(),struct_defects_choices,mRBCA_struct_defects_select);
+        } else if (id == R.id.rbca_extwall_mat_select){
+            showSelectionDialog((String) mRBCA_extwall_mat_select.getText(),extwall_mat_choices,mRBCA_extwall_mat_select);
+        } else if (id == R.id.rbca_extfeat_type_select){
+            showSelectionDialog((String) mRBCA_extfeat_type_select.getText(),extfeat_type_choices,mRBCA_extfeat_type_select);
+        } else if (id == R.id.rbca_win_type_select){
+            showSelectionDialog((String) mRBCA_win_type_select.getText(),win_type_choices,mRBCA_win_type_select);
+        } else if (id == R.id.rbca_win_mat_select){
+            showSelectionDialog((String) mRBCA_win_mat_select.getText(),win_mat_choices,mRBCA_win_mat_select);
+        } else if (id == R.id.rbca_roof_type_select){
+            showSelectionDialog((String) mRBCA_roof_type_select.getText(),roof_type_choices,mRBCA_roof_type_select);
+        } else if (id == R.id.rbca_roof_mat_select){
+            showSelectionDialog((String) mRBCA_roof_mat_select.getText(),roof_mat_choices,mRBCA_roof_mat_select);
+        } else if (id == R.id.rbca_int_cond_select){
+            showSelectionDialog((String) mRBCA_int_cond_select.getText(),int_cond_choices,mRBCA_int_cond_select);
+        } else if (id == R.id.rbca_int_collect_type_select){
+            showSelectionDialog((String) mRBCA_int_collect_type_select.getText(),int_collect_type_choices,mRBCA_int_collect_type_select);
+        } else if (id == R.id.rbca_landveg_feat_select){
+            showSelectionDialog((String) mRBCA_landveg_feat_select.getText(),landveg_feat_choices,mRBCA_landveg_feat_select);
+        } else if (id == R.id.rbca_landblt_feat_select){
+            showSelectionDialog((String) mRBCA_landblt_feat_select.getText(),landblt_feat_choices,mRBCA_landblt_feat_select);
+        } else if (id == R.id.rbca_hzrd_type_select){
+            showSelectionDialog((String) mRBCA_hzrd_type_select.getText(),hzrd_type_choices,mRBCA_hzrd_type_select);
+        } else if (id == R.id.rbca_hzrd_hazmat_select){
+            showSelectionDialog((String) mRBCA_hzrd_hazmat_select.getText(),hzrd_hazmat_choices,mRBCA_hzrd_hazmat_select);
+        } else if (id == R.id.rbca_actn_select){
+            showSelectionDialog((String) mRBCA_actn_select.getText(),actn_choices,mRBCA_actn_select);
+        } else if (id == R.id.rbca_eval_select){
+            showSelectionDialog((String) mRBCA_eval_select.getText(),eval_choices,mRBCA_eval_select);
         }
             
     }
@@ -2204,44 +2589,19 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 hist_yr_built = Integer.parseInt(mRBCA_hist_yr_built.getText().toString());
             } 
             
-            int dmg_date = 0;
-            if (!mRBCA_dmg_date.getText().toString().equals("")){
-                dmg_date = Integer.parseInt(mRBCA_dmg_date.getText().toString());
-            } 
+            int hist_age_src = mRBCA_hist_age_src_spinner.getSelectedItemPosition();
             
+            String hist_age_src_oth = mRBCA_hist_age_src_oth.getText().toString();
+            
+            String hist_notes = mRBCA_hist_notes.getText().toString();
+           
             String dmg_source = mRBCA_dmg_source_select.getText().toString();
+            
             String dmg_source_oth = mRBCA_dmg_source_oth.getText().toString();
             
             int dmg_total = mRBCA_dmg_total_spinner.getSelectedItemPosition();
             
             String dmg_desc = mRBCA_dmg_desc.getText().toString();
-            
-            String flood_water = mRBCA_flood_water_select.getText().toString();
-            
-            String flood_water_oth = mRBCA_flood_water_oth.getText().toString();
-            
-            String flood_entry = "";
-            switch (mRBCA_flood_entry_spinner.getSelectedItemPosition()){
-                case 0:
-                    flood_entry = "Basement/Crawl";
-                    break;
-                case 1:
-                    flood_entry = "Other";
-                    break;
-            }
-            
-            String flood_entry_oth = mRBCA_flood_entry_oth.getText().toString();
-            
-            double flood_depth =0.0;
-            if (!mRBCA_flood_depth.getText().toString().equals("")){
-                flood_depth = Double.parseDouble(mRBCA_flood_depth.getText().toString());
-            }
-            
-            String flood_sed = mRBCA_flood_sed_select.getText().toString();
-            
-            String flood_sed_oth = mRBCA_flood_sed_oth.getText().toString();
-            
-            String flood_notes = mRBCA_flood_notes.getText().toString();
             
             int selected_struct_type = mRBCA_struct_type_spinner.getSelectedItemPosition();
             String struct_type = "";
@@ -2264,6 +2624,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             } 
             
             String struct_type_oth = mRBCA_struct_type_oth.getText().toString();
+            
+            String struct_defects = mRBCA_struct_defects_select.getText().toString();
             
             int struct = mRBCA_struct_spinner.getSelectedItemPosition();
             
@@ -2288,12 +2650,103 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 found_type = "Other";
                 break;
             } 
+            
+            String found_type_oth = mRBCA_found_type_oth.getText().toString();
+            
+            int found = mRBCA_found_spinner.getSelectedItemPosition();
+            
+            String found_notes = mRBCA_found_notes.getText().toString();
+            
+            String extwall_mat = mRBCA_extwall_mat_select.getText().toString();
+            
+            String extwall_mat_oth = mRBCA_extwall_mat_oth.getText().toString();
+            
+            int extwall = mRBCA_extwall_spinner.getSelectedItemPosition();
+            
+            String extwall_notes = mRBCA_extwall_notes.getText().toString();
+            
+            String extfeat_type = mRBCA_extfeat_type_select.getText().toString();
+            
+            String extfeat_type_oth = mRBCA_extfeat_type_oth.getText().toString();
+            
+            int extfeat = mRBCA_extfeat_spinner.getSelectedItemPosition();
+            
+            String extfeat_notes = mRBCA_extfeat_notes.getText().toString();
+            
+            String win_type = mRBCA_win_type_select.getText().toString();
+            
+            String win_type_oth = mRBCA_win_type_oth.getText().toString();
+            
+            String win_mat = mRBCA_win_mat_select.getText().toString();
+            
+            String win_mat_oth = mRBCA_win_mat_oth.getText().toString();
+            
+            int win = mRBCA_win_spinner.getSelectedItemPosition();
+            
+            String win_notes = mRBCA_win_notes.getText().toString();
+            
+            String roof_type = mRBCA_roof_type_select.getText().toString();
+            
+            String roof_type_oth = mRBCA_roof_type_oth.getText().toString();
+            
+            String roof_mat = mRBCA_roof_mat_select.getText().toString();
+            
+            String roof_mat_oth = mRBCA_roof_mat_oth.getText().toString();
+            
+            int roof = mRBCA_roof_spinner.getSelectedItemPosition();
+            
+            String roof_notes = mRBCA_roof_notes.getText().toString();
+            
+            String int_cond = mRBCA_int_cond_select.getText().toString();
+            
+            int int_collect_extant = mRBCA_int_collect_extant_spinner.getSelectedItemPosition();
+            
+            String int_collect_type = mRBCA_int_collect_type_select.getText().toString();
+            
+            String int_collect_type_oth = mRBCA_int_collect_type_oth.getText().toString();
+            
+            String int_notes = mRBCA_int_notes.getText().toString();
+            
+            String landveg_feat = mRBCA_landveg_feat_select.getText().toString();
+            
+            String landveg_feat_oth = mRBCA_landveg_feat_oth.getText().toString();
+            
+            int landveg = mRBCA_landveg_spinner.getSelectedItemPosition();
+            
+            String landveg_notes = mRBCA_landveg_notes.getText().toString();
+            
+            String landblt_feat = mRBCA_landblt_feat_select.getText().toString();
+            
+            String landblt_feat_oth = mRBCA_landblt_feat_oth.getText().toString();
+            
+            int landblt = mRBCA_landblt_spinner.getSelectedItemPosition();
+            
+            String landblt_notes = mRBCA_landblt_notes.getText().toString();
+            
+            int hzrd = mRBCA_hzrd_spinner.getSelectedItemPosition();
+            
+            String hzrd_type = mRBCA_hzrd_type_select.getText().toString();
+            
+            String hzrd_type_oth = mRBCA_hzrd_type_oth.getText().toString();
+            
+            String hzrd_notes = mRBCA_hzrd_notes.getText().toString();
 
+            String hzrd_hazmat = mRBCA_hzrd_hazmat_select.getText().toString();
+            
+            String hzrd_hazmat_oth = mRBCA_hzrd_hazmat_oth.getText().toString();
+            
+            String actn = mRBCA_actn_select.getText().toString();
+            
+            String actn_oth = mRBCA_actn_oth.getText().toString();
+            
+            String eval = mRBCA_eval_select.getText().toString();
+            
+            String eval_oth = mRBCA_eval_oth.getText().toString();
 
 
             
             
-            ////////end Surveys fo ANDROID
+            ////////end Moca for ANDROID
             
             int selectedStatus = mStatusSpinner.getSelectedItemPosition();
             String status = "";
@@ -2334,9 +2787,11 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                         latitude, longitude, mIsPage, postFormat, true, false,coord_location,coord_loc_oth,coord_corner, 
                         coord_notes, addr_no, addr_street,bldg_area,bldg_posting,bldg_posting_oth,occupancy,occucy_available,bldg_stories,bldg_width,
                         bldg_length,uses,uses_oth,outbldg, outbldg_notes, units_res, units_comm,occu_name, occu_phone, occu_notes,hist_desig, hist_desig_oth,
-                        hist_dist, hist_dist_name,hist_appear,hist_age,hist_age_meta, hist_yr_built, dmg_date,dmg_source, dmg_source_oth,dmg_total,dmg_desc,
-                        flood_water,flood_water_oth,flood_entry,flood_entry_oth,flood_depth,flood_sed,flood_sed_oth,flood_notes,struct_type,struct_type_oth,struct,
-                        struct_notes,found_type);
+                        hist_dist, hist_dist_name,hist_appear,hist_age,hist_age_meta, hist_yr_built, hist_age_src, hist_age_src_oth,hist_notes,dmg_source, dmg_source_oth,dmg_total,dmg_desc,
+                        struct_type,struct_type_oth,struct_defects,struct,struct_notes,found_type,found_type_oth,found,found_notes,extwall_mat,extwall_mat_oth,extwall,extwall_notes,extfeat_type,extfeat_type_oth,
+                        extfeat,extfeat_notes,win_type,win_type_oth,win_mat,win_mat_oth,win,win_notes,roof_type,roof_type_oth,roof_mat,roof_mat_oth,roof,roof_notes,int_cond,int_collect_extant, 
+                        int_collect_type,int_collect_type_oth,int_notes,landveg_feat,landveg_feat_oth,landveg,landveg_notes,landblt_feat,landblt_feat_oth,landblt,landblt_notes,hzrd,hzrd_type,
+                        hzrd_type_oth,hzrd_notes,hzrd_hazmat,hzrd_hazmat_oth,actn,actn_oth,eval,eval_oth);
                 mPost.setLocalDraft(true);
 
                 // split up the post content if there's a more tag
@@ -2442,24 +2897,65 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setRBCA_hist_age(hist_age);
                 mPost.setRBCA_hist_age_meta(hist_age_meta);
                 mPost.setRBCA_hist_yr_built(hist_yr_built);
-                mPost.setRBCA_dmg_date(dmg_date);
+                mPost.setRBCA_hist_age_src(hist_age_src);
+                mPost.setRBCA_hist_age_src_oth(hist_age_src_oth);
+                mPost.setRBCA_hist_notes(hist_notes);
                 mPost.setRBCA_dmg_source(dmg_source);
                 mPost.setRBCA_dmg_source_oth(dmg_source_oth);
                 mPost.setRBCA_dmg_total(dmg_total);
                 mPost.setRBCA_dmg_desc(dmg_desc);
-                mPost.setRBCA_flood_water(flood_water);
-                mPost.setRBCA_flood_water_oth(flood_water_oth);
-                mPost.setRBCA_flood_entry(flood_entry);
-                mPost.setRBCA_flood_entry_oth(flood_entry_oth);
-                mPost.setRBCA_flood_depth(flood_depth);
-                mPost.setRBCA_flood_sed(flood_sed);
-                mPost.setRBCA_flood_sed_oth(flood_sed_oth);
-                mPost.setRBCA_flood_notes(flood_notes);
                 mPost.setRBCA_struct_type(struct_type);
                 mPost.setRBCA_struct_type_oth(struct_type_oth);
+                mPost.setRBCA_struct_defects(struct_defects);
                 mPost.setRBCA_struct(struct);
                 mPost.setRBCA_struct_notes(struct_notes);
                 mPost.setRBCA_found_type(found_type);
+                mPost.setRBCA_found_type_oth(found_type_oth);
+                mPost.setRBCA_found(found);
+                mPost.setRBCA_found_notes(found_notes);
+                mPost.setRBCA_extwall_mat(extwall_mat);
+                mPost.setRBCA_extwall_mat_oth(extwall_mat_oth);
+                mPost.setRBCA_extwall(extwall);
+                mPost.setRBCA_extwall_notes(extwall_notes);
+                mPost.setRBCA_extfeat_type(extfeat_type);
+                mPost.setRBCA_extfeat_type_oth(extfeat_type_oth);
+                mPost.setRBCA_extfeat(extfeat);
+                mPost.setRBCA_extfeat_notes(extfeat_notes);
+                mPost.setRBCA_win_type(win_type);
+                mPost.setRBCA_win_type_oth(win_type_oth);
+                mPost.setRBCA_win_mat(win_mat);
+                mPost.setRBCA_win_mat_oth(win_mat_oth);
+                mPost.setRBCA_win(win);
+                mPost.setRBCA_win_notes(win_notes);
+                mPost.setRBCA_roof_type(roof_type);
+                mPost.setRBCA_roof_type_oth(roof_type_oth);
+                mPost.setRBCA_roof_mat(roof_mat);
+                mPost.setRBCA_roof_mat_oth(roof_mat_oth);
+                mPost.setRBCA_roof(roof);
+                mPost.setRBCA_roof_notes(roof_notes);
+                mPost.setRBCA_int_cond(int_cond);
+                mPost.setRBCA_int_collect_extant(int_collect_extant);
+                mPost.setRBCA_int_collect_type(int_collect_type);
+                mPost.setRBCA_int_collect_type_oth(int_collect_type_oth);
+                mPost.setRBCA_int_notes(int_notes);
+                mPost.setRBCA_landveg_feat(landveg_feat);
+                mPost.setRBCA_landveg_feat_oth(landveg_feat_oth);
+                mPost.setRBCA_landveg(landveg);
+                mPost.setRBCA_landveg_notes(landveg_notes);
+                mPost.setRBCA_landblt_feat(landblt_feat);
+                mPost.setRBCA_landblt_feat_oth(landblt_feat_oth);
+                mPost.setRBCA_landblt(landblt);
+                mPost.setRBCA_landblt_notes(landblt_notes);
+                mPost.setRBCA_hzrd(hzrd);
+                mPost.setRBCA_hzrd_type(hzrd_type);
+                mPost.setRBCA_hzrd_type_oth(hzrd_type_oth);
+                mPost.setRBCA_hzrd_notes(hzrd_notes);
+                mPost.setRBCA_hzrd_hazmat(hzrd_hazmat);
+                mPost.setRBCA_hzrd_hazmat_oth(hzrd_hazmat_oth);
+                mPost.setRBCA_actn(actn);
+                mPost.setRBCA_actn_oth(actn_oth);
+                mPost.setRBCA_eval(eval);
+                mPost.setRBCA_eval_oth(eval_oth);
                 ////END Surveys for Android 
                 success = mPost.update();
             }
@@ -2927,7 +3423,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     
     
     
-    ///added this for multichoice dialog
+    ///added this for multichoice dialog   MOCA for android
    
     
     protected void showSelectionDialog(String postChoices, CharSequence[] choices,Button buttonSelector ) {

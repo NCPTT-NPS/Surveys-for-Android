@@ -11,6 +11,73 @@
         <item>Daily</item>
     </string-array>
     
+    <string-array name="coord_loc">
+        <item>Entrance</item>
+        <item>Corner</item>
+        <item>Other</item>
+	</string-array>
+	
+    <string-array name="coord_corner">
+        <item>N</item>
+        <item>NE</item>
+        <item>E</item>
+        <item>SE</item>
+        <item>S</item>
+        <item>SW</item>
+        <item>W</item>
+        <item>NW</item>
+	</string-array>
+	
+    <string-array name="bldg_is_extant">
+        <item>Yes</item>
+        <item>No</item>
+        <item>Partial</item>
+	</string-array>
+	
+    <string-array name="bldg_area">
+        <item>Interior</item>
+        <item>Exterior</item>
+        <item>Inaccesible</item>
+	</string-array>
+	
+    <string-array name="bldg_posting">
+        <item>Inspected</item>
+        <item>Restricted Use</item>
+        <item>Unsafe</item>
+        <item>Further Evaluation</item>
+        <item>Other</item>
+	</string-array>
+	
+    <string-array name="bldg_occucy">
+        <item>Occupied</item>
+        <item>Vacant</item>
+        <item>Unknown</item>
+	</string-array>
+	
+    <string-array name="rbca_hist_dist">
+        <item>Yes</item>
+        <item>No</item>
+        <item>Unknown</item>
+	</string-array>
+	
+    <string-array name="hist_age">
+        <item>\u003C 50 yrs.</item>
+        <item>50&#8211;100 yrs.</item>
+        <item>more than 100 yrs</item>
+	</string-array>
+	
+    <string-array name="hist_age_meta">
+        <item>Estimated</item>
+        <item>Reported</item>
+	</string-array>
+	
+    <string-array name="hist_age_src">
+        <item>Nomination/Survey Form</item>
+        <item>Tax/Planning/Local Record</item>
+        <item>Posted on Site (Plaque, Cornerstone, etc.)</item>
+        <item>Other</item>
+	</string-array>
+    
     <string-array name="levelOfDamage">
         <item>None - no visible damage</item>
         <item>Superficial - some damage, still functional</item>
@@ -18,12 +85,18 @@
         <item>Catastrophic - complete failure</item>
     </string-array>
     
-    <string-array name="floodEntry">
-        <item>Basement/Crawl</item>
+    <string-array name="dmg_source">
+        <item>Earth Movement</item>
+        <item>Fire</item>
+        <item>Flood/Water</item>
+        <item>Snow/Ice</item>
+        <item>Wind</item>
+        <item>Chemical</item>
+        <item>Explosion</item>
         <item>Other</item>
-    </string-array>
+	</string-array>
     
-    <string-array name="structType">
+    <string-array name="struct_type">
         <item>Wood Frame</item>
         <item>Metal Frame</item>
         <item>Masonry</item>
@@ -31,7 +104,7 @@
         <item>Other</item>
     </string-array>
     
-    <string-array name="foundType">
+    <string-array name="found_type">
         <item>Slab</item>
         <item>Basement</item>
         <item>Stem/Chain Wall</item>
@@ -39,16 +112,20 @@
         <item>Other</item>
     </string-array>
     
-    <string-array name="extfeatType">
+    <string-array name="extfeat_type">
         <item>Decorative Elements</item>
         <item>Porch</item>
         <item>Other</item>
 	</string-array>
 	
-    <string-array name="histAgeSrc">
-        <item>Nomination/Survey Form</item>
-        <item>Tax/Planning/Local Record</item>
-        <item>Posted on Site (Plaque, Cornerstone, etc.)</item>
-        <item>Other</item>
-	</string-array>
+    <string-array name="YesNo">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+	
+    
+	
+    
+	
+    
 </resources>

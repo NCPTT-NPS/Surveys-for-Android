@@ -467,7 +467,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:prompt="@string/rbca_hist_age_src_label"
-                    android:entries="@array/histAgeSrc" />   
+                    android:entries="@array/hist_age_src" />   
                     
                 <TextView
                     android:id="@+id/rbca_hist_age_src_oth_label"
@@ -558,7 +558,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:prompt="@string/rbca_struct_type_label"
-                    android:entries="@array/structType" />
+                    android:entries="@array/struct_type" />
                  
                 <TextView
                     android:id="@+id/rbca_struct_type_oth_label"
@@ -622,7 +622,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:prompt="@string/rbca_found_type_label"
-                    android:entries="@array/foundType" />
+                    android:entries="@array/found_type" />
                	
                	<TextView
                     android:id="@+id/rbca_found_type_oth_label"
@@ -721,7 +721,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/rbca_extfeat_type_label" />
                	<Button
-                    android:id="@+id/rbca_extfeat_type"
+                    android:id="@+id/rbca_extfeat_type_select"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"  />
@@ -772,7 +772,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/rbca_win_type_label" />
                	<Button
-                    android:id="@+id/rbca_win_type"
+                    android:id="@+id/rbca_win_type_select"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"  />
@@ -797,7 +797,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/rbca_win_mat_label" />
                	<Button
-                    android:id="@+id/rbca_win_mat"
+                    android:id="@+id/rbca_win_mat_select"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"  />
@@ -848,7 +848,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/rbca_roof_type_label" />
                	<Button
-                    android:id="@+id/rbca_roof_type"
+                    android:id="@+id/rbca_roof_type_select"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"  />
@@ -873,7 +873,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/rbca_roof_mat_label" />
                	<Button
-                    android:id="@+id/rbca_roof_mat"
+                    android:id="@+id/rbca_roof_mat_select"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"  />
@@ -924,7 +924,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/rbca_int_cond_label" />
                	<Button
-                    android:id="@+id/rbca_int_cond"
+                    android:id="@+id/rbca_int_cond_select"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"  />
@@ -935,11 +935,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/rbca_int_collect_extant_label" />
-                 <ToggleButton
+                 <Spinner
                     android:id="@+id/rbca_int_collect_extant"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    style="@style/RbcaYesNoBtn" />
+                    android:prompt="@string/rbca_int_collect_extant_label"
+                    android:entries="@array/YesNo" />
 
                  <TextView
                     android:id="@+id/rbca_int_collect_type_label"
@@ -948,7 +949,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/rbca_int_collect_type_label" />
                	<Button
-                    android:id="@+id/rbca_int_collect_type"
+                    android:id="@+id/rbca_int_collect_type_select"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"  />
@@ -986,7 +987,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/rbca_landveg_feat_label" />
                	<Button
-                    android:id="@+id/rbca_landveg_feat"
+                    android:id="@+id/rbca_landveg_feat_select"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"  />
@@ -1037,7 +1038,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/rbca_landblt_feat_label" />
                	<Button
-                    android:id="@+id/rbca_landblt_feat"
+                    android:id="@+id/rbca_landblt_feat_select"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"  />
@@ -1087,11 +1088,12 @@
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
 				    android:text="@string/rbca_hzrd_label" />
-				<ToggleButton
-				    android:id="@+id/rbca_hzrd"
-				    android:layout_width="fill_parent"
-				    android:layout_height="wrap_content"
-				    style="@style/RbcaYesNoBtn"  /> 
+				<Spinner
+                    android:id="@+id/rbca_hzrd"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:prompt="@string/rbca_hzrd_label"
+                    android:entries="@array/YesNo" />
 				    
 				<TextView
                     android:id="@+id/rbca_hzrd_type_label"

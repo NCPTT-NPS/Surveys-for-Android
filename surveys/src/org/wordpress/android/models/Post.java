@@ -196,18 +196,18 @@ public class Post {
             this.rbca_landveg_notes = postVals.get(104).toString();
             this.rbca_landblt_feat = postVals.get(105).toString();
             this.rbca_landblt_feat_oth = postVals.get(106).toString();
-            this.rbca_landblt = (Integer) postVals.get(106);
-            this.rbca_landblt_notes = postVals.get(107).toString();
-            this.rbca_hzrd = (Integer) postVals.get(108);
-            this.rbca_hzrd_type = postVals.get(109).toString();
-            this.rbca_hzrd_type_oth = postVals.get(110).toString();
-            this.rbca_hzrd_notes = postVals.get(111).toString();
-            this.rbca_hzrd_hazmat = postVals.get(112).toString();
-            this.rbca_hzrd_hazmat_oth = postVals.get(113).toString();
-            this.rbca_actn = postVals.get(114).toString();
-            this.rbca_actn_oth = postVals.get(115).toString();
-            this.rbca_eval = postVals.get(116).toString();
-            this.rbca_eval_oth = postVals.get(117).toString();
+            this.rbca_landblt = (Integer) postVals.get(107);
+            this.rbca_landblt_notes = postVals.get(108).toString();
+            this.rbca_hzrd = (Integer) postVals.get(109);
+            this.rbca_hzrd_type = postVals.get(110).toString();
+            this.rbca_hzrd_type_oth = postVals.get(111).toString();
+            this.rbca_hzrd_notes = postVals.get(112).toString();
+            this.rbca_hzrd_hazmat = postVals.get(113).toString();
+            this.rbca_hzrd_hazmat_oth = postVals.get(114).toString();
+            this.rbca_actn = postVals.get(115).toString();
+            this.rbca_actn_oth = postVals.get(116).toString();
+            this.rbca_eval = postVals.get(117).toString();
+            this.rbca_eval_oth = postVals.get(118).toString();
 
             //
             this.isLocalChange = (Integer) postVals.get(78) > 0;
