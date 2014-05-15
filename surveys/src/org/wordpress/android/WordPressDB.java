@@ -52,10 +52,14 @@ public class WordPressDB {
             + "post_status text default '', userid integer default 0, wp_author_display_name text default '', wp_author_id text default '',"
             + "wp_password text default '', wp_post_format text default '', wp_slug text default '', mediaPaths text default '', "
             + "latitude real, longitude real, localDraft boolean default 0, uploaded boolean default 0, isPage boolean default 0,"
-            + "wp_page_parent_id text, wp_page_parent_title text, rbca_coord_loc text default '', "
-            + "rbca_coord_loc_oth text default '', rbca_coord_corner text default '', rbca_coord_notes text default '', "
-            + "rbca_addr_no text default '', rbca_addr_street text default '', rbca_bldg_area text default '', "
-            + "rbca_bldg_posting text default '', rbca_bldg_posting_oth text default '', rbca_bldg_occucy text default '',"
+            + "wp_page_parent_id text, wp_page_parent_title text, " 
+            + "rbca_asser_name text default '', rbca_asser_org text default '', rbca_asser_email text default '', rbca_asser_phone text default '', " 
+            + "rbca_coord_latitude real, rbca_coord_longitude real, rbca_coord_altitude real, rbca_coord_accuracy real,"
+            + "rbca_coord_loc text default '', rbca_coord_loc_oth text default '', rbca_coord_corner text default '', rbca_coord_notes text default '', "
+            + "rbca_addr_no text default '', rbca_addr_street text default '',rbca_addr_notes text default '',rbca_img_right text default '', "
+            + "rbca_img_front text default '', rbca_img_right text default '', rbca_bldg_name text default '', rbca_is_extant text default '', "
+            + "rbca_bldg_area text default '',rbca_bldg_posting text default '', rbca_bldg_posting_oth text default '',  "
+            + "rbca_bldg_posting_img text default '', rbca_bldg_occucy text default '',"
             + "rbca_bldg_occucy_avail integer default 0, rbca_bldg_stories real, rbca_bldg_width real,"
             + "rbca_bldg_length real, rbca_bldg_use text default '', rbca_bldg_use_oth text default '',"
             + "rbca_bldg_outbldg integer default 0, rbca_bldg_outbldg_notes text default '',"
@@ -77,10 +81,16 @@ public class WordPressDB {
             + "rbca_roof_type text default '', rbca_roof_type_oth text default '', rbca_roof_mat text default '', "
             + "rbca_roof_mat_oth text default '', rbca_roof integer default 0, rbca_roof_notes text default '', "
             + "rbca_int_cond text default '', rbca_int_collect_extant integer default 0, rbca_int_collect_type text default '', "
-            + "rbca_int_collect_type_oth text default '', rbca_int_notes text default '', rbca_landveg_feat text default '', "
-            + "rbca_landveg_feat_oth text default '', rbca_landveg integer default 0, rbca_landveg_notes text default '', "
-            + "rbca_landblt_feat text default '', rbca_landblt_feat_oth text default '', rbca_landblt integer default 0, "
-            + "rbca_landblt_notes text default '', rbca_hzrd integer default 0, rbca_hzrd_type text default '', "
+            + "rbca_int_collect_type_oth text default '',rbca_int_img1 text default '', rbca_int_desc1 text default '', "
+            + "rbca_int_img2 text default '', rbca_int_desc2 text default '',rbca_int_img3 text default '',rbca_int_desc3 text default '', "
+            + "rbca_int_notes text default '', rbca_landveg_feat text default '', rbca_landveg_feat_oth text default '', "
+            + "rbca_landveg integer default 0, rbca_landveg_notes text default '', rbca_landblt_feat text default '', "
+            + "rbca_landblt_feat_oth text default '', rbca_landblt integer default 0, rbca_landblt_notes text default '', "
+            + "rbca_media_img1 text default '', rbca_media_desc1 text default '', rbca_media_img2 text default '', "
+            + "rbca_media_desc2 text default '', rbca_media_img3 text default '', rbca_media_desc3 text default '', "
+            + "rbca_media_img4 text default '', rbca_media_desc4 text default '', rbca_media_img5 text default '', "
+            + "rbca_media_desc5 text default '', rbca_media_img6 text default '', rbca_media_desc6 text default '', "
+            + "rbca_hzrd integer default 0, rbca_hzrd_type text default '', "
             + "rbca_hzrd_type_oth text default '', rbca_hzrd_notes text default '', rbca_hzrd_hazmat text default '', "
             + "rbca_hzrd_hazmat_oth text default '', rbca_actn text default '', rbca_actn_oth text default '', "
             + "rbca_eval text default '', rbca_eval_oth text default '' );"; 
@@ -1188,8 +1198,32 @@ public class WordPressDB {
                                 if (customField.get("key").equals("geo_latitude"))
                                     values.put("latitude", customField.get("value")
                                             .toString());
+                                if (customField.get("key").equals("rbca_asser_name"))
+                                    values.put("rbca_asser_name", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_asser_org"))
+                                    values.put("rbca_asser_org", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_asser_email"))
+                                    values.put("rbca_asser_email", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_asser_phone"))
+                                    values.put("rbca_asser_phone", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_coord_latitude"))
+                                    values.put("rbca_coord_latitude", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_coord_longitude"))
+                                    values.put("rbca_coord_longitude", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_coord_altitude"))
+                                    values.put("rbca_coord_altitude", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_coord_accuracy"))
+                                    values.put("rbca_coord_accuracy", (String) customField.get("value").toString());
+                                
                                 if (customField.get("key").equals("rbca_coord_loc"))
-                                    values.put("rbca_coord_loc",(String) customField.get("value"));
+                                    values.put("rbca_coord_loc",(String) customField.get("value").toString());
                                 
                                 if (customField.get("key").equals("rbca_coord_loc_oth"))
                                     values.put("rbca_coord_loc_oth",(String) customField.get("value"));
@@ -1206,6 +1240,24 @@ public class WordPressDB {
                                 if (customField.get("key").equals("rbca_addr_street"))
                                     values.put("rbca_addr_street",(String) customField.get("value"));
                                 
+                                if (customField.get("key").equals("rbca_addr_notes"))
+                                    values.put("rbca_addr_notes", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_img_right"))
+                                    values.put("rbca_img_right", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_img_front"))
+                                    values.put("rbca_img_front", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_img_left"))
+                                    values.put("rbca_img_left", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_bldg_name"))
+                                    values.put("rbca_bldg_name", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_bldg_is_extant"))
+                                    values.put("rbca_bldg_is_extant", (String) customField.get("value").toString());
+                                
                                 if (customField.get("key").equals("rbca_bldg_area")){
                                     values.put("rbca_bldg_area",(String) customField.get("value"));
                                 }
@@ -1214,6 +1266,9 @@ public class WordPressDB {
                                 
                                 if (customField.get("key").equals("rbca_bldg_posting_oth"))
                                     values.put("rbca_bldg_posting_oth",(String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_bldg_posting_img"))
+                                    values.put("rbca_bldg_posting_img", (String) customField.get("value").toString());
                                 
                                 if (customField.get("key").equals("rbca_bldg_occucy"))
                                     values.put("rbca_bldg_occucy",(String) customField.get("value"));
@@ -1401,6 +1456,24 @@ public class WordPressDB {
                                 if (customField.get("key").equals("rbca_int_collect_type_oth"))
                                     values.put("rbca_int_collect_type_oth", (String) customField.get("value"));
                                 
+                                if (customField.get("key").equals("rbca_int_img1"))
+                                    values.put("rbca_int_img1", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_int_desc1"))
+                                    values.put("rbca_int_desc1", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_int_img2"))
+                                    values.put("rbca_int_img2", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_int_desc2"))
+                                    values.put("rbca_int_desc2", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_int_img3"))
+                                    values.put("rbca_int_img3", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_int_desc3"))
+                                    values.put("rbca_int_desc3", (String) customField.get("value").toString());
+                                
                                 if (customField.get("key").equals("rbca_int_notes"))
                                     values.put("rbca_int_notes", (String) customField.get("value"));
                                 
@@ -1427,6 +1500,42 @@ public class WordPressDB {
                                 
                                 if (customField.get("key").equals("rbca_landblt_notes"))
                                     values.put("rbca_landblt_notes", (String) customField.get("value"));
+                                
+                                if (customField.get("key").equals("rbca_media_img1"))
+                                    values.put("rbca_media_img1", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_media_desc1"))
+                                    values.put("rbca_media_desc1", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_media_img2"))
+                                    values.put("rbca_media_img2", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_media_desc2"))
+                                    values.put("rbca_media_desc2", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_media_img3"))
+                                    values.put("rbca_media_img3", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_media_desc3"))
+                                    values.put("rbca_media_desc3", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_media_img4"))
+                                    values.put("rbca_media_img4", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_media_desc4"))
+                                    values.put("rbca_media_desc4", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_media_img5"))
+                                    values.put("rbca_media_img5", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_media_desc5"))
+                                    values.put("rbca_media_desc5", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_media_img6"))
+                                    values.put("rbca_media_img6", (String) customField.get("value").toString());
+                                
+                                if (customField.get("key").equals("rbca_media_desc6"))
+                                    values.put("rbca_media_desc6", (String) customField.get("value").toString());
                                 
                                 if (customField.get("key").equals("rbca_hzrd"))
                                     values.put("rbca_hzrd", (String) customField.get("value"));
@@ -1457,9 +1566,6 @@ public class WordPressDB {
                                 
                                 if (customField.get("key").equals("rbca_eval_oth"))
                                     values.put("rbca_eval_oth", (String) customField.get("value"));
-
-
-                                
                             }
                         }
                     }
@@ -1555,16 +1661,31 @@ public class WordPressDB {
             values.put("longitude", post.getLongitude());
             values.put("isLocalChange", post.isLocalChange());
             
-            ///added Surveys for Android
+            ///added MoCA for Android
+            values.put("rbca_asser_name", post.getRBCA_asser_name());
+            values.put("rbca_asser_org", post.getRBCA_asser_org());
+            values.put("rbca_asser_email", post.getRBCA_asser_email());
+            values.put("rbca_asser_phone", post.getRBCA_asser_phone());
+            values.put("rbca_coord_latitude", post.getRBCA_coord_latitude());
+            values.put("rbca_coord_longitude", post.getRBCA_coord_longitude());
+            values.put("rbca_coord_altitude", post.getRBCA_coord_altitude());
+            values.put("rbca_coord_accuracy", post.getRBCA_coord_accuracy());
             values.put("rbca_coord_loc", post.getRBCA_coord_loc());
             values.put("rbca_coord_loc_oth", post.getRBCA_coord_loc_oth());
             values.put("rbca_coord_corner" , post.getRBCA_coord_corner());
             values.put("rbca_coord_notes",post.getRBCA_coord_notes());
             values.put("rbca_addr_no", post.getRBCA_addr_no());
             values.put("rbca_addr_street", post.getRBCA_addr_street());
+            values.put("rbca_addr_notes", post.getRBCA_addr_notes());
+            values.put("rbca_img_right", post.getRBCA_img_right());
+            values.put("rbca_img_front", post.getRBCA_img_front());
+            values.put("rbca_img_left", post.getRBCA_img_left());
+            values.put("rbca_bldg_name", post.getRBCA_bldg_name());
+            values.put("rbca_bldg_is_extant", post.getRBCA_bldg_is_extant());
             values.put("rbca_bldg_area", post.getRBCA_bldg_area());
             values.put("rbca_bldg_posting", post.getRBCA_bldg_posting());
             values.put("rbca_bldg_posting_oth", post.getRBCA_bldg_posting_oth());
+            values.put("rbca_bldg_posting_img", post.getRBCA_bldg_posting_img());
             values.put("rbca_bldg_occucy", post.getRBCA_bldg_occucy());
             values.put("rbca_bldg_occucy_avail", post.getRBCA_bldg_occucy_avail());
             values.put("rbca_bldg_stories", post.getRBCA_bldg_stories());
@@ -1627,6 +1748,12 @@ public class WordPressDB {
             values.put("rbca_int_collect_extant", post.getRBCA_int_collect_extant());
             values.put("rbca_int_collect_type", post.getRBCA_int_collect_type());
             values.put("rbca_int_collect_type_oth", post.getRBCA_int_collect_type_oth());
+            values.put("rbca_int_img1", post.getRBCA_int_img1());
+            values.put("rbca_int_desc1", post.getRBCA_int_desc1());
+            values.put("rbca_int_img2", post.getRBCA_int_img2());
+            values.put("rbca_int_desc2", post.getRBCA_int_desc2());
+            values.put("rbca_int_img3", post.getRBCA_int_img3());
+            values.put("rbca_int_desc3", post.getRBCA_int_desc3());
             values.put("rbca_int_notes", post.getRBCA_int_notes());
             values.put("rbca_landveg_feat", post.getRBCA_landveg_feat());
             values.put("rbca_landveg_feat_oth", post.getRBCA_landveg_feat_oth());
@@ -1636,6 +1763,18 @@ public class WordPressDB {
             values.put("rbca_landblt_feat_oth", post.getRBCA_landblt_feat_oth());
             values.put("rbca_landblt", post.getRBCA_landblt());
             values.put("rbca_landblt_notes", post.getRBCA_landblt_notes());
+            values.put("rbca_media_img1", post.getRBCA_media_img1());
+            values.put("rbca_media_desc1", post.getRBCA_media_desc1());
+            values.put("rbca_media_img2", post.getRBCA_media_img2());
+            values.put("rbca_media_desc2", post.getRBCA_media_desc2());
+            values.put("rbca_media_img3", post.getRBCA_media_img3());
+            values.put("rbca_media_desc3", post.getRBCA_media_desc3());
+            values.put("rbca_media_img4", post.getRBCA_media_img4());
+            values.put("rbca_media_desc4", post.getRBCA_media_desc4());
+            values.put("rbca_media_img5", post.getRBCA_media_img5());
+            values.put("rbca_media_desc5", post.getRBCA_media_desc5());
+            values.put("rbca_media_img6", post.getRBCA_media_img6());
+            values.put("rbca_media_desc6", post.getRBCA_media_desc6());
             values.put("rbca_hzrd", post.getRBCA_hzrd());
             values.put("rbca_hzrd_type", post.getRBCA_hzrd_type());
             values.put("rbca_hzrd_type_oth", post.getRBCA_hzrd_type_oth());
@@ -1648,7 +1787,7 @@ public class WordPressDB {
             values.put("rbca_eval_oth", post.getRBCA_eval_oth());
             
             
-            ///end added Surveys for Android
+            ///end added MoCA for Android
 
             returnValue = db.insert(POSTS_TABLE, null, values);
         }

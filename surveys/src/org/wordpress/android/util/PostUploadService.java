@@ -352,9 +352,41 @@ public class PostUploadService extends Service {
 //            }
             
             if (!post.isPage()){
+                Map<Object, Object> asser_name = new HashMap<Object, Object>();
+                asser_name.put("key", "rbca_asser_name");
+                asser_name.put("value", post.getRBCA_asser_name());
+                
+                Map<Object, Object> asser_org = new HashMap<Object, Object>();
+                asser_org.put("key", "rbca_asser_org");
+                asser_org.put("value", post.getRBCA_asser_org());
+                
+                Map<Object, Object> asser_email = new HashMap<Object, Object>();
+                asser_email.put("key", "rbca_asser_email");
+                asser_email.put("value", post.getRBCA_asser_email());
+                
+                Map<Object, Object> asser_phone = new HashMap<Object, Object>();
+                asser_phone.put("key", "rbca_asser_phone");
+                asser_phone.put("value", post.getRBCA_asser_phone());
+                
+                Map<Object, Object> coord_latitude = new HashMap<Object, Object>();
+                coord_latitude.put("key", "rbca_coord_latitude");
+                coord_latitude.put("value", post.getRBCA_coord_latitude());
+                
+                Map<Object, Object> coord_longitude = new HashMap<Object, Object>();
+                coord_longitude.put("key", "rbca_coord_longitude");
+                coord_longitude.put("value", post.getRBCA_coord_longitude());
+                
+                Map<Object, Object> coord_altitude = new HashMap<Object, Object>();
+                coord_altitude.put("key", "rbca_coord_altitude");
+                coord_altitude.put("value", post.getRBCA_coord_altitude());
+                
+                Map<Object, Object> coord_accuracy = new HashMap<Object, Object>();
+                coord_accuracy.put("key", "rbca_coord_accuracy");
+                coord_accuracy.put("value", post.getRBCA_coord_accuracy());
+                
                 Map<Object, Object> coord_loc = new HashMap<Object, Object>();
                 coord_loc.put("key", "rbca_coord_loc");
-                coord_loc.put("value", post.getRBCA_coord_loc());
+                coord_loc.put("value", post.getRBCA_coord_loc().toString());
                 
                 Map<Object, Object> coord_loc_oth = new HashMap<Object, Object>();
                 coord_loc_oth.put("key", "rbca_coord_loc_oth");
@@ -370,16 +402,42 @@ public class PostUploadService extends Service {
                 coord_notes.put("value", post.getRBCA_coord_notes());
                 
                 Map<Object, Object> addr_no = new HashMap<Object, Object>();
-                addr_no.put("key", "rbcas_addr_no");
+                addr_no.put("key", "rbca_addr_no");
                 addr_no.put("value", post.getRBCA_addr_no());
                 
                 Map<Object, Object> addr_street = new HashMap<Object, Object>();
                 addr_street.put("key", "rbca_addr_street");
                 addr_street.put("value", post.getRBCA_addr_street());
                 
+                Map<Object, Object> addr_notes = new HashMap<Object, Object>();
+                addr_notes.put("key", "rbca_addr_notes");
+                addr_notes.put("value", post.getRBCA_addr_notes());
+                
+                Map<Object, Object> img_right = new HashMap<Object, Object>();
+                img_right.put("key", "rbca_img_right");
+                img_right.put("value", post.getRBCA_img_right());
+                
+                Map<Object, Object> img_front = new HashMap<Object, Object>();
+                img_front.put("key", "rbca_img_front");
+                img_front.put("value", post.getRBCA_img_front());
+                
+                Map<Object, Object> img_left = new HashMap<Object, Object>();
+                img_left.put("key", "rbca_img_left");
+                img_left.put("value", post.getRBCA_img_left());
+                
+                Map<Object, Object> bldg_name = new HashMap<Object, Object>();
+                bldg_name.put("key", "rbca_bldg_name");
+                bldg_name.put("value", post.getRBCA_bldg_name());
+                
+                Map<Object, Object> bldg_is_extant = new HashMap<Object, Object>();
+                bldg_is_extant.put("key", "rbca_bldg_is_extant");
+                bldg_is_extant.put("value", post.getRBCA_bldg_is_extant());
+                
                 Map<Object, Object> area = new HashMap<Object, Object>();
                 area.put("key", "rbca_bldg_area");
                 area.put("value", post.getRBCA_bldg_area());
+                System.out.println("Building Area"+ post.getRBCA_bldg_area());
+                System.out.println(area);
                 
                 Map<Object, Object> posting = new HashMap<Object, Object>();
                 posting.put("key", "rbca_bldg_posting");
@@ -388,6 +446,10 @@ public class PostUploadService extends Service {
                 Map<Object, Object> posting_oth = new HashMap<Object, Object>();
                 posting_oth.put("key", "rbca_bldg_posting_oth");
                 posting_oth.put("value", post.getRBCA_bldg_posting_oth());
+                
+                Map<Object, Object> bldg_posting_img = new HashMap<Object, Object>();
+                bldg_posting_img.put("key", "rbca_bldg_posting_img");
+                bldg_posting_img.put("value", post.getRBCA_bldg_posting_img());
                 
                 Map<Object, Object> occupancy = new HashMap<Object, Object>();
                 occupancy.put("key", "rbca_bldg_occucy");
@@ -428,7 +490,6 @@ public class PostUploadService extends Service {
                 Map<Object, Object> units_res = new HashMap<Object, Object>();
                 units_res.put("key", "rbca_bldg_units_res");
                 units_res.put("value", post.getRBCA_bldg_units_res());
-                System.out.println(post.getRBCA_bldg_units_res());
                 
                 Map<Object, Object> units_comm = new HashMap<Object, Object>();
                 units_comm.put("key", "rbca_bldg_units_comm");
@@ -638,6 +699,30 @@ public class PostUploadService extends Service {
                 int_collect_type_oth.put("key", "rbca_int_collect_type_oth");
                 int_collect_type_oth.put("value", post.getRBCA_int_collect_type_oth());
                 
+                Map<Object, Object> int_img1 = new HashMap<Object, Object>();
+                int_img1.put("key", "rbca_int_img1");
+                int_img1.put("value", post.getRBCA_int_img1());
+                
+                Map<Object, Object> int_desc1 = new HashMap<Object, Object>();
+                int_desc1.put("key", "rbca_int_desc1");
+                int_desc1.put("value", post.getRBCA_int_desc1());
+                
+                Map<Object, Object> int_img2 = new HashMap<Object, Object>();
+                int_img2.put("key", "rbca_int_img2");
+                int_img2.put("value", post.getRBCA_int_img2());
+                
+                Map<Object, Object> int_desc2 = new HashMap<Object, Object>();
+                int_desc2.put("key", "rbca_int_desc2");
+                int_desc2.put("value", post.getRBCA_int_desc2());
+                
+                Map<Object, Object> int_img3 = new HashMap<Object, Object>();
+                int_img3.put("key", "rbca_int_img3");
+                int_img3.put("value", post.getRBCA_int_img3());
+                
+                Map<Object, Object> int_desc3 = new HashMap<Object, Object>();
+                int_desc3.put("key", "rbca_int_desc3");
+                int_desc3.put("value", post.getRBCA_int_desc3());
+                
                 Map<Object, Object> int_notes = new HashMap<Object, Object>();
                 int_notes.put("key", "rbca_int_notes");
                 int_notes.put("value", post.getRBCA_int_notes());
@@ -673,6 +758,54 @@ public class PostUploadService extends Service {
                 Map<Object, Object> landblt_notes = new HashMap<Object, Object>();
                 landblt_notes.put("key", "rbca_landblt_notes");
                 landblt_notes.put("value", post.getRBCA_landblt_notes());
+                
+                Map<Object, Object> media_img1 = new HashMap<Object, Object>();
+                media_img1.put("key", "rbca_media_img1");
+                media_img1.put("value", post.getRBCA_media_img1());
+                
+                Map<Object, Object> media_desc1 = new HashMap<Object, Object>();
+                media_desc1.put("key", "rbca_media_desc1");
+                media_desc1.put("value", post.getRBCA_media_desc1());
+                
+                Map<Object, Object> media_img2 = new HashMap<Object, Object>();
+                media_img2.put("key", "rbca_media_img2");
+                media_img2.put("value", post.getRBCA_media_img2());
+                
+                Map<Object, Object> media_desc2 = new HashMap<Object, Object>();
+                media_desc2.put("key", "rbca_media_desc2");
+                media_desc2.put("value", post.getRBCA_media_desc2());
+                
+                Map<Object, Object> media_img3 = new HashMap<Object, Object>();
+                media_img3.put("key", "rbca_media_img3");
+                media_img3.put("value", post.getRBCA_media_img3());
+                
+                Map<Object, Object> media_desc3 = new HashMap<Object, Object>();
+                media_desc3.put("key", "rbca_media_desc3");
+                media_desc3.put("value", post.getRBCA_media_desc3());
+                
+                Map<Object, Object> media_img4 = new HashMap<Object, Object>();
+                media_img4.put("key", "rbca_media_img4");
+                media_img4.put("value", post.getRBCA_media_img4());
+                
+                Map<Object, Object> media_desc4 = new HashMap<Object, Object>();
+                media_desc4.put("key", "rbca_media_desc4");
+                media_desc4.put("value", post.getRBCA_media_desc4());
+                
+                Map<Object, Object> media_img5 = new HashMap<Object, Object>();
+                media_img5.put("key", "rbca_media_img5");
+                media_img5.put("value", post.getRBCA_media_img5());
+                
+                Map<Object, Object> media_desc5 = new HashMap<Object, Object>();
+                media_desc5.put("key", "rbca_media_desc5");
+                media_desc5.put("value", post.getRBCA_media_desc5());
+                
+                Map<Object, Object> media_img6 = new HashMap<Object, Object>();
+                media_img6.put("key", "rbca_media_img6");
+                media_img6.put("value", post.getRBCA_media_img6());
+                
+                Map<Object, Object> media_desc6 = new HashMap<Object, Object>();
+                media_desc6.put("key", "rbca_media_desc6");
+                media_desc6.put("value", post.getRBCA_media_desc6());
                 
                 Map<Object, Object> hzrd = new HashMap<Object, Object>();
                 hzrd.put("key", "rbca_hzrd");
@@ -714,8 +847,10 @@ public class PostUploadService extends Service {
                 eval_oth.put("key", "rbca_eval_oth");
                 eval_oth.put("value", post.getRBCA_eval_oth());
     
-                Object[] geo = { coord_loc, coord_loc_oth, coord_corner, coord_notes,
-                                addr_no, addr_street, area, posting, posting_oth ,occupancy,
+                Object[] geo = { asser_name, asser_org, asser_email, asser_phone, coord_latitude, coord_longitude, coord_altitude,
+                                coord_accuracy, coord_loc, coord_loc_oth, coord_corner, coord_notes,
+                                addr_no, addr_street, addr_notes, img_right, img_front, img_left, bldg_name, 
+                                bldg_is_extant, posting, posting_oth , bldg_posting_img, occupancy,
                                 occupancy_available, stories,width,length,uses,uses_oth,outbldg,
                                 outbldg_notes, units_res, units_comm, occu_name, occu_phone, 
                                 bldg_notes, hist_desig, hist_desig_oth, hist_dist, hist_dist_name,hist_appear,hist_age,
@@ -724,8 +859,12 @@ public class PostUploadService extends Service {
                                 extwall_mat,extwall_mat_oth,extwall,extwall_notes,extfeat_type,extfeat_type_oth,extfeat,
                                 extfeat_notes,win_type,win_type_oth,win_mat,win_mat_oth,win,win_notes,roof_type,roof_type_oth,
                                 roof_mat,roof_mat_oth,roof,roof_notes,int_cond,int_collect_extant,int_collect_type,
-                                int_collect_type_oth,int_notes,landveg_feat,landveg_feat_oth,landveg,landveg_notes,
-                                landblt_feat,landblt_feat_oth,landblt,landblt_notes, hzrd, hzrd_type, hzrd_type_oth, 
+                                int_collect_type_oth,int_img1, int_desc1, int_img2, int_desc2, int_img3, int_desc3, 
+                                int_notes,landveg_feat,landveg_feat_oth,landveg,landveg_notes,
+                                landblt_feat,landblt_feat_oth,landblt,landblt_notes,
+                                media_img1, media_desc1, media_img2, media_img2, media_img3, media_desc3, media_img4, media_desc4, 
+                                media_img5, media_desc5, media_img6, media_desc6,
+                                hzrd, hzrd_type, hzrd_type_oth, 
                                 hzrd_notes, hzrd_hazmat, hzrd_hazmat_oth,actn, actn_oth, eval, eval_oth};
     
                 contentStruct.put("custom_fields", geo);

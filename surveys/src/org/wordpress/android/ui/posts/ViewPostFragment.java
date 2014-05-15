@@ -250,77 +250,273 @@ public class ViewPostFragment extends Fragment {
         m_bldg_posting.setText(post.getRBCA_bldg_posting());
         m_bldg_posting_oth.setText(post.getRBCA_bldg_posting_oth());
         m_bldg_occucy.setText(post.getRBCA_bldg_occucy());
-        //m_bldg_occu_avail.setText(post.getRBCA_bldg_occucy_avail());
+        
+        if (post.getRBCA_bldg_occucy_avail() ==1){
+            m_bldg_occu_avail.setText("Yes");
+        } else {
+            m_bldg_occu_avail.setText("No");
+        }
+        
         m_bldg_stories.setText(Double.toString(post.getRBCA_bldg_stories()));
         m_bldg_width.setText(Double.toString(post.getRBCA_bldg_width()));
         m_bldg_length.setText(Double.toString(post.getRBCA_bldg_length()));
         m_bldg_use.setText(post.getRBCA_bldg_use());
         m_bldg_use_oth.setText(post.getRBCA_bldg_use_oth());
-        //m_bldg_outbldg.setText(post.getRBCA_bldg_outbldg());
+        
+        if (post.getRBCA_bldg_outbldg() == 1){
+            m_bldg_outbldg.setText("Yes");
+        } else{
+            m_bldg_outbldg.setText("No");
+        }
+        
         m_bldg_outbldg_notes.setText(post.getRBCA_bldg_outbldg_notes());
-        //m_bldg_units_res.setText(post.getRBCA_bldg_units_res());
-        //m_bldg_units_comm.setText(post.getRBCA_bldg_units_comm());
+        m_bldg_units_res.setText(Integer.toString(post.getRBCA_bldg_units_res()));
+        m_bldg_units_comm.setText(Integer.toString(post.getRBCA_bldg_units_comm()));
         m_bldg_occu_name.setText(post.getRBCA_bldg_occu_name());
-        //m_bldg_occu_phone.setText(post.getRBCA_bldg_occu_phone());
+        m_bldg_occu_phone.setText(Integer.toString(post.getRBCA_bldg_occu_phone()));
         m_bldg_notes.setText(post.getRBCA_bldg_notes());
         m_hist_desig.setText(post.getRBCA_hist_desig());
         m_hist_desig_oth.setText(post.getRBCA_hist_desig_oth());
         m_hist_dist.setText(post.getRBCA_hist_dist());
         m_hist_dist_name.setText(post.getRBCA_hist_dist_name());
-        //m_hist_appear.setText(post.getRBCA_hist_appear());
-        //m_hist_age.setText(post.getRBCA_hist_age());
+        
+        //m_hist_appear.setText("Yes");
+        
+//        if (post.getRBCA_hist_appear() == 1){
+//            m_hist_appear.setText("Yes");
+//        } else {
+//            m_hist_appear.setText("No");
+//        }
+        
+        
+        
+        String[] s_hist_age = getResources().getStringArray(R.array.hist_age);
+        
+        
+        switch (post.getRBCA_hist_age()){
+            case 1:
+                m_hist_age.setText(s_hist_age[0]);
+                break;
+            case 2:
+                m_hist_age.setText(s_hist_age[1]);
+                break;
+            case 3:
+                m_hist_age.setText(s_hist_age[2]);
+                break;
+                
+            
+        }
+        
+        
+        
         m_hist_age_meta.setText(post.getRBCA_hist_age_meta());
-        //m_hist_yr_built.setText(post.getRBCA_hist_yr_built());
-        //m_hist_age_src.setText(post.getRBCA_hist_age_src());
+        m_hist_yr_built.setText(Integer.toString(post.getRBCA_hist_yr_built()));
+        
+        
+        String[] s_hist_age_src = getResources().getStringArray(R.array.hist_age_src);
+        switch (post.getRBCA_hist_age_src()){
+            case 1:
+                m_hist_age_src.setText(s_hist_age_src[0]);
+                break;
+            case 2: 
+                m_hist_age_src.setText(s_hist_age_src[1]);
+                break;
+            case 3:
+                m_hist_age_src.setText(s_hist_age_src[2]);
+                break;
+            case 4: 
+                m_hist_age_src.setText(s_hist_age_src[3]);
+                break;
+                    
+        }
+        
         m_hist_age_src_oth.setText(post.getRBCA_hist_age_src_oth());
         m_hist_notes.setText(post.getRBCA_hist_notes());
         m_dmg_source.setText(post.getRBCA_dmg_source());
         m_dmg_source_oth.setText(post.getRBCA_dmg_source_oth());
-        //m_dmg_total.setText(post.getRBCA_dmg_total());
+        
+        
+        String[] s_damage = getResources().getStringArray(R.array.levelOfDamage);
+        switch (post.getRBCA_dmg_total()){
+            case 1:
+                m_dmg_total.setText(s_damage[0]);
+                break;
+            case 2:
+                m_dmg_total.setText(s_damage[1]);
+                break;
+            case 3:
+                m_dmg_total.setText(s_damage[2]);
+                break;
+            case 4:
+                m_dmg_total.setText(s_damage[3]);
+                break;
+        }
+        
         m_dmg_desc.setText(post.getRBCA_dmg_desc());
         m_struct_type.setText(post.getRBCA_struct_type());
         m_struct_type_oth.setText(post.getRBCA_struct_type_oth());
         m_struct_defects.setText(post.getRBCA_struct_defects());
-        //m_struct.setText(post.getRBCA_struct());
+        
+        switch (post.getRBCA_struct()){
+            case 1:
+                m_struct.setText(s_damage[0]);
+                break;
+            case 2:
+                m_struct.setText(s_damage[1]);
+                break;
+            case 3:
+                m_struct.setText(s_damage[2]);
+                break;
+            case 4:
+                m_struct.setText(s_damage[3]);
+                break;
+        }
+        
+        
+        
         m_struct_notes.setText(post.getRBCA_struct_notes());
         m_found_type.setText(post.getRBCA_found_type());
         m_found_type_oth.setText(post.getRBCA_found_type_oth());
-        //m_found.setText(post.getRBCA_found());
+        
+        switch (post.getRBCA_found()){
+            case 1:
+                m_found.setText(s_damage[0]);
+                break;
+            case 2:
+                m_found.setText(s_damage[1]);
+                break;
+            case 3:
+                m_found.setText(s_damage[2]);
+                break;
+            case 4:
+                m_found.setText(s_damage[3]);
+                break;
+        }
         m_found_notes.setText(post.getRBCA_found_notes());
         m_extwall_mat.setText(post.getRBCA_extwall_mat());
         m_extwall_mat_oth.setText(post.getRBCA_extwall_mat_oth());
-        //m_extwall.setText(post.getRBCA_extwall());
+        switch (post.getRBCA_extwall()){
+            case 1:
+                m_extwall.setText(s_damage[0]);
+                break;
+            case 2:
+                m_extwall.setText(s_damage[1]);
+                break;
+            case 3:
+                m_extwall.setText(s_damage[2]);
+                break;
+            case 4:
+                m_extwall.setText(s_damage[3]);
+                break;
+        }
         m_extwall_notes.setText(post.getRBCA_extwall_notes());
         m_extfeat_type.setText(post.getRBCA_extfeat_type());
         m_extfeat_type_oth.setText(post.getRBCA_extfeat_type_oth());
-        //m_extfeat.setText(post.getRBCA_extfeat());
+        switch (post.getRBCA_extfeat()){
+            case 1:
+                m_extfeat.setText(s_damage[0]);
+                break;
+            case 2:
+                m_extfeat.setText(s_damage[1]);
+                break;
+            case 3:
+                m_extfeat.setText(s_damage[2]);
+                break;
+            case 4:
+                m_extfeat.setText(s_damage[3]);
+                break;
+        }
         m_extfeat_notes.setText(post.getRBCA_extfeat_notes());
         m_win_type.setText(post.getRBCA_win_type());
         m_win_type_oth.setText(post.getRBCA_win_type_oth());
         m_win_mat.setText(post.getRBCA_win_mat());
         m_win_mat_oth.setText(post.getRBCA_win_mat_oth());
-        //m_win.setText(post.getRBCA_win());
+        switch (post.getRBCA_win()){
+            case 1:
+                m_win.setText(s_damage[0]);
+                break;
+            case 2:
+                m_win.setText(s_damage[1]);
+                break;
+            case 3:
+                m_win.setText(s_damage[2]);
+                break;
+            case 4:
+                m_win.setText(s_damage[3]);
+                break;
+        }
         m_win_notes.setText(post.getRBCA_win_notes());
         m_roof_type.setText(post.getRBCA_roof_type());
         m_roof_type_oth.setText(post.getRBCA_roof_type_oth());
         m_roof_mat.setText(post.getRBCA_roof_mat());
         m_roof_mat_oth.setText(post.getRBCA_roof_mat_oth());
-        //m_roof.setText(post.getRBCA_roof());
+        
+        switch (post.getRBCA_roof()){
+            case 1:
+                m_roof.setText(s_damage[0]);
+                break;
+            case 2:
+                m_roof.setText(s_damage[1]);
+                break;
+            case 3:
+                m_roof.setText(s_damage[2]);
+                break;
+            case 4:
+                m_roof.setText(s_damage[3]);
+                break;
+        }
         m_roof_notes.setText(post.getRBCA_roof_notes());
         m_int_cond.setText(post.getRBCA_int_cond());
-        //m_int_collect_extant.setText(post.getRBCA_int_collect_extant());
+        
+        if (post.getRBCA_int_collect_extant() == 1){
+            m_int_collect_extant.setText("Yes");
+        } else {
+            m_int_collect_extant.setText("No");
+        }
         m_int_collect_type.setText(post.getRBCA_int_collect_type());
         m_int_collect_type_oth.setText(post.getRBCA_int_collect_type_oth());
         m_int_notes.setText(post.getRBCA_int_notes());
         m_landveg_feat.setText(post.getRBCA_landveg_feat());
         m_landveg_feat_oth.setText(post.getRBCA_landveg_feat_oth());
-        //m_landveg.setText(post.getRBCA_landveg());
+        
+        switch (post.getRBCA_landveg()){
+            case 1:
+                m_landveg.setText(s_damage[0]);
+                break;
+            case 2:
+                m_landveg.setText(s_damage[1]);
+                break;
+            case 3:
+                m_landveg.setText(s_damage[2]);
+                break;
+            case 4:
+                m_landveg.setText(s_damage[3]);
+                break;
+        }
         m_landveg_notes.setText(post.getRBCA_landveg_notes());
         m_landblt_feat.setText(post.getRBCA_landblt_feat());
         m_landblt_feat_oth.setText(post.getRBCA_landblt_feat_oth());
-        //m_landblt.setText(post.getRBCA_landblt());
+        
+        switch (post.getRBCA_landblt()){
+            case 1:
+                m_landblt.setText(s_damage[0]);
+                break;
+            case 2:
+                m_landblt.setText(s_damage[1]);
+                break;
+            case 3:
+                m_landblt.setText(s_damage[2]);
+                break;
+            case 4:
+                m_landblt.setText(s_damage[3]);
+                break;
+        }
         m_landblt_notes.setText(post.getRBCA_landblt_notes());
-        //m_hzrd.setText(post.getRBCA_hzrd());
+        if (post.getRBCA_hzrd() == 1){
+            m_hzrd.setText("Yes");
+        } else {
+            m_hzrd.setText("No");
+        }
         m_hzrd_type.setText(post.getRBCA_hzrd_type());
         m_hzrd_type_oth.setText(post.getRBCA_hzrd_type_oth());
         m_hzrd_notes.setText(post.getRBCA_hzrd_notes());

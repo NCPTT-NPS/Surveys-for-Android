@@ -484,11 +484,11 @@
   <string name="rbca_struct_type_label">Construction Type</string>
   <string name="rbca_struct_defects_label">Structural Damage/Defects</string>
   <string name="rbca_struct_label">Structure Damage</string>
-  <string name="rbca_struct_notes_label">Structure damage notes</string>
+  <string name="rbca_struct_notes_label">Structure Damage Notes</string>
   <string name="rbca_found_type_label">Foundation Type</string>
   <string name="rbca_found_label">Foundation Damage</string>
   <string name="rbca_found_notes_label">Foundation Notes</string>
-  <string name="rbca_extwall_mat_label">Exterior Wall Materials</string>
+  <string name="rbca_extwall_mat_label">Materials</string>
   <string name="rbca_extwall_label">Exterior Wall Damage</string>
   <string name="rbca_extwall_notes_label">Exterior Wall Notes</string>
   <string name="rbca_extfeat_type_label">Exterior Features Type</string>
@@ -506,12 +506,12 @@
   <string name="rbca_int_collect_extant_label">Collections Present</string>
   <string name="rbca_int_collect_type_label">Collection Type</string>
   <string name="rbca_int_notes_label">Interior Notes</string>
-  <string name="rbca_landveg_feat_label">Landscape Features</string>
-  <string name="rbca_landveg_label">Landscape Damage</string>
-  <string name="rbca_landveg_notes_label">Landscape Notes</string>
-  <string name="rbca_landblt_feat_label">Landscape (Built) Features</string>
-  <string name="rbca_landblt_label">Landscape (Built) Damage</string>
-  <string name="rbca_landblt_notes_label">Landscape (Built) Notes</string>
+  <string name="rbca_landveg_feat_label">Features</string>
+  <string name="rbca_landveg_label">Damage</string>
+  <string name="rbca_landveg_notes_label">Notes</string>
+  <string name="rbca_landblt_feat_label">Features</string>
+  <string name="rbca_landblt_label">Damage</string>
+  <string name="rbca_landblt_notes_label">Notes</string>
   <string name="rbca_hzrd_label">Are there any apparent treaths to health or safety?</string>
   <string name="rbca_hzrd_type_label">Hazards</string>
   <string name="rbca_hzrd_notes_label">Hazard Description</string>
@@ -519,6 +519,59 @@
   <string name="rbca_actn_label">Recommended Actions</string>
   <string name="rbca_eval_label">Recommended Further Evaluations</string>
   <string name="rbca_notes_label">Notes</string>
+  <string name="assesor_identification">Assesor Identification</string>
+  <string name="location">Location</string>
+  <string name="images">Images</string>
+  <string name="building">Building</string>
+  <string name="historic_data">Historic Data</string>
+  <string name="damage">Damage</string>
+  <string name="structure">Structure</string>
+  <string name="foundation">Foundation</string>
+  <string name="exterior_walls">Exterior Walls</string>
+  <string name="exterior_features">Exterior Features</string>
+  <string name="windows">Windows</string>
+  <string name="roof">Roof</string>
+  <string name="interior">Interior</string>
+  <string name="landscape_vegetation">Landscape (Vegetation)</string>
+  <string name="landscape_built">Landscape (Built Features)</string>
+  <string name="images2">Image(s)</string>
+  <string name="hazards">Hazards</string>
+  <string name="remedial_actions">Remedial Actions</string>
+  <string name="rbca_asser_name_label">Name</string>
+  <string name="rbca_asser_org_label">Affiliation</string>
+  <string name="rbca_asser_email_label">Email</string>
+  <string name="rbca_asser_phone_label">Phone</string>
+  <string name="rbca_coord_latitude_label">latitude (x.y)</string>
+  <string name="rbca_coord_longitude_label">longitude (x.y)</string>
+  <string name="rbca_coord_altitude_label">altitude (m)</string>
+  <string name="rbca_coord_accuracy_label">accuracy (m)</string>
+  <string name="rbca_img_right_label">Image from right corner</string>
+  <string name="rbca_img_front_label">Image of front facade</string>
+  <string name="rbca_img_left_label">Image from left corner</string>
+  <string name="rbca_bldg_name_label">Building Name</string>
+  <string name="rbca_bldg_is_extant_label">Is building extant?</string>
+  <string name="rbca_bldg_posting_img_label">Image of Posting</string>
+  <string name="rbca_int_img1_label">Image 1 of 3</string>
+  <string name="rbca_int_desc1_label">Description</string>
+  <string name="rbca_int_img2_label">Image 2 of 3</string>
+  <string name="rbca_int_desc2_label">Description</string>
+  <string name="rbca_int_img3_label">Image 3 of 3</string>
+  <string name="rbca_int_desc3_label">Description</string>
+  <string name="rbca_media_img1_label">Image 1 of 3</string>
+  <string name="rbca_media_desc1_label">Description</string>
+  <string name="rbca_media_img2_label">Image 2 of 3</string>
+  <string name="rbca_media_desc2_label">Description</string>
+  <string name="rbca_media_img3_label">Image 3 of 3</string>
+  <string name="rbca_media_desc3_label">Description</string>
+  <string name="rbca_media_img4_label">Image 4 of 3</string>
+  <string name="rbca_media_desc4_label">Description</string>
+  <string name="rbca_media_img5_label">Image 5 of 3</string>
+  <string name="rbca_media_desc5_label">Description</string>
+  <string name="rbca_media_img6_label">Image 6 of 3</string>
+  <string name="rbca_media_desc6_label">Description</string>
+  
+  
+  
   
   
   

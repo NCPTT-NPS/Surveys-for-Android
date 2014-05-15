@@ -117,7 +117,6 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private static final int ACTIVITY_REQUEST_CODE_TAKE_VIDEO = 3;
     private static final int ACTIVITY_REQUEST_CODE_CREATE_LINK = 4;
     private static final int ACTIVITY_REQUEST_CODE_SELECT_CATEGORIES = 5;
-
     private static final int ID_DIALOG_DATE = 0;
     private static final int ID_DIALOG_TIME = 1;
     private static final int ID_DIALOG_LOADING = 2;
@@ -135,7 +134,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private Button mPubDateButton, mLinkButton, mMoreButton;
     private RelativeLayout mFormatBar;
     
-    ////added Jorge Rodriguez
+    ////added MoCA for android
     private ToggleButton mRBCA_bldg_occucy_avail, mRBCA_bldg_outbldg, mRBCA_hist_appear;
     private Spinner mRBCA_bldg_occucy_spinner, mRBCA_coord_loc_spinner, mRBCA_coord_corner_spinner, mRBCA_hist_dist_spinner;
     private Spinner mRBCA_hist_age_spinner, mRBCA_hist_age_meta_spinner,mRBCA_dmg_total_spinner,mRBCA_struct_type_spinner,mRBCA_struct_spinner;
@@ -151,6 +150,11 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private EditText mRBCA_win_mat_oth, mRBCA_win_notes,mRBCA_roof_type_oth, mRBCA_roof_mat_oth,mRBCA_roof_notes,mRBCA_int_collect_type_oth;
     private EditText mRBCA_int_notes,mRBCA_landveg_feat_oth,mRBCA_landveg_notes,mRBCA_landblt_feat_oth,mRBCA_landblt_notes;
     private EditText mRBCA_hist_age_src_oth, mRBCA_hist_age_notes,mRBCA_hzrd_type_oth,mRBCA_hzrd_notes,mRBCA_hzrd_hazmat_oth;
+    private EditText mRBCA_asser_name, mRBCA_asser_org, mRBCA_asser_email, mRBCA_asser_phone, mRBCA_coord_latitude, mRBCA_coord_longitude;
+    private EditText mRBCA_coord_altitude, mRBCA_coord_accuracy, mRBCA_addr_notes, mRBCA_img_right, mRBCA_img_front, mRBCA_img_left;
+    private EditText mRBCA_bldg_name, mRBCA_bldg_is_extant, mRBCA_bldg_posting_img, mRBCA_int_img1, mRBCA_int_desc1, mRBCA_int_img2, mRBCA_int_desc2;
+    private EditText mRBCA_int_img3, mRBCA_int_desc3, mRBCA_media_img1, mRBCA_media_desc1, mRBCA_media_img2, mRBCA_media_desc2, mRBCA_media_img3, mRBCA_media_desc3;
+    private EditText mRBCA_media_img4, mRBCA_media_desc4, mRBCA_media_img5, mRBCA_media_desc5, mRBCA_media_img6, mRBCA_media_desc6;
     
     protected Button mRBCA_bldg_area_select,mRBCA_bldg_posting_select,mRBCA_bldg_use_select, mRBCA_hist_desig_select, mRBCA_dmg_source_select;
     protected Button mRBCA_extwall_mat_select,mRBCA_extfeat_type_select,mRBCA_win_type_select, mRBCA_struct_defects_select;
@@ -158,31 +162,31 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     protected Button mRBCA_landblt_feat_select,mRBCA_hzrd_type_select,mRBCA_hzrd_hazmat_select, mRBCA_actn_select, mRBCA_eval_select;
     
     
-    protected CharSequence[] AreaAssessed = { "Exterior", "Interior" };
-    protected CharSequence[] PostingChoices = {"Inspected", "Restricted Use", "Unsafe", "Further Evaluation","Other"};
-    protected CharSequence[] usesChoices = { "Residential", "Apartment Bldg.", "Retail", "Offices", "Industrial", "Government",
+    protected String[] area_choices = { "Exterior", "Interior", "Inaccesible" };
+    protected String[] PostingChoices = {"Inspected", "Restricted Use", "Unsafe", "Further Evaluation","Other"};
+    protected String[] usesChoices = { "Residential", "Apartment Bldg.", "Retail", "Offices", "Industrial", "Government",
                                                 "Museum" , "School" , "Religious" , "Cemetery" , "Library/Archive",
                                                 "Hospital/Health Care", "Farming", "Military", "Other"};
-    protected CharSequence[] desigChoices = {"National Landmark","NR Listed", "State", "Other"};
-    protected CharSequence[] dmgSourceChoices = {"Earth Movement","Fire", "Flood/Water", "Snow/Ice","Wind","Chemical","Explosion","Other"};
-    protected CharSequence[] floodWaterChoices = {"Standing","Flowing","Ground Water","Water Marks","Other"};
-    protected CharSequence[] floodEntryChoices = {"Basement/Crawl","Other"};
-    protected CharSequence[] floodSedChoices = {"Deposit","Eroded","Unknown","None","Other"};
-    protected CharSequence[] struct_defects_choices = {"Racking/Movement","Off Foundation","Partial Collapse","Inminent Collapse","Total Collapse"};
-    protected CharSequence[] extwall_mat_choices = {"Wood","Vinyl","Masonry","Aluminum","Metal(non aluminum)","Asphalt Siding","Stucco/Plaster","Cememtitious Siding","Other"};
-    protected CharSequence[] extfeat_type_choices = {"Decorative Elements","Porch/Verandah/Deck","Balcony","Gutters/Downspouts","Other"};
-    protected CharSequence[] win_type_choices = {"Fixed","Double/Single-hung","Casement","Sliding","Hopper","Awning","Pivot","Louver","Other"};
-    protected CharSequence[] win_mat_choices = {"Wood","Steel","Aluminum","Vinyl","Other"};
-    protected CharSequence[] roof_type_choices = {"Hipped","Gable","Mansard","Pyramid","Flat","Shed","Gambrel","Other"};
-    protected CharSequence[] roof_mat_choices = {"Slate","Metal","Tile","Asphalt","Cement/Asbestos","Other"};
-    protected CharSequence[] int_cond_choices = {"Structural Damage","Mold/Mildew","Falling Plaster","Debris Deposited"};
-    protected CharSequence[] int_collect_type_choices = {"Antiques","Archives","Art Work","Other"};
-    protected CharSequence[] landveg_feat_choices = {"Trees","Hedges/Shrubs","Planting Beds","Other"};
-    protected CharSequence[] landblt_feat_choices = {"Pavement/Roads/Walkway","Fence","Wall","Sculpture","Fountain","Other"};
-    protected CharSequence[] hzrd_type_choices = {"Racking/Structural Movement","Off Foundation","Partial Collapse","Inminent Collapse","Total Collapse","Ground Shift","Falling Hazard","Animals/Reptiles","Hazardous Materials","Other"};
-    protected CharSequence[] hzrd_hazmat_choices = {"Mold/Mildew","Flood Water","Sewage","Chemicals","Biological Waste (eg. animal carcass)","Asbestos","Other"};
-    protected CharSequence[] actn_choices = {"Debris Removal","Personal Protective Measures","Falling Hazard Removal","Shoring/Bracing","Barricades","Other"};
-    protected CharSequence[] eval_choices = {"Structural","Geotechnical","Archeological","Collections","Determination of Eligibility","HazMat","Other"};
+    protected String[] desigChoices = {"National Landmark","NR Listed", "State", "Other"};
+    protected String[] dmgSourceChoices = {"Earth Movement","Fire", "Flood/Water", "Snow/Ice","Wind","Chemical","Explosion","Other"};
+    protected String[] floodWaterChoices = {"Standing","Flowing","Ground Water","Water Marks","Other"};
+    protected String[] floodEntryChoices = {"Basement/Crawl","Other"};
+    protected String[] floodSedChoices = {"Deposit","Eroded","Unknown","None","Other"};
+    protected String[] struct_defects_choices = {"Racking/Movement","Off Foundation","Partial Collapse","Inminent Collapse","Total Collapse"};
+    protected String[] extwall_mat_choices = {"Wood","Vinyl","Masonry","Aluminum","Metal(non aluminum)","Asphalt Siding","Stucco/Plaster","Cememtitious Siding","Other"};
+    protected String[] extfeat_type_choices = {"Decorative Elements","Porch/Verandah/Deck","Balcony","Gutters/Downspouts","Other"};
+    protected String[] win_type_choices = {"Fixed","Double/Single-hung","Casement","Sliding","Hopper","Awning","Pivot","Louver","Other"};
+    protected String[] win_mat_choices = {"Wood","Steel","Aluminum","Vinyl","Other"};
+    protected String[] roof_type_choices = {"Hipped","Gable","Mansard","Pyramid","Flat","Shed","Gambrel","Other"};
+    protected String[] roof_mat_choices = {"Slate","Metal","Tile","Asphalt","Cement/Asbestos","Other"};
+    protected String[] int_cond_choices = {"Structural Damage","Mold/Mildew","Falling Plaster","Debris Deposited"};
+    protected String[] int_collect_type_choices = {"Antiques","Archives","Art Work","Other"};
+    protected String[] landveg_feat_choices = {"Trees","Hedges/Shrubs","Planting Beds","Other"};
+    protected String[] landblt_feat_choices = {"Pavement/Roads/Walkway","Fence","Wall","Sculpture","Fountain","Other"};
+    protected String[] hzrd_type_choices = {"Racking/Structural Movement","Off Foundation","Partial Collapse","Inminent Collapse","Total Collapse","Ground Shift","Falling Hazard","Animals/Reptiles","Hazardous Materials","Other"};
+    protected String[] hzrd_hazmat_choices = {"Mold/Mildew","Flood Water","Sewage","Chemicals","Biological Waste (eg. animal carcass)","Asbestos","Other"};
+    protected String[] actn_choices = {"Debris Removal","Personal Protective Measures","Falling Hazard Removal","Shoring/Bracing","Barricades","Other"};
+    protected String[] eval_choices = {"Structural","Geotechnical","Archeological","Collections","Determination of Eligibility","HazMat","Other"};
     
     
     protected ArrayList<CharSequence> selectedChoices = new ArrayList<CharSequence>();
@@ -191,7 +195,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     
     Calendar dateTime=Calendar.getInstance();
     
-    ////// end surveys for android
+    ////// end MoCA for android
     
     
     private Location mCurrentLocation;
@@ -334,7 +338,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mFormatBar = (RelativeLayout) findViewById(R.id.formatBar);
         
         
-        ////////////////////////added Surveys for Android
+        ////////////////////////added MoCA for Android
        
         mRBCA_coord_loc_spinner = (Spinner) findViewById(R.id.rbca_coord_loc_spinner);
         mRBCA_coord_loc_oth = (EditText) findViewById(R.id.rbca_coord_loc_oth);
@@ -427,7 +431,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_eval_select = (Button) findViewById(R.id.rbca_eval_select);
         mRBCA_eval_oth = (EditText) findViewById(R.id.rbca_eval_oth);
        
-        //////////////////////////end Surveys for Android
+        //////////////////////////end MoCA for Android
         
         
 
@@ -436,7 +440,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ((TextView) findViewById(R.id.postFormatLabel)).setText(getResources().getString(R.string.post_format).toUpperCase());
         ((TextView) findViewById(R.id.pubDateLabel)).setText(getResources().getString(R.string.publish_date).toUpperCase());
         
-        //////////////////added Surveys for Android
+        //////////////////added MoCA for Android
         ((TextView) findViewById(R.id.title_label)).setText(getResources().getString(R.string.title).toUpperCase());
         ((TextView) findViewById(R.id.rbca_coord_loc_label)).setText(getResources().getString(R.string.rbca_coord_loc).toUpperCase());
         ((TextView) findViewById(R.id.rbca_coord_loc_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
@@ -469,19 +473,10 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ((TextView) findViewById(R.id.rbca_hist_age_label)).setText(getResources().getString(R.string.rbca_hist_age_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_hist_age_meta_label)).setText(getResources().getString(R.string.rbca_hist_age_meta_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_hist_yr_built_label)).setText(getResources().getString(R.string.rbca_hist_yr_built_label).toUpperCase());
-       // ((TextView) findViewById(R.id.rbca_dmg_date_label)).setText(getResources().getString(R.string.rbca_dmg_date_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_dmg_source_label)).setText(getResources().getString(R.string.rbca_dmg_source_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_dmg_source_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_dmg_total_label)).setText(getResources().getString(R.string.rbca_dmg_total_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_dmg_desc_label)).setText(getResources().getString(R.string.rbca_dmg_desc_label).toUpperCase());
-//        ((TextView) findViewById(R.id.rbca_flood_water_label)).setText(getResources().getString(R.string.rbca_flood_water_label).toUpperCase());
-//        ((TextView) findViewById(R.id.rbca_flood_water_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
-//        ((TextView) findViewById(R.id.rbca_flood_entry_label)).setText(getResources().getString(R.string.rbca_flood_entry_label).toUpperCase());
-//        ((TextView) findViewById(R.id.rbca_flood_entry_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
-//        ((TextView) findViewById(R.id.rbca_flood_depth_label)).setText(getResources().getString(R.string.rbca_flood_depth_label).toUpperCase());
-//        ((TextView) findViewById(R.id.rbca_flood_sed_label)).setText(getResources().getString(R.string.rbca_flood_sed_label).toUpperCase());
-//        ((TextView) findViewById(R.id.rbca_flood_sed_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
-//        ((TextView) findViewById(R.id.rbca_flood_notes_label)).setText(getResources().getString(R.string.rbca_flood_notes_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_struct_type_label)).setText(getResources().getString(R.string.rbca_struct_type_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_struct_type_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_struct_label)).setText(getResources().getString(R.string.rbca_struct_label).toUpperCase());
@@ -546,7 +541,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 setContent();
         }
 
-        //Surveys for Android/////////////////  ARRAY ADAPTERS FOR SPINNERS 
+        //MoCA for Android/////////////////  ARRAY ADAPTERS FOR SPINNERS 
         String[] coord_loc = new String[] { getResources().getString(R.string.rbca_entrance_label), getResources().getString(R.string.rbca_corner_label),
                 getResources().getString(R.string.rbca_other_label)};
 
@@ -594,7 +589,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         
         
         
-        //end Surverys for Android ///////////////////////
+        //end MoCA for Android ///////////////////////
         
         
         String[] items = new String[] { getResources().getString(R.string.publish_post), getResources().getString(R.string.draft),
@@ -678,7 +673,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             
             
-            ///////////////////SURVEYS FOR ANDROID ///////////////
+            ///////////////////MoCA for Android ///////////////
             if (mPost.getRBCA_coord_loc() != null){
                 String rbca_coord_loc = mPost.getRBCA_coord_loc();
                 
@@ -868,9 +863,9 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (mPost.getRBCA_hist_age_src_oth() != null){
                 mRBCA_hist_age_src_oth.setText(mPost.getRBCA_hist_age_src_oth());}
             
-            System.out.println(mPost.getRBCA_hist_notes());
+            
             if (mPost.getRBCA_hist_notes() != null){
-                //mRBCA_hist_age_notes.setText(mPost.getRBCA_hist_notes());
+                mRBCA_hist_notes.setText(mPost.getRBCA_hist_notes());
                 }
             
             if (mPost.getRBCA_dmg_source() != null){
@@ -901,35 +896,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             if (mPost.getRBCA_dmg_desc() != null){
                 mRBCA_dmg_desc.setText(mPost.getRBCA_dmg_desc());}
-            
-            // this part was deleted in revision 7./////////////////
-//            if (mPost.getRBCA_flood_water() != null){
-//                mRBCA_flood_water_select.setText(mPost.getRBCA_flood_water());}
-//            
-//            if (mPost.getRBCA_flood_water_oth() != null){
-//                mRBCA_flood_water_oth.setText(mPost.getRBCA_flood_water_oth());}
-//            
-//            if (mPost.getRBCA_flood_entry() != null ){
-//                String floodEntry = mPost.getRBCA_flood_entry();
-//                if (floodEntry.equals("Basement/Crawl")){mRBCA_flood_entry_spinner.setSelection(0);}
-//                if (floodEntry.equals("Other")) {mRBCA_flood_entry_spinner.setSelection(1);}
-//            }
-//            
-//            if (mPost.getRBCA_flood_entry_oth() != null){
-//                mRBCA_flood_entry_oth.setText(mPost.getRBCA_flood_entry_oth());}
-//            
-//            if (mPost.getRBCA_flood_depth() != 0.0){
-//                mRBCA_flood_depth.setText(Double.toString(mPost.getRBCA_flood_depth()));}
-//            
-//            if (mPost.getRBCA_flood_sed() != null){
-//                mRBCA_flood_sed_select.setText(mPost.getRBCA_flood_sed());}
-//            
-//            if (mPost.getRBCA_flood_sed_oth() != null){
-//                mRBCA_flood_sed_oth.setText(mPost.getRBCA_flood_sed_oth());}
-//            
-//            if (mPost.getRBCA_flood_notes() != null){
-//                mRBCA_flood_notes.setText(mPost.getRBCA_flood_notes());}
-            
+                        
             if (mPost.getRBCA_struct_type() != null){
                 String rbca_struct_type = mPost.getRBCA_struct_type();
                 
@@ -1135,22 +1102,10 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (mPost.getRBCA_int_cond() != null){
                 mRBCA_int_cond_select.setText(mPost.getRBCA_int_cond());}
             
-            if (mPost.getRBCA_int_collect_extant() > 0 ){
-                int int_collect_extant1 = mPost.getRBCA_int_collect_extant();
-                switch (int_collect_extant1){
-                    case 1:
-                        mRBCA_int_collect_extant_spinner.setSelection(0);
-                        break;
-                    case 2:
-                        mRBCA_int_collect_extant_spinner.setSelection(1);
-                        break;
-                    case 3:
-                        mRBCA_int_collect_extant_spinner.setSelection(2);
-                        break;
-                    case 4:
-                        mRBCA_int_collect_extant_spinner.setSelection(3);
-                        break;
-                }
+            if (mPost.getRBCA_int_collect_extant() == 1 ){
+                mRBCA_int_collect_extant_spinner.setSelection(1);
+            } else {
+                mRBCA_int_collect_extant_spinner.setSelection(0);     
             }
             
             if (mPost.getRBCA_int_collect_type() != null){
@@ -1216,16 +1171,10 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (mPost.getRBCA_landblt_notes() != null){
                 mRBCA_landblt_notes.setText(mPost.getRBCA_landblt_notes());}
             
-            if (mPost.getRBCA_hzrd() > 0 ){
-                int hzrd1 = mPost.getRBCA_hzrd();
-                switch (hzrd1){
-                    case 1:
-                        mRBCA_hzrd_spinner.setSelection(0);
-                        break;
-                    case 2:
-                        mRBCA_hzrd_spinner.setSelection(1);
-                        break;
-                }
+            if (mPost.getRBCA_hzrd() == 1 ){
+                mRBCA_hzrd_spinner.setSelection(1);
+            } else {
+                mRBCA_hzrd_spinner.setSelection(0);
             }
             
             if (mPost.getRBCA_hzrd_type() != null){
@@ -1257,7 +1206,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             
             
-            /////////////////////////end SURVEYS FOR ANDROID
+            /////////////////////////end MoCA for Android
             
             
 
@@ -1331,7 +1280,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mMoreButton.setOnClickListener(this);
         
         
-        ////////Moca for Android 
+        ////////MoCA for Android 
+        mRBCA_coord_loc_oth.setOnClickListener(this);
         mRBCA_bldg_area_select.setOnClickListener(this);
         mRBCA_bldg_posting_select.setOnClickListener(this);
         mRBCA_bldg_occucy_avail.setOnClickListener(this);
@@ -1355,7 +1305,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_hzrd_hazmat_select.setOnClickListener(this);
         mRBCA_actn_select.setOnClickListener(this);
         mRBCA_eval_select.setOnClickListener(this);
-        /////end Moca for android
+        /////end MoCA for android
     }
 
     @Override
@@ -1481,6 +1431,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mFormatBar.setVisibility(View.GONE);
     }
 
+   //Comment to test git  
+  
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -1569,7 +1521,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             }
             mLocationText.setText("");
         } else if (id == R.id.rbca_bldg_area_select){////Moca for Android////////////////////////////////////////
-            showSelectionDialog((String) mRBCA_bldg_area_select.getText(),AreaAssessed,mRBCA_bldg_area_select);
+            showSelectionDialog((String) mRBCA_bldg_area_select.getText(),area_choices,mRBCA_bldg_area_select);
         } else if (id == R.id.rbca_bldg_posting_select){
             showSelectionDialog((String) mRBCA_bldg_posting_select.getText(),PostingChoices,mRBCA_bldg_posting_select);
         } else if (id == R.id.rbca_bldg_occucy_available){
@@ -1612,7 +1564,11 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             showSelectionDialog((String) mRBCA_actn_select.getText(),actn_choices,mRBCA_actn_select);
         } else if (id == R.id.rbca_eval_select){
             showSelectionDialog((String) mRBCA_eval_select.getText(),eval_choices,mRBCA_eval_select);
-        }
+        } else if (id == R.id.rbca_dmg_source_select){
+            showSelectionDialog((String) mRBCA_dmg_source_select.getText(),dmgSourceChoices,mRBCA_dmg_source_select);
+        } else if (id == R.id.rbca_coord_loc_oth){
+            launchCamera();
+        } 
             
     }
 
@@ -2405,7 +2361,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
             final String moreTag = "<!--more-->";
             
-            //////////////////////SURVEYS FOR ANDROID
+            //////////////////////MoCA for Android
             
             int selected_occucy = mRBCA_bldg_occucy_spinner.getSelectedItemPosition();
             String occupancy = "";
@@ -2520,8 +2476,9 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             String occu_name = mRBCA_bldg_occu_name.getText().toString();
             
             int occu_phone = 0;
+            String temp = mRBCA_bldg_occu_phone.getText().toString();
             if (!mRBCA_bldg_occu_phone.getText().toString().equals("")){
-                occu_phone = Integer.parseInt(mRBCA_bldg_occu_phone.getText().toString());
+                occu_phone = Integer.parseInt(temp);
             }
             
             
@@ -2865,7 +2822,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 if (!mPost.isLocalDraft())
                     mPost.setLocalChange(true);
                 
-                ///////Surveys for Android
+                ///////MoCA for Android
                 mPost.setRBCA_coord_loc(coord_location);
                 mPost.setRBCA_coord_loc_oth(coord_loc_oth);
                 mPost.setRBCA_coord_corner(coord_corner);
@@ -2956,7 +2913,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setRBCA_actn_oth(actn_oth);
                 mPost.setRBCA_eval(eval);
                 mPost.setRBCA_eval_oth(eval_oth);
-                ////END Surveys for Android 
+                ////END MoCA for Android 
                 success = mPost.update();
             }
         }
@@ -3068,103 +3025,105 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
     private void addMedia(String imgPath, Uri curStream) {
         
-        if (mFormatBar.getVisibility() == View.VISIBLE)
-            hideFormatBar();
-
-        Bitmap resizedBitmap = null;
-        ImageHelper ih = new ImageHelper();
-        Display display = getWindowManager().getDefaultDisplay();
-        int width = display.getWidth();
-        int height = display.getHeight();
-        if (width > height)
-            width = height;
-
-        Map<String, Object> mediaData = ih.getImageBytesForPath(imgPath, EditPostActivity.this);
-
-        if (mediaData == null) {
-            // data stream not returned
-            Toast.makeText(EditPostActivity.this, getResources().getText(R.string.gallery_error), Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        BitmapFactory.Options opts = new BitmapFactory.Options();
-        opts.inJustDecodeBounds = true;
-        byte[] bytes = (byte[]) mediaData.get("bytes");
-        BitmapFactory.decodeByteArray(bytes, 0, bytes.length, opts);
-
-        float conversionFactor = 0.25f;
-
-        if (opts.outWidth > opts.outHeight)
-            conversionFactor = 0.40f;
-
-        byte[] finalBytes = ih.createThumbnail(bytes, String.valueOf((int) (width * conversionFactor)),
-                (String) mediaData.get("orientation"), true);
-
-        if (finalBytes == null) {
-            Toast.makeText(EditPostActivity.this, getResources().getText(R.string.out_of_memory), Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        resizedBitmap = BitmapFactory.decodeByteArray(finalBytes, 0, finalBytes.length);
-
-        int selectionStart = mContentEditText.getSelectionStart();
-        mStyleStart = selectionStart;
-        int selectionEnd = mContentEditText.getSelectionEnd();
-
-        if (selectionStart > selectionEnd) {
-            int temp = selectionEnd;
-            selectionEnd = selectionStart;
-            selectionStart = temp;
-        }
-
-        Editable s = mContentEditText.getText();
-        WPImageSpan is = new WPImageSpan(EditPostActivity.this, resizedBitmap, curStream);
-
-        String imageWidth = WordPress.currentBlog.getMaxImageWidth();
-        if (!imageWidth.equals("Original Size")) {
-            try {
-                is.setWidth(Integer.valueOf(imageWidth));
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-            }
-        }
-
-        is.setTitle((String) mediaData.get("title"));
-        is.setImageSource(curStream);
-        if (imgPath.contains("video")) {
-            is.setVideo(true);
-        }
-
-        int line = 0, column = 0;
-        try {
-            line = mContentEditText.getLayout().getLineForOffset(selectionStart);
-            column = mContentEditText.getSelectionStart() - mContentEditText.getLayout().getLineStart(line);
-        } catch (Exception ex) {
-        }
-
-        WPImageSpan[] image_spans = s.getSpans(selectionStart, selectionEnd, WPImageSpan.class);
-        if (image_spans.length != 0) {
-            // insert a few line breaks if the cursor is already on an image
-            s.insert(selectionEnd, "\n\n");
-            selectionStart = selectionStart + 2;
-            selectionEnd = selectionEnd + 2;
-        } else if (column != 0) {
-            // insert one line break if the cursor is not at the first column
-            s.insert(selectionEnd, "\n");
-            selectionStart = selectionStart + 1;
-            selectionEnd = selectionEnd + 1;
-        }
-
-        s.insert(selectionStart, " ");
-        s.setSpan(is, selectionStart, selectionEnd + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        AlignmentSpan.Standard as = new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER);
-        s.setSpan(as, selectionStart, selectionEnd + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        s.insert(selectionEnd + 1, "\n\n");
-        try {
-            mContentEditText.setSelection(s.length());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        mRBCA_coord_loc_oth.setText(imgPath);
+        
+//        if (mFormatBar.getVisibility() == View.VISIBLE)
+//            hideFormatBar();
+//
+//        Bitmap resizedBitmap = null;
+//        ImageHelper ih = new ImageHelper();
+//        Display display = getWindowManager().getDefaultDisplay();
+//        int width = display.getWidth();
+//        int height = display.getHeight();
+//        if (width > height)
+//            width = height;
+//
+//        Map<String, Object> mediaData = ih.getImageBytesForPath(imgPath, EditPostActivity.this);
+//
+//        if (mediaData == null) {
+//            // data stream not returned
+//            Toast.makeText(EditPostActivity.this, getResources().getText(R.string.gallery_error), Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        BitmapFactory.Options opts = new BitmapFactory.Options();
+//        opts.inJustDecodeBounds = true;
+//        byte[] bytes = (byte[]) mediaData.get("bytes");
+//        BitmapFactory.decodeByteArray(bytes, 0, bytes.length, opts);
+//
+//        float conversionFactor = 0.25f;
+//
+//        if (opts.outWidth > opts.outHeight)
+//            conversionFactor = 0.40f;
+//
+//        byte[] finalBytes = ih.createThumbnail(bytes, String.valueOf((int) (width * conversionFactor)),
+//                (String) mediaData.get("orientation"), true);
+//
+//        if (finalBytes == null) {
+//            Toast.makeText(EditPostActivity.this, getResources().getText(R.string.out_of_memory), Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        resizedBitmap = BitmapFactory.decodeByteArray(finalBytes, 0, finalBytes.length);
+//
+//        int selectionStart = mContentEditText.getSelectionStart();
+//        mStyleStart = selectionStart;
+//        int selectionEnd = mContentEditText.getSelectionEnd();
+//
+//        if (selectionStart > selectionEnd) {
+//            int temp = selectionEnd;
+//            selectionEnd = selectionStart;
+//            selectionStart = temp;
+//        }
+//
+//        Editable s = mContentEditText.getText();
+//        WPImageSpan is = new WPImageSpan(EditPostActivity.this, resizedBitmap, curStream);
+//
+//        String imageWidth = WordPress.currentBlog.getMaxImageWidth();
+//        if (!imageWidth.equals("Original Size")) {
+//            try {
+//                is.setWidth(Integer.valueOf(imageWidth));
+//            } catch (NumberFormatException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        is.setTitle((String) mediaData.get("title"));
+//        is.setImageSource(curStream);
+//        if (imgPath.contains("video")) {
+//            is.setVideo(true);
+//        }
+//
+//        int line = 0, column = 0;
+//        try {
+//            line = mContentEditText.getLayout().getLineForOffset(selectionStart);
+//            column = mContentEditText.getSelectionStart() - mContentEditText.getLayout().getLineStart(line);
+//        } catch (Exception ex) {
+//        }
+//
+//        WPImageSpan[] image_spans = s.getSpans(selectionStart, selectionEnd, WPImageSpan.class);
+//        if (image_spans.length != 0) {
+//            // insert a few line breaks if the cursor is already on an image
+//            s.insert(selectionEnd, "\n\n");
+//            selectionStart = selectionStart + 2;
+//            selectionEnd = selectionEnd + 2;
+//        } else if (column != 0) {
+//            // insert one line break if the cursor is not at the first column
+//            s.insert(selectionEnd, "\n");
+//            selectionStart = selectionStart + 1;
+//            selectionEnd = selectionEnd + 1;
+//        }
+//
+//        s.insert(selectionStart, " ");
+//        s.setSpan(is, selectionStart, selectionEnd + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        AlignmentSpan.Standard as = new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER);
+//        s.setSpan(as, selectionStart, selectionEnd + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        s.insert(selectionEnd + 1, "\n\n");
+//        try {
+//            mContentEditText.setSelection(s.length());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     public SpannableStringBuilder addMediaFromShareAction(String imgPath, Uri curStream, SpannableStringBuilder ssb) {
@@ -3423,10 +3382,10 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     
     
     
-    ///added this for multichoice dialog   MOCA for android
+    ///added MoCA for android
    
     
-    protected void showSelectionDialog(String postChoices, CharSequence[] choices,Button buttonSelector ) {
+    protected void showSelectionDialog(String postChoices, String[] choices,Button buttonSelector ) {
         Choices = choices;
         strdButton = buttonSelector;
         boolean[] checkedSelection = new boolean[Choices.length];
@@ -3503,39 +3462,11 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         //timeLabel.setText(formatDateTime.format(dateTime.getTime()));
     }
     
-//    private DatePickerDialog customDatePicker() {
-//        DatePickerDialog dpd = new DatePickerDialog(this, mDateSetListner,
-//                mYear, mMonth, mDay);
-//        try {
-//            Field[] datePickerDialogFields = dpd.getClass().getDeclaredFields();
-//            for (Field datePickerDialogField : datePickerDialogFields) {
-//                if (datePickerDialogField.getName().equals("mDatePicker")) {
-//                    datePickerDialogField.setAccessible(true);
-//                    DatePicker datePicker = (DatePicker) datePickerDialogField
-//                            .get(dpd);
-//                    Field datePickerFields[] = datePickerDialogField.getType()
-//                            .getDeclaredFields();
-//                    for (Field datePickerField : datePickerFields) {
-//                        if ("mDayPicker".equals(datePickerField.getName())
-//                                || "mDaySpinner".equals(datePickerField
-//                                        .getName())) {
-//                            datePickerField.setAccessible(true);
-//                            Object dayPicker = new Object();
-//                            dayPicker = datePickerField.get(datePicker);
-//                            ((View) dayPicker).setVisibility(View.GONE);
-//                        }
-//                    }
-//                }
-//            }
-//        } catch (Exception ex) {
-//        }
-//        return dpd;
-  //  }
 
     
     
     
-    ///end added
+    ///end added MoCA for Android
     
     
 }

@@ -46,7 +46,7 @@
         android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ncptticon114"
-        android:label="Surveys"
+        android:label="MoCA"
         android:theme="@style/WordPress" >
 
         <!-- Account activities -->

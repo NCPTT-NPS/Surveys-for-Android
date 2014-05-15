@@ -193,25 +193,47 @@
         
         <item name="android:shadowRadius">2.75</item>
         <item name="android:textColor">#2C0E03</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
-		<item name="android:background">#FFFFFF</item>
-		<item name="android:paddingBottom">8dp</item>
+		<item name="android:background">@drawable/format_bar_bg</item>
+		<item name="android:paddingBottom">1dp</item>
 		<item name="android:paddingTop">5dp</item>
-		<item name="android:gravity">center</item>
+		<item name="android:paddingLeft">10dp</item>
+		<item name="android:gravity">left</item>
     </style>
     
     <style name="SubTitleLabel">
         <item name="android:textColor">#FF464646</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center</item>
+        <item name="android:gravity">left</item>
         <item name="android:background">#FFFFFF</item>
-        <item name="android:paddingTop">2dp</item>
-        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">20dp</item>
     </style>
 
+    <style name="DivisionTitles">
+        <item name="android:textColor">#CE4F07</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#FFFFFF</item>
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:paddingBottom">2dp</item>
+    </style>
+    
+    <style name="DivisionTitlesViewPost">
+        <item name="android:textColor">#CE4F07</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#FFFFFF</item>
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingBottom">2dp</item>
+    </style>
 </resources>

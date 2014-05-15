@@ -42,7 +42,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
            
+            <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/assesor_identification"
+	            />
              
+            <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/location"
+	            />
+            
             <TextView
                 style="@style/TitleLabel"
 		        android:text="@string/rbca_coord_loc"
@@ -107,6 +116,12 @@
                 style="@style/TitleLabel"
 		        android:text="@string/rbca_bldg_area_label"
 		        />
+            
+            <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/building"
+	            />
+            
             <TextView
                 android:id="@+id/rbca_bldg_area"
 		        style="@style/SubTitleLabel"
@@ -274,6 +289,11 @@
 		        />
             
             <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/historic_data"
+	            />
+            
+            <TextView
                 style="@style/TitleLabel"
 		        android:text="@string/rbca_hist_desig_label"
 		        />
@@ -384,6 +404,11 @@
 		        />
             
             <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/damage"
+	            />
+            
+            <TextView
                 style="@style/TitleLabel"
 		        android:text="@string/rbca_dmg_source_label"
 		        />
@@ -422,6 +447,11 @@
 		        style="@style/SubTitleLabel"
 		        android:text="@string/rbca_dmg_desc_label"
 		        />
+            
+            <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/structure"
+	            />
             
             <TextView
                 style="@style/TitleLabel"
@@ -474,6 +504,11 @@
 		        />
             
             <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/foundation"
+	            />
+            
+            <TextView
                 style="@style/TitleLabel"
 		        android:text="@string/rbca_found_type_label"
 		        />
@@ -512,6 +547,11 @@
 		        style="@style/SubTitleLabel"
 		        android:text="@string/rbca_found_notes_label"
 		        />
+            
+            <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/exterior_walls"
+	            />
             
             <TextView
                 style="@style/TitleLabel"
@@ -554,6 +594,11 @@
 		        />
             
             <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/exterior_features"
+	            />
+            
+            <TextView
                 style="@style/TitleLabel"
 		        android:text="@string/rbca_extfeat_type_label"
 		        />
@@ -592,6 +637,11 @@
 		        style="@style/SubTitleLabel"
 		        android:text="@string/rbca_extfeat_notes_label"
 		        />
+            
+            <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/windows"
+	            />
             
             <TextView
                 style="@style/TitleLabel"
@@ -654,6 +704,11 @@
 		        />
             
             <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/roof"
+	            />
+            
+            <TextView
                 style="@style/TitleLabel"
 		        android:text="@string/rbca_roof_type_label"
 		        />
@@ -714,6 +769,11 @@
 		        />
             
             <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/interior"
+	            />
+            
+            <TextView
                 style="@style/TitleLabel"
 		        android:text="@string/rbca_int_cond_label"
 		        />
@@ -764,6 +824,11 @@
 		        />
             
             <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/landscape_vegetation"
+	            />
+            
+            <TextView
                 style="@style/TitleLabel"
 		        android:text="@string/rbca_landveg_feat_label"
 		        />
@@ -804,6 +869,11 @@
 		        />
             
             <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/landscape_built"
+	            />
+            
+            <TextView
                 style="@style/TitleLabel"
 		        android:text="@string/rbca_landblt_feat_label"
 		        />
@@ -842,6 +912,16 @@
 		        style="@style/SubTitleLabel"
 		        android:text="@string/rbca_landblt_notes_label"
 		        />
+            
+            <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/images2"
+	            />
+            
+            <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/hazards"
+	            />
             
             <TextView
                 style="@style/TitleLabel"
@@ -902,6 +982,11 @@
 		        style="@style/SubTitleLabel"
 		        android:text="@string/rbca_other_label"
 		        />
+            
+            <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/remedial_actions"
+	            />
             
             <TextView
                 style="@style/TitleLabel"

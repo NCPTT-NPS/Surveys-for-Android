@@ -119,8 +119,14 @@
 	</string-array>
 	
     <string-array name="YesNo">
-        <item>Yes</item>
         <item>No</item>
+        <item>Yes</item>
+    </string-array>
+    
+    <string-array name="area_choices">
+        <item>Exterior</item>
+        <item>Interior</item>
+        <item>Inaccesible</item>
     </string-array>
 	
     

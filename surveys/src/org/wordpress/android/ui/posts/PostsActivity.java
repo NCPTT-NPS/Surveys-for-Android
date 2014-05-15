@@ -186,7 +186,6 @@ public class PostsActivity extends WPActionBarActivity implements OnPostSelected
     protected void checkForLocalChanges(boolean shouldPrompt) {
         boolean hasLocalChanges = WordPress.wpDB.findLocalChanges();
         if (hasLocalChanges) {
-            System.out.println("Entro a checkForLocalChanges");
             if (!shouldPrompt)
                 return;
             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(
