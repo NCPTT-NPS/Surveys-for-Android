@@ -46,11 +46,92 @@
 	            style="@style/DivisionTitlesViewPost"
 	            android:text="@string/assesor_identification"
 	            />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_asser_name_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_asser_name"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_asser_name_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_asser_org_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_asser_org"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_asser_org_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_asser_email_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_asser_email"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_asser_email_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_asser_phone_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_asser_phone"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_asser_phone_label"
+		        />
+            
              
             <TextView
 	            style="@style/DivisionTitlesViewPost"
 	            android:text="@string/location"
 	            />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_coord_latitude_label"
+		        />
+           	<TextView
+                android:id="@+id/rbca_coord_latitude"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_coord_latitude_label"
+		        />
+           	
+           	<TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_coord_longitude_label"
+		        />
+           	<TextView
+                android:id="@+id/rbca_coord_longitude"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_coord_longitude_label"
+		        />
+           	
+           	<TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_coord_altitude_label"
+		        />
+           	<TextView
+                android:id="@+id/rbca_coord_altitude"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_coord_altitude_label"
+		        />
+           	
+           	<TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_coord_accuracy_label"
+		        />
+           	<TextView
+                android:id="@+id/rbca_coord_accuracy"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_coord_accuracy_label"
+		        />
             
             <TextView
                 style="@style/TitleLabel"
@@ -109,18 +190,83 @@
             <TextView
                 android:id="@+id/rbca_addr_street"
 		        style="@style/SubTitleLabel"
-		        android:text="@string/rbca_addr_street_label"
+		        android:text="@string/rbca_addr_street_label" />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_notes_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_addr_notes"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_notes_label"
+		        />
+            
+            <TextView
+	            style="@style/DivisionTitlesViewPost"
+	            android:text="@string/images"
+	            />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_img_right_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_img_right"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_img_right_label"
 		        />
             
             <TextView
                 style="@style/TitleLabel"
-		        android:text="@string/rbca_bldg_area_label"
+		        android:text="@string/rbca_img_front_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_img_front"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_img_front_label"
+		        />
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_img_left_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_img_left"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_img_left_label"
 		        />
             
             <TextView
 	            style="@style/DivisionTitlesViewPost"
 	            android:text="@string/building"
 	            />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_bldg_name_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_bldg_name"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_bldg_name_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_bldg_is_extant_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_bldg_is_extant"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_bldg_is_extant_label"
+		        />
+            
+            
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_bldg_area_label"
+		        />
             
             <TextView
                 android:id="@+id/rbca_bldg_area"
@@ -137,6 +283,17 @@
 		        style="@style/SubTitleLabel"
 		        android:text="@string/rbca_bldg_posting_label"
 		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_bldg_posting_img_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_bldg_posting_img"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_bldg_posting_img_label"
+		        />
+            
             
             <TextView
                 style="@style/TitleLabel"
@@ -815,6 +972,66 @@
             
             <TextView
                 style="@style/TitleLabel"
+		        android:text="@string/rbca_int_img1_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_int_img1"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_int_img1_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_int_desc1_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_int_desc1"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_int_desc1_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_int_img2_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_int_img2"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_int_img2_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_int_desc2_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_int_desc2"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_int_desc2_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_int_img3_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_int_img3"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_int_img3_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_int_desc3_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_int_desc3"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_int_desc3_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
 		        android:text="@string/rbca_int_notes_label"
 		        />
             <TextView
@@ -917,6 +1134,126 @@
 	            style="@style/DivisionTitlesViewPost"
 	            android:text="@string/images2"
 	            />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_media_img1_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_media_img1"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_media_img1_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_media_desc1_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_media_desc1"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_media_desc1_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_media_img2_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_media_img2"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_media_img2_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_media_desc2_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_media_desc2"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_media_desc2_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_media_img3_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_media_img3"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_media_img3_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_media_desc3_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_media_desc3"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_media_desc3_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_media_img4_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_media_img4"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_media_img4_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_media_desc4_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_media_desc4"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_media_desc4_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_media_img5_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_media_img5"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_media_img5_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_media_desc5_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_media_desc5"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_media_desc5_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_media_img6_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_media_img6"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_media_img6_label"
+		        />
+            
+            <TextView
+                style="@style/TitleLabel"
+		        android:text="@string/rbca_media_desc6_label"
+		        />
+            <TextView
+                android:id="@+id/rbca_media_desc6"
+		        style="@style/SubTitleLabel"
+		        android:text="@string/rbca_media_desc6_label"
+		        />
             
             <TextView
 	            style="@style/DivisionTitlesViewPost"

@@ -569,6 +569,9 @@
   <string name="rbca_media_desc5_label">Description</string>
   <string name="rbca_media_img6_label">Image 6 of 3</string>
   <string name="rbca_media_desc6_label">Description</string>
+  <string name="Yes">Yes</string>
+  <string name="No">No</string>
+  <string name="partial">Partial</string>
   
   
   

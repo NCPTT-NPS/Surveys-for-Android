@@ -148,15 +148,30 @@ public class ViewPostFragment extends Fragment {
         else
             title.setText(EscapeUtils.unescapeHtml(post.getTitle()));
         
+        TextView m_asser_name = (TextView) getActivity().findViewById(R.id.rbca_asser_name);
+        TextView m_asser_org = (TextView) getActivity().findViewById(R.id.rbca_asser_org);
+        TextView m_asser_email = (TextView) getActivity().findViewById(R.id.rbca_asser_email);
+        TextView m_asser_phone = (TextView) getActivity().findViewById(R.id.rbca_asser_phone);
+        TextView m_coord_latitude = (TextView) getActivity().findViewById(R.id.rbca_coord_latitude);
+        TextView m_coord_longitude = (TextView) getActivity().findViewById(R.id.rbca_coord_longitude);
+        TextView m_coord_altitude = (TextView) getActivity().findViewById(R.id.rbca_coord_altitude);
+        TextView m_coord_accuracy = (TextView) getActivity().findViewById(R.id.rbca_coord_accuracy);
         TextView m_coord_loc = (TextView) getActivity().findViewById(R.id.rbca_coord_loc);
         TextView m_coord_loc_oth = (TextView) getActivity().findViewById(R.id.rbca_coord_loc_oth);
         TextView m_coord_corner = (TextView) getActivity().findViewById(R.id.rbca_coord_corner);
         TextView m_coord_notes = (TextView) getActivity().findViewById(R.id.rbca_coord_notes);
         TextView m_addr_no = (TextView) getActivity().findViewById(R.id.rbca_addr_no);
         TextView m_addr_street = (TextView) getActivity().findViewById(R.id.rbca_addr_street);
+        TextView m_addr_notes = (TextView) getActivity().findViewById(R.id.rbca_addr_notes);
+        TextView m_img_right = (TextView) getActivity().findViewById(R.id.rbca_img_right);
+        TextView m_img_front = (TextView) getActivity().findViewById(R.id.rbca_img_front);
+        TextView m_img_left = (TextView) getActivity().findViewById(R.id.rbca_img_left);
+        TextView m_bldg_name = (TextView) getActivity().findViewById(R.id.rbca_bldg_name);
+        TextView m_bldg_is_extant = (TextView) getActivity().findViewById(R.id.rbca_bldg_is_extant);
         TextView m_bldg_area = (TextView) getActivity().findViewById(R.id.rbca_bldg_area);
         TextView m_bldg_posting = (TextView) getActivity().findViewById(R.id.rbca_bldg_posting);
         TextView m_bldg_posting_oth = (TextView) getActivity().findViewById(R.id.rbca_bldg_posting_oth);
+        TextView m_bldg_posting_img = (TextView) getActivity().findViewById(R.id.rbca_bldg_posting_img);
         TextView m_bldg_occucy = (TextView) getActivity().findViewById(R.id.rbca_bldg_occucy);
         TextView m_bldg_occu_avail = (TextView) getActivity().findViewById(R.id.rbca_bldg_occu_avail);
         TextView m_bldg_stories = (TextView) getActivity().findViewById(R.id.rbca_bldg_stories);
@@ -219,6 +234,12 @@ public class ViewPostFragment extends Fragment {
         TextView m_int_collect_extant = (TextView) getActivity().findViewById(R.id.rbca_int_collect_extant);
         TextView m_int_collect_type = (TextView) getActivity().findViewById(R.id.rbca_int_collect_type);
         TextView m_int_collect_type_oth = (TextView) getActivity().findViewById(R.id.rbca_int_collect_type_oth);
+        TextView m_int_img1 = (TextView) getActivity().findViewById(R.id.rbca_int_img1);
+        TextView m_int_desc1 = (TextView) getActivity().findViewById(R.id.rbca_int_desc1);
+        TextView m_int_img2 = (TextView) getActivity().findViewById(R.id.rbca_int_img2);
+        TextView m_int_desc2 = (TextView) getActivity().findViewById(R.id.rbca_int_desc2);
+        TextView m_int_img3 = (TextView) getActivity().findViewById(R.id.rbca_int_img3);
+        TextView m_int_desc3 = (TextView) getActivity().findViewById(R.id.rbca_int_desc3);
         TextView m_int_notes = (TextView) getActivity().findViewById(R.id.rbca_int_notes);
         TextView m_landveg_feat = (TextView) getActivity().findViewById(R.id.rbca_landveg_feat);
         TextView m_landveg_feat_oth = (TextView) getActivity().findViewById(R.id.rbca_landveg_feat_oth);
@@ -228,6 +249,18 @@ public class ViewPostFragment extends Fragment {
         TextView m_landblt_feat_oth = (TextView) getActivity().findViewById(R.id.rbca_landblt_feat_oth);
         TextView m_landblt = (TextView) getActivity().findViewById(R.id.rbca_landblt);
         TextView m_landblt_notes = (TextView) getActivity().findViewById(R.id.rbca_landblt_notes);
+        TextView m_media_img1 = (TextView) getActivity().findViewById(R.id.rbca_media_img1);
+        TextView m_media_desc1 = (TextView) getActivity().findViewById(R.id.rbca_media_desc1);
+        TextView m_media_img2 = (TextView) getActivity().findViewById(R.id.rbca_media_img2);
+        TextView m_media_desc2 = (TextView) getActivity().findViewById(R.id.rbca_media_desc2);
+        TextView m_media_img3 = (TextView) getActivity().findViewById(R.id.rbca_media_img3);
+        TextView m_media_desc3 = (TextView) getActivity().findViewById(R.id.rbca_media_desc3);
+        TextView m_media_img4 = (TextView) getActivity().findViewById(R.id.rbca_media_img4);
+        TextView m_media_desc4 = (TextView) getActivity().findViewById(R.id.rbca_media_desc4);
+        TextView m_media_img5 = (TextView) getActivity().findViewById(R.id.rbca_media_img5);
+        TextView m_media_desc5 = (TextView) getActivity().findViewById(R.id.rbca_media_desc5);
+        TextView m_media_img6 = (TextView) getActivity().findViewById(R.id.rbca_media_img6);
+        TextView m_media_desc6 = (TextView) getActivity().findViewById(R.id.rbca_media_desc6);
         TextView m_hzrd = (TextView) getActivity().findViewById(R.id.rbca_hzrd);
         TextView m_hzrd_type = (TextView) getActivity().findViewById(R.id.rbca_hzrd_type);
         TextView m_hzrd_type_oth = (TextView) getActivity().findViewById(R.id.rbca_hzrd_type_oth);
@@ -240,15 +273,31 @@ public class ViewPostFragment extends Fragment {
         TextView m_eval_oth = (TextView) getActivity().findViewById(R.id.rbca_eval_oth);
         
         
+        
+        m_asser_name.setText(post.getRBCA_asser_name());
+        m_asser_org.setText(post.getRBCA_asser_org());
+        m_asser_email.setText(post.getRBCA_asser_email());
+        m_asser_phone.setText(post.getRBCA_asser_phone());
+        m_coord_latitude.setText(Double.toString(post.getRBCA_coord_latitude()));
+        m_coord_longitude.setText(Double.toString(post.getRBCA_coord_longitude()));
+        m_coord_altitude.setText(Double.toString(post.getRBCA_coord_altitude()));
+        m_coord_accuracy.setText(Double.toString(post.getRBCA_coord_accuracy()));
         m_coord_loc.setText(post.getRBCA_coord_loc());
         m_coord_loc_oth.setText(post.getRBCA_coord_loc_oth());
         m_coord_corner.setText(post.getRBCA_coord_corner());
         m_coord_notes.setText(post.getRBCA_coord_notes());
         m_addr_no.setText(post.getRBCA_addr_no());
         m_addr_street.setText(post.getRBCA_addr_street());
+        m_addr_notes.setText(post.getRBCA_addr_notes());
+        m_img_right.setText(post.getRBCA_img_right());
+        m_img_front.setText(post.getRBCA_img_front());
+        m_img_left.setText(post.getRBCA_img_left());
+        m_bldg_name.setText(post.getRBCA_bldg_name());
+        m_bldg_is_extant.setText(post.getRBCA_bldg_is_extant());
         m_bldg_area.setText(post.getRBCA_bldg_area());
         m_bldg_posting.setText(post.getRBCA_bldg_posting());
         m_bldg_posting_oth.setText(post.getRBCA_bldg_posting_oth());
+        m_bldg_posting_img.setText(post.getRBCA_bldg_posting_img());
         m_bldg_occucy.setText(post.getRBCA_bldg_occucy());
         
         if (post.getRBCA_bldg_occucy_avail() ==1){
@@ -280,7 +329,7 @@ public class ViewPostFragment extends Fragment {
         m_hist_dist.setText(post.getRBCA_hist_dist());
         m_hist_dist_name.setText(post.getRBCA_hist_dist_name());
         
-        //m_hist_appear.setText("Yes");
+       // m_hist_appear.setText("Yes");
         
 //        if (post.getRBCA_hist_appear() == 1){
 //            m_hist_appear.setText("Yes");
@@ -475,6 +524,12 @@ public class ViewPostFragment extends Fragment {
         }
         m_int_collect_type.setText(post.getRBCA_int_collect_type());
         m_int_collect_type_oth.setText(post.getRBCA_int_collect_type_oth());
+        m_int_img1.setText(post.getRBCA_int_img1());
+        m_int_desc1.setText(post.getRBCA_int_desc1());
+        m_int_img2.setText(post.getRBCA_int_img2());
+        m_int_desc2.setText(post.getRBCA_int_desc2());
+        m_int_img3.setText(post.getRBCA_int_img3());
+        m_int_desc3.setText(post.getRBCA_int_desc3());
         m_int_notes.setText(post.getRBCA_int_notes());
         m_landveg_feat.setText(post.getRBCA_landveg_feat());
         m_landveg_feat_oth.setText(post.getRBCA_landveg_feat_oth());
@@ -517,6 +572,19 @@ public class ViewPostFragment extends Fragment {
         } else {
             m_hzrd.setText("No");
         }
+        
+        m_media_img1.setText(post.getRBCA_media_img1());
+        m_media_desc1.setText(post.getRBCA_media_desc1());
+        m_media_img2.setText(post.getRBCA_media_img2());
+        m_media_desc2.setText(post.getRBCA_media_desc2());
+        m_media_img3.setText(post.getRBCA_media_img3());
+        m_media_desc3.setText(post.getRBCA_media_desc3());
+        m_media_img4.setText(post.getRBCA_media_img4());
+        m_media_desc4.setText(post.getRBCA_media_desc4());
+        m_media_img5.setText(post.getRBCA_media_img5());
+        m_media_desc5.setText(post.getRBCA_media_desc5());
+        m_media_img6.setText(post.getRBCA_media_img6());
+        m_media_desc6.setText(post.getRBCA_media_desc6());
         m_hzrd_type.setText(post.getRBCA_hzrd_type());
         m_hzrd_type_oth.setText(post.getRBCA_hzrd_type_oth());
         m_hzrd_notes.setText(post.getRBCA_hzrd_notes());

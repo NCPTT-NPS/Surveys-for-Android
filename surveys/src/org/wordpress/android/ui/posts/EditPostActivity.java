@@ -117,6 +117,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private static final int ACTIVITY_REQUEST_CODE_TAKE_VIDEO = 3;
     private static final int ACTIVITY_REQUEST_CODE_CREATE_LINK = 4;
     private static final int ACTIVITY_REQUEST_CODE_SELECT_CATEGORIES = 5;
+    private static final int ACTIVITY_REQUEST_CODE_IMG_RIGHT = 6;
     private static final int ID_DIALOG_DATE = 0;
     private static final int ID_DIALOG_TIME = 1;
     private static final int ID_DIALOG_LOADING = 2;
@@ -140,7 +141,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private Spinner mRBCA_hist_age_spinner, mRBCA_hist_age_meta_spinner,mRBCA_dmg_total_spinner,mRBCA_struct_type_spinner,mRBCA_struct_spinner;
     private Spinner mRBCA_found_type_spinner, mRBCA_found_spinner,mRBCA_extwall_spinner, mRBCA_extfeat_spinner, mRBCA_win_spinner;
     private Spinner mRBCA_roof_spinner,mRBCA_int_collect_extant_spinner,mRBCA_landveg_spinner,mRBCA_landblt_spinner, mRBCA_hist_age_src_spinner;
-    private Spinner mRBCA_hzrd_spinner;
+    private Spinner mRBCA_bldg_is_extant_spinner, mRBCA_hzrd_spinner;
     private EditText mRBCA_coord_notes, mRBCA_addr_no, mRBCA_addr_street, mRBCA_coord_loc_oth, mRBCA_bldg_posting_oth;
     private EditText mRBCA_bldg_stories, mRBCA_bldg_width, mRBCA_bldg_length, mRBCA_bldg_use_oth,mRBCA_bldg_outbldg_notes, mRBCA_bldg_units_res,mRBCA_bldg_units_comm;
     private EditText mRBCA_bldg_occu_name, mRBCA_bldg_occu_phone, mRBCA_bldg_notes,mRBCA_hist_desig_oth,mRBCA_hist_dist_name;
@@ -151,8 +152,8 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
     private EditText mRBCA_int_notes,mRBCA_landveg_feat_oth,mRBCA_landveg_notes,mRBCA_landblt_feat_oth,mRBCA_landblt_notes;
     private EditText mRBCA_hist_age_src_oth, mRBCA_hist_age_notes,mRBCA_hzrd_type_oth,mRBCA_hzrd_notes,mRBCA_hzrd_hazmat_oth;
     private EditText mRBCA_asser_name, mRBCA_asser_org, mRBCA_asser_email, mRBCA_asser_phone, mRBCA_coord_latitude, mRBCA_coord_longitude;
-    private EditText mRBCA_coord_altitude, mRBCA_coord_accuracy, mRBCA_addr_notes, mRBCA_img_right, mRBCA_img_front, mRBCA_img_left;
-    private EditText mRBCA_bldg_name, mRBCA_bldg_is_extant, mRBCA_bldg_posting_img, mRBCA_int_img1, mRBCA_int_desc1, mRBCA_int_img2, mRBCA_int_desc2;
+    private EditText mRBCA_coord_altitude, mRBCA_coord_accuracy, mRBCA_addr_notes, mRBCA_img_front, mRBCA_img_left,mRBCA_img_right;
+    private EditText mRBCA_bldg_name, mRBCA_bldg_posting_img, mRBCA_int_img1, mRBCA_int_desc1, mRBCA_int_img2, mRBCA_int_desc2;
     private EditText mRBCA_int_img3, mRBCA_int_desc3, mRBCA_media_img1, mRBCA_media_desc1, mRBCA_media_img2, mRBCA_media_desc2, mRBCA_media_img3, mRBCA_media_desc3;
     private EditText mRBCA_media_img4, mRBCA_media_desc4, mRBCA_media_img5, mRBCA_media_desc5, mRBCA_media_img6, mRBCA_media_desc6;
     
@@ -339,16 +340,32 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         
         
         ////////////////////////added MoCA for Android
+        
        
+        mRBCA_asser_name = (EditText) findViewById(R.id.rbca_asser_name);
+        mRBCA_asser_org = (EditText) findViewById(R.id.rbca_asser_org);
+        mRBCA_asser_email = (EditText) findViewById(R.id.rbca_asser_email);
+        mRBCA_asser_phone = (EditText) findViewById(R.id.rbca_asser_phone);
+        mRBCA_coord_latitude = (EditText) findViewById(R.id.rbca_coord_latitude);
+        mRBCA_coord_longitude = (EditText) findViewById(R.id.rbca_coord_longitude);
+        mRBCA_coord_altitude = (EditText) findViewById(R.id.rbca_coord_altitude);
+        mRBCA_coord_accuracy = (EditText) findViewById(R.id.rbca_coord_accuracy);
         mRBCA_coord_loc_spinner = (Spinner) findViewById(R.id.rbca_coord_loc_spinner);
         mRBCA_coord_loc_oth = (EditText) findViewById(R.id.rbca_coord_loc_oth);
         mRBCA_coord_corner_spinner = (Spinner) findViewById(R.id.rbca_coord_corner_spinner);
         mRBCA_coord_notes = (EditText) findViewById(R.id.rbca_coord_notes);
         mRBCA_addr_no = (EditText) findViewById(R.id.rbca_addr_no);
         mRBCA_addr_street = (EditText) findViewById(R.id.rbca_addr_street);
+        mRBCA_addr_notes = (EditText) findViewById(R.id.rbca_addr_notes);
+        mRBCA_img_right = (EditText) findViewById(R.id.rbca_img_right);
+        mRBCA_img_front = (EditText) findViewById(R.id.rbca_img_front);
+        mRBCA_img_left = (EditText) findViewById(R.id.rbca_img_left);
+        mRBCA_bldg_name = (EditText) findViewById(R.id.rbca_bldg_name);
+        mRBCA_bldg_is_extant_spinner = (Spinner) findViewById(R.id.rbca_bldg_is_extant_spinner);
         mRBCA_bldg_area_select = (Button) findViewById(R.id.rbca_bldg_area_select);
         mRBCA_bldg_posting_select = (Button) findViewById(R.id.rbca_bldg_posting_select);
         mRBCA_bldg_posting_oth = (EditText) findViewById(R.id.rbca_bldg_posting_oth);
+        mRBCA_bldg_posting_img = (EditText) findViewById(R.id.rbca_bldg_posting_img);
         mRBCA_bldg_occucy_spinner = (Spinner) findViewById(R.id.rbca_bldg_occucy);
         mRBCA_bldg_occucy_avail = (ToggleButton) findViewById(R.id.rbca_bldg_occucy_available);
         mRBCA_bldg_stories = (EditText) findViewById(R.id.rbca_bldg_stories);
@@ -411,6 +428,12 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_int_collect_extant_spinner = (Spinner) findViewById(R.id.rbca_int_collect_extant);
         mRBCA_int_collect_type_select = (Button) findViewById(R.id.rbca_int_collect_type_select);
         mRBCA_int_collect_type_oth = (EditText) findViewById(R.id.rbca_int_collect_type_oth);
+        mRBCA_int_img1 = (EditText) findViewById(R.id.rbca_int_img1);
+        mRBCA_int_desc1 = (EditText) findViewById(R.id.rbca_int_desc1);
+        mRBCA_int_img2 = (EditText) findViewById(R.id.rbca_int_img2);
+        mRBCA_int_desc2 = (EditText) findViewById(R.id.rbca_int_desc2);
+        mRBCA_int_img3 = (EditText) findViewById(R.id.rbca_int_img3);
+        mRBCA_int_desc3 = (EditText) findViewById(R.id.rbca_int_desc3);
         mRBCA_int_notes = (EditText) findViewById(R.id.rbca_int_notes);
         mRBCA_landveg_feat_select = (Button) findViewById(R.id.rbca_landveg_feat_select);
         mRBCA_landveg_feat_oth = (EditText) findViewById(R.id.rbca_landveg_feat_oth);
@@ -420,6 +443,18 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         mRBCA_landblt_feat_oth = (EditText) findViewById(R.id.rbca_landblt_feat_oth);
         mRBCA_landblt_spinner = (Spinner) findViewById(R.id.rbca_landblt);
         mRBCA_landblt_notes = (EditText) findViewById(R.id.rbca_landblt_notes);
+        mRBCA_media_img1 = (EditText) findViewById(R.id.rbca_media_img1);
+        mRBCA_media_desc1 = (EditText) findViewById(R.id.rbca_media_desc1);
+        mRBCA_media_img2 = (EditText) findViewById(R.id.rbca_media_img2);
+        mRBCA_media_desc2 = (EditText) findViewById(R.id.rbca_media_desc2);
+        mRBCA_media_img3 = (EditText) findViewById(R.id.rbca_media_img3);
+        mRBCA_media_desc3 = (EditText) findViewById(R.id.rbca_media_desc3);
+        mRBCA_media_img4 = (EditText) findViewById(R.id.rbca_media_img4);
+        mRBCA_media_desc4 = (EditText) findViewById(R.id.rbca_media_desc4);
+        mRBCA_media_img5 = (EditText) findViewById(R.id.rbca_media_img5);
+        mRBCA_media_desc5 = (EditText) findViewById(R.id.rbca_media_desc5);
+        mRBCA_media_img6 = (EditText) findViewById(R.id.rbca_media_img6);
+        mRBCA_media_desc6 = (EditText) findViewById(R.id.rbca_media_desc6);
         mRBCA_hzrd_spinner = (Spinner) findViewById(R.id.rbca_hzrd);
         mRBCA_hzrd_type_select = (Button) findViewById(R.id.rbca_hzrd_type_select);
         mRBCA_hzrd_type_oth = (EditText) findViewById(R.id.rbca_hzrd_type_oth);
@@ -441,7 +476,10 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ((TextView) findViewById(R.id.pubDateLabel)).setText(getResources().getString(R.string.publish_date).toUpperCase());
         
         //////////////////added MoCA for Android
+        
         ((TextView) findViewById(R.id.title_label)).setText(getResources().getString(R.string.title).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_asser_name_label)).setText(getResources().getString(R.string.rbca_asser_name_label).toUpperCase());
+        ((TextView) findViewById(R.id.rbca_asser_org_label)).setText(getResources().getString(R.string.rbca_asser_org_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_coord_loc_label)).setText(getResources().getString(R.string.rbca_coord_loc).toUpperCase());
         ((TextView) findViewById(R.id.rbca_coord_loc_oth_label)).setText(getResources().getString(R.string.rbca_other_label).toUpperCase());
         ((TextView) findViewById(R.id.rbca_coord_notes_label)).setText(getResources().getString(R.string.rbca_coord_notes_label).toUpperCase());
@@ -556,6 +594,13 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         ArrayAdapter<String> coord_corner_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, coord_corner);
         coord_corner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mRBCA_coord_corner_spinner.setAdapter(coord_corner_adapter);
+        
+        String[] bldg_is_extant = new String[] { getResources().getString(R.string.Yes), getResources().getString(R.string.No),
+                getResources().getString(R.string.partial)};
+
+        ArrayAdapter<String> bldg_is_extant_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, bldg_is_extant);
+        bldg_is_extant_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mRBCA_bldg_is_extant_spinner.setAdapter(bldg_is_extant_adapter);
         
         
         
@@ -674,6 +719,31 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             
             ///////////////////MoCA for Android ///////////////
+            
+            if (mPost.getRBCA_asser_name() != null){
+                mRBCA_asser_name.setText(mPost.getRBCA_asser_name());}
+            
+            if (mPost.getRBCA_asser_org() != null){
+                mRBCA_asser_org.setText(mPost.getRBCA_asser_org());}
+            
+            if (mPost.getRBCA_asser_email() != null){
+                mRBCA_asser_email.setText(mPost.getRBCA_asser_email());}
+            
+            if (mPost.getRBCA_asser_phone() != null){
+                mRBCA_asser_phone.setText(mPost.getRBCA_asser_phone());}
+            
+            if (mPost.getRBCA_coord_latitude() != 0.0){
+                mRBCA_coord_latitude.setText(Double.toString(mPost.getRBCA_coord_latitude()));}
+            
+            if (mPost.getRBCA_coord_longitude() != 0.0){
+                mRBCA_coord_longitude.setText(Double.toString(mPost.getRBCA_coord_longitude()));}
+            
+            if (mPost.getRBCA_coord_altitude() != 0.0){
+                mRBCA_coord_altitude.setText(Double.toString(mPost.getRBCA_coord_altitude()));}
+            
+            if (mPost.getRBCA_coord_accuracy() != 0.0){
+                mRBCA_coord_accuracy.setText(Double.toString(mPost.getRBCA_coord_accuracy()));}
+            
             if (mPost.getRBCA_coord_loc() != null){
                 String rbca_coord_loc = mPost.getRBCA_coord_loc();
                 
@@ -724,6 +794,32 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mRBCA_addr_street.setText(mPost.getRBCA_addr_street()) ;
             }
             
+            if (mPost.getRBCA_addr_notes() != null){
+                mRBCA_addr_notes.setText(mPost.getRBCA_addr_notes());}
+            
+            if (mPost.getRBCA_img_right() != null){
+                mRBCA_img_right.setText(mPost.getRBCA_img_right());}
+            
+            if (mPost.getRBCA_img_front() != null){
+                mRBCA_img_front.setText(mPost.getRBCA_img_front());}
+            
+            if (mPost.getRBCA_img_left() != null){
+                mRBCA_img_left.setText(mPost.getRBCA_img_left());}
+            
+            if (mPost.getRBCA_bldg_name() != null){
+                mRBCA_bldg_name.setText(mPost.getRBCA_bldg_name());}
+            
+            if (mPost.getRBCA_bldg_is_extant() !=null){
+                String bldg_is_extant1 = mPost.getRBCA_bldg_is_extant();
+                if (bldg_is_extant1.equals("Yes")) {
+                    mRBCA_bldg_is_extant_spinner.setSelection(0, true);
+                } else if (bldg_is_extant1.equals("No")) {
+                    mRBCA_bldg_is_extant_spinner.setSelection(1, true);
+                } else if (bldg_is_extant1.equals("Partial")) {
+                    mRBCA_bldg_is_extant_spinner.setSelection(2, true);
+                }
+            }
+            
             if (mPost.getRBCA_bldg_area() != null){
                 mRBCA_bldg_area_select.setText(mPost.getRBCA_bldg_area()) ;
             }
@@ -735,6 +831,9 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (mPost.getRBCA_bldg_posting_oth() != null){
                 mRBCA_bldg_posting_oth.setText(mPost.getRBCA_bldg_posting_oth()) ;
             }
+            
+            if (mPost.getRBCA_bldg_posting_img() != null){
+                mRBCA_bldg_posting_img.setText(mPost.getRBCA_bldg_posting_img());}
             
             if (mPost.getRBCA_bldg_occucy() !=null){
                 String occupancy1 = mPost.getRBCA_bldg_occucy();
@@ -1114,6 +1213,24 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             if (mPost.getRBCA_int_collect_type_oth() != null){
                 mRBCA_int_collect_type_oth.setText(mPost.getRBCA_int_collect_type_oth());}
             
+            if (mPost.getRBCA_int_img1() != null){
+                mRBCA_int_img1.setText(mPost.getRBCA_int_img1());}
+            
+            if (mPost.getRBCA_int_desc1() != null){
+                mRBCA_int_desc1.setText(mPost.getRBCA_int_desc1());}
+            
+            if (mPost.getRBCA_int_img2() != null){
+                mRBCA_int_img2.setText(mPost.getRBCA_int_img2());}
+            
+            if (mPost.getRBCA_int_desc2() != null){
+                mRBCA_int_desc2.setText(mPost.getRBCA_int_desc2());}
+            
+            if (mPost.getRBCA_int_img3() != null){
+                mRBCA_int_img3.setText(mPost.getRBCA_int_img3());}
+            
+            if (mPost.getRBCA_int_desc3() != null){
+                mRBCA_int_desc3.setText(mPost.getRBCA_int_desc3());}
+            
             if (mPost.getRBCA_int_notes() != null){
                 mRBCA_int_notes.setText(mPost.getRBCA_int_notes());}
             
@@ -1170,6 +1287,42 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             if (mPost.getRBCA_landblt_notes() != null){
                 mRBCA_landblt_notes.setText(mPost.getRBCA_landblt_notes());}
+            
+            if (mPost.getRBCA_media_img1() != null){
+                mRBCA_media_img1.setText(mPost.getRBCA_media_img1());}
+            
+            if (mPost.getRBCA_media_desc1() != null){
+                mRBCA_media_desc1.setText(mPost.getRBCA_media_desc1());}
+            
+            if (mPost.getRBCA_media_img2() != null){
+                mRBCA_media_img2.setText(mPost.getRBCA_media_img2());}
+            
+            if (mPost.getRBCA_media_desc2() != null){
+                mRBCA_media_desc2.setText(mPost.getRBCA_media_desc2());}
+            
+            if (mPost.getRBCA_media_img3() != null){
+                mRBCA_media_img3.setText(mPost.getRBCA_media_img3());}
+            
+            if (mPost.getRBCA_media_desc3() != null){
+                mRBCA_media_desc3.setText(mPost.getRBCA_media_desc3());}
+            
+            if (mPost.getRBCA_media_img4() != null){
+                mRBCA_media_img4.setText(mPost.getRBCA_media_img4());}
+            
+            if (mPost.getRBCA_media_desc4() != null){
+                mRBCA_media_desc4.setText(mPost.getRBCA_media_desc4());}
+            
+            if (mPost.getRBCA_media_img5() != null){
+                mRBCA_media_img5.setText(mPost.getRBCA_media_img5());}
+            
+            if (mPost.getRBCA_media_desc5() != null){
+                mRBCA_media_desc5.setText(mPost.getRBCA_media_desc5());}
+            
+            if (mPost.getRBCA_media_img6() != null){
+                mRBCA_media_img6.setText(mPost.getRBCA_media_img6());}
+            
+            if (mPost.getRBCA_media_desc6() != null){
+                mRBCA_media_desc6.setText(mPost.getRBCA_media_desc6());}
             
             if (mPost.getRBCA_hzrd() == 1 ){
                 mRBCA_hzrd_spinner.setSelection(1);
@@ -1281,7 +1434,6 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         
         
         ////////MoCA for Android 
-        mRBCA_coord_loc_oth.setOnClickListener(this);
         mRBCA_bldg_area_select.setOnClickListener(this);
         mRBCA_bldg_posting_select.setOnClickListener(this);
         mRBCA_bldg_occucy_avail.setOnClickListener(this);
@@ -1566,7 +1718,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             showSelectionDialog((String) mRBCA_eval_select.getText(),eval_choices,mRBCA_eval_select);
         } else if (id == R.id.rbca_dmg_source_select){
             showSelectionDialog((String) mRBCA_dmg_source_select.getText(),dmgSourceChoices,mRBCA_dmg_source_select);
-        } else if (id == R.id.rbca_coord_loc_oth){
+        } else if (id == R.id.rbca_img_right){
             launchCamera();
         } 
             
@@ -2230,6 +2382,22 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mCategoriesText.setVisibility(View.VISIBLE);
                 mCategoriesText.setText(getString(R.string.selected_categories) + " " + getCategoriesCSV());
                 break;
+            case ACTIVITY_REQUEST_CODE_IMG_RIGHT:
+                if (resultCode == Activity.RESULT_OK) {
+                    try {
+                        File f = new File(mMediaCapturePath);
+                        Uri capturedImageUri = Uri.fromFile(f);
+                        f = null;
+                        addMedia(capturedImageUri.toString(), capturedImageUri);
+                        sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://"
+                                + Environment.getExternalStorageDirectory())));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } catch (OutOfMemoryError e) {
+                        e.printStackTrace();
+                    }
+                }
+                
             }
         }// end null check
     }
@@ -2363,19 +2531,47 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             
             //////////////////////MoCA for Android
             
-            int selected_occucy = mRBCA_bldg_occucy_spinner.getSelectedItemPosition();
-            String occupancy = "";
-            switch (selected_occucy) {
+            String asser_name = mRBCA_asser_name.getText().toString();
+            String asser_org = mRBCA_asser_org.getText().toString();
+            String asser_email = mRBCA_asser_email.getText().toString();
+            String asser_phone = mRBCA_asser_phone.getText().toString();
+            
+            double coord_latitude =0.0;
+            if (!mRBCA_coord_latitude.getText().toString().equals("")){
+                coord_latitude = Double.parseDouble(mRBCA_coord_latitude.getText().toString());
+            }
+            
+            double coord_longitude =0.0;
+            if (!mRBCA_coord_longitude.getText().toString().equals("")){
+                coord_longitude = Double.parseDouble(mRBCA_coord_longitude.getText().toString());
+            }
+            
+            double coord_altitude =0.0;
+            if (!mRBCA_coord_altitude.getText().toString().equals("")){
+                coord_altitude = Double.parseDouble(mRBCA_coord_altitude.getText().toString());
+            }
+            
+            double coord_accuracy =0.0;
+            if (!mRBCA_coord_accuracy.getText().toString().equals("")){
+                coord_accuracy = Double.parseDouble(mRBCA_coord_accuracy.getText().toString());
+            }
+            
+            int selected_coord_loc = mRBCA_coord_loc_spinner.getSelectedItemPosition();
+            String coord_location = "";
+
+            switch (selected_coord_loc) {
             case 0:
-                occupancy = "Occupied";
+                coord_location = "Entrance";
                 break;
             case 1:
-                occupancy = "Vacant";
+                coord_location = "Corner";
                 break;
             case 2:
-                occupancy = "Unknown";
+                coord_location = "Other";
                 break;
             }
+            
+            String coord_loc_oth = mRBCA_coord_loc_oth.getText().toString();
             
             int selected_coord_corner = mRBCA_coord_corner_spinner.getSelectedItemPosition();
             String coord_corner = "";
@@ -2406,27 +2602,45 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 break;
             } 
             
-            String coord_loc_oth = mRBCA_coord_loc_oth.getText().toString();
             String coord_notes = mRBCA_coord_notes.getText().toString();
             String addr_no = mRBCA_addr_no.getText().toString();
             String addr_street = mRBCA_addr_street.getText().toString();
+            String addr_notes = mRBCA_addr_notes.getText().toString();
+            String img_right = mRBCA_img_right.getText().toString();
+            String img_front = mRBCA_img_front.getText().toString();
+            String img_left = mRBCA_img_left.getText().toString();
+            String bldg_name = mRBCA_bldg_name.getText().toString();
+            
+            int selected_bldg_is_extant = mRBCA_bldg_is_extant_spinner.getSelectedItemPosition();
+            String bldg_is_extant = "";
+            switch (selected_bldg_is_extant) {
+            case 0:
+                bldg_is_extant = "Yes";
+                break;
+            case 1:
+                bldg_is_extant = "No";
+                break;
+            case 2:
+                bldg_is_extant = "Partial";
+                break;
+            } 
+            
             String bldg_area = mRBCA_bldg_area_select.getText().toString();
             String bldg_posting = mRBCA_bldg_posting_select.getText().toString();
             String bldg_posting_oth = mRBCA_bldg_posting_oth.getText().toString();
+            String bldg_posting_img = mRBCA_bldg_posting_img.getText().toString();
             
-            
-            int selected_coord_loc = mRBCA_coord_loc_spinner.getSelectedItemPosition();
-            String coord_location = "";
-
-            switch (selected_coord_loc) {
+            int selected_occucy = mRBCA_bldg_occucy_spinner.getSelectedItemPosition();
+            String occupancy = "";
+            switch (selected_occucy) {
             case 0:
-                coord_location = "Entrance";
+                occupancy = "Occupied";
                 break;
             case 1:
-                coord_location = "Corner";
+                occupancy = "Vacant";
                 break;
             case 2:
-                coord_location = "Other";
+                occupancy = "Unknown";
                 break;
             }
             
@@ -2609,95 +2823,68 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
             } 
             
             String found_type_oth = mRBCA_found_type_oth.getText().toString();
-            
             int found = mRBCA_found_spinner.getSelectedItemPosition();
-            
             String found_notes = mRBCA_found_notes.getText().toString();
-            
             String extwall_mat = mRBCA_extwall_mat_select.getText().toString();
-            
             String extwall_mat_oth = mRBCA_extwall_mat_oth.getText().toString();
-            
             int extwall = mRBCA_extwall_spinner.getSelectedItemPosition();
-            
             String extwall_notes = mRBCA_extwall_notes.getText().toString();
-            
             String extfeat_type = mRBCA_extfeat_type_select.getText().toString();
-            
             String extfeat_type_oth = mRBCA_extfeat_type_oth.getText().toString();
-            
             int extfeat = mRBCA_extfeat_spinner.getSelectedItemPosition();
-            
             String extfeat_notes = mRBCA_extfeat_notes.getText().toString();
-            
             String win_type = mRBCA_win_type_select.getText().toString();
-            
             String win_type_oth = mRBCA_win_type_oth.getText().toString();
-            
             String win_mat = mRBCA_win_mat_select.getText().toString();
-            
             String win_mat_oth = mRBCA_win_mat_oth.getText().toString();
-            
             int win = mRBCA_win_spinner.getSelectedItemPosition();
-            
             String win_notes = mRBCA_win_notes.getText().toString();
-            
             String roof_type = mRBCA_roof_type_select.getText().toString();
-            
             String roof_type_oth = mRBCA_roof_type_oth.getText().toString();
-            
             String roof_mat = mRBCA_roof_mat_select.getText().toString();
-            
             String roof_mat_oth = mRBCA_roof_mat_oth.getText().toString();
-            
             int roof = mRBCA_roof_spinner.getSelectedItemPosition();
-            
             String roof_notes = mRBCA_roof_notes.getText().toString();
-            
             String int_cond = mRBCA_int_cond_select.getText().toString();
-            
             int int_collect_extant = mRBCA_int_collect_extant_spinner.getSelectedItemPosition();
-            
             String int_collect_type = mRBCA_int_collect_type_select.getText().toString();
-            
             String int_collect_type_oth = mRBCA_int_collect_type_oth.getText().toString();
-            
+            String int_img1 = mRBCA_int_img1.getText().toString();
+            String int_desc1 = mRBCA_int_desc1.getText().toString();
+            String int_img2 = mRBCA_int_img2.getText().toString();
+            String int_desc2 = mRBCA_int_desc2.getText().toString();
+            String int_img3 = mRBCA_int_img3.getText().toString();
+            String int_desc3 = mRBCA_int_desc3.getText().toString();
             String int_notes = mRBCA_int_notes.getText().toString();
-            
             String landveg_feat = mRBCA_landveg_feat_select.getText().toString();
-            
             String landveg_feat_oth = mRBCA_landveg_feat_oth.getText().toString();
-            
             int landveg = mRBCA_landveg_spinner.getSelectedItemPosition();
-            
             String landveg_notes = mRBCA_landveg_notes.getText().toString();
-            
             String landblt_feat = mRBCA_landblt_feat_select.getText().toString();
-            
             String landblt_feat_oth = mRBCA_landblt_feat_oth.getText().toString();
-            
             int landblt = mRBCA_landblt_spinner.getSelectedItemPosition();
-            
             String landblt_notes = mRBCA_landblt_notes.getText().toString();
-            
+            String media_img1 = mRBCA_media_img1.getText().toString();
+            String media_desc1 = mRBCA_media_desc1.getText().toString();
+            String media_img2 = mRBCA_media_img2.getText().toString();
+            String media_desc2 = mRBCA_media_desc2.getText().toString();
+            String media_img3 = mRBCA_media_img3.getText().toString();
+            String media_desc3 = mRBCA_media_desc3.getText().toString();
+            String media_img4 = mRBCA_media_img4.getText().toString();
+            String media_desc4 = mRBCA_media_desc4.getText().toString();
+            String media_img5 = mRBCA_media_img5.getText().toString();
+            String media_desc5 = mRBCA_media_desc5.getText().toString();
+            String media_img6 = mRBCA_media_img6.getText().toString();
+            String media_desc6 = mRBCA_media_desc6.getText().toString();
             int hzrd = mRBCA_hzrd_spinner.getSelectedItemPosition();
-            
             String hzrd_type = mRBCA_hzrd_type_select.getText().toString();
-            
             String hzrd_type_oth = mRBCA_hzrd_type_oth.getText().toString();
-            
             String hzrd_notes = mRBCA_hzrd_notes.getText().toString();
-
             String hzrd_hazmat = mRBCA_hzrd_hazmat_select.getText().toString();
-            
             String hzrd_hazmat_oth = mRBCA_hzrd_hazmat_oth.getText().toString();
-            
             String actn = mRBCA_actn_select.getText().toString();
-            
             String actn_oth = mRBCA_actn_oth.getText().toString();
-            
             String eval = mRBCA_eval_select.getText().toString();
-            
             String eval_oth = mRBCA_eval_oth.getText().toString();
 
 
@@ -2741,13 +2928,21 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
             if (mIsNew) {
                 mPost = new Post(mBlogID, title, content, images, pubDateTimestamp, mCategories.toString(), tags, status, password,
-                        latitude, longitude, mIsPage, postFormat, true, false,coord_location,coord_loc_oth,coord_corner, 
-                        coord_notes, addr_no, addr_street,bldg_area,bldg_posting,bldg_posting_oth,occupancy,occucy_available,bldg_stories,bldg_width,
+                        latitude, longitude, mIsPage, postFormat, true, false,
+                        asser_name, asser_org, asser_email,asser_phone,coord_latitude,coord_longitude,coord_altitude,coord_accuracy,coord_location,coord_loc_oth,coord_corner, 
+                        coord_notes, addr_no, addr_street, addr_notes, img_right,img_front,img_left,bldg_name,bldg_is_extant,
+                        bldg_area,bldg_posting,bldg_posting_oth,bldg_posting_img, occupancy,occucy_available,bldg_stories,bldg_width,
                         bldg_length,uses,uses_oth,outbldg, outbldg_notes, units_res, units_comm,occu_name, occu_phone, occu_notes,hist_desig, hist_desig_oth,
-                        hist_dist, hist_dist_name,hist_appear,hist_age,hist_age_meta, hist_yr_built, hist_age_src, hist_age_src_oth,hist_notes,dmg_source, dmg_source_oth,dmg_total,dmg_desc,
-                        struct_type,struct_type_oth,struct_defects,struct,struct_notes,found_type,found_type_oth,found,found_notes,extwall_mat,extwall_mat_oth,extwall,extwall_notes,extfeat_type,extfeat_type_oth,
-                        extfeat,extfeat_notes,win_type,win_type_oth,win_mat,win_mat_oth,win,win_notes,roof_type,roof_type_oth,roof_mat,roof_mat_oth,roof,roof_notes,int_cond,int_collect_extant, 
-                        int_collect_type,int_collect_type_oth,int_notes,landveg_feat,landveg_feat_oth,landveg,landveg_notes,landblt_feat,landblt_feat_oth,landblt,landblt_notes,hzrd,hzrd_type,
+                        hist_dist, hist_dist_name,hist_appear,hist_age,hist_age_meta, hist_yr_built, hist_age_src, 
+                        hist_age_src_oth,hist_notes,dmg_source, dmg_source_oth,dmg_total,dmg_desc,
+                        struct_type,struct_type_oth,struct_defects,struct,struct_notes,found_type,found_type_oth,found,
+                        found_notes,extwall_mat,extwall_mat_oth,extwall,extwall_notes,extfeat_type,extfeat_type_oth,
+                        extfeat,extfeat_notes,win_type,win_type_oth,win_mat,win_mat_oth,win,win_notes,roof_type,
+                        roof_type_oth,roof_mat,roof_mat_oth,roof,roof_notes,int_cond,int_collect_extant, 
+                        int_collect_type,int_collect_type_oth,int_img1,int_desc1,int_img2,int_desc2,int_img3,int_desc3,
+                        int_notes,landveg_feat,landveg_feat_oth,landveg,landveg_notes,landblt_feat,landblt_feat_oth,landblt,landblt_notes,
+                        media_img1, media_desc1, media_img2, media_desc2, media_img3, media_desc3, media_img4, media_desc4, media_img5,media_desc5,
+                        media_img6, media_desc6, hzrd,hzrd_type,
                         hzrd_type_oth,hzrd_notes,hzrd_hazmat,hzrd_hazmat_oth,actn,actn_oth,eval,eval_oth);
                 mPost.setLocalDraft(true);
 
@@ -2823,15 +3018,30 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                     mPost.setLocalChange(true);
                 
                 ///////MoCA for Android
+                mPost.setRBCA_asser_name(asser_name);
+                mPost.setRBCA_asser_org(asser_org);
+                mPost.setRBCA_asser_email(asser_email);
+                mPost.setRBCA_asser_phone(asser_phone);
+                mPost.setRBCA_coord_latitude(coord_latitude);
+                mPost.setRBCA_coord_longitude(coord_longitude);
+                mPost.setRBCA_coord_altitude(coord_altitude);
+                mPost.setRBCA_coord_accuracy(coord_accuracy);
                 mPost.setRBCA_coord_loc(coord_location);
                 mPost.setRBCA_coord_loc_oth(coord_loc_oth);
                 mPost.setRBCA_coord_corner(coord_corner);
                 mPost.setRBCA_coord_notes(coord_notes);
                 mPost.setRBCA_addr_no(addr_no);
                 mPost.setRBCA_addr_street(addr_street);
+                mPost.setRBCA_addr_notes(addr_notes);
+                mPost.setRBCA_img_right(img_right);
+                mPost.setRBCA_img_front(img_front);
+                mPost.setRBCA_img_left(img_left);
+                mPost.setRBCA_bldg_name(bldg_name);
+                mPost.setRBCA_bldg_is_extant(bldg_is_extant);
                 mPost.setRBCA_bldg_area(bldg_area);
                 mPost.setRBCA_bldg_posting(bldg_posting);
                 mPost.setRBCA_bldg_posting_oth(bldg_posting_oth);
+                mPost.setRBCA_bldg_posting_img(bldg_posting_img);
                 mPost.setRBCA_bldg_occucy(occupancy);
                 mPost.setRBCA_bldg_occucy_avail(occucy_available);
                 mPost.setRBCA_bldg_stories(bldg_stories);
@@ -2894,6 +3104,12 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setRBCA_int_collect_extant(int_collect_extant);
                 mPost.setRBCA_int_collect_type(int_collect_type);
                 mPost.setRBCA_int_collect_type_oth(int_collect_type_oth);
+                mPost.setRBCA_int_img1(int_img1);
+                mPost.setRBCA_int_desc1(int_desc1);
+                mPost.setRBCA_int_img2(int_img2);
+                mPost.setRBCA_int_desc2(int_desc2);
+                mPost.setRBCA_int_img3(int_img3);
+                mPost.setRBCA_int_desc3(int_desc3);
                 mPost.setRBCA_int_notes(int_notes);
                 mPost.setRBCA_landveg_feat(landveg_feat);
                 mPost.setRBCA_landveg_feat_oth(landveg_feat_oth);
@@ -2903,6 +3119,18 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
                 mPost.setRBCA_landblt_feat_oth(landblt_feat_oth);
                 mPost.setRBCA_landblt(landblt);
                 mPost.setRBCA_landblt_notes(landblt_notes);
+                mPost.setRBCA_media_img1(media_img1);
+                mPost.setRBCA_media_desc1(media_desc1);
+                mPost.setRBCA_media_img2(media_img2);
+                mPost.setRBCA_media_desc2(media_desc2);
+                mPost.setRBCA_media_img3(media_img3);
+                mPost.setRBCA_media_desc3(media_desc3);
+                mPost.setRBCA_media_img4(media_img4);
+                mPost.setRBCA_media_desc4(media_desc4);
+                mPost.setRBCA_media_img5(media_img5);
+                mPost.setRBCA_media_desc5(media_desc5);
+                mPost.setRBCA_media_img6(media_img6);
+                mPost.setRBCA_media_desc6(media_desc6);
                 mPost.setRBCA_hzrd(hzrd);
                 mPost.setRBCA_hzrd_type(hzrd_type);
                 mPost.setRBCA_hzrd_type_oth(hzrd_type_oth);
@@ -3025,105 +3253,103 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
 
     private void addMedia(String imgPath, Uri curStream) {
         
-        mRBCA_coord_loc_oth.setText(imgPath);
-        
-//        if (mFormatBar.getVisibility() == View.VISIBLE)
-//            hideFormatBar();
-//
-//        Bitmap resizedBitmap = null;
-//        ImageHelper ih = new ImageHelper();
-//        Display display = getWindowManager().getDefaultDisplay();
-//        int width = display.getWidth();
-//        int height = display.getHeight();
-//        if (width > height)
-//            width = height;
-//
-//        Map<String, Object> mediaData = ih.getImageBytesForPath(imgPath, EditPostActivity.this);
-//
-//        if (mediaData == null) {
-//            // data stream not returned
-//            Toast.makeText(EditPostActivity.this, getResources().getText(R.string.gallery_error), Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//
-//        BitmapFactory.Options opts = new BitmapFactory.Options();
-//        opts.inJustDecodeBounds = true;
-//        byte[] bytes = (byte[]) mediaData.get("bytes");
-//        BitmapFactory.decodeByteArray(bytes, 0, bytes.length, opts);
-//
-//        float conversionFactor = 0.25f;
-//
-//        if (opts.outWidth > opts.outHeight)
-//            conversionFactor = 0.40f;
-//
-//        byte[] finalBytes = ih.createThumbnail(bytes, String.valueOf((int) (width * conversionFactor)),
-//                (String) mediaData.get("orientation"), true);
-//
-//        if (finalBytes == null) {
-//            Toast.makeText(EditPostActivity.this, getResources().getText(R.string.out_of_memory), Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//
-//        resizedBitmap = BitmapFactory.decodeByteArray(finalBytes, 0, finalBytes.length);
-//
-//        int selectionStart = mContentEditText.getSelectionStart();
-//        mStyleStart = selectionStart;
-//        int selectionEnd = mContentEditText.getSelectionEnd();
-//
-//        if (selectionStart > selectionEnd) {
-//            int temp = selectionEnd;
-//            selectionEnd = selectionStart;
-//            selectionStart = temp;
-//        }
-//
-//        Editable s = mContentEditText.getText();
-//        WPImageSpan is = new WPImageSpan(EditPostActivity.this, resizedBitmap, curStream);
-//
-//        String imageWidth = WordPress.currentBlog.getMaxImageWidth();
-//        if (!imageWidth.equals("Original Size")) {
-//            try {
-//                is.setWidth(Integer.valueOf(imageWidth));
-//            } catch (NumberFormatException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        is.setTitle((String) mediaData.get("title"));
-//        is.setImageSource(curStream);
-//        if (imgPath.contains("video")) {
-//            is.setVideo(true);
-//        }
-//
-//        int line = 0, column = 0;
-//        try {
-//            line = mContentEditText.getLayout().getLineForOffset(selectionStart);
-//            column = mContentEditText.getSelectionStart() - mContentEditText.getLayout().getLineStart(line);
-//        } catch (Exception ex) {
-//        }
-//
-//        WPImageSpan[] image_spans = s.getSpans(selectionStart, selectionEnd, WPImageSpan.class);
-//        if (image_spans.length != 0) {
-//            // insert a few line breaks if the cursor is already on an image
-//            s.insert(selectionEnd, "\n\n");
-//            selectionStart = selectionStart + 2;
-//            selectionEnd = selectionEnd + 2;
-//        } else if (column != 0) {
-//            // insert one line break if the cursor is not at the first column
-//            s.insert(selectionEnd, "\n");
-//            selectionStart = selectionStart + 1;
-//            selectionEnd = selectionEnd + 1;
-//        }
-//
-//        s.insert(selectionStart, " ");
-//        s.setSpan(is, selectionStart, selectionEnd + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        AlignmentSpan.Standard as = new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER);
-//        s.setSpan(as, selectionStart, selectionEnd + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        s.insert(selectionEnd + 1, "\n\n");
-//        try {
-//            mContentEditText.setSelection(s.length());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        if (mFormatBar.getVisibility() == View.VISIBLE)
+            hideFormatBar();
+
+        Bitmap resizedBitmap = null;
+        ImageHelper ih = new ImageHelper();
+        Display display = getWindowManager().getDefaultDisplay();
+        int width = display.getWidth();
+        int height = display.getHeight();
+        if (width > height)
+            width = height;
+
+        Map<String, Object> mediaData = ih.getImageBytesForPath(imgPath, EditPostActivity.this);
+
+        if (mediaData == null) {
+            // data stream not returned
+            Toast.makeText(EditPostActivity.this, getResources().getText(R.string.gallery_error), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        BitmapFactory.Options opts = new BitmapFactory.Options();
+        opts.inJustDecodeBounds = true;
+        byte[] bytes = (byte[]) mediaData.get("bytes");
+        BitmapFactory.decodeByteArray(bytes, 0, bytes.length, opts);
+
+        float conversionFactor = 0.25f;
+
+        if (opts.outWidth > opts.outHeight)
+            conversionFactor = 0.40f;
+
+        byte[] finalBytes = ih.createThumbnail(bytes, String.valueOf((int) (width * conversionFactor)),
+                (String) mediaData.get("orientation"), true);
+
+        if (finalBytes == null) {
+            Toast.makeText(EditPostActivity.this, getResources().getText(R.string.out_of_memory), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        resizedBitmap = BitmapFactory.decodeByteArray(finalBytes, 0, finalBytes.length);
+
+        int selectionStart = mContentEditText.getSelectionStart();
+        mStyleStart = selectionStart;
+        int selectionEnd = mContentEditText.getSelectionEnd();
+
+        if (selectionStart > selectionEnd) {
+            int temp = selectionEnd;
+            selectionEnd = selectionStart;
+            selectionStart = temp;
+        }
+
+        Editable s = mContentEditText.getText();
+        WPImageSpan is = new WPImageSpan(EditPostActivity.this, resizedBitmap, curStream);
+
+        String imageWidth = WordPress.currentBlog.getMaxImageWidth();
+        if (!imageWidth.equals("Original Size")) {
+            try {
+                is.setWidth(Integer.valueOf(imageWidth));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+
+        is.setTitle((String) mediaData.get("title"));
+        is.setImageSource(curStream);
+        if (imgPath.contains("video")) {
+            is.setVideo(true);
+        }
+
+        int line = 0, column = 0;
+        try {
+            line = mContentEditText.getLayout().getLineForOffset(selectionStart);
+            column = mContentEditText.getSelectionStart() - mContentEditText.getLayout().getLineStart(line);
+        } catch (Exception ex) {
+        }
+
+        WPImageSpan[] image_spans = s.getSpans(selectionStart, selectionEnd, WPImageSpan.class);
+        if (image_spans.length != 0) {
+            // insert a few line breaks if the cursor is already on an image
+            s.insert(selectionEnd, "\n\n");
+            selectionStart = selectionStart + 2;
+            selectionEnd = selectionEnd + 2;
+        } else if (column != 0) {
+            // insert one line break if the cursor is not at the first column
+            s.insert(selectionEnd, "\n");
+            selectionStart = selectionStart + 1;
+            selectionEnd = selectionEnd + 1;
+        }
+
+        s.insert(selectionStart, " ");
+        s.setSpan(is, selectionStart, selectionEnd + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        AlignmentSpan.Standard as = new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER);
+        s.setSpan(as, selectionStart, selectionEnd + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        s.insert(selectionEnd + 1, "\n\n");
+        try {
+            mContentEditText.setSelection(s.length());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public SpannableStringBuilder addMediaFromShareAction(String imgPath, Uri curStream, SpannableStringBuilder ssb) {
@@ -3233,6 +3459,7 @@ public class EditPostActivity extends SherlockActivity implements OnClickListene
         }
     };
 
+    
     private Runnable autoSaveRunnable = new Runnable() {
         @Override
         public void run() {

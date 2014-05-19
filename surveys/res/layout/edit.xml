@@ -100,9 +100,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:inputType="phone" />
-                 
-                 
-                
                 
                 <TextView
                     style="@style/DivisionTitles"
@@ -122,6 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:inputType="textCapSentences|textAutoCorrect" />
+                
                  
                  <TextView
                     android:id="@+id/rbca_coord_longitude_label"
@@ -336,12 +334,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/rbca_bldg_is_extant_label" />
                 
-                 <EditText
-                    android:id="@+id/rbca_bldg_is_extant"
+                 <Spinner
+                    android:id="@+id/rbca_bldg_is_extant_spinner"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:inputType="textCapSentences|textAutoCorrect" />
+                    android:prompt="@string/rbca_bldg_is_extant_label" />
                   
                   <TextView
                     android:id="@+id/rbca_bldg_area_label"

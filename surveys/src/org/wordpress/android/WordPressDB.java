@@ -54,14 +54,15 @@ public class WordPressDB {
             + "latitude real, longitude real, localDraft boolean default 0, uploaded boolean default 0, isPage boolean default 0,"
             + "wp_page_parent_id text, wp_page_parent_title text, " 
             + "rbca_asser_name text default '', rbca_asser_org text default '', rbca_asser_email text default '', rbca_asser_phone text default '', " 
-            + "rbca_coord_latitude real, rbca_coord_longitude real, rbca_coord_altitude real, rbca_coord_accuracy real,"
+            + "rbca_coord_latitude real not null default 0.0 , rbca_coord_longitude real not null default 0.0, "
+            + "rbca_coord_altitude real not null default 0.0, rbca_coord_accuracy real not null default 0.0,"
             + "rbca_coord_loc text default '', rbca_coord_loc_oth text default '', rbca_coord_corner text default '', rbca_coord_notes text default '', "
             + "rbca_addr_no text default '', rbca_addr_street text default '',rbca_addr_notes text default '',rbca_img_right text default '', "
-            + "rbca_img_front text default '', rbca_img_right text default '', rbca_bldg_name text default '', rbca_is_extant text default '', "
+            + "rbca_img_front text default '', rbca_img_left text default '', rbca_bldg_name text default '', rbca_bldg_is_extant text default '', "
             + "rbca_bldg_area text default '',rbca_bldg_posting text default '', rbca_bldg_posting_oth text default '',  "
             + "rbca_bldg_posting_img text default '', rbca_bldg_occucy text default '',"
-            + "rbca_bldg_occucy_avail integer default 0, rbca_bldg_stories real, rbca_bldg_width real,"
-            + "rbca_bldg_length real, rbca_bldg_use text default '', rbca_bldg_use_oth text default '',"
+            + "rbca_bldg_occucy_avail integer default 0, rbca_bldg_stories real not null default 0.0, rbca_bldg_width real not null default 0.0,"
+            + "rbca_bldg_length real not null default 0.0, rbca_bldg_use text default '', rbca_bldg_use_oth text default '',"
             + "rbca_bldg_outbldg integer default 0, rbca_bldg_outbldg_notes text default '',"
             + "rbca_bldg_units_res integer default 0, rbca_bldg_units_comm integer default 0,"
             + "rbca_bldg_occu_name text default '', rbca_bldg_occu_phone integer default 0,"
@@ -2036,97 +2037,130 @@ public class WordPressDB {
                 values.add(c.getInt(26));
                 values.add(c.getInt(27));
                 values.add(c.getInt(28));
-                values.add(c.getString(31));  //rbca_coord_loc
-                values.add(c.getString(32));  //rbca_coord_loc_oth
-                values.add(c.getString(33));  //rbca_coord_corner
-                values.add(c.getString(34));  //rbca_coord_notes
-                values.add(c.getString(35));  //rbca_addr_no
-                values.add(c.getString(36));  //rbca_addr_street
-                values.add(c.getString(37));  //rbca_bldg_area
-                values.add(c.getString(38));  //rbca_bldg_posting
-                values.add(c.getString(39));  //rbca_bldg_posting_oth
-                values.add(c.getString(40));  //rbca_bldg_occucy
-                values.add(c.getInt(41));     //rbca_bldg_occucy_avail
-                values.add(c.getDouble(42));  //rbca_bldg_stories
-                values.add(c.getDouble(43));  //rbca_bldg_width
-                values.add(c.getDouble(44));  //rbca_bldg_length
-                values.add(c.getString(45));  //rbca_bldg_use
-                values.add(c.getString(46));  //rbca_bldg_use_oth
-                values.add(c.getInt(47));     //rbca_bldg_outbldg
-                values.add(c.getString(48));  //rbca_bldg_outbldg_notes
-                values.add(c.getInt(49));     //rbca_bldg_units_res
-                values.add(c.getInt(50));     //rbca_bldg_units_comm 
-                values.add(c.getString(51));  //rbca_bldg_occu_name
-                values.add(c.getInt(52));     //rbca_bldg_occu_phone
-                values.add(c.getString(53));  //rbca_bldg_notes
-                values.add(c.getString(54));  //rbca_hist_desig
-                values.add(c.getString(55));  //rbca_hist_desig_oth
-                values.add(c.getString(56));  //rbca_hist_dist
-                values.add(c.getString(57));  //rbca_hist_dist_name
-                values.add(c.getInt(58));     //rbca_hist_appear
-                values.add(c.getInt(59));     //rbca_hist_age
-                values.add(c.getString(60));  //rbca_hist_age_meta
-                values.add(c.getInt(61));     //rbca_hist_yr_built
-                values.add(c.getInt(62));     //rbca_hist_age_src
-                values.add(c.getString(63));  //rbca_hist_age_src_oth
-                values.add(c.getString(64));  //rbca_hist_notes
-                values.add(c.getString(65));  //rbca_dmg_source
-                values.add(c.getString(66));  //rbca_dmg_source_oth
-                values.add(c.getInt(67));     //rbca_dmg_total
-                values.add(c.getString(68));  //rbca_dmg_desc
-                values.add(c.getString(69));  //rbca_struct_type
-                values.add(c.getString(70));  //rbca_struct_type_oth
-                values.add(c.getString(71));  //rbca_struct_defects
-                values.add(c.getInt(72));     //rbca_struct
-                values.add(c.getString(73));  //rbca_struct_notes
-                values.add(c.getString(74));  //rbca_found_type
-                values.add(c.getString(75));  //rbca_found_type_oth
-                values.add(c.getInt(76));     //rbca_found
-                values.add(c.getInt(77));     //rbca_found_notes
-                values.add(c.getString(78));  //rbca_extwall_mat
-                values.add(c.getString(79));  //rbca_extwall_mat_oth
-                values.add(c.getInt(80));     //rbca_extwall
-                values.add(c.getString(81));  //rbca_extwall_notes
-                values.add(c.getString(82));  //rbca_extfeat_type
-                values.add(c.getString(83));  //rbca_extfeat_type_oth
-                values.add(c.getInt(84));     //rbca_extfeat
-                values.add(c.getString(85));  //rbca_extfeat_notes
-                values.add(c.getString(86));  //rbca_win_type
-                values.add(c.getString(87));  //rbca_win_type_oth
-                values.add(c.getString(88));  //rbca_win_mat
-                values.add(c.getString(89));  //rbca_win_mat_oth
-                values.add(c.getInt(90));     //rbca_win
-                values.add(c.getString(91));  //rbca_win_notes
-                values.add(c.getString(92));  //rbca_roof_type
-                values.add(c.getString(93));  //rbca_roof_type_oth
-                values.add(c.getString(94));  //rbca_roof_mat
-                values.add(c.getString(95));  //rbca_roof_mat_oth
-                values.add(c.getInt(96));     //rbca_roof
-                values.add(c.getString(97));  //rbca_roof_notes
-                values.add(c.getString(98));  //rbca_int_cond
-                values.add(c.getInt(99));     //rbca_int_collect_extant
-                values.add(c.getString(100)); //rbca_int_collect_type
-                values.add(c.getString(101)); //rbca_int_collect_type_oth
-                values.add(c.getString(102)); //rbca_int_notes
-                values.add(c.getString(103)); //rbca_landveg_feat
-                values.add(c.getString(104)); //rbca_landveg_feat_oth
-                values.add(c.getInt(105));    //rbca_landveg
-                values.add(c.getString(106)); //rbca_landveg_notes
-                values.add(c.getString(107)); //rbca_landblt_feat
-                values.add(c.getString(108)); //rbca_landblt_feat_oth
-                values.add(c.getInt(109));    //rbca_landblt
-                values.add(c.getString(110)); //rbca_landblt_notes
-                values.add(c.getInt(111));    //rbca_hzrd
-                values.add(c.getString(112)); //rbca_hzrd_type
-                values.add(c.getString(113)); //rbca_hzrd_type_oth
-                values.add(c.getString(114)); //rbca_hzrd_notes
-                values.add(c.getString(115)); //rbca_hzrd_hazmat
-                values.add(c.getString(116)); //rbca_hzrd_hazmat_oth
-                values.add(c.getString(117)); //rbca_actn
-                values.add(c.getString(118)); //rbca_actn_oth
-                values.add(c.getString(119)); //rbca_eval
-                values.add(c.getString(120)); //rbca_eval_oth
-                values.add(c.getInt(75));     //isLocalChange
+                values.add(c.getString(31));  //rbca_asser_name
+                values.add(c.getString(32));  //rbca_asser_org
+                values.add(c.getString(33));  //rbca_asser_email
+                values.add(c.getString(34));  //rbca_asser_phone
+                values.add(c.getDouble(35));  //rbca_coord_latitude
+                values.add(c.getDouble(36));  //rbca_coord_longitude
+                values.add(c.getDouble(37));  //rbca_coord_altitude
+                values.add(c.getDouble(38));  //rbca_coord_accuracy
+                values.add(c.getString(39));  //rbca_coord_loc
+                values.add(c.getString(40));  //rbca_coord_loc_oth
+                values.add(c.getString(41));  //rbca_coord_corner
+                values.add(c.getString(42));  //rbca_coord_notes
+                values.add(c.getString(43));  //rbca_addr_no
+                values.add(c.getString(44));  //rbca_addr_street
+                values.add(c.getString(45));  //rbca_addr_notes
+                values.add(c.getString(46));  //rbca_img_right
+                values.add(c.getString(47));  //rbca_img_front
+                values.add(c.getString(48));  //rbca_img_left
+                values.add(c.getString(49));  //rbca_bldg_name
+                values.add(c.getString(50));  //rbca_bldg_is_extant      ////////////
+                values.add(c.getString(51));  //rbca_bldg_area
+                values.add(c.getString(52));  //rbca_bldg_posting
+                values.add(c.getString(53));  //rbca_bldg_posting_oth
+                values.add(c.getString(54));  //rbca_bldg_posting_img
+                values.add(c.getString(55));  //rbca_bldg_occucy
+                values.add(c.getInt(56));     //rbca_bldg_occucy_avail
+                values.add(c.getDouble(57));  //rbca_bldg_stories
+                values.add(c.getDouble(58));  //rbca_bldg_width
+                values.add(c.getDouble(59));  //rbca_bldg_length
+                values.add(c.getString(60));  //rbca_bldg_use
+                values.add(c.getString(61));  //rbca_bldg_use_oth
+                values.add(c.getInt(62));     //rbca_bldg_outbldg
+                values.add(c.getString(63));  //rbca_bldg_outbldg_notes
+                values.add(c.getInt(64));     //rbca_bldg_units_res
+                values.add(c.getInt(65));     //rbca_bldg_units_comm 
+                values.add(c.getString(66));  //rbca_bldg_occu_name
+                values.add(c.getInt(67));     //rbca_bldg_occu_phone
+                values.add(c.getString(68));  //rbca_bldg_notes
+                values.add(c.getString(69));  //rbca_hist_desig
+                values.add(c.getString(70));  //rbca_hist_desig_oth
+                values.add(c.getString(71));  //rbca_hist_dist
+                values.add(c.getString(72));  //rbca_hist_dist_name
+                values.add(c.getInt(73));     //rbca_hist_appear
+                values.add(c.getInt(74));     //rbca_hist_age
+                values.add(c.getString(75));  //rbca_hist_age_meta
+                values.add(c.getInt(76));     //rbca_hist_yr_built
+                values.add(c.getInt(77));     //rbca_hist_age_src
+                values.add(c.getString(78));  //rbca_hist_age_src_oth
+                values.add(c.getString(79));  //rbca_hist_notes
+                values.add(c.getString(80));  //rbca_dmg_source
+                values.add(c.getString(81));  //rbca_dmg_source_oth
+                values.add(c.getInt(82));     //rbca_dmg_total
+                values.add(c.getString(83));  //rbca_dmg_desc
+                values.add(c.getString(84));  //rbca_struct_type
+                values.add(c.getString(85));  //rbca_struct_type_oth
+                values.add(c.getString(86));  //rbca_struct_defects
+                values.add(c.getInt(87));     //rbca_struct
+                values.add(c.getString(88));  //rbca_struct_notes
+                values.add(c.getString(89));  //rbca_found_type
+                values.add(c.getString(90));  //rbca_found_type_oth
+                values.add(c.getInt(91));     //rbca_found
+                values.add(c.getInt(92));     //rbca_found_notes
+                values.add(c.getString(93));  //rbca_extwall_mat
+                values.add(c.getString(94));  //rbca_extwall_mat_oth
+                values.add(c.getInt(95));     //rbca_extwall
+                values.add(c.getString(96));  //rbca_extwall_notes
+                values.add(c.getString(97));  //rbca_extfeat_type
+                values.add(c.getString(98));  //rbca_extfeat_type_oth
+                values.add(c.getInt(99));     //rbca_extfeat
+                values.add(c.getString(100));  //rbca_extfeat_notes
+                values.add(c.getString(101));  //rbca_win_type
+                values.add(c.getString(102));  //rbca_win_type_oth
+                values.add(c.getString(103));  //rbca_win_mat
+                values.add(c.getString(104));  //rbca_win_mat_oth
+                values.add(c.getInt(105));     //rbca_win
+                values.add(c.getString(106));  //rbca_win_notes
+                values.add(c.getString(107));  //rbca_roof_type
+                values.add(c.getString(108));  //rbca_roof_type_oth
+                values.add(c.getString(109));  //rbca_roof_mat
+                values.add(c.getString(110));  //rbca_roof_mat_oth
+                values.add(c.getInt(111));     //rbca_roof
+                values.add(c.getString(112));  //rbca_roof_notes
+                values.add(c.getString(113));  //rbca_int_cond
+                values.add(c.getInt(114));     //rbca_int_collect_extant
+                values.add(c.getString(115)); //rbca_int_collect_type
+                values.add(c.getString(116)); //rbca_int_collect_type_oth
+                values.add(c.getString(117));  //rbca_int_img1
+                values.add(c.getString(118));  //rbca_int_desc1
+                values.add(c.getString(119));  //rbca_int_img2
+                values.add(c.getString(120));  //rbca_int_desc2
+                values.add(c.getString(121));  //rbca_int_img3
+                values.add(c.getString(122));  //rbca_int_desc3
+                values.add(c.getString(123)); //rbca_int_notes
+                values.add(c.getString(124)); //rbca_landveg_feat
+                values.add(c.getString(125)); //rbca_landveg_feat_oth
+                values.add(c.getInt(126));    //rbca_landveg
+                values.add(c.getString(127)); //rbca_landveg_notes
+                values.add(c.getString(128)); //rbca_landblt_feat
+                values.add(c.getString(129)); //rbca_landblt_feat_oth
+                values.add(c.getInt(130));    //rbca_landblt
+                values.add(c.getString(131)); //rbca_landblt_notes
+                values.add(c.getString(132)); //rbca_media_img1
+                values.add(c.getString(133)); //rbca_media_desc1
+                values.add(c.getString(134)); //rbca_media_img2
+                values.add(c.getString(135)); //rbca_media_desc2
+                values.add(c.getString(136)); //rbca_media_img3
+                values.add(c.getString(137)); //rbca_media_desc3
+                values.add(c.getString(138)); //rbca_media_img4
+                values.add(c.getString(139)); //rbca_media_desc4
+                values.add(c.getString(140)); //rbca_media_img5
+                values.add(c.getString(141)); //rbca_media_desc5
+                values.add(c.getString(142)); //rbca_media_img6
+                values.add(c.getString(143)); //rbca_media_desc6
+                values.add(c.getInt(144));    //rbca_hzrd
+                values.add(c.getString(145)); //rbca_hzrd_type
+                values.add(c.getString(146)); //rbca_hzrd_type_oth
+                values.add(c.getString(147)); //rbca_hzrd_notes
+                values.add(c.getString(148)); //rbca_hzrd_hazmat
+                values.add(c.getString(149)); //rbca_hzrd_hazmat_oth
+                values.add(c.getString(150)); //rbca_actn
+                values.add(c.getString(151)); //rbca_actn_oth
+                values.add(c.getString(152)); //rbca_eval
+                values.add(c.getString(153)); //rbca_eval_oth
+                values.add(c.getInt(154));     //isLocalChange
                 
                 
             }
